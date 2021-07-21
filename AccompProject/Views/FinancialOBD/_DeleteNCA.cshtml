@@ -1,0 +1,66 @@
+﻿
+@model AccompProject.Models.FinancialNCAADAView
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete?</h4>
+</div>
+<div class="modal-body">
+
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NCANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCANO)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NTANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NTANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NTAAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NTAAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADAAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADAAmount)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

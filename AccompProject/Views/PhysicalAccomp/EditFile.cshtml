@@ -1,0 +1,144 @@
+﻿@model AccompProject.Models.FileAccompView
+
+
+
+
+
+@using (Html.BeginForm("EditFile", "PhysicalAccomp", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDAccomp)
+
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.mainproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.mainproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.mainproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", Id = "amt" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.subproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.subproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.subproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.municipality, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.municipality, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.municipality, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.province, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.province, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.province, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+
+      
+
+        @*<div class="form-group">
+            @Html.Label("FILE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type ="file" id="Avatar" name="upload" />
+            </div>
+        </div>*@
+
+
+
+        @if (Model.FileType.Equals(0))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                <div class="col-md-10">
+                    <img src="~/Pic/filelogo.png" alt="avatar" />
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <font color="red">  <input type="submit" value="Save" class="btn btn-default"  /> </font>
+            </div>
+        </div>
+
+
+    </div>
+
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Edit", "PhysicalAccomp",new { id = Model.IDAccomp },null)
+    @*@Html.ActionLink("Back to List", "Edit", )*@
+</div>

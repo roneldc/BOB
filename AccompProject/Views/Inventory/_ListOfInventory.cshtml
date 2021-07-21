@@ -1,0 +1,99 @@
+﻿
+@model  PagedList.IPagedList<AccompProject.Models.Inventory_view>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+    <p>@Html.ActionLink("ADD NEW RECORD", "Create", "Inventory", new { @class = " btn btn-info" }) </p>
+    
+    <table id="customers" class="table  table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    @Html.ActionLink("SYSTEM NAME", "Index", new { sortOrder = ViewBag.NameSortParm, asabag = Session["asabag"].ToString(), searchTerm = Session["searchterm"].ToString() })
+                </th>
+                <th>
+                    PROVINCE
+                </th>
+                <th>
+                    MUNICIPALITY
+                </th>
+                <th>
+                    SERVICE AREA (HA)
+                </th>
+                <th>
+                    CONVERTED AREA (HA)
+                </th>
+                <th>
+                    PERMANENTLY NON-RESTORABLE (HA)
+                </th>
+                <th>
+                    FIRMED UP SERVICE AREA (HA)
+                </th>
+
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr class="oddnum">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SYSTEMS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PROVINCE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MUNICIPALITY)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SERVICE_ORIGINAL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CONVERTED_LAND)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PERMANENT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SERVICE_FIRMED)
+                        </td>
+
+
+                        <td>
+
+                            @Html.ActionLink("UPDATE", "Edit", "Inventory", new { id = item.IDSystem }, new { @class = " btn btn-info" }) |
+                            @Html.ActionLink("DELETE", "Delete", "Inventory", new { id = item.IDSystem }, new { @class = " btn btn-info" }) |
+                            @*
+                        @Html.ActionLink("PHOTOS", "Gallery", "Map", new { id = item.IDSystem }, new { @class = " btn btn-info" })*@
+                            @Html.ActionLink("MAPPING", "IndexMapInventory", "Map", new { id = item.IDSystem }, new { @class = " btn btn-info" })
+                        </td>
+                    </tr>
+                }
+
+
+            
+        </tbody>
+     
+
+    </table>
+
+</div>
+

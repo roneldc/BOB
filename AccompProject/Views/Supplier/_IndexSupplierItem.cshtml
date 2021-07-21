@@ -1,0 +1,138 @@
+﻿@using AccompProject.Helpers
+@using System.Web.Mvc.Html
+@model IEnumerable<AccompProject.Models.ProcurementSupplierQuotationView>
+
+
+
+
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<div class="col">
+
+
+    <table id="example" class="table">
+        @*    <table class="table">*@
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.item_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.item_desc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierQuotation)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item_desc)
+                </td>`
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierQuotation)
+                </td>
+
+                <td>
+
+
+                    @Html.NoEncodeActionLink("Edit", "", "MyEditSupplierItem", "Supplier", new { id = item.QuotationID }, htmlAttributes: new { data_modal = "", @class = "btn btn-success btn-sm mb-1" })
+               
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.StatID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.StatID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StatID })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+
+
+
+
+
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+
+@*<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>*@
+
+@*<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+      
+
+        );
+    })(jQuery);
+</script>*@
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        var table = $('#example').DataTable()
+      //  $('a[data-modal]').on("click", function (e) {
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                //   $("a[data-modal]").on("click", function (e) {
+                // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+                //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+                console.log("here");
+                //   alert("here");
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+            });
+
+
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    console.log("f");
+                    console.log(result.url);
+                    if (result.success) {
+                        console.log("c");
+                        $('#myModal').modal('hide');
+                        //console.log(result.url);
+                        //location.href = result.url;
+                        console.log(result.redirect);
+                        if (result.redirect == 'true') {
+                            location.href = result.url;
+                        } else {
+                            $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                        }
+                    } else {
+                        console.log("d");
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AccompProject.Models.IA_PROFILE>
+
+@{
+    ViewBag.Title = "ListIAProfile";
+}
+
+<h2>@Model.Select(z => z.IA_NAME).First().ToString()</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.YEAR_COVERED)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.SYSTEM_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IA_NAME)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.YEAR_COVERED)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.SYSTEM_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IA_NAME)
+        </td>
+       
+        <td>
+          
+            @Html.ActionLink("Edit", "EditIAProfile", new { id=item.IAPROFILEID }) |
+            @Html.ActionLink("IA Area", "IAAreaPeryear", new { iaid = item.IAID, yr1 = item.YEAR_COVERED }) |
+            @Html.ActionLink("Canals and Stationing", "IACanalsPeryear", new { iaid = item.IAID, yr1 = item.YEAR_COVERED }) |
+
+            @Html.ActionLink("BOD / OFFICERS", "IAOfficers", new { iaid = item.IAID, yr1 = item.YEAR_COVERED }) |
+
+      
+        </td>
+    </tr>
+}
+
+</table>

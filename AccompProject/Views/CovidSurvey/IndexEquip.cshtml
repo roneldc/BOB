@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AccompProject.Models.CovidEquipmentEmployee>
+
+@{
+    ViewBag.Title = "Medial Supplies";
+}
+
+
+<h1></h1>
+
+<table class="table" id="example">
+    <thead class="thead-dark">
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.dateGiven)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.facemask)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vitamins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.alcohol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faceshield)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.midname)
+            </th>
+           
+            <th></th>
+        </tr>
+</thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateGiven)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.facemask)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vitamins)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.alcohol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faceshield)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.midname)
+                </td>
+              
+                <td>
+                    @Html.ActionLink("Edit", "EditEquip", new { id = item.CovidEquipmentID }) 
+                    
+                </td>
+            </tr>
+        }
+
+</table>
+
+
+<script type="text/javascript" charset="utf-8">
+    (function ($) {
+        var table = $('#example').DataTable();
+
+    })(jQuery);
+</script>

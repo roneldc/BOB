@@ -1,0 +1,91 @@
+﻿@model AccompProject.Models.EM_ERoster
+
+@{
+    ViewBag.Title = "CreateEmp";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+     @Html.Raw(TempData["msg"])
+    <div class="form-horizontal">
+        <h4>EMPLOYEE INFORMATION</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.newid)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.office, "PERSONNEL CATEGORY", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.office, (IEnumerable<SelectListItem>)ViewBag.empcat, string.Empty, new { @class = "form-control", id = "combocat" })
+  
+            @Html.ValidationMessageFor(model => model.office, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.empno,"Employee Number", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.empno)
+                @Html.ValidationMessageFor(model => model.empno)
+            </div>
+        </div>
+
+
+
+     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fname,"FIRSTNAME", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fname)
+                @Html.ValidationMessageFor(model => model.fname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mname,"MIDDLENAME", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mname)
+                @Html.ValidationMessageFor(model => model.mname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lname,"LASTNAME", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lname)
+                @Html.ValidationMessageFor(model => model.lname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.suffix,"SUFFIX", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.suffix)
+                @Html.ValidationMessageFor(model => model.suffix)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.abrev_currdept,"OFFICE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.abrev_currdept)
+                @Html.ValidationMessageFor(model => model.abrev_currdept)
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

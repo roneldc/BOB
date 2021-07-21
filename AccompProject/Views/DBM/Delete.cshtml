@@ -1,0 +1,224 @@
+﻿@model AccompProject.Models.DBMView
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DBMView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.district)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDDBM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDDBM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CW_Bidded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CW_Bidded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CW_Schedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CW_Schedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAW_Schedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAW_Schedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mngr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mngr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bid_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bid_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

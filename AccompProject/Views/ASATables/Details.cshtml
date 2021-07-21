@@ -1,0 +1,44 @@
+﻿@model AccompProject.Models.ASATable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ASATable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDAccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDAccomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASANo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASANo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASAAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASAAmount)
+        </dd>
+
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDASA }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Session["idaccomp"].ToString() })
+</p>

@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = "Real-time Location Tracking";
+}
+<style type="text/css">
+    .map {
+        border: #555555 2px solid;
+        position: relative;
+        height: 490px;
+    }
+</style>
+<h2>@ViewBag.Title</h2><div id="autolocation">
+    <ul>
+        <li>
+            <div style="float: left; width: 75px">
+                Latitude
+            </div>
+            <input id="lati" type="text" />
+        </li>
+        <li>
+            <div style="float: left; width: 75px">
+                Longitude
+            </div>
+            <input id="longi" type="text" />
+        </li>
+    </ul>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="map" id="map"></div>
+</div>
+@section scripts
+{
+<script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+   @* <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>*@
+    <script type="text/javascript">
+        PageController = function () {
+            var hub = null;
+            self = this;
+            self.bingMapsApiKey = 'ApnrkliysXCxAY9hpgnYVoPfDi1NgUmtNQdTitXMXDTi2b2KIvfBtgVcakYpYz0e';
+            self.map = null;
+            self.loadMap = function () {
+                self.map = new Microsoft.Maps.Map(document.getElementById("mapDiv"),
+                {
+                    credentials: self.bingMapsApiKey,
+                    center: new Microsoft.Maps.Location(14.632344499999999, 121.0449656),
+                    mapTypeId: Microsoft.Maps.MapTypeId.road,
+                    zoom: 9
+                });
+            };
+            self.getPosition = function () {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(this.showPosition);
+                }
+            };
+            self.showPosition = function (position) {
+                console.log(position);
+                self.map.setView(
+                    {
+                        center: new Microsoft.Maps.Location(position.coords.latitude, position.coords.longitude),
+                        zoom: 12
+                    });
+
+                $('#lat').text(position.coords.latitude);
+                $('#lng').text(position.coords.longitude);
+
+                // call the Web API controller to pass this browser's coordinates
+                $.post('/api/location', {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+
+            };
+            //self.setDetails = function (e) {
+            //    var dt = new Date(e.target.timeStamp + ' UTC');
+            //    $('#checkInTime').text(dt.toString());
+            //    $('#detailsTitle').text('Check-in Details');
+            //    $('#reason').text(e.target.reason);
+            //    $('#latitude').text(e.target.getLocation().latitude);
+            //    $('#longitude').text(e.target.getLocation().longitude);
+            //};
+            self.drawPointOnMap = function (lt, lg) {
+                var loc = new Microsoft.Maps.Location(lt, lg);
+                var pin = new Microsoft.Maps.Pushpin(loc);
+
+                self.map.entities.push(pin);
+
+                //Microsoft.Maps.Events.addHandler(pin, 'click', function (e) {
+                //    if (e.targetType == 'pushpin') {
+
+                //        if ($('#detailsIntro').is(':visible') == true) {
+                //            $('#detailsIntro').fadeOut('fast', function () {
+                //                $('#detailsOfSelected').fadeIn('fast');
+                //                self.setDetails(e);
+                //            });
+                //        }
+                //        else {
+                //            $('#detailsOfSelected').fadeOut('fast', function () {
+                //                self.setDetails(e);
+                //                $('#detailsOfSelected').fadeIn('fast');
+                //            });
+                //        }
+                //    }
+                //});
+            };
+            self.setupSignalR = function () {
+                console.log('creating connection');
+                connection = $.hubConnection();
+
+                hub = connection.createHubProxy('MappingHub');
+
+                hub.on('locationReceived', function (l) {
+           //         alert(l.Latitude);
+                    self.drawPointOnMap(l.Latitude, l.Longitude);
+                });
+
+                connection.start(function () {
+                    console.log('connection started');
+                });
+            };
+        };
+
+        $(function () {
+            var controller = new PageController();
+            controller.loadMap();
+            controller.setupSignalR();
+            controller.getPosition();
+        });
+    </script>
+<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+
+
+@*<script type="text/javascript">
+
+
+    $(function () {
+
+        var con = $.hubConnection();
+        var hub = con.createHubProxy('mapping');
+
+        con.start(function () {
+            console.log('connection started');
+           
+        });
+     
+        
+
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 2000,
+            maximumAge: 1000
+        };
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, positionError, options);
+            console.log("in");
+        }
+        else {
+            showNoLocation();
+            console.log("out");
+        }
+
+
+        function showPosition(position) {
+            var coordinates = position.coords;
+          
+            $('#lati').val(coordinates.latitude);
+            $('#longi').val(coordinates.longitude);
+            var latitude = coordinates.latitude;
+            var longitude = coordinates.longitude;
+            console.log(' dito');
+            var map = new Microsoft.Maps.Map($("#map"),
+        {
+            credentials: "ApnrkliysXCxAY9hpgnYVoPfDi1NgUmtNQdTitXMXDTi2b2KIvfBtgVcakYpYz0e",
+            center: new Microsoft.Maps.Location(14.632344499999999, 121.0449656),
+            mapTypeId: Microsoft.Maps.MapTypeId.road,
+            zoom: 10
+        });
+            console.log(' dito rin');
+            hub.server.mapp(latitude, longitude);
+
+            var loc = new Microsoft.Maps.Location(latitude, longitude);
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            console.log('umabot dito');
+            self.map.entities.push(pin);
+            //var center = map.getCenter();
+            //var pin = new Microsoft.Maps.Pushpin(center, { width: 50, height: 50, draggable: false });
+            //map.entities.push(pin);
+
+
+
+
+
+
+        }
+        //   showPosition();
+
+        function positionError(position) {
+            switch (position.code) {
+                case 0:
+                    showNoLocation()
+                    break;
+                case 1:
+                    showNoLocation();
+                    break;
+                case 2:
+                    showNoLocation();
+                    break;
+                case 3:
+                    showNoLocation();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        //var map = null;
+        //function LoadMap() {
+
+        //    map = new Microsoft.Maps.Map(document.getElementById("map"),
+        //          {
+        //              credentials: "ApnrkliysXCxAY9hpgnYVoPfDi1NgUmtNQdTitXMXDTi2b2KIvfBtgVcakYpYz0e"
+        //          }
+        //        );
+
+        //}
+        //LoadMap();
+
+
+        //function showMap(position) {
+        //    alert(position.coords);
+        //    var coordinates = position.coords;
+
+        //    var latitude = coordinates.latitude;
+        //    var longitude = coordinates.longitude;
+
+
+        //    //var latitude = "14.63";
+        //    // var longitude = "121.039";
+
+
+        //    //var latitude = $("#lat").val();
+        //    // var longitude = $("#lon").val();
+        //    alert(latitude);
+        //    var map = new Microsoft.Maps.Map($("#map")[0],
+        //    {
+        //        credentials: "ApnrkliysXCxAY9hpgnYVoPfDi1NgUmtNQdTitXMXDTi2b2KIvfBtgVcakYpYz0e",
+        //        center: new Microsoft.Maps.Location(latitude, longitude),
+        //        mapTypeId: Microsoft.Maps.MapTypeId.road,
+        //        zoom: 10
+        //    });
+
+        //    var center = map.getCenter();
+        //    var pin = new Microsoft.Maps.Pushpin(center, { width: 50, height: 50, draggable: false });
+        //    map.entities.push(pin);
+        //}
+
+        //showMap();
+
+
+
+
+
+    });
+
+</script>*@
+
+
+
+}

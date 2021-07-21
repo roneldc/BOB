@@ -1,0 +1,180 @@
+﻿@model AccompProject.Models.InstrumentReadingView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+</div>
+
+@using (Html.BeginForm("CreateReadingInstrumentation","Dam",FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDInstrument, new { @Value = Session["idinstrument"].ToString() })
+            
+          
+            @Html.HiddenFor(model => model.Instrument, new { @Value = Session["instrum"].ToString(), id = "instruments" })
+
+
+
+
+
+
+           
+
+            <div id="myform">
+
+                <div class="form-group group1">
+                    <div class="col-md-offset-5">
+                        <b><u>READING VIEW</u></b>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataNo, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DataNo, new { htmlAttributes = new { @class = "form-control group1" } })
+                        @Html.ValidationMessageFor(model => model.DataNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateRead, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DateRead, new { htmlAttributes = new { @class = "form-control group1", id = "datepicker1" } })
+                        @Html.ValidationMessageFor(model => model.DateRead, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.TimeRead, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.TimeRead, new { htmlAttributes = new { @class = "form-control group1" } })
+                        @Html.ValidationMessageFor(model => model.TimeRead, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataRead, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DataRead, new { htmlAttributes = new { @class = "form-control group2" } })
+                        @Html.ValidationMessageFor(model => model.DataRead, "", new { @class = "text-danger" })
+
+                    </div>
+                  
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataX, htmlAttributes: new { @class = "control-label col-md-2 group3" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DataX, new { htmlAttributes = new { @class = "form-control group3", id = "datepicker1" } })
+                        @Html.ValidationMessageFor(model => model.DataX, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.DataY, htmlAttributes: new { @class = "control-label col-md-2 group3" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DataY, new { htmlAttributes = new { @class = "form-control group3" } })
+                        @Html.ValidationMessageFor(model => model.DataY, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+               
+
+                <div class="form-group group4">
+                    @Html.Label("FILE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" id="Avatar" name="upload" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $('#timepicker1').timepicker();
+
+        $('#datepicker1').datepicker();
+        var $value = $('#instruments').val();
+        console.log($('#instruments').val());
+
+            if ($value) {
+
+                switch ($value) {
+
+                    case 'Pneumatic Piezometer':
+                    case 'Standpipe Diezometer':
+
+                        $('.group2').show();
+                        $('.group3').hide();
+                        $('.group4').hide();
+                        break;
+
+                    case 'Surface Monitoring Points (SMP)':
+                        $('.group2').show();
+                        $('.group3').show();
+                        $('.group4').hide()
+
+                        break;
+                    case 'V-NotchMeasuring Weir':
+                        $('.group2').show();
+                        $('.group3').hide();
+                        $('.group4').hide()
+
+                        break;
+                    case 'Water Level Staff Gauge (Reservoir)':
+                        $('.group2').show();
+                        $('.group3').hide();
+                        $('.group4').hide()
+                        break;
+
+                    case 'Pendulum':
+
+                        $('.group2').show();
+                        $('.group3').hide();
+                        $('.group4').hide()
+                        break;
+
+                    case 'Water Quality':
+
+                        $('.group2').hide();
+                        $('.group3').hide();
+                        $('.group4').show();
+
+
+                }
+
+            }
+
+       
+
+    });
+
+</script>

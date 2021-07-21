@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AccompProject.Models.IA_AREA_VIEW>
+
+@{
+    ViewBag.Title = "IAAreaPeryear";
+}
+
+<h2>
+    <div class="form-group">
+        <h1> @Session["ianame"].ToString()</h1>
+    </div>
+</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateIAArea")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.YEAR_COVERED)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.DISTRICT)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.PROVINCE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MUNICIPALITY)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.YEAR_COVERED)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.DISTRICT)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.PROVINCE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MUNICIPALITY)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "EditIAArea", new { id=item.IAAREAID }) |
+         
+            @Html.ActionLink("Delete", "DeleteIAArea", new { id=item.IAAREAID })
+        </td>
+    </tr>
+}
+
+</table>

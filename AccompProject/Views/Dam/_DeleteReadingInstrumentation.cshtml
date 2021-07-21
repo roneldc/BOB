@@ -1,0 +1,52 @@
+﻿@model AccompProject.Models.InstrumentReadingView
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete?</h4>
+</div>
+<div class="modal-body">
+
+  
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instrument)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instrument)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRead)
+        </dd>
+
+      
+
+
+      
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+    @Html.HiddenFor(model => model.IDInstrument)
+        @Html.HiddenFor(model => model.IDReading)
+
+
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

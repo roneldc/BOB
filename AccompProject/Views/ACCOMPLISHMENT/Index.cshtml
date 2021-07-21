@@ -1,0 +1,241 @@
+﻿@model IEnumerable<AccompProject.Models.ACCOMPLISHMENT>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/custom_table.css" rel="stylesheet" />
+
+
+<h2>Index </h2>
+@*ddadadadadad*@
+</p>
+
+<table id="example" class="table">
+
+    <thead class="thead-dark">
+
+        <tr>
+            <th>
+                Year
+            </th>
+            <th>
+                REGION
+            </th>
+            <th>
+                Mainproject
+            </th>
+            <th>
+                Province
+            </th>
+            <th>
+                Subproject
+            </th>
+            <th>
+                Municipality
+            </th>
+            <th>
+                Allotment (P'000)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="oddnum">
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mainproject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subproject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.municipality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+
+
+
+
+            <td>
+
+
+
+                <div class="btn-group">
+
+                    <button type="button" class="btn btn-default">MENU SELECTION</button>
+
+                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                            {
+                            @Html.ActionLink("Accomplishment", "Edit", "PhysicalAccomp", new { id = item.IDAccomp, @class = "dropdown-item" }, null)
+                            @Html.ActionLink("Status of Bidding and FAW", "Edit", "DBM", new { id = item.IDAccomp, @class = "dropdown-item" }, null)
+   @Html.ActionLink("Contract Monitoring", "Edit", "Contract", new { id = item.IDAccomp }, null)
+
+                            }
+                            @if (User.IsInRole("Climate Physical"))
+                            {
+                            @Html.ActionLink("Target Profile", "EditProfile", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                            }
+                            @if (User.IsInRole("Climate Physical"))
+                            {
+                            @Html.ActionLink("Update", "Edit", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                            }
+                            @if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial") || User.IsInRole("NISRIP"))
+                            {
+                            @Html.ActionLink("Physical", "Edit", "IMTSS", new { id = item.IDAccomp }, null)
+                            }
+
+
+
+                            @if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                            {
+                            @Html.ActionLink("Accomplishment", "Edit", "Financial", new { id = item.IDAccomp }, null)
+                            }
+
+
+
+                        </li>
+
+                        <li>
+                            @if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial") || User.IsInRole("NISRIP"))
+                            {
+                            @Html.ActionLink("Financial", "EditFinance", "IMTSS", new { id = item.IDAccomp }, null)
+                            }
+                        </li>
+
+
+
+                        <li>
+                            @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                            {
+
+                            @Html.ActionLink("Status of Implementation", "EditStatus", "PhysicalAccomp", new { id = item.IDAccomp }, null)
+                            }
+                        </li>
+
+                        <li>
+                            @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                            {
+
+                                if (item.mainproject == "FSDE")
+                                {
+
+                            @Html.ActionLink("FSDE MONITORING", "EditFSDE", "PhysicalAccomp", new { id = item.IDAccomp }, null)
+                            @*@Html.ActionLink("FSDE MONITORING part 2", "EditFSDEStudy", "PhysicalAccomp", new { id = item.IDAccomp }, null)*@
+
+                                }
+                            }
+
+
+                        </li>
+                        <li>
+
+                            @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                            {
+
+                            @Html.ActionLink("Coordinates", "Index", "ProjectCoordinates", new { id = item.IDAccomp, sub = item.subproject }, null)
+                            @Html.ActionLink("Contract Monitoring", "Edit", "Contract", new { id = item.IDAccomp }, null)
+
+
+
+                            }
+
+                        </li>
+
+
+
+                        @if (User.IsInRole("Physical") || User.IsInRole("Central"))
+                        {
+                        <li> @Html.ActionLink("Photos", "Photos", "PhysicalAccomp", new { id = item.IDAccomp }, null)  
+                         </li>
+                        <li>
+                            @Html.ActionLink("POW", "Edit", "POW", new { id = item.IDAccomp }, null)
+                        </li>
+                        @*<li>  @Html.ActionLink("Issues and Problems Encounter", "EditIssues", "PhysicalAccomp", new { id = item.IDAccomp }, null)</li>*@
+
+                        }
+
+
+
+
+                        <li>
+                            @Html.ActionLink("EDIT COORDINATES", "EditAccompCoord", "ACCOMPLISHMENT", new { IDAccomp = item.IDAccomp }, null)
+                        </li>
+
+                        <li>
+
+                            @if (item.year == 2019)
+                            {
+                            @Html.ActionLink("Request for Clustering of projects", "Cluster", "Accomplishment", new { id = item.IDAccomp }, new { htmlAttributes = new { id = "cluster" } })
+                            }
+
+
+                        </li>
+
+
+
+
+
+                    </ul>
+
+                </div>
+
+
+
+            </td>
+
+
+
+
+
+
+
+
+
+        </tr>
+    }
+
+</table>
+
+
+<div>
+@*    @Html.ActionLink("Back to Subproject", "Edit", new { Controller = "ACCOMPLISHMENT", Id = Session["idaccomp"].ToString() })*@
+</div>
+
+
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+        var table = $('#example').DataTable(
+
+        );
+    })(jQuery);
+</script>
+

@@ -1,0 +1,194 @@
+﻿@model AccompProject.Models.ACCOMPLISHMENT
+
+
+@{
+    ViewBag.Title = "PHYSICAL ACCOMPLISHMENT";
+}
+
+<h2>Status of Bidding and FAW</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDAccomp)
+
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.mainproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.mainproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.mainproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", Id = "amt" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.subproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.subproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.subproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.municipality, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.municipality, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.municipality, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.province, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.province, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.province, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+
+      
+
+    </div>
+
+}
+            @*<div class="form-group">
+                    <div class="row">
+                        <div class="control-label col-md-3">AS OF</div>
+                        <div> <input type="text" id="mndt" class=" col-md-3 form-control" /></div>
+                        <div><input type="submit" value="Search" class="btn btn-primary btn-large" /></div>
+                    </div>
+                </div>*@
+
+
+            <div id="myModal" class="modal fade in">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id="myModalContent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="row">
+                    <div id="replacetarget">
+                        @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Physical Region") || User.IsInRole("Central") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+            {
+
+
+                 Html.RenderAction("Index", "DBM", new { id = Model.IDAccomp, sub = Model.subproject }); 
+                            
+                            
+            }
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                @Html.ActionLink("Back to List", "Index", "Accomplishment")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+
+                <script type="text/javascript">
+
+                 
+
+                    $(function () {
+                        $('#mndt').datepicker(
+                                       {
+                                           dateFormat: "mm/yy",
+                                           changeMonth: true,
+                                           changeYear: true,
+                                           showButtonPanel: true,
+                                           onClose: function (dateText, inst) {
+
+
+                                               function isDonePressed() {
+                                                   return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                                               }
+
+                                               if (isDonePressed()) {
+                                                   var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                                   var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                                   $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+                                                   $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                                               }
+                                           },
+                                           beforeShow: function (input, inst) {
+
+                                               inst.dpDiv.addClass('month_year_datepicker')
+
+                                               if ((datestr = $(this).val()).length > 0) {
+                                                   year = datestr.substring(datestr.length - 4, datestr.length);
+                                                   month = datestr.substring(0, 2);
+                                                   $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                                   $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                                   $(".ui-datepicker-calendar").hide();
+                                               }
+                                           }
+                                       })
+                    });
+
+                </script>
+            }

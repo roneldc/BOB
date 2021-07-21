@@ -1,0 +1,212 @@
+﻿@model AccompProject.Models.ClimateChangeAccompView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+
+    @if (User.IsInRole("Climate Physical"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>  <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDClimateAccomp)
+            @Html.HiddenFor(model => model.IDAccomp)
+            @Html.HiddenFor(model => model.IDClimate)
+            @Html.HiddenFor(model => model.mnt, new { id = "mnts" })
+            @Html.HiddenFor(model => model.yr, new { id = "yrs" })
+            @*@Html.HiddenFor(model => model.newed)
+            @Html.HiddenFor(model => model.restored)
+            @Html.HiddenFor(model => model.rehab)
+            @Html.HiddenFor(model => model.canals)
+            @Html.HiddenFor(model => model.canal_lining)
+            @Html.HiddenFor(model => model.structures)
+            @Html.HiddenFor(model => model.roads)
+
+            @Html.HiddenFor(model => model.HDPE)
+            @Html.HiddenFor(model => model.COCONET)
+            @Html.HiddenFor(model => model.GRAVEL)*@
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.asof, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.asof, new { htmlAttributes = new { @class = "form-control", id = "mndt", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.asof, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+
+
+
+            <h4>ACCOMPLISHMENT</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Actual, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Actual, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Actual, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+      
+            <hr />
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Phy, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Phy, new { htmlAttributes = new { @class = "form-control", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.Phy, "", new { @class = "text-danger" })
+                </div>
+          
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Fin, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Fin, new { htmlAttributes = new { @class = "form-control", Id = "fin" } })
+                    @Html.ValidationMessageFor(model => model.Fin, "", new { @class = "text-danger" })
+                </div>
+     
+
+            </div>
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#fin").keyup(function (event) {
+            var myval = $("#fin").val();
+            var amt = $("#amt").val();
+
+            $("#exped").val(((myval * amt * 10)));
+
+        });
+
+        $("#Phy").keyup(function (event) {
+
+            var ival = $("#Phy").val();
+            var amt1 = $("#amt").val();
+            $("#valuea").val((ival * amt1 * 10));
+
+        });
+
+        var dateTodays = "0" + $('#mnts').val() + "/1/" + $('#yrs').val();
+        var dateToday = new Date(dateTodays);
+        //   alert(dateToday)
+        $('#mndt').datepicker(
+                       {
+                           dateFormat: "mm/yy",
+                           changeMonth: true,
+                           changeYear: true,
+                           showButtonPanel: true,
+                           minDate: dateToday,
+                           onClose: function (dateText, inst) {
+
+
+                               function isDonePressed() {
+                                   return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                               }
+
+                               if (isDonePressed()) {
+                                   var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                   var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                   $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+
+                                   var a = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+                                   var b = parseInt(1);
+                                   var c = a + b;
+
+
+                                   $('#mnts').val(c);
+
+                                   $('#yrs').val(year);
+
+                                   $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                               }
+                           },
+                           beforeShow: function (input, inst) {
+
+                               inst.dpDiv.addClass('month_year_datepicker')
+
+                               if ((datestr = $(this).val()).length > 0) {
+                                   year = datestr.substring(datestr.length - 4, datestr.length);
+                                   month = datestr.substring(0, 2);
+                                   $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                   $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                   $(".ui-datepicker-calendar").hide();
+                               }
+                           }
+                       })
+
+
+    });
+
+</script>
+
+<style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>

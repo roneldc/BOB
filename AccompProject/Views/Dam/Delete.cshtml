@@ -1,0 +1,91 @@
+﻿@model AccompProject.Models.GeneralInformation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DamView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.IDDam)
+        <dt>
+            @Html.DisplayNameFor(model => model.DamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeDam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeDam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConstructionCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConstructionCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaterSource)
+        </dd>
+
+        
+        
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

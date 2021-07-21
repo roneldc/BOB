@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db39c79ac0784c1d877e1fe456bf3f96" Name="Diagram1">
+        <EntityTypeShape EntityType="OPAIPBP_YR_2021Model.VWLOCATION" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OPAIPBP_YR_2021Model.inventoryLocationProvinceMunicipality" Width="7.125" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OPAIPBP_YR_2021Model.inventoryLocationRegionProvince" Width="5.375" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="OPAIPBP_YR_2021Model.inventoryLocationMunicipalityDistrict" Width="3.75" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

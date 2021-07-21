@@ -1,0 +1,54 @@
+﻿
+<!-- This css is to give a nice big popup "info window" when a marker is clicked on the map -->
+<style>
+
+#searcharea {
+    margin: 0 auto;
+    text-align: center;
+    background: #bf996b;
+    padding: 0px;
+    padding-bottom: 10px;
+    width: 30%;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+}
+
+    #searcharea label {
+        font: bold 1.3em Arial;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        color: #a61c1c;
+    }
+
+
+    #searcharea p {
+        margin: 0;
+        line-height: 1em;
+        padding-bottom: 5PX;
+    }
+
+
+    #searcharea input {
+        width: 80%;
+        text-align: center;
+    }
+
+
+</style>
+<br />
+
+
+<div id="searcharea">
+
+    <label for="search">live search</label>
+    <p>Enter the name of Irrigation System</p>
+    <div class="form-group">
+        <input type="search" name="searchTerm" id="search" data-jtv-autocomplete="@Url.Action("Autocomplete")" placeholder="name of Irrigation System" />
+    </div>
+</div>
+<br />
+
+
+@{Html.RenderAction("IndexMapInventoryNationwide");}
+

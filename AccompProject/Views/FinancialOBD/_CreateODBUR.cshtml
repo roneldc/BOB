@@ -1,0 +1,336 @@
+﻿@model AccompProject.Models.FinancialOBD
+
+<style type="text/css">
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+    @if (User.IsInRole("Financial"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Central Office</h4>
+        <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+
+    @if (User.IsInRole("Financial Region"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>
+        <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+            @Html.HiddenFor(model => model.IDFinance, new { @Value = Session["idfinance"].ToString() })
+            @Html.HiddenFor(model => model.IDNCAADA, new { @Value = 0 })
+
+            @*@Html.HiddenFor(model => model.mnt, new { @Value = "", id = "mnts" })
+            @Html.HiddenFor(model => model.yr, new { @Value = "", id = "yrs" })*@
+            @Html.HiddenFor(model => model.mnt)
+            @Html.HiddenFor(model => model.yr)
+
+
+
+
+
+
+
+
+
+
+            @Html.HiddenFor(model => model.status, new { @Value = "OD" })
+            @Html.HiddenFor(model => model.nca)
+            @Html.HiddenFor(model => model.dateDis)
+            @Html.HiddenFor(model => model.cashdate)
+
+
+
+            @*@Html.EditorFor(model => model.mnt, new { htmlAttributes = new { @class = "form-control mnts", id = "mnts" } })
+                @Html.EditorFor(model => model.yr, new { htmlAttributes = new { @class = "form-control yrs" , id = "yrs"} })*@
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.dateOD, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.dateOD, new { htmlAttributes = new { @class = "form-control", id = "datepicker1" } })
+                    @Html.ValidationMessageFor(model => model.dateOD, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.asof, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.asof, new { htmlAttributes = new { @class = "form-control date-picker", id = "mndt", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.asof, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+            <h4>OBLIGATION</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Obligationamount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Obligationamount, new { htmlAttributes = new { @class = "form-control numformat", @title = "Obligation" } })
+                    @Html.ValidationMessageFor(model => model.Obligationamount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Disbursement, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Disbursement, new { htmlAttributes = new { @class = "form-control numformat", @title = "Disbursement" } })
+                    @Html.ValidationMessageFor(model => model.Disbursement, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.cash, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.cash, new { htmlAttributes = new { @class = "form-control numformat", @title = "cash" } })
+                    @Html.ValidationMessageFor(model => model.cash, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+            @*@if (Convert.ToInt32(Session["year"].ToString()) <= 2014)
+            {
+
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.nca, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.nca, new { htmlAttributes = new { @class = "form-control numformat", @title = "Disbursement" } })
+                        @Html.ValidationMessageFor(model => model.nca, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            }*@
+        </div>
+
+    </div>
+
+
+    <div id="divProcessing">
+        @*<p>Processing, please wait . . . <img src="../../Content/ajax-loader.gif"></p>*@
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+
+
+<style>
+    #divProcessing {
+        display: none;
+    }
+
+        #divProcessing.show {
+            display: block;
+            position: absolute;
+            z-index: 100;
+            background-image: url('../../Content/ajax-loader.gif');
+            background-color: #666;
+            opacity: 0.4;
+            background-repeat: no-repeat;
+            background-position: center;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+        }
+
+    #loadinggif.show {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        z-index: 101;
+        width: 32px;
+        height: 32px;
+        margin-left: -16px;
+        margin-top: -16px;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+
+    $(function () {
+
+
+
+
+
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+
+        if (today.getDate() <= 10) {
+
+            var today = new Date(date.getFullYear(), (date.getMonth() - 1), date.getDate());
+
+        } else {
+
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+        }
+
+        if (day <= 10) {
+
+            month = month - 1;
+
+        } else {
+
+            month = month;
+        }
+
+
+
+        var output = (('' + month).length < 2 ? '0' : '') + month + '/' + date.getFullYear();
+
+        //alert(day.toString());
+        //alert(output);
+        $('#datepicker1').datepicker();
+
+        //$('#mndt').val(output);
+        //$('#mnts').val(month);
+        //$('#yrs').val(date.getFullYear());
+
+        //$('#mndtss').datepicker(
+        //               {
+        //                   dateFormat: "mm/yy",
+        //                   changeMonth: true,
+        //                   changeYear: true,
+        //                   minDate: today,
+        //                   showButtonPanel: true,
+        //                   defaultDate: today,
+        //                   onClose: function (dateText, inst) {
+
+
+        //                       function isDonePressed() {
+        //                           return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+        //                       }
+
+        //                       if (isDonePressed()) {
+        //                           var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+        //                           var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+        //                           $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+
+        //                           var a = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        //                           var b = parseInt(1);
+        //                           var c = a + b;
+
+
+        //                           $('#mnts').val(c);
+
+        //                           $('#yrs').val(year);
+
+        //                           $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+        //                       }
+        //                   },
+        //                   beforeShow: function (input, inst) {
+
+        //                       inst.dpDiv.addClass('month_year_datepicker')
+
+        //                       if ((datestr = $(this).val()).length > 0) {
+        //                           year = datestr.substring(datestr.length - 4, datestr.length);
+        //                           month = datestr.substring(0, 2);
+        //                           $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+        //                           $(this).datepicker('setDate', new Date(year, month - 1, 1));
+        //                           $(".ui-datepicker-calendar").hide();
+        //                       }
+        //                   }
+        //               });
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+    });
+
+</script>

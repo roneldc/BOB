@@ -1,0 +1,68 @@
+﻿@using AccompProject.Helpers
+@using System.Web.Mvc.Html
+@model IEnumerable<AccompProject.Models.ProcurementStandardDocumentView>
+
+
+@{
+
+}
+
+<div class="modal-header">
+  
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  
+</div>
+
+@using (Html.BeginForm())
+{
+
+    <div class="modal-body">
+
+        @Html.AntiForgeryToken()
+
+   
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.documentDescription)
+                </th>
+             
+
+
+
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.documentDescription)
+                    </td>
+                   
+
+
+
+                 
+                </tr>
+            }
+        </table>
+
+
+
+    </div>
+
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        
+    </div>
+
+  
+
+
+
+}
+
+

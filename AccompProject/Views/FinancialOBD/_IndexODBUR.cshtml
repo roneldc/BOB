@@ -1,0 +1,178 @@
+﻿@using AccompProject.Helpers
+@model IEnumerable<AccompProject.Models.FinancialOBDView>
+
+
+<div id="projectaccomp">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Financial</strong>
+        </div>
+
+
+
+
+        <div class="panel-body">
+            @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Create", "IMTSS", null, htmlAttributes: new { data_modal = "", id = "btnCreate", @class = "btn btn-primary pull-right" })*@
+            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "CreateODBUR", "FinancialOBD", routeValues: new { Id = ViewBag.IDFinance }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary pull-right" })
+
+        </div>
+
+        <table class="table table-hover">
+            <tr>
+               
+                <th>
+                    @Html.DisplayNameFor(model => model.asof)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.region)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Obligationamount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disbursement)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.cash)
+                </th>
+
+
+
+
+                @*     <th>@Html.ActionLink("Add", "Create", "IMTSS", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-primary pull-right" })</th>*@
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.asof)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.region)
+                    </td>
+
+                    <td class="obli">
+                        @Html.DisplayFor(modelItem => item.Obligationamount)
+                        
+                    </td>
+
+                    <td class="disb">
+                        @Html.DisplayFor(modelItem => item.Disbursement)
+                    </td>
+                    <td class="cash">
+                        @Html.DisplayFor(modelItem => item.cash)
+                    </td>
+
+
+
+
+                    <td>
+                        <div class="pull-right">
+                            @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "MyEditODBUR", "FinancialOBD", routeValues: new { id = item.IDObd }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                            &nbsp;
+                            @if (User.IsInRole("Financial"))
+                            {
+
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "DeleteODBUR", "FinancialOBD", routeValues: new { id = item.IDObd }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+
+            <tr>
+
+                <td>TOTAL </td>
+                <td id="obliresult"></td>
+                <td id="disbresult"></td>
+
+            </tr>
+        </table>
+
+        
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        var sum = 0;
+
+        $('.obli').each(function () {
+
+            var value = $(this).text();
+
+            if (!isNaN(value) && value.length != 0) {
+               
+                sum += parseFloat(value);
+            }
+            
+            
+        });
+
+        var sum1 = 0;
+
+        $('.disb').each(function () {
+
+            var value1 = $(this).text();
+
+            if (!isNaN(value1) && value1.length != 0) {
+
+                sum1 += parseFloat(value1);
+            }
+
+
+        });
+
+        $('#disbresult').text(sum1);
+        $('#obliresult').text(sum);
+
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    /*backdrop: 'static',*/
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>
+

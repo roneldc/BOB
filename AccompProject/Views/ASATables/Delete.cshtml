@@ -1,0 +1,50 @@
+﻿@model AccompProject.Models.ASATable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ASATable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDAccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDAccomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASANo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASANo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASAAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASAAmount)
+        </dd>
+
+      
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { id = Session["idaccomp"].ToString() })
+        </div>
+    }
+</div>

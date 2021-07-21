@@ -1,0 +1,53 @@
+﻿@*@model AccompProject.Models.ACCOMPLISHMENT*@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@*<h2>@Html.DisplayFor(model => model.IA_NAME)</h2>*@
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASJVuQHTbnowA2fyqOgCg7r67ru71lAmQ&libraries=drawing,geometry"></script>
+
+
+
+
+
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+
+    <div class="row">
+        <div id="replacetarget">
+            @*@if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                {*@
+
+            @{ Html.RenderAction("IndexDelineate", "ACCOMPLISHMENT"); }
+
+            @*}*@
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+      
+
+    });
+
+</script>

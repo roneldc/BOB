@@ -1,0 +1,27 @@
+﻿@using MvcReportViewer
+
+@{
+    ViewBag.Title = "View Report";
+}
+
+<h2>@ViewBag.nameReport</h2>
+<br />
+
+<div>
+    @Html.ActionLink("List Of Systems", "Inventory", new { temp = "IList" }, new { id = "reg4", @class = "btn btn-primary btn-large" }) |
+    @Html.ActionLink("Regional Summary", "Inventory", new { temp = "IRegion" }, new { id = "reg5", @class = "btn btn-primary btn-large" }) |
+    @Html.ActionLink("Provincial Summary", "Inventory", new { temp = "IProvince" }, new { id = "reg6", @class = "btn btn-primary btn-large" })|
+    @Html.ActionLink("NIS", "Inventory", new { temp = "ISystem" }, new { id = "reg7", @class = "btn btn-primary btn-large" })
+
+
+
+    @Html.ActionLink("PRESENTATION", "Inventory", new { temp = "sampleDetail" }, new { id = "reg8", @class = "btn btn-primary btn-large" }) |
+
+         @Html.ActionLink("Form 1", "Inventory", new { temp = "form1" }, new { id = "reg9", @class = "btn btn-primary btn-large" }) |
+         @Html.ActionLink("Form 2", "Inventory", new { temp = "form2" }, new { id = "reg10", @class = "btn btn-primary btn-large" }) |
+
+    @Html.ActionLink("Form 3", "Inventory", new { temp = "form3" }, new { id = "reg11", @class = "btn btn-primary btn-large" }) |
+
+</div>
+
+@Html.Partial("_InventoryView")

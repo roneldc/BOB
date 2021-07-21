@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="00863e0f55194dabab3f4029a893c90c" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="DamModel.DamView" Width="1.5" PointX="6.125" PointY="0.625" />
+        <EntityTypeShape EntityType="DamModel.HydrologicalData" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DamModel.TypeDam" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DamModel.TypeDiversion" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DamModel.TypeReservoirArea" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DamModel.TypeReservoirCapacity" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DamModel.TypeReservoirElevation" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DamModel.TypeSpillway" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DamModel.Appurtenance" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DamModel.Catchment" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DamModel.DamBody" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DamModel.InspectionReport" Width="2.375" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DamModel.Rehabilitation" Width="1.5" PointX="3.625" PointY="11.125" />
+        <EntityTypeShape EntityType="DamModel.DamInforamtion" Width="2.875" PointX="6.125" PointY="11.5" />
+        <EntityTypeShape EntityType="DamModel.DamInspection" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DamModel.DamRehabilitation" Width="1.5" PointX="11.25" PointY="11.625" />
+        <EntityTypeShape EntityType="DamModel.GeneralInformation" Width="2.5" PointX="3.125" PointY="2" />
+        <EntityTypeShape EntityType="DamModel.InstrumentData" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DamModel.InstrumentDataView" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DamModel.InstrumentReading" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DamModel.InstrumentReadingView" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DamModel.DamPic" Width="1.5" PointX="3.375" PointY="14.75" />
+        <EntityTypeShape EntityType="DamModel.DamPicView" Width="1.5" PointX="15.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

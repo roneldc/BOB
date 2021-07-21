@@ -1,0 +1,59 @@
+﻿@model AccompProject.Models.InstrumentDataView
+
+@{
+    ViewBag.Title = "IndexRehab";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDDam)
+
+
+        <h1> @Model.Instrument</h1>
+      
+      
+
+    </div>
+
+}
+@*<div class="form-group">
+        <div class="row">
+            <div class="control-label col-md-3">AS OF</div>
+            <div> <input type="text" id="mndt" class=" col-md-3 form-control" /></div>
+            <div><input type="submit" value="Search" class="btn btn-primary btn-large" /></div>
+        </div>
+    </div>*@
+
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+
+    <div class="row">
+        <div id="replacetarget">
+            @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Physical Region") || User.IsInRole("Central") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+            {
+
+
+                Html.RenderAction("IndexReadingDamInstrumentation", "Dam", new { searchTerm = Model.IDInstrument });
+
+
+            }
+
+        </div>
+    </div>
+</div>

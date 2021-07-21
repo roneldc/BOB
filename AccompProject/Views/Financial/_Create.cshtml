@@ -1,0 +1,638 @@
+﻿@model AccompProject.Models.FinancialDetail
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+    @if (User.IsInRole("Financial"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Central Office</h4>  <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+
+    @if (User.IsInRole("Financial Region"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>  <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+            @Html.HiddenFor(model => model.as_of, new { @Value = Session["asof"].ToString() })
+            @Html.HiddenFor(model => model.yr, new { @Value = Session["yr"].ToString() })
+            @Html.HiddenFor(model => model.mnt, new { @Value = Session["mnt"].ToString() })
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.fundCode, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.fundCode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.fundCode, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-2">
+                        @Html.LabelFor(model => model.typefinance, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                           @Html.DropDownListFor(model => model.typefinance, (IEnumerable<SelectListItem>)ViewBag.tf, string.Empty, new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.typefinance,"",  new { @class = "text-danger" })
+                    </div>
+
+
+                @*<div class="col-md-2">
+                    @Html.LabelFor(model => model.typefinance, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.typefinance, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.typefinance, "", new { @class = "text-danger" })
+                </div>*@
+
+
+
+
+
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.particulars, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.particulars, (IEnumerable<SelectListItem>)ViewBag.p, string.Empty, new { @class = "form-control", @required = "required"})
+                    @Html.ValidationMessageFor(model => model.particulars, "", new { @class = "text-danger" })
+                </div>
+
+
+                @*<div class="col-md-2">
+                    @Html.LabelFor(model => model.particulars, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.particulars, new { htmlAttributes = new { @class = "form-control" } })
+                   @Html.ValidationMessageFor(model => model.particulars, "", new { @class = "text-danger" })
+                </div>*@
+
+
+            </div>
+
+            <hr />
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.asadate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.asadate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.asadate, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+            <h4>SARO</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.sarono, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.sarono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.sarono, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.saroamount, htmlAttributes: new { @class = "control-label " })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.saroamount, new { htmlAttributes = new { @class = "form-control saroamount numformat", @title = "SARO" } })
+                    @Html.ValidationMessageFor(model => model.saroamount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+            @if (Session["regreg"].ToString() !=  "CENTRAL OFFICE")
+            { 
+            
+               <h4>ASA</h4>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.asano, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.asano, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.asano, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.asaamount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.asaamount, new { htmlAttributes = new { @class = "form-control asaamount numformat", @title = "ASA" } })
+                    @Html.ValidationMessageFor(model => model.asaamount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+           @Html.HiddenFor(model => model.buramount)
+
+           @Html.HiddenFor(model => model.burno)
+           @Html.HiddenFor(model => model.obligation_co)
+           @Html.HiddenFor(model => model.obligation_co_no)
+            
+            }else
+            { 
+            
+             @Html.HiddenFor(model => model.asaamount)
+
+           @Html.HiddenFor(model => model.asano)
+            
+               <hr />
+            <h4>BUR</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.burno, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.burno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.burno, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.buramount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.buramount, new { htmlAttributes = new { @class = "form-control numformat", @title = "BUR" } })
+                    @Html.ValidationMessageFor(model => model.buramount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <hr />
+            <h4>OR</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.obligation_co_no, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.obligation_co_no, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.obligation_co_no, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.obligation_co, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.obligation_co, new { htmlAttributes = new { @class = "form-control numformat", @title = "OR" } })
+                    @Html.ValidationMessageFor(model => model.obligation_co, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            
+            
+            }
+
+         
+
+         
+
+            @*
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ddamount, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.ddamount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ddamount, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <h4>NTA</h4>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ntano, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ntano, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ntano, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ntaamount, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ntaamount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ntaamount, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <hr />
+                <h4>ADA</h4>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.adano, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.adano, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.adano, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.adaamount, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.adaamount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.adaamount, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>*@
+
+            @*<hr />
+
+                @if (User.IsInRole("Financial"))
+                {
+
+                    <h4>NCA</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ncano, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.ncano, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ncano, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ncaamount, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.ncaamount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ncaamount, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ddamount, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.ddamount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ddamount, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <h4>NTA</h4>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ntano, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.ntano, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ntano, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ntaamount, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.ntaamount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ntaamount, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <hr />
+                    <h4>ADA</h4>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.adano, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.adano, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.adano, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.adaamount, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.adaamount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.adaamount, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.disbursement_co, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.disbursement_co, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.disbursement_co, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <hr />
+                    <h4>BUR</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.burno, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.burno, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.burno, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.buramount, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.buramount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.buramount, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <hr />
+                    <h4>OBLIGATION</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.obligation_co_no, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.obligation_co_no, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.obligation_co_no, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.obligation_co, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.obligation_co, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.obligation_co, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <hr />
+
+
+                    @Html.HiddenFor(model => model.jevdate)
+                    @Html.HiddenFor(model => model.transactiondate)
+                    @Html.HiddenFor(model => model.disbursement_region)
+                    @Html.HiddenFor(model => model.disbursement_region_no)
+                    @Html.HiddenFor(model => model.obligation_region)
+                    @Html.HiddenFor(model => model.obligation_region_no)
+                    @Html.HiddenFor(model => model.remarksfinancial)
+
+
+                    @Html.HiddenFor(model => model.ddno)
+                    @Html.HiddenFor(model => model.disbursement_co_no)
+
+
+                }
+                @if (User.IsInRole("Financial Region"))
+                {
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.jevdate, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+
+                            @Html.EditorFor(model => model.jevdate, new { htmlAttributes = new { @class = "form-control date" } })
+                            @Html.ValidationMessageFor(model => model.jevdate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.transactiondate, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.transactiondate, new { htmlAttributes = new { @class = "form-control dates" } })
+                            @Html.ValidationMessageFor(model => model.transactiondate, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.disbursement_region_no, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.disbursement_region_no, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.disbursement_region_no, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.disbursement_region, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.disbursement_region, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.disbursement_region, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.obligation_region_no, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.obligation_region_no, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.obligation_region_no, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.obligation_region, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.obligation_region, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.obligation_region, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.remarksfinancial, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.remarksfinancial, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.remarksfinancial, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    @Html.HiddenFor(model => model.ncano)
+                    @Html.HiddenFor(model => model.ncaamount)
+                    @Html.HiddenFor(model => model.disbursement_co)
+                    @Html.HiddenFor(model => model.disbursement_co_no)
+                    @Html.HiddenFor(model => model.obligation_co)
+                    @Html.HiddenFor(model => model.obligation_co_no)
+                    @Html.HiddenFor(model => model.ntaamount)
+                    @Html.HiddenFor(model => model.ntano)
+                    @Html.HiddenFor(model => model.ddamount)
+                    @Html.HiddenFor(model => model.ddno)
+
+
+                }*@
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $(".saroamount").focusout(function () {
+
+            var self = $(this);
+
+     //       $(".asaamount").val(self.val());
+
+        });
+
+        $('.datepicker').datepicker();
+
+
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+
+
+
+
+    });
+    //$("#jd").focusout(function () {
+    //    var d = $("#jd").val();
+    //    alert(d);
+    //});
+
+
+    //$("#as_of").val(function () {
+
+
+    //var date = new Date();
+    //var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    //var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    //var lastDayWithSlashes = (lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear();
+
+    //return lastDayWithSlashes;
+
+
+    //});
+
+
+    //$(".date").datepicker(
+
+    //    {
+    //        dateFormat: 'mm-dd-yy',
+    //        minDate: '+5d',
+    //        changeMonth: true,
+    //        changeYear: true,
+    //        altField: ".date"
+    //        //onSelect: function (dateText, inst) {
+    //        //    var date = $(this).datepicker('getDate'),
+    //        //        day = date.getDate(),
+    //        //        month = date.getMonth() + 1,
+    //        //        year = date.getFullYear();
+    //        //    alert(day + '-' + month + '-' + year);
+    //        // }
+
+    //    });
+
+    //$(".asadate").datepicker(
+
+    //       {
+    //dateFormat: 'mm-dd-yy',
+    //minDate: '+5d',
+    //changeMonth: true,
+    //changeYear: true,
+    //altField: ".asadate"
+    //onSelect: function (dateText, inst) {
+    //    var date = $(this).datepicker('getDate'),
+    //        day = date.getDate(),
+    //        month = date.getMonth() + 1,
+    //        year = date.getFullYear();
+    //    alert(day + '-' + month + '-' + year);
+    // }
+
+    //      });
+
+
+    //$(".dates").datepicker({
+    //    dateFormat: 'mm-dd-yy',
+    //    minDate: '+5d',
+    //    changeMonth: true,
+    //    changeYear: true,
+    //    altField: ".dates"
+
+
+    //    });
+
+    // });
+
+
+
+</script>

@@ -1,0 +1,995 @@
+﻿@model AccompProject.Models.Inventory_view
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    @*@Html.HiddenFor(model => model.ID_REGION)
+        @Html.HiddenFor(model => model.ID_CATEGORY)
+        @Html.HiddenFor(model => model.RESPONSIBILITY)
+        @Html.HiddenFor(model => model.ID_OCI)
+        @Html.HiddenFor(model => model.ID_DIVERSION)
+        @Html.HiddenFor(model => model.ID_PROVINCE)*@
+
+    @*@Html.HiddenFor(model => model.ID_DISTRICT)
+        @Html.HiddenFor(model => model.ID_CROPS)
+        @Html.HiddenFor(model => model.IMO_RES)*@
+    @Html.HiddenFor(model => model.MUNICIPALITY, htmlAttributes: new { @id = "Munic" })
+
+    <div class="form-horizontal">
+        <h4>Inventory </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Raw(TempData["msg"])
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YEAR_COVERED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.YEAR_COVERED, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.YEAR_COVERED, "", new { @class = "text-danger" })
+            </div>
+
+        
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SYSTEMS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    if (Session["regiontolog"].ToString() == "CAR")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Marimay SRIP",
+                            Value = "Marimay SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 1")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Lower Agno River Irrigation System Improvement Project (LARISIP)",
+                            Value = "Lower Agno River Irrigation System Improvement Project (LARISIP)"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Barbar SRIP",
+                            Value = "Barbar SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Agno River Irrigation System Extension Project (ARISEP)",
+                            Value = "Agno River Irrigation System Extension Project (ARISEP)"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bacnotan Irrigation Project",
+                            Value = "Bacnotan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Agno River Integrated Irrigation Project",
+                            Value = "Agno River Integrated Irrigation Project"
+                        });
+
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 2")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Dibuluan Irrigation Project",
+                            Value = "Dibuluan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Dabubu Irrigation Project",
+                            Value = "Dabubu Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Dinapigue SSIP",
+                            Value = "Dinapigue SSIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "UPRIIS")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Balbalungao SRIP",
+                            Value = "Balbalungao SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 4B")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bongabong River Irrigation Project",
+                            Value = "Bongabong River Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Ibato-Iraan SRIP",
+                            Value = "Ibato-Iraan SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 6")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Hilabangan River Irrigation Project",
+                            Value = "Hilabangan River Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bayuyan SRIP",
+                            Value = "Bayuyan SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Barotac Viejo SRIP",
+                            Value = "Barotac Viejo SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 7")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Malinao Dam Improvement Project",
+                            Value = "Malinao Dam Improvement Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Amlan Irrigation Project",
+                            Value = "Amlan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Sta. Agueda-Datagon Irrigation Project",
+                            Value = "Sta. Agueda-Datagon Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Hibale SRIP",
+                            Value = "Hibale SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Mabini-Cayacay SRIP",
+                            Value = "Mabini-Cayacay SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bonot-Bonot SRIP",
+                            Value = "Bonot-Bonot SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Calunasan SRIP",
+                            Value = "Calunasan SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Benliw SRIP",
+                            Value = "Benliw SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 8")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bantayan Irrigation Project",
+                            Value = "Bantayan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Pinipisakan Irrigation Project",
+                            Value = "Pinipisakan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bulao Irrigation Project",
+                            Value = "Bulao Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Hagbay Irrigation Project",
+                            Value = "Hagbay Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Gandara Irrigation Project (Pologon)",
+                            Value = "Gandara Irrigation Project (Pologon)"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Hibulangan SRIP",
+                            Value = "Hibulangan SRIP"
+                        });
+
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Sta. Rita SRIP",
+                            Value = "Sta. Rita SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Gandara Irrigation Project (Nacube-Concepcion)",
+                            Value = "Gandara Irrigation Project (Nacube-Concepcion)"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 9")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Tandubas Irrigation Project",
+                            Value = "Tandubas Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Lison Valley Irrigation Project",
+                            Value = "Lison Valley Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Titay SRIP",
+                            Value = "Titay SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Titay SRIP",
+                            Value = "Titay SRIP"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Parangan Irrigation Project",
+                            Value = "Parangan Irrigation Project"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 10")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Talakag Irrigation Project, Ph. 2",
+                            Value = "Talakag Irrigation Project, Ph. 2"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Ditsaan-Ramain River Irrigation Project",
+                            Value = "Ditsaan-Ramain River Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Talakag Irrigation Project",
+                            Value = "Talakag Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Malaig River Irrigation Project",
+                            Value = "Malaig River Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Malaig River Irrigation, Extension Project",
+                            Value = "Malaig River Irrigation, Extension Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Nala Irrigation Project",
+                            Value = "Nala Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Dagumbaan Irrigation Project",
+                            Value = "Dagumbaan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Baliangao Irrigation Project",
+                            Value = "Baliangao Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Karigongan Irrigation Project",
+                            Value = "Karigongan Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Rugnan IS Improvement Project",
+                            Value = "Rugnan IS Improvement Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Tangub SRIP",
+                            Value = "Tangub SRIP"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 12")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Malitubog-Maridagao-2 Irrigation Project (MMIP2)",
+                            Value = "Malitubog-Maridagao-2 Irrigation Project (MMIP2)"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Sapalan River Irrigation Project",
+                            Value = "Sapalan River Irrigation Project"
+                        });
+                    }
+                    else if (Session["regiontolog"].ToString() == "REGION 13")
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Umayam River Irrigation Project",
+                            Value = "Umayam River Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "MAP Irrigation Project",
+                            Value = "MAP Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Bislig City Integrated Development Project-IC",
+                            Value = "Bislig City Integrated Development Project-IC"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Sta. Josefa Pump Irrigation Project",
+                            Value = "Sta. Josefa Pump Irrigation Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Baobo IS Improvement Project",
+                            Value = "Baobo IS Improvement Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Gibong Right & Left Bank IS Improvement Project",
+                            Value = "Gibong Right & Left Bank IS Improvement Project"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Kitcharao SRIP",
+                            Value = "Kitcharao SRIP"
+                        });
+                    }
+                    else
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "",
+                            Value = "",
+                            Selected = true
+                        });
+
+                    }
+
+                }
+                @if (Session["yrtoedit"].ToString() == "2020")
+                {
+                    @Html.EditorFor(model => model.SYSTEMS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SYSTEMS, "", new { @class = "text-danger" })
+
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.SYSTEMS, listItems, "-- Select Project --", new { htmlAttributes = new { @class = "form-control required" } })
+                    @Html.ValidationMessageFor(model => model.SYSTEMS, "", new { @class = "text-danger" })
+                }
+
+                @*@Html.ValidationMessageFor(model => model.SYSTEMS, "", new { @class = "text-danger" })*@
+            </div>
+
+            @*@Html.LabelFor(model => model.MUNICIPALITY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.MUNICIPALITY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MUNICIPALITY, "", new { @class = "text-danger" })
+            </div>*@
+
+
+            @Html.LabelFor(x => Model.municipalityCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.municipalityCode, (IEnumerable<SelectListItem>)ViewBag.TypeOfmuni, string.Empty, new { @class = "form-control", @id = "Municipality" })
+                @Html.ValidationMessageFor(x => x.municipalityCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*jervy*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(x => Model.municipalityCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.municipalityCode, (IEnumerable<SelectListItem>)ViewBag.TypeOfmuni, string.Empty, new { @class = "form-control", @id = "Municipality" })
+                @Html.ValidationMessageFor(x => x.municipalityCode, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.ID_REGION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_REGION, (IEnumerable<SelectListItem>)ViewBag.TypeOfRegion,string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_REGION, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ID_CATEGORY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_CATEGORY, (IEnumerable<SelectListItem>)ViewBag.TypeOfCategory, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_CATEGORY, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.RESPONSIBILITY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.RESPONSIBILITY, (IEnumerable<SelectListItem>)ViewBag.TypeOfResponsibility, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RESPONSIBILITY, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ID_OCI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_OCI, (IEnumerable<SelectListItem>)ViewBag.TypeOfOci, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_OCI, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.provinceCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.provinceCode, (IEnumerable<SelectListItem>)ViewBag.TypeOfProvince, string.Empty, new { @class = "form-control", @id = "Province" })
+                @Html.ValidationMessageFor(model => model.provinceCode, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ID_DIVERSION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_DIVERSION, (IEnumerable<SelectListItem>)ViewBag.TypeOfDiversion, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_DIVERSION, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+
+          
+
+            @Html.LabelFor(model => model.ID_DISTRICT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_DISTRICT, (IEnumerable<SelectListItem>)ViewBag.TypeOfDistrict, string.Empty, new { @class = "form-control", @id = "District" })
+                @Html.ValidationMessageFor(model => model.ID_DISTRICT, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ID_CROPS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ID_CROPS, (IEnumerable<SelectListItem>)ViewBag.TypeOfCrops, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_CROPS, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.IMO_RES, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.IMO_RES, (IEnumerable<SelectListItem>)ViewBag.TypeOfIMO, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IMO_RES, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <h4>Details</h4>
+        <hr />
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DATE_CONSTRUCTED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DATE_CONSTRUCTED, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DATE_CONSTRUCTED, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.SPECIFIC_DIVERSION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SPECIFIC_DIVERSION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SPECIFIC_DIVERSION, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WATER_SUPPLY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.WATER_SUPPLY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WATER_SUPPLY, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.NOSYSTEM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.NOSYSTEM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOSYSTEM, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LATITUDE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.LATITUDE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LATITUDE, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LONGITUDE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.LONGITUDE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LONGITUDE, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LINED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.LINED, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LINED, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.UNLINED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.UNLINED, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UNLINED, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FARMERS_BENEFICIARIES, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.FARMERS_BENEFICIARIES, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FARMERS_BENEFICIARIES, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.dam, (IEnumerable<SelectListItem>)ViewBag.DAMDAM, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dam, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.REMARKS_REASON, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.REMARKS_REASON, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.REMARKS_REASON, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+        <h4>AREA </h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SERVICE_ORIGINAL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SERVICE_ORIGINAL, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.SERVICE_ORIGINAL, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.SERVICE_FIRMED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SERVICE_FIRMED, new { htmlAttributes = new { @class = "form-control" ,@Value = "0" } })
+                @Html.ValidationMessageFor(model => model.SERVICE_FIRMED, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CONVERTED_LAND, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CONVERTED_LAND, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.CONVERTED_LAND, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.PERMANENT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.PERMANENT, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.PERMANENT, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AREA_OPERATIONAL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AREA_OPERATIONAL, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.AREA_OPERATIONAL, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.AREA_NONOPERATIONAL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AREA_NONOPERATIONAL, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.AREA_NONOPERATIONAL, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NEWLY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.NEWLY, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.NEWLY, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <h4>IRRIGATED </h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IRRIGATED_WET, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IRRIGATED_WET, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.IRRIGATED_WET, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.IRRIGATED_DRY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IRRIGATED_DRY, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.IRRIGATED_DRY, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IRRIGATED_RATOONING, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IRRIGATED_RATOONING, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.IRRIGATED_RATOONING, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.THIRD_IRRIGATED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.THIRD_IRRIGATED, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.THIRD_IRRIGATED, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <h4>BENEFITED </h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BENEFITED_WET, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.BENEFITED_WET, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.BENEFITED_WET, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.BENEFITED_DRY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.BENEFITED_DRY, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.BENEFITED_DRY, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BENEFITED_RATOONING, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.BENEFITED_RATOONING, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.BENEFITED_RATOONING, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.THIRD_BENEFITED, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.THIRD_BENEFITED, new { htmlAttributes = new { @class = "form-control", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.THIRD_BENEFITED, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <h4>AVERAGE YIELD cav./ha. </h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AVERAGE_YIELD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AVERAGE_YIELD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AVERAGE_YIELD, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.AVERAGE_YIELD_DRY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AVERAGE_YIELD_DRY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AVERAGE_YIELD_DRY, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AVERAGE_YIELD_RATOONING, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AVERAGE_YIELD_RATOONING, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AVERAGE_YIELD_RATOONING, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.THIRD_AVERAGE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.THIRD_AVERAGE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.THIRD_AVERAGE, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <h4>MAIN CANAL</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.main_lined, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.main_lined, new { htmlAttributes = new { @class = "form-control", Id = "maincanal", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.main_lined, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.main_earth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.main_earth, new { htmlAttributes = new { @class = "form-control", Id = "mainearth", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.main_earth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.main_total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.main_total, new { htmlAttributes = new { @class = "form-control", Id = "maintotal", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.main_total, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <h4>LATERAL CANALS</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lateral_lined, htmlAttributes: new { @class = "control-label col-md-2"  })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.lateral_lined, new { htmlAttributes = new { @class = "form-control", Id = "lateralcanal", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.lateral_lined, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.lateral_earth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.lateral_earth, new { htmlAttributes = new { @class = "form-control", Id = "lateralearth", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.lateral_earth, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.lateral_total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.lateral_total, new { htmlAttributes = new { @class = "form-control", Id = "lateraltotal", @Value = "0" } })
+                @Html.ValidationMessageFor(model => model.lateral_total, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <h4>INSTITUTIONAL DATA</h4>
+        <hr />
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.iano, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.iano, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iano, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.iaarea, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.iaarea, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iaarea, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.iafb, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.iafb, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iafb, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.iamember, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.iamember, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.iamember, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+    
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('#Province').change(function () {
+           
+            console.log("been here");
+            //var selectedCountry = $("#Province").val();
+            var selectedCountry = $('option:selected', $(this)).text();
+                var regionsSelect = $('#Municipality');
+                regionsSelect.empty();
+                if (selectedCountry != null && selectedCountry != '') {
+                    console.log("been here1");
+                    $.getJSON('@Url.Action("GetRegions")', { iso3: selectedCountry }, function (regions) {
+                        if (regions != null && !jQuery.isEmptyObject(regions))
+                        {
+                            regionsSelect.append($('<option/>', {
+                                value: null,
+                                text: ""
+                            }));
+                            $.each(regions, function (index, region) {
+                                regionsSelect.append($('<option/>', {
+                                    value: region.Value,
+                                    text: region.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+        });
+
+
+        $('#Municipality').change(function () {
+
+            console.log("been here");
+            //var selectedCountry = $("#Province").val();
+            var selectedCountry = $('option:selected', $(this)).text();
+            var regionsSelect = $('#District');
+            regionsSelect.empty();
+            if (selectedCountry != null && selectedCountry != '') {
+                console.log("been here1");
+                $.getJSON('@Url.Action("GetDistrict")', { iso3: selectedCountry }, function (regions) {
+                    if (regions != null && !jQuery.isEmptyObject(regions)) {
+                        regionsSelect.append($('<option/>', {
+                            value: null,
+                            text: ""
+                        }));
+                        $.each(regions, function (index, region) {
+                            regionsSelect.append($('<option/>', {
+                                value: region.Value,
+                                text: region.Text
+                            }));
+                        });
+                    };
+                });
+            }
+        });
+
+        $('#Municipality').change(function () {
+            $("#Munic").val($('option:selected', $(this)).text())
+
+
+        });
+
+    </script>
+}
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+     
+        $("#fin").keyup(function (event) {
+            var myval = $("#fin").val();
+            var amt = $("#amt").val();
+
+            $("#exped").val(((myval * amt * 10)));
+
+        });
+
+        $("#Phy").keyup(function (event) {
+
+            var ival = $("#Phy").val();
+            var amt1 = $("#amt").val();
+
+            $("#valuea").val((ival * amt1 * 10));
+
+        });
+
+        $("#maincanal").keyup(function (event) {
+
+            var ival = $("#maincanal").val();
+            var amt1 = $("#mainearth").val();
+            $("#maintotal").val(((isNaN(parseInt(ival) + parseInt(amt1)) ? 0 : (parseInt(ival) + parseInt(amt1)))));
+
+        });
+
+
+        $("#mainearth").keyup(function (event) {
+
+            var ival = $("#maincanal").val();
+            var amt1 = $("#mainearth").val();
+            $("#maintotal").val(((isNaN(parseInt(ival) + parseInt(amt1)) ? 0 : (parseInt(ival) + parseInt(amt1)))));
+
+        });
+
+        $("#lateralcanal").keyup(function (event) {
+
+            var ival = $("#lateralcanal").val();
+            var amt1 = $("#lateralearth").val();
+            $("#lateraltotal").val(((isNaN(parseInt(ival) + parseInt(amt1)) ? 0 : (parseInt(ival) + parseInt(amt1)))));
+
+        });
+
+
+        $("#lateralearth").keyup(function (event) {
+
+            var ival = $("#lateralcanal").val();
+            var amt1 = $("#lateralearth").val();
+            $("#lateraltotal").val(((isNaN(parseInt(ival) + parseInt(amt1)) ? 0 : (parseInt(ival) + parseInt(amt1)))));
+
+        });
+    });
+
+</script>

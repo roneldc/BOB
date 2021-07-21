@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AccompProject.Models.CovidSurvey>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table" id="example">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonnelCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTaken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Midname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sufix)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonnelCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTaken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Midname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sufix)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDSurvey }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDSurvey })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script type="text/javascript" charset="utf-8">
+     (function ($) {
+        var table = $('#example').DataTable();
+        
+    })(jQuery);
+</script>

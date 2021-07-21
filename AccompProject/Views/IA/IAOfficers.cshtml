@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AccompProject.Models.BOARD>
+
+@{
+    ViewBag.Title = "Board";
+}
+
+<h2>
+    <div class="form-group">
+        <h1> @Session["ianame"].ToString()</h1>
+    </div>
+</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateIAOfficer")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.YEAR_COVERED)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.BOARDNAME)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.POSITION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTACTNO)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.YEAR_COVERED)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.BOARDNAME)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.POSITION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONTACTNO)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "EditIAOfficer", new { id = item.BOARDID }) |
+         
+            @Html.ActionLink("Delete", "DeleteIAOfficer", new { id = item.BOARDID })
+        </td>
+    </tr>
+}
+
+</table>

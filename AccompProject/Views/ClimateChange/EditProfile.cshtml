@@ -1,0 +1,158 @@
+﻿@model AccompProject.Models.ClimateChangeProfileView
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ClimateChangeProfileView</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.IDAccomp)
+        @Html.HiddenFor(model => model.IDClimate)
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.mainproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.mainproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.mainproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", Id = "amt" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.subproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.subproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.subproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.municipality, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.municipality, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.municipality, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.province, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.province, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.province, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.Target, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ImplementationPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.ImplementationPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImplementationPeriod, "", new { @class = "text-danger" })
+
+                </div>
+
+               
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ProjectActivity, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.ProjectActivity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProjectActivity, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", "Accomplishment")
+</div>

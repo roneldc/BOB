@@ -1,0 +1,73 @@
+﻿
+@model AccompProject.Models.PhysicalAccompView
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete?</h4>
+</div>
+<div class="modal-body">
+
+
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.asof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newarea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newarea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.restorearea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.restorearea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rehabarea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rehabarea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canalsaccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canalsaccomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canal_liningaccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canal_liningaccomp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

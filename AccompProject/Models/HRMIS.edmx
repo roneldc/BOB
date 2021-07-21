@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PDSWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PDSWeb.dbo.__vw_idtr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="__vw_idtr">
+          <Key>
+            
+            
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="empno" Type="nvarchar" MaxLength="255" />
+          <Property Name="PDS_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="NewID" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HasDTRID" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="mname" Type="nvarchar" MaxLength="255" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentPosition" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentOffice" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentRate" Type="nvarchar" MaxLength="255" />
+          <Property Name="userid" Type="nvarchar" MaxLength="50" />
+          <Property Name="userpass" Type="nvarchar" MaxLength="255" />
+          <Property Name="hashcode" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="pdsdatetimeadded" Type="datetime" />
+          <Property Name="SRFROM" Type="datetime" />
+          <Property Name="CurrentPositionOld" Type="nvarchar" MaxLength="255" />
+          <Property Name="srdesignation" Type="nvarchar" MaxLength="250" />
+          <Property Name="CurrentOfficeOld" Type="nvarchar" MaxLength="255" />
+          <Property Name="srplace" Type="nvarchar" MaxLength="250" />
+          <Property Name="CurrentRateOld" Type="nvarchar" MaxLength="255" />
+          <Property Name="salary" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PDSWeb.dbo.PDS_Personalinfo_Active' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PDS_Personalinfo_Active">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CitiFilipino" />
+            <PropertyRef Name="CitiDual" />
+            <PropertyRef Name="CitiBirth" />
+            <PropertyRef Name="CitiNatural" />
+            <PropertyRef Name="Added" />
+            <PropertyRef Name="datetimeadded" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CSID" Type="nvarchar" MaxLength="255" />
+          <Property Name="empno" Type="nvarchar" MaxLength="255" />
+          <Property Name="lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="mname" Type="nvarchar" MaxLength="255" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="255" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Raddress" Type="ntext" />
+          <Property Name="RadUnit" Type="nvarchar" MaxLength="255" />
+          <Property Name="RadStreet" Type="nvarchar" MaxLength="255" />
+          <Property Name="RadVillage" Type="nvarchar" MaxLength="255" />
+          <Property Name="RadBarangay" Type="nvarchar" MaxLength="255" />
+          <Property Name="RadCity" Type="nvarchar" MaxLength="255" />
+          <Property Name="RadProvince" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadUnit" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadStreet" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadVillage" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadBarangay" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadCity" Type="nvarchar" MaxLength="255" />
+          <Property Name="PadProvince" Type="nvarchar" MaxLength="255" />
+          <Property Name="RAddressLocation" Type="nvarchar" MaxLength="255" />
+          <Property Name="RAddressZip" Type="nvarchar" MaxLength="255" />
+          <Property Name="RAddressTel" Type="nvarchar" MaxLength="255" />
+          <Property Name="municipality" Type="nvarchar" MaxLength="255" />
+          <Property Name="gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="255" />
+          <Property Name="CitiFilipino" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CitiDual" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CitiBirth" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CitiNatural" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CitiCountry" Type="nvarchar" MaxLength="255" />
+          <Property Name="civilstatus" Type="nvarchar" MaxLength="255" />
+          <Property Name="dateofbirth" Type="date" />
+          <Property Name="placeofbirth" Type="nvarchar" MaxLength="255" />
+          <Property Name="celno" Type="nvarchar" MaxLength="255" />
+          <Property Name="bloodtype" Type="nvarchar" MaxLength="255" />
+          <Property Name="height" Type="nvarchar" MaxLength="255" />
+          <Property Name="weight" Type="nvarchar" MaxLength="255" />
+          <Property Name="gsis" Type="nvarchar" MaxLength="255" />
+          <Property Name="sss" Type="nvarchar" MaxLength="255" />
+          <Property Name="tin" Type="nvarchar" MaxLength="255" />
+          <Property Name="phil" Type="nvarchar" MaxLength="255" />
+          <Property Name="pagibig" Type="nvarchar" MaxLength="255" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Paddress" Type="ntext" />
+          <Property Name="PLocation" Type="nvarchar" MaxLength="255" />
+          <Property Name="PZip" Type="nvarchar" MaxLength="255" />
+          <Property Name="PTel" Type="nvarchar" MaxLength="255" />
+          <Property Name="Position" Type="nvarchar" MaxLength="255" />
+          <Property Name="Added" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TempEmpno" Type="nvarchar" MaxLength="255" />
+          <Property Name="datetimeadded" Type="datetime" Nullable="false" />
+          <Property Name="DTRid" Type="nvarchar" MaxLength="50" />
+          <Property Name="SR_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="New_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="seperationdate" Type="date" />
+          <Property Name="seperationcause" Type="nvarchar" MaxLength="255" />
+          <Property Name="tempActiveSR" Type="nvarchar" MaxLength="255" />
+          <Property Name="tempActivePDS" Type="nvarchar" MaxLength="255" />
+          <Property Name="PTelw" Type="nvarchar" MaxLength="255" />
+          <Property Name="residential_type_old" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdNumber_Old" Type="float" />
+          <Property Name="sms_confirmed_smsnumber" Type="varchar" MaxLength="256" />
+          <Property Name="typehome2" Type="varchar" MaxLength="17" />
+          <Property Name="residential_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="smsName" Type="nvarchar" MaxLength="250" />
+          <Property Name="smsMessage" Type="nvarchar" MaxLength="255" />
+          <Property Name="final_celno" Type="nvarchar" MaxLength="256" />
+          <Property Name="sr_position" Type="nvarchar" MaxLength="250" />
+          <Property Name="Verified_Number" Type="nvarchar" MaxLength="256" />
+          <Property Name="smsdate" Type="date" />
+          <Property Name="Online_Contact_Updated" Type="datetime" />
+          <Property Name="srdesignation" Type="nvarchar" MaxLength="250" />
+          <Property Name="srstatus" Type="nvarchar" MaxLength="250" />
+          <Property Name="srplace" Type="nvarchar" MaxLength="250" />
+          <Property Name="SG" Type="int" />
+          <Property Name="salary" Type="nvarchar" MaxLength="250" />
+          <Property Name="SRFROM" Type="datetime" />
+          <Property Name="IdNumber" Type="numeric" Precision="6" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PDSWeb.dbo.PDS_Personalinfo_Active_QR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PDS_Personalinfo_Active_QR">
+          
+          <Key>
+            <PropertyRef Name="IdNumber" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="mname" Type="nvarchar" MaxLength="255" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="255" />
+          <Property Name="Added" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DTRid" Type="nvarchar" MaxLength="50" />
+          <Property Name="SR_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdNumber_old" Type="varchar" MaxLength="30" />
+          <Property Name="office" Type="nvarchar" MaxLength="250" />
+          <Property Name="PDSid" Type="nvarchar" MaxLength="255" />
+          <Property Name="celno" Type="varchar" MaxLength="30" />
+          <Property Name="IdNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="same_id_check" Type="int" />
+          <Property Name="final_celno" Type="varchar" MaxLength="30" />
+          <Property Name="region" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="PDSWebModelStoreContainer">
+          <EntitySet Name="__vw_idtr" EntityType="Self.__vw_idtr" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [__vw_idtr].[empno] AS [empno], 
+    [__vw_idtr].[PDS_ID] AS [PDS_ID], 
+    [__vw_idtr].[NewID] AS [NewID], 
+    [__vw_idtr].[status] AS [status], 
+    [__vw_idtr].[HasDTRID] AS [HasDTRID], 
+    [__vw_idtr].[lname] AS [lname], 
+    [__vw_idtr].[fname] AS [fname], 
+    [__vw_idtr].[mname] AS [mname], 
+    [__vw_idtr].[suffix] AS [suffix], 
+    [__vw_idtr].[CurrentPosition] AS [CurrentPosition], 
+    [__vw_idtr].[CurrentOffice] AS [CurrentOffice], 
+    [__vw_idtr].[CurrentRate] AS [CurrentRate], 
+    [__vw_idtr].[userid] AS [userid], 
+    [__vw_idtr].[userpass] AS [userpass], 
+    [__vw_idtr].[hashcode] AS [hashcode], 
+    [__vw_idtr].[ID] AS [ID], 
+    [__vw_idtr].[pdsdatetimeadded] AS [pdsdatetimeadded], 
+    [__vw_idtr].[SRFROM] AS [SRFROM], 
+    [__vw_idtr].[CurrentPositionOld] AS [CurrentPositionOld], 
+    [__vw_idtr].[srdesignation] AS [srdesignation], 
+    [__vw_idtr].[CurrentOfficeOld] AS [CurrentOfficeOld], 
+    [__vw_idtr].[srplace] AS [srplace], 
+    [__vw_idtr].[CurrentRateOld] AS [CurrentRateOld], 
+    [__vw_idtr].[salary] AS [salary]
+    FROM [dbo].[__vw_idtr] AS [__vw_idtr]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PDS_Personalinfo_Active" EntityType="Self.PDS_Personalinfo_Active" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PDS_Personalinfo_Active].[ID] AS [ID], 
+    [PDS_Personalinfo_Active].[CSID] AS [CSID], 
+    [PDS_Personalinfo_Active].[empno] AS [empno], 
+    [PDS_Personalinfo_Active].[lname] AS [lname], 
+    [PDS_Personalinfo_Active].[fname] AS [fname], 
+    [PDS_Personalinfo_Active].[mname] AS [mname], 
+    [PDS_Personalinfo_Active].[suffix] AS [suffix], 
+    [PDS_Personalinfo_Active].[fullname] AS [fullname], 
+    [PDS_Personalinfo_Active].[Raddress] AS [Raddress], 
+    [PDS_Personalinfo_Active].[RadUnit] AS [RadUnit], 
+    [PDS_Personalinfo_Active].[RadStreet] AS [RadStreet], 
+    [PDS_Personalinfo_Active].[RadVillage] AS [RadVillage], 
+    [PDS_Personalinfo_Active].[RadBarangay] AS [RadBarangay], 
+    [PDS_Personalinfo_Active].[RadCity] AS [RadCity], 
+    [PDS_Personalinfo_Active].[RadProvince] AS [RadProvince], 
+    [PDS_Personalinfo_Active].[PadUnit] AS [PadUnit], 
+    [PDS_Personalinfo_Active].[PadStreet] AS [PadStreet], 
+    [PDS_Personalinfo_Active].[PadVillage] AS [PadVillage], 
+    [PDS_Personalinfo_Active].[PadBarangay] AS [PadBarangay], 
+    [PDS_Personalinfo_Active].[PadCity] AS [PadCity], 
+    [PDS_Personalinfo_Active].[PadProvince] AS [PadProvince], 
+    [PDS_Personalinfo_Active].[RAddressLocation] AS [RAddressLocation], 
+    [PDS_Personalinfo_Active].[RAddressZip] AS [RAddressZip], 
+    [PDS_Personalinfo_Active].[RAddressTel] AS [RAddressTel], 
+    [PDS_Personalinfo_Active].[municipality] AS [municipality], 
+    [PDS_Personalinfo_Active].[gender] AS [gender], 
+    [PDS_Personalinfo_Active].[Citizenship] AS [Citizenship], 
+    [PDS_Personalinfo_Active].[CitiFilipino] AS [CitiFilipino], 
+    [PDS_Personalinfo_Active].[CitiDual] AS [CitiDual], 
+    [PDS_Personalinfo_Active].[CitiBirth] AS [CitiBirth], 
+    [PDS_Personalinfo_Active].[CitiNatural] AS [CitiNatural], 
+    [PDS_Personalinfo_Active].[CitiCountry] AS [CitiCountry], 
+    [PDS_Personalinfo_Active].[civilstatus] AS [civilstatus], 
+    [PDS_Personalinfo_Active].[dateofbirth] AS [dateofbirth], 
+    [PDS_Personalinfo_Active].[placeofbirth] AS [placeofbirth], 
+    [PDS_Personalinfo_Active].[celno] AS [celno], 
+    [PDS_Personalinfo_Active].[bloodtype] AS [bloodtype], 
+    [PDS_Personalinfo_Active].[height] AS [height], 
+    [PDS_Personalinfo_Active].[weight] AS [weight], 
+    [PDS_Personalinfo_Active].[gsis] AS [gsis], 
+    [PDS_Personalinfo_Active].[sss] AS [sss], 
+    [PDS_Personalinfo_Active].[tin] AS [tin], 
+    [PDS_Personalinfo_Active].[phil] AS [phil], 
+    [PDS_Personalinfo_Active].[pagibig] AS [pagibig], 
+    [PDS_Personalinfo_Active].[email] AS [email], 
+    [PDS_Personalinfo_Active].[Paddress] AS [Paddress], 
+    [PDS_Personalinfo_Active].[PLocation] AS [PLocation], 
+    [PDS_Personalinfo_Active].[PZip] AS [PZip], 
+    [PDS_Personalinfo_Active].[PTel] AS [PTel], 
+    [PDS_Personalinfo_Active].[Position] AS [Position], 
+    [PDS_Personalinfo_Active].[Added] AS [Added], 
+    [PDS_Personalinfo_Active].[TempEmpno] AS [TempEmpno], 
+    [PDS_Personalinfo_Active].[datetimeadded] AS [datetimeadded], 
+    [PDS_Personalinfo_Active].[DTRid] AS [DTRid], 
+    [PDS_Personalinfo_Active].[SR_id] AS [SR_id], 
+    [PDS_Personalinfo_Active].[New_ID] AS [New_ID], 
+    [PDS_Personalinfo_Active].[seperationdate] AS [seperationdate], 
+    [PDS_Personalinfo_Active].[seperationcause] AS [seperationcause], 
+    [PDS_Personalinfo_Active].[tempActiveSR] AS [tempActiveSR], 
+    [PDS_Personalinfo_Active].[tempActivePDS] AS [tempActivePDS], 
+    [PDS_Personalinfo_Active].[PTelw] AS [PTelw], 
+    [PDS_Personalinfo_Active].[residential_type_old] AS [residential_type_old], 
+    [PDS_Personalinfo_Active].[IdNumber_Old] AS [IdNumber_Old], 
+    [PDS_Personalinfo_Active].[sms_confirmed_smsnumber] AS [sms_confirmed_smsnumber], 
+    [PDS_Personalinfo_Active].[typehome2] AS [typehome2], 
+    [PDS_Personalinfo_Active].[residential_type] AS [residential_type], 
+    [PDS_Personalinfo_Active].[smsName] AS [smsName], 
+    [PDS_Personalinfo_Active].[smsMessage] AS [smsMessage], 
+    [PDS_Personalinfo_Active].[final_celno] AS [final_celno], 
+    [PDS_Personalinfo_Active].[sr_position] AS [sr_position], 
+    [PDS_Personalinfo_Active].[Verified_Number] AS [Verified_Number], 
+    [PDS_Personalinfo_Active].[smsdate] AS [smsdate], 
+    [PDS_Personalinfo_Active].[Online_Contact_Updated] AS [Online_Contact_Updated], 
+    [PDS_Personalinfo_Active].[srdesignation] AS [srdesignation], 
+    [PDS_Personalinfo_Active].[srstatus] AS [srstatus], 
+    [PDS_Personalinfo_Active].[srplace] AS [srplace], 
+    [PDS_Personalinfo_Active].[SG] AS [SG], 
+    [PDS_Personalinfo_Active].[salary] AS [salary], 
+    [PDS_Personalinfo_Active].[SRFROM] AS [SRFROM], 
+    [PDS_Personalinfo_Active].[IdNumber] AS [IdNumber]
+    FROM [dbo].[PDS_Personalinfo_Active] AS [PDS_Personalinfo_Active]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PDS_Personalinfo_Active_QR" EntityType="Self.PDS_Personalinfo_Active_QR" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PDS_Personalinfo_Active_QR].[ID] AS [ID], 
+    [PDS_Personalinfo_Active_QR].[lname] AS [lname], 
+    [PDS_Personalinfo_Active_QR].[fname] AS [fname], 
+    [PDS_Personalinfo_Active_QR].[mname] AS [mname], 
+    [PDS_Personalinfo_Active_QR].[suffix] AS [suffix], 
+    [PDS_Personalinfo_Active_QR].[Added] AS [Added], 
+    [PDS_Personalinfo_Active_QR].[DTRid] AS [DTRid], 
+    [PDS_Personalinfo_Active_QR].[SR_id] AS [SR_id], 
+    [PDS_Personalinfo_Active_QR].[IdNumber_old] AS [IdNumber_old], 
+    [PDS_Personalinfo_Active_QR].[office] AS [office], 
+    [PDS_Personalinfo_Active_QR].[PDSid] AS [PDSid], 
+    [PDS_Personalinfo_Active_QR].[celno] AS [celno], 
+    [PDS_Personalinfo_Active_QR].[IdNumber] AS [IdNumber], 
+    [PDS_Personalinfo_Active_QR].[same_id_check] AS [same_id_check], 
+    [PDS_Personalinfo_Active_QR].[final_celno] AS [final_celno], 
+    [PDS_Personalinfo_Active_QR].[region] AS [region]
+    FROM [dbo].[PDS_Personalinfo_Active_QR] AS [PDS_Personalinfo_Active_QR]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PDSWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PDSWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__vw_idtr" EntityType="PDSWebModel.C__vw_idtr" />
+          <EntitySet Name="PDS_Personalinfo_Active_QR" EntityType="PDSWebModel.PDS_Personalinfo_Active_QR" />
+          <EntitySet Name="PDS_Personalinfo_Active" EntityType="PDSWebModel.PDS_Personalinfo_Active" />
+        </EntityContainer>
+        <EntityType Name="C__vw_idtr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="empno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PDS_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NewID" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HasDTRID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="suffix" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentPosition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentOffice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentRate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userpass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hashcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="pdsdatetimeadded" Type="DateTime" Precision="3" />
+          <Property Name="SRFROM" Type="DateTime" Precision="3" />
+          <Property Name="CurrentPositionOld" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="srdesignation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentOfficeOld" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="srplace" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentRateOld" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PDS_Personalinfo_Active_QR">
+          <Key>
+            <PropertyRef Name="IdNumber" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="suffix" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Added" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DTRid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SR_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdNumber_old" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="office" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PDSid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="same_id_check" Type="Int32" />
+          <Property Name="final_celno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="region" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PDS_Personalinfo_Active">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CitiFilipino" />
+            <PropertyRef Name="CitiDual" />
+            <PropertyRef Name="CitiBirth" />
+            <PropertyRef Name="CitiNatural" />
+            <PropertyRef Name="Added" />
+            <PropertyRef Name="datetimeadded" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CSID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="empno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="suffix" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Raddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RadUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RadStreet" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RadVillage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RadBarangay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RadCity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RadProvince" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadUnit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadStreet" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadVillage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadBarangay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadCity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PadProvince" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RAddressLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RAddressZip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RAddressTel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="municipality" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CitiFilipino" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CitiDual" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CitiBirth" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CitiNatural" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CitiCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="civilstatus" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dateofbirth" Type="DateTime" Precision="0" />
+          <Property Name="placeofbirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="bloodtype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="height" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="weight" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="gsis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sss" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="phil" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pagibig" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Paddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PZip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PTel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Added" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TempEmpno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="datetimeadded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DTRid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SR_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="New_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seperationdate" Type="DateTime" Precision="0" />
+          <Property Name="seperationcause" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tempActiveSR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tempActivePDS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PTelw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="residential_type_old" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdNumber_Old" Type="Double" />
+          <Property Name="sms_confirmed_smsnumber" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="typehome2" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="residential_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="smsName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="smsMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="final_celno" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="sr_position" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Verified_Number" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="smsdate" Type="DateTime" Precision="0" />
+          <Property Name="Online_Contact_Updated" Type="DateTime" Precision="3" />
+          <Property Name="srdesignation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="srstatus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="srplace" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SG" Type="Int32" />
+          <Property Name="salary" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SRFROM" Type="DateTime" Precision="3" />
+          <Property Name="IdNumber" Type="Decimal" Precision="6" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PDSWebModelStoreContainer" CdmEntityContainer="PDSWebEntities">
+          <EntitySetMapping Name="C__vw_idtr">
+            <EntityTypeMapping TypeName="PDSWebModel.C__vw_idtr">
+              <MappingFragment StoreEntitySet="__vw_idtr">
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="CurrentRateOld" ColumnName="CurrentRateOld" />
+                <ScalarProperty Name="srplace" ColumnName="srplace" />
+                <ScalarProperty Name="CurrentOfficeOld" ColumnName="CurrentOfficeOld" />
+                <ScalarProperty Name="srdesignation" ColumnName="srdesignation" />
+                <ScalarProperty Name="CurrentPositionOld" ColumnName="CurrentPositionOld" />
+                <ScalarProperty Name="SRFROM" ColumnName="SRFROM" />
+                <ScalarProperty Name="pdsdatetimeadded" ColumnName="pdsdatetimeadded" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hashcode" ColumnName="hashcode" />
+                <ScalarProperty Name="userpass" ColumnName="userpass" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="CurrentRate" ColumnName="CurrentRate" />
+                <ScalarProperty Name="CurrentOffice" ColumnName="CurrentOffice" />
+                <ScalarProperty Name="CurrentPosition" ColumnName="CurrentPosition" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="HasDTRID" ColumnName="HasDTRID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="NewID" ColumnName="NewID" />
+                <ScalarProperty Name="PDS_ID" ColumnName="PDS_ID" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PDS_Personalinfo_Active_QR">
+            <EntityTypeMapping TypeName="PDSWebModel.PDS_Personalinfo_Active_QR">
+              <MappingFragment StoreEntitySet="PDS_Personalinfo_Active_QR">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="final_celno" ColumnName="final_celno" />
+                <ScalarProperty Name="same_id_check" ColumnName="same_id_check" />
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+                <ScalarProperty Name="celno" ColumnName="celno" />
+                <ScalarProperty Name="PDSid" ColumnName="PDSid" />
+                <ScalarProperty Name="office" ColumnName="office" />
+                <ScalarProperty Name="IdNumber_old" ColumnName="IdNumber_old" />
+                <ScalarProperty Name="SR_id" ColumnName="SR_id" />
+                <ScalarProperty Name="DTRid" ColumnName="DTRid" />
+                <ScalarProperty Name="Added" ColumnName="Added" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PDS_Personalinfo_Active">
+            <EntityTypeMapping TypeName="PDSWebModel.PDS_Personalinfo_Active">
+              <MappingFragment StoreEntitySet="PDS_Personalinfo_Active">
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+                <ScalarProperty Name="SRFROM" ColumnName="SRFROM" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="SG" ColumnName="SG" />
+                <ScalarProperty Name="srplace" ColumnName="srplace" />
+                <ScalarProperty Name="srstatus" ColumnName="srstatus" />
+                <ScalarProperty Name="srdesignation" ColumnName="srdesignation" />
+                <ScalarProperty Name="Online_Contact_Updated" ColumnName="Online_Contact_Updated" />
+                <ScalarProperty Name="smsdate" ColumnName="smsdate" />
+                <ScalarProperty Name="Verified_Number" ColumnName="Verified_Number" />
+                <ScalarProperty Name="sr_position" ColumnName="sr_position" />
+                <ScalarProperty Name="final_celno" ColumnName="final_celno" />
+                <ScalarProperty Name="smsMessage" ColumnName="smsMessage" />
+                <ScalarProperty Name="smsName" ColumnName="smsName" />
+                <ScalarProperty Name="residential_type" ColumnName="residential_type" />
+                <ScalarProperty Name="typehome2" ColumnName="typehome2" />
+                <ScalarProperty Name="sms_confirmed_smsnumber" ColumnName="sms_confirmed_smsnumber" />
+                <ScalarProperty Name="IdNumber_Old" ColumnName="IdNumber_Old" />
+                <ScalarProperty Name="residential_type_old" ColumnName="residential_type_old" />
+                <ScalarProperty Name="PTelw" ColumnName="PTelw" />
+                <ScalarProperty Name="tempActivePDS" ColumnName="tempActivePDS" />
+                <ScalarProperty Name="tempActiveSR" ColumnName="tempActiveSR" />
+                <ScalarProperty Name="seperationcause" ColumnName="seperationcause" />
+                <ScalarProperty Name="seperationdate" ColumnName="seperationdate" />
+                <ScalarProperty Name="New_ID" ColumnName="New_ID" />
+                <ScalarProperty Name="SR_id" ColumnName="SR_id" />
+                <ScalarProperty Name="DTRid" ColumnName="DTRid" />
+                <ScalarProperty Name="datetimeadded" ColumnName="datetimeadded" />
+                <ScalarProperty Name="TempEmpno" ColumnName="TempEmpno" />
+                <ScalarProperty Name="Added" ColumnName="Added" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PTel" ColumnName="PTel" />
+                <ScalarProperty Name="PZip" ColumnName="PZip" />
+                <ScalarProperty Name="PLocation" ColumnName="PLocation" />
+                <ScalarProperty Name="Paddress" ColumnName="Paddress" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pagibig" ColumnName="pagibig" />
+                <ScalarProperty Name="phil" ColumnName="phil" />
+                <ScalarProperty Name="tin" ColumnName="tin" />
+                <ScalarProperty Name="sss" ColumnName="sss" />
+                <ScalarProperty Name="gsis" ColumnName="gsis" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="bloodtype" ColumnName="bloodtype" />
+                <ScalarProperty Name="celno" ColumnName="celno" />
+                <ScalarProperty Name="placeofbirth" ColumnName="placeofbirth" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="civilstatus" ColumnName="civilstatus" />
+                <ScalarProperty Name="CitiCountry" ColumnName="CitiCountry" />
+                <ScalarProperty Name="CitiNatural" ColumnName="CitiNatural" />
+                <ScalarProperty Name="CitiBirth" ColumnName="CitiBirth" />
+                <ScalarProperty Name="CitiDual" ColumnName="CitiDual" />
+                <ScalarProperty Name="CitiFilipino" ColumnName="CitiFilipino" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="municipality" ColumnName="municipality" />
+                <ScalarProperty Name="RAddressTel" ColumnName="RAddressTel" />
+                <ScalarProperty Name="RAddressZip" ColumnName="RAddressZip" />
+                <ScalarProperty Name="RAddressLocation" ColumnName="RAddressLocation" />
+                <ScalarProperty Name="PadProvince" ColumnName="PadProvince" />
+                <ScalarProperty Name="PadCity" ColumnName="PadCity" />
+                <ScalarProperty Name="PadBarangay" ColumnName="PadBarangay" />
+                <ScalarProperty Name="PadVillage" ColumnName="PadVillage" />
+                <ScalarProperty Name="PadStreet" ColumnName="PadStreet" />
+                <ScalarProperty Name="PadUnit" ColumnName="PadUnit" />
+                <ScalarProperty Name="RadProvince" ColumnName="RadProvince" />
+                <ScalarProperty Name="RadCity" ColumnName="RadCity" />
+                <ScalarProperty Name="RadBarangay" ColumnName="RadBarangay" />
+                <ScalarProperty Name="RadVillage" ColumnName="RadVillage" />
+                <ScalarProperty Name="RadStreet" ColumnName="RadStreet" />
+                <ScalarProperty Name="RadUnit" ColumnName="RadUnit" />
+                <ScalarProperty Name="Raddress" ColumnName="Raddress" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+                <ScalarProperty Name="CSID" ColumnName="CSID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

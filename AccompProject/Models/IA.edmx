@@ -1,0 +1,941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOARD">
+          <Key>
+            <PropertyRef Name="BOARDID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="int" />
+          <Property Name="IA_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="BOARDNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="POSITION" Type="nvarchar" MaxLength="50" />
+          <Property Name="TINNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CONTACTNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="GENDER" Type="nvarchar" MaxLength="50" />
+          <Property Name="OFFICER_POSITION" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOTERM" Type="int" />
+          <Property Name="DATETERM" Type="datetime" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" />
+          <Property Name="BOARDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CANALS_STATIONING">
+          <Key>
+            <PropertyRef Name="CANALID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="int" />
+          <Property Name="IA_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="SORT" Type="int" />
+          <Property Name="TYPE_CANAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAME_CANAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="FROMLENGTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="TOLENGTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="LENGTH_CANAL" Type="float" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" />
+          <Property Name="CANALID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FSEntry">
+          <Key>
+            <PropertyRef Name="FSId" />
+          </Key>
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="FSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year_Covered" Type="int" />
+          <Property Name="Criteria" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoIA" Type="int" />
+          <Property Name="Entry1" Type="float" />
+          <Property Name="Entry2" Type="float" />
+          <Property Name="Entry3" Type="float" />
+          <Property Name="Entry4" Type="float" />
+          <Property Name="Entry5" Type="float" />
+          <Property Name="TotalScore" Type="float" />
+          <Property Name="Entry1_Percent" Type="float" />
+          <Property Name="Entry2_Percent" Type="float" />
+          <Property Name="Entry3_Percent" Type="float" />
+          <Property Name="Entry4_Percent" Type="float" />
+          <Property Name="Entry5_Percent" Type="float" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IA_AREA">
+          <Key>
+            <PropertyRef Name="IAAREAID" />
+          </Key>
+          <Property Name="IA_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="YEAR_COVERED" Type="int" />
+          <Property Name="PROVINCE" Type="int" />
+          <Property Name="DISTRICT" Type="int" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="TSA_NO" Type="int" />
+          <Property Name="FARMERS" Type="int" />
+          <Property Name="FARMERS_FEMALE" Type="int" />
+          <Property Name="FUSA" Type="float" />
+          <Property Name="FB" Type="int" />
+          <Property Name="SERVICE_AREA" Type="float" />
+          <Property Name="MAIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPERATIONAL" Type="float" />
+          <Property Name="NONOPERATIONAL" Type="float" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" />
+          <Property Name="IAAREAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IA_PROFILE">
+          <Key>
+            <PropertyRef Name="IAPROFILEID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="int" />
+          <Property Name="REGION" Type="int" />
+          <Property Name="CATEGORY" Type="int" />
+          <Property Name="SYSTEM_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="IA_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="150" />
+          <Property Name="FEDERATION" Type="nvarchar" MaxLength="255" />
+          <Property Name="IMO" Type="nvarchar" MaxLength="150" />
+          <Property Name="ZONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="WRFT" Type="nvarchar" MaxLength="50" />
+          <Property Name="TECHNICIAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="CONTRACT" Type="nvarchar" MaxLength="50" />
+          <Property Name="CONTRACT_DATE_ORIGINAL" Type="date" />
+          <Property Name="DATE_ORGANIZED" Type="date" />
+          <Property Name="SEC" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATE_REGISTERED" Type="date" />
+          <Property Name="TIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="IA_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOGO" Type="image" />
+          <Property Name="INCOME" Type="float" />
+          <Property Name="EXPENSES" Type="float" />
+          <Property Name="EXPENSES_DIRECT" Type="float" />
+          <Property Name="VI" Type="float" />
+          <Property Name="ADJECTIVE_RATING" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUMERICAL_RATING" Type="float" />
+          <Property Name="BUSINESS" Type="nvarchar" MaxLength="255" />
+          <Property Name="ADJECTIVE_RATING_IMT" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUMERICAL_RATING_IMT" Type="float" />
+          <Property Name="FIXED_ASSETS" Type="float" />
+          <Property Name="CURRENT_ASSETS" Type="float" />
+          <Property Name="SHARING_NIA" Type="int" />
+          <Property Name="SHARING_IA" Type="int" />
+          <Property Name="AMORTIZING" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOSECTOR" Type="int" />
+          <Property Name="LOC_SOURCE" Type="nvarchar" MaxLength="50" />
+          <Property Name="IA_LOAN" Type="float" />
+          <Property Name="ANNUAL_AMORT" Type="float" />
+          <Property Name="CURRENT_FORTHEYEAR" Type="float" />
+          <Property Name="BACK_FORTHEYEAR" Type="float" />
+          <Property Name="PAYMENT_TODATE" Type="float" />
+          <Property Name="BALANCE_LOAN" Type="float" />
+          <Property Name="IA_CONTRACTING" Type="nvarchar" MaxLength="50" />
+          <Property Name="MNT" Type="int" />
+          <Property Name="coopno" Type="nvarchar" MaxLength="150" />
+          <Property Name="coopreg" Type="date" />
+          <Property Name="CIA" Type="nvarchar" MaxLength="255" />
+          <Property Name="SHARING_CIA" Type="float" />
+          <Property Name="SHARING_CIA_IA" Type="float" />
+          <Property Name="SHARING_FIA" Type="float" />
+          <Property Name="SHARING_FIA_IA" Type="float" />
+          <Property Name="ADJECTIVE_RATING_IMT_WET" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUMERICAL_RATING_IMT_WET" Type="float" />
+          <Property Name="ADJECTIVE_RATING_IMT_DRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUMERICAL_RATING_IMT_DRY" Type="float" />
+          <Property Name="RENTAL_FEE" Type="float" />
+          <Property Name="AMOUNT_NIA_IA" Type="float" />
+          <Property Name="AMOUNT_NIA_FIA" Type="float" />
+          <Property Name="AMOUNT_NIA_CIA" Type="float" />
+          <Property Name="AMOUNT_CIAFIA_IA" Type="float" />
+          <Property Name="AMOUNT_IA_TSAG" Type="float" />
+          <Property Name="PROJECT_COST" Type="float" />
+          <Property Name="DATE_TURNOVER" Type="datetime" />
+          <Property Name="NIA_ASSISTED" Type="nvarchar" MaxLength="50" />
+          <Property Name="TYPE_AMORTIZING" Type="nvarchar" MaxLength="50" />
+          <Property Name="YEARS_TO_PAY" Type="int" />
+          <Property Name="DONOR" Type="nvarchar" MaxLength="255" />
+          <Property Name="ORIG_FUND" Type="nvarchar" MaxLength="255" />
+          <Property Name="ADJECTIVE_RATING_IMT_ANNUAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUMERICAL_RATING_IMT_ANNUAL" Type="float" />
+          <Property Name="AMOUNTEQUITY" Type="float" />
+          <Property Name="MOASIGNED" Type="datetime" />
+          <Property Name="IAID" Type="nvarchar" MaxLength="255" />
+          <Property Name="IAPROFILEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAList">
+          <Key>
+            <PropertyRef Name="IDIA" />
+          </Key>
+          <Property Name="IAname" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="region" Type="int" />
+          <Property Name="category" Type="int" />
+          <Property Name="systemname" Type="nvarchar" MaxLength="255" />
+          <Property Name="systemID" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IA.dbo.LIST_OF_POSITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LIST_OF_POSITION">
+          <Key>
+            <PropertyRef Name="idposition" />
+          </Key>
+          <Property Name="POSITION" Type="nvarchar" MaxLength="50" />
+          <Property Name="idposition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MappingDataSystemIA">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IdPolygon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geometry" Type="nvarchar" MaxLength="255" />
+          <Property Name="drawingtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmerlot" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmername" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="nvarchar" MaxLength="255" />
+          <Property Name="Iddam" Type="nvarchar" MaxLength="255" />
+          <Property Name="overlayid" Type="int" />
+          <Property Name="polygonarea" Type="float" />
+          <Property Name="ProfileID" Type="int" />
+          <Property Name="year_covered" Type="int" />
+        </EntityType>
+        <EntityType Name="YearReference">
+          <Key>
+            <PropertyRef Name="idyear" />
+          </Key>
+          <Property Name="idyear" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IA.dbo.IA_AREA_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IA_AREA_VIEW">
+          <Key>
+            
+            
+            <PropertyRef Name="IAAREAID" />
+          </Key>
+          <Property Name="IA_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="YEAR_COVERED" Type="int" />
+          <Property Name="ID_DISTRICT" Type="int" Nullable="false" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_PROVINCE" Type="int" Nullable="false" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="TSA_NO" Type="int" />
+          <Property Name="FARMERS" Type="int" />
+          <Property Name="FARMERS_FEMALE" Type="int" />
+          <Property Name="FUSA" Type="float" />
+          <Property Name="FB" Type="int" />
+          <Property Name="SERVICE_AREA" Type="float" />
+          <Property Name="MAIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPERATIONAL" Type="float" />
+          <Property Name="NONOPERATIONAL" Type="float" />
+          <Property Name="CATEGORY" Type="int" />
+          <Property Name="SYSTEM_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="region" Type="nvarchar" MaxLength="255" />
+          <Property Name="IAAREAID" Type="int" Nullable="false" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IA.dbo.IAListView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IAListView">
+          <Key>
+            <PropertyRef Name="IDIA" />
+            
+            
+          </Key>
+          <Property Name="region" Type="nvarchar" MaxLength="255" />
+          <Property Name="SORT" Type="int" />
+          <Property Name="IAname" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="systemname" Type="nvarchar" MaxLength="255" />
+          <Property Name="systemID" Type="nvarchar" MaxLength="255" />
+          <Property Name="id_region" Type="int" Nullable="false" />
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IA.dbo.MappingDataIAView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MappingDataIAView">
+          <Key>
+            
+            <PropertyRef Name="IdPolygon" />
+            
+            
+          </Key>
+          <Property Name="IAname" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDIA" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="region" Type="int" />
+          <Property Name="category" Type="int" />
+          <Property Name="systemname" Type="nvarchar" MaxLength="255" />
+          <Property Name="systemID" Type="nvarchar" MaxLength="255" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdPolygon" Type="int" Nullable="false" />
+          <Property Name="geometry" Type="nvarchar" MaxLength="255" />
+          <Property Name="drawingtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmerlot" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmername" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="nvarchar" MaxLength="255" />
+          <Property Name="Iddam" Type="nvarchar" MaxLength="255" />
+          <Property Name="overlayid" Type="int" />
+          <Property Name="polygonarea" Type="float" />
+          <Property Name="ProfileID" Type="int" />
+          <Property Name="year_covered" Type="int" />
+          <Property Name="LATITUDE" Type="float" Nullable="false" />
+          <Property Name="LONGITUDE" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IAModelStoreContainer">
+          <EntitySet Name="BOARD" EntityType="Self.BOARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CANALS_STATIONING" EntityType="Self.CANALS_STATIONING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FSEntry" EntityType="Self.FSEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IA_AREA" EntityType="Self.IA_AREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IA_PROFILE" EntityType="Self.IA_PROFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAList" EntityType="Self.IAList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MappingDataSystemIA" EntityType="Self.MappingDataSystemIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YearReference" EntityType="Self.YearReference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIST_OF_POSITION" EntityType="Self.LIST_OF_POSITION" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LIST_OF_POSITION].[POSITION] AS [POSITION], 
+    [LIST_OF_POSITION].[idposition] AS [idposition]
+    FROM [dbo].[LIST_OF_POSITION] AS [LIST_OF_POSITION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IA_AREA_VIEW" EntityType="Self.IA_AREA_VIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IA_AREA_VIEW].[IA_NAME] AS [IA_NAME], 
+    [IA_AREA_VIEW].[YEAR_COVERED] AS [YEAR_COVERED], 
+    [IA_AREA_VIEW].[ID_DISTRICT] AS [ID_DISTRICT], 
+    [IA_AREA_VIEW].[DISTRICT] AS [DISTRICT], 
+    [IA_AREA_VIEW].[ID_PROVINCE] AS [ID_PROVINCE], 
+    [IA_AREA_VIEW].[PROVINCE] AS [PROVINCE], 
+    [IA_AREA_VIEW].[MUNICIPALITY] AS [MUNICIPALITY], 
+    [IA_AREA_VIEW].[TSA_NO] AS [TSA_NO], 
+    [IA_AREA_VIEW].[FARMERS] AS [FARMERS], 
+    [IA_AREA_VIEW].[FARMERS_FEMALE] AS [FARMERS_FEMALE], 
+    [IA_AREA_VIEW].[FUSA] AS [FUSA], 
+    [IA_AREA_VIEW].[FB] AS [FB], 
+    [IA_AREA_VIEW].[SERVICE_AREA] AS [SERVICE_AREA], 
+    [IA_AREA_VIEW].[MAIN] AS [MAIN], 
+    [IA_AREA_VIEW].[OPERATIONAL] AS [OPERATIONAL], 
+    [IA_AREA_VIEW].[NONOPERATIONAL] AS [NONOPERATIONAL], 
+    [IA_AREA_VIEW].[CATEGORY] AS [CATEGORY], 
+    [IA_AREA_VIEW].[SYSTEM_NAME] AS [SYSTEM_NAME], 
+    [IA_AREA_VIEW].[region] AS [region], 
+    [IA_AREA_VIEW].[IAAREAID] AS [IAAREAID], 
+    [IA_AREA_VIEW].[IDIA] AS [IDIA]
+    FROM [dbo].[IA_AREA_VIEW] AS [IA_AREA_VIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IAListView" EntityType="Self.IAListView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IAListView].[region] AS [region], 
+    [IAListView].[SORT] AS [SORT], 
+    [IAListView].[IAname] AS [IAname], 
+    [IAListView].[CODE] AS [CODE], 
+    [IAListView].[DESCRIPTION] AS [DESCRIPTION], 
+    [IAListView].[IDIA] AS [IDIA], 
+    [IAListView].[systemname] AS [systemname], 
+    [IAListView].[systemID] AS [systemID], 
+    [IAListView].[id_region] AS [id_region], 
+    [IAListView].[ID_CATEGORY] AS [ID_CATEGORY]
+    FROM [dbo].[IAListView] AS [IAListView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MappingDataIAView" EntityType="Self.MappingDataIAView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MappingDataIAView].[IAname] AS [IAname], 
+    [MappingDataIAView].[IDIA] AS [IDIA], 
+    [MappingDataIAView].[region] AS [region], 
+    [MappingDataIAView].[category] AS [category], 
+    [MappingDataIAView].[systemname] AS [systemname], 
+    [MappingDataIAView].[systemID] AS [systemID], 
+    [MappingDataIAView].[ADDRESS] AS [ADDRESS], 
+    [MappingDataIAView].[IdPolygon] AS [IdPolygon], 
+    [MappingDataIAView].[geometry] AS [geometry], 
+    [MappingDataIAView].[drawingtype] AS [drawingtype], 
+    [MappingDataIAView].[farmerlot] AS [farmerlot], 
+    [MappingDataIAView].[farmername] AS [farmername], 
+    [MappingDataIAView].[id] AS [id], 
+    [MappingDataIAView].[Iddam] AS [Iddam], 
+    [MappingDataIAView].[overlayid] AS [overlayid], 
+    [MappingDataIAView].[polygonarea] AS [polygonarea], 
+    [MappingDataIAView].[ProfileID] AS [ProfileID], 
+    [MappingDataIAView].[year_covered] AS [year_covered], 
+    [MappingDataIAView].[LATITUDE] AS [LATITUDE], 
+    [MappingDataIAView].[LONGITUDE] AS [LONGITUDE]
+    FROM [dbo].[MappingDataIAView] AS [MappingDataIAView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IAList">
+          <Key>
+            <PropertyRef Name="IDIA" />
+          </Key>
+          <Property Name="IAname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="region" Type="Int32" />
+          <Property Name="category" Type="Int32" />
+          <Property Name="systemname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="systemID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="IAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IALists" EntityType="Self.IAList" />
+          <EntitySet Name="IAListViews" EntityType="IAModel.IAListView" />
+          <EntitySet Name="FSEntries" EntityType="IAModel.FSEntry" />
+          <EntitySet Name="IA_PROFILE" EntityType="IAModel.IA_PROFILE" />
+          <EntitySet Name="YearReferences" EntityType="IAModel.YearReference" />
+          <EntitySet Name="IA_AREA" EntityType="IAModel.IA_AREA" />
+          <EntitySet Name="IA_AREA_VIEW" EntityType="IAModel.IA_AREA_VIEW" />
+          <EntitySet Name="CANALS_STATIONING" EntityType="IAModel.CANALS_STATIONING" />
+          <EntitySet Name="MappingDataSystemIAs" EntityType="IAModel.MappingDataSystemIA" />
+          <EntitySet Name="MappingDataIAViews" EntityType="IAModel.MappingDataIAView" />
+          <EntitySet Name="BOARDs" EntityType="IAModel.BOARD" />
+          <EntitySet Name="LIST_OF_POSITION" EntityType="IAModel.LIST_OF_POSITION" />
+        </EntityContainer>
+        <EntityType Name="IAListView">
+          <Key>
+            <PropertyRef Name="IDIA" />
+          </Key>
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SORT" Type="Int32" />
+          <Property Name="IAname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDIA" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="systemname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="systemID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id_region" Type="Int32" Nullable="false" />
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FSEntry">
+          <Key>
+            <PropertyRef Name="FSId" />
+          </Key>
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year_Covered" Type="Int32" />
+          <Property Name="Criteria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoIA" Type="Int32" />
+          <Property Name="Entry1" Type="Double" />
+          <Property Name="Entry2" Type="Double" />
+          <Property Name="Entry3" Type="Double" />
+          <Property Name="Entry4" Type="Double" />
+          <Property Name="Entry5" Type="Double" />
+          <Property Name="TotalScore" Type="Double" />
+          <Property Name="Entry1_Percent" Type="Double" />
+          <Property Name="Entry2_Percent" Type="Double" />
+          <Property Name="Entry3_Percent" Type="Double" />
+          <Property Name="Entry4_Percent" Type="Double" />
+          <Property Name="Entry5_Percent" Type="Double" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IA_PROFILE">
+          <Key>
+            <PropertyRef Name="IAPROFILEID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="Int32" />
+          <Property Name="REGION" Type="Int32" />
+          <Property Name="CATEGORY" Type="Int32" />
+          <Property Name="SYSTEM_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IA_NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FEDERATION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IMO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ZONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WRFT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TECHNICIAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CONTRACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CONTRACT_DATE_ORIGINAL" Type="DateTime" Precision="0" />
+          <Property Name="DATE_ORGANIZED" Type="DateTime" Precision="0" />
+          <Property Name="SEC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_REGISTERED" Type="DateTime" Precision="0" />
+          <Property Name="TIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IA_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="INCOME" Type="Double" />
+          <Property Name="EXPENSES" Type="Double" />
+          <Property Name="EXPENSES_DIRECT" Type="Double" />
+          <Property Name="VI" Type="Double" />
+          <Property Name="ADJECTIVE_RATING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERICAL_RATING" Type="Double" />
+          <Property Name="BUSINESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ADJECTIVE_RATING_IMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERICAL_RATING_IMT" Type="Double" />
+          <Property Name="FIXED_ASSETS" Type="Double" />
+          <Property Name="CURRENT_ASSETS" Type="Double" />
+          <Property Name="SHARING_NIA" Type="Int32" />
+          <Property Name="SHARING_IA" Type="Int32" />
+          <Property Name="AMORTIZING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOSECTOR" Type="Int32" />
+          <Property Name="LOC_SOURCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IA_LOAN" Type="Double" />
+          <Property Name="ANNUAL_AMORT" Type="Double" />
+          <Property Name="CURRENT_FORTHEYEAR" Type="Double" />
+          <Property Name="BACK_FORTHEYEAR" Type="Double" />
+          <Property Name="PAYMENT_TODATE" Type="Double" />
+          <Property Name="BALANCE_LOAN" Type="Double" />
+          <Property Name="IA_CONTRACTING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MNT" Type="Int32" />
+          <Property Name="coopno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="coopreg" Type="DateTime" Precision="0" />
+          <Property Name="CIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SHARING_CIA" Type="Double" />
+          <Property Name="SHARING_CIA_IA" Type="Double" />
+          <Property Name="SHARING_FIA" Type="Double" />
+          <Property Name="SHARING_FIA_IA" Type="Double" />
+          <Property Name="ADJECTIVE_RATING_IMT_WET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERICAL_RATING_IMT_WET" Type="Double" />
+          <Property Name="ADJECTIVE_RATING_IMT_DRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERICAL_RATING_IMT_DRY" Type="Double" />
+          <Property Name="RENTAL_FEE" Type="Double" />
+          <Property Name="AMOUNT_NIA_IA" Type="Double" />
+          <Property Name="AMOUNT_NIA_FIA" Type="Double" />
+          <Property Name="AMOUNT_NIA_CIA" Type="Double" />
+          <Property Name="AMOUNT_CIAFIA_IA" Type="Double" />
+          <Property Name="AMOUNT_IA_TSAG" Type="Double" />
+          <Property Name="PROJECT_COST" Type="Double" />
+          <Property Name="DATE_TURNOVER" Type="DateTime" Precision="3" />
+          <Property Name="NIA_ASSISTED" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TYPE_AMORTIZING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YEARS_TO_PAY" Type="Int32" />
+          <Property Name="DONOR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ORIG_FUND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ADJECTIVE_RATING_IMT_ANNUAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERICAL_RATING_IMT_ANNUAL" Type="Double" />
+          <Property Name="AMOUNTEQUITY" Type="Double" />
+          <Property Name="MOASIGNED" Type="DateTime" Precision="3" />
+          <Property Name="IAID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IAPROFILEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="YearReference">
+          <Key>
+            <PropertyRef Name="idyear" />
+          </Key>
+          <Property Name="idyear" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IA_AREA">
+          <Key>
+            <PropertyRef Name="IAAREAID" />
+          </Key>
+          <Property Name="IA_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="YEAR_COVERED" Type="Int32" />
+          <Property Name="PROVINCE" Type="Int32" />
+          <Property Name="DISTRICT" Type="Int32" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TSA_NO" Type="Int32" />
+          <Property Name="FARMERS" Type="Int32" />
+          <Property Name="FARMERS_FEMALE" Type="Int32" />
+          <Property Name="FUSA" Type="Double" />
+          <Property Name="FB" Type="Int32" />
+          <Property Name="SERVICE_AREA" Type="Double" />
+          <Property Name="MAIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPERATIONAL" Type="Double" />
+          <Property Name="NONOPERATIONAL" Type="Double" />
+          <Property Name="IDIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IAAREAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="IA_AREA_VIEW">
+          <Key>
+            <PropertyRef Name="IAAREAID" />
+          </Key>
+          <Property Name="IA_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="YEAR_COVERED" Type="Int32" />
+          <Property Name="ID_DISTRICT" Type="Int32" Nullable="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_PROVINCE" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TSA_NO" Type="Int32" />
+          <Property Name="FARMERS" Type="Int32" />
+          <Property Name="FARMERS_FEMALE" Type="Int32" />
+          <Property Name="FUSA" Type="Double" />
+          <Property Name="FB" Type="Int32" />
+          <Property Name="SERVICE_AREA" Type="Double" />
+          <Property Name="MAIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPERATIONAL" Type="Double" />
+          <Property Name="NONOPERATIONAL" Type="Double" />
+          <Property Name="CATEGORY" Type="Int32" />
+          <Property Name="SYSTEM_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IAAREAID" Type="Int32" Nullable="false" />
+          <Property Name="IDIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CANALS_STATIONING">
+          <Key>
+            <PropertyRef Name="CANALID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="Int32" />
+          <Property Name="IA_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SORT" Type="Int32" />
+          <Property Name="TYPE_CANAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAME_CANAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FROMLENGTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TOLENGTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LENGTH_CANAL" Type="Double" />
+          <Property Name="IDIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CANALID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MappingDataSystemIA">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IdPolygon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geometry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drawingtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmerlot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Iddam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overlayid" Type="Int32" />
+          <Property Name="polygonarea" Type="Double" />
+          <Property Name="ProfileID" Type="Int32" />
+          <Property Name="year_covered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MappingDataIAView">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IAname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDIA" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="Int32" />
+          <Property Name="category" Type="Int32" />
+          <Property Name="systemname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="systemID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdPolygon" Type="Int32" Nullable="false" />
+          <Property Name="geometry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drawingtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmerlot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Iddam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overlayid" Type="Int32" />
+          <Property Name="polygonarea" Type="Double" />
+          <Property Name="ProfileID" Type="Int32" />
+          <Property Name="year_covered" Type="Int32" />
+          <Property Name="LATITUDE" Type="Double" Nullable="false" />
+          <Property Name="LONGITUDE" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BOARD">
+          <Key>
+            <PropertyRef Name="BOARDID" />
+          </Key>
+          <Property Name="YEAR_COVERED" Type="Int32" />
+          <Property Name="IA_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BOARDNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="POSITION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TINNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CONTACTNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OFFICER_POSITION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOTERM" Type="Int32" />
+          <Property Name="DATETERM" Type="DateTime" Precision="3" />
+          <Property Name="IDIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BOARDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="LIST_OF_POSITION">
+          <Key>
+            <PropertyRef Name="idposition" />
+          </Key>
+          <Property Name="POSITION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idposition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IAModelStoreContainer" CdmEntityContainer="IAEntities">
+          <EntitySetMapping Name="IALists">
+            <EntityTypeMapping TypeName="IAModel.IAList">
+              <MappingFragment StoreEntitySet="IAList">
+                <ScalarProperty Name="systemID" ColumnName="systemID" />
+                <ScalarProperty Name="systemname" ColumnName="systemname" />
+                <ScalarProperty Name="IAname" ColumnName="IAname" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAListViews">
+            <EntityTypeMapping TypeName="IAModel.IAListView">
+              <MappingFragment StoreEntitySet="IAListView">
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+                <ScalarProperty Name="systemID" ColumnName="systemID" />
+                <ScalarProperty Name="systemname" ColumnName="systemname" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="IAname" ColumnName="IAname" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="region" ColumnName="region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FSEntries">
+            <EntityTypeMapping TypeName="IAModel.FSEntry">
+              <MappingFragment StoreEntitySet="FSEntry">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Entry5_Percent" ColumnName="Entry5_Percent" />
+                <ScalarProperty Name="Entry4_Percent" ColumnName="Entry4_Percent" />
+                <ScalarProperty Name="Entry3_Percent" ColumnName="Entry3_Percent" />
+                <ScalarProperty Name="Entry2_Percent" ColumnName="Entry2_Percent" />
+                <ScalarProperty Name="Entry1_Percent" ColumnName="Entry1_Percent" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="Entry5" ColumnName="Entry5" />
+                <ScalarProperty Name="Entry4" ColumnName="Entry4" />
+                <ScalarProperty Name="Entry3" ColumnName="Entry3" />
+                <ScalarProperty Name="Entry2" ColumnName="Entry2" />
+                <ScalarProperty Name="Entry1" ColumnName="Entry1" />
+                <ScalarProperty Name="NoIA" ColumnName="NoIA" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="Year_Covered" ColumnName="Year_Covered" />
+                <ScalarProperty Name="FSId" ColumnName="FSId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IA_PROFILE">
+            <EntityTypeMapping TypeName="IAModel.IA_PROFILE">
+              <MappingFragment StoreEntitySet="IA_PROFILE">
+                <ScalarProperty Name="IAPROFILEID" ColumnName="IAPROFILEID" />
+                <ScalarProperty Name="IAID" ColumnName="IAID" />
+                <ScalarProperty Name="MOASIGNED" ColumnName="MOASIGNED" />
+                <ScalarProperty Name="AMOUNTEQUITY" ColumnName="AMOUNTEQUITY" />
+                <ScalarProperty Name="NUMERICAL_RATING_IMT_ANNUAL" ColumnName="NUMERICAL_RATING_IMT_ANNUAL" />
+                <ScalarProperty Name="ADJECTIVE_RATING_IMT_ANNUAL" ColumnName="ADJECTIVE_RATING_IMT_ANNUAL" />
+                <ScalarProperty Name="ORIG_FUND" ColumnName="ORIG_FUND" />
+                <ScalarProperty Name="DONOR" ColumnName="DONOR" />
+                <ScalarProperty Name="YEARS_TO_PAY" ColumnName="YEARS_TO_PAY" />
+                <ScalarProperty Name="TYPE_AMORTIZING" ColumnName="TYPE_AMORTIZING" />
+                <ScalarProperty Name="NIA_ASSISTED" ColumnName="NIA_ASSISTED" />
+                <ScalarProperty Name="DATE_TURNOVER" ColumnName="DATE_TURNOVER" />
+                <ScalarProperty Name="PROJECT_COST" ColumnName="PROJECT_COST" />
+                <ScalarProperty Name="AMOUNT_IA_TSAG" ColumnName="AMOUNT_IA_TSAG" />
+                <ScalarProperty Name="AMOUNT_CIAFIA_IA" ColumnName="AMOUNT_CIAFIA_IA" />
+                <ScalarProperty Name="AMOUNT_NIA_CIA" ColumnName="AMOUNT_NIA_CIA" />
+                <ScalarProperty Name="AMOUNT_NIA_FIA" ColumnName="AMOUNT_NIA_FIA" />
+                <ScalarProperty Name="AMOUNT_NIA_IA" ColumnName="AMOUNT_NIA_IA" />
+                <ScalarProperty Name="RENTAL_FEE" ColumnName="RENTAL_FEE" />
+                <ScalarProperty Name="NUMERICAL_RATING_IMT_DRY" ColumnName="NUMERICAL_RATING_IMT_DRY" />
+                <ScalarProperty Name="ADJECTIVE_RATING_IMT_DRY" ColumnName="ADJECTIVE_RATING_IMT_DRY" />
+                <ScalarProperty Name="NUMERICAL_RATING_IMT_WET" ColumnName="NUMERICAL_RATING_IMT_WET" />
+                <ScalarProperty Name="ADJECTIVE_RATING_IMT_WET" ColumnName="ADJECTIVE_RATING_IMT_WET" />
+                <ScalarProperty Name="SHARING_FIA_IA" ColumnName="SHARING_FIA_IA" />
+                <ScalarProperty Name="SHARING_FIA" ColumnName="SHARING_FIA" />
+                <ScalarProperty Name="SHARING_CIA_IA" ColumnName="SHARING_CIA_IA" />
+                <ScalarProperty Name="SHARING_CIA" ColumnName="SHARING_CIA" />
+                <ScalarProperty Name="CIA" ColumnName="CIA" />
+                <ScalarProperty Name="coopreg" ColumnName="coopreg" />
+                <ScalarProperty Name="coopno" ColumnName="coopno" />
+                <ScalarProperty Name="MNT" ColumnName="MNT" />
+                <ScalarProperty Name="IA_CONTRACTING" ColumnName="IA_CONTRACTING" />
+                <ScalarProperty Name="BALANCE_LOAN" ColumnName="BALANCE_LOAN" />
+                <ScalarProperty Name="PAYMENT_TODATE" ColumnName="PAYMENT_TODATE" />
+                <ScalarProperty Name="BACK_FORTHEYEAR" ColumnName="BACK_FORTHEYEAR" />
+                <ScalarProperty Name="CURRENT_FORTHEYEAR" ColumnName="CURRENT_FORTHEYEAR" />
+                <ScalarProperty Name="ANNUAL_AMORT" ColumnName="ANNUAL_AMORT" />
+                <ScalarProperty Name="IA_LOAN" ColumnName="IA_LOAN" />
+                <ScalarProperty Name="LOC_SOURCE" ColumnName="LOC_SOURCE" />
+                <ScalarProperty Name="NOSECTOR" ColumnName="NOSECTOR" />
+                <ScalarProperty Name="AMORTIZING" ColumnName="AMORTIZING" />
+                <ScalarProperty Name="SHARING_IA" ColumnName="SHARING_IA" />
+                <ScalarProperty Name="SHARING_NIA" ColumnName="SHARING_NIA" />
+                <ScalarProperty Name="CURRENT_ASSETS" ColumnName="CURRENT_ASSETS" />
+                <ScalarProperty Name="FIXED_ASSETS" ColumnName="FIXED_ASSETS" />
+                <ScalarProperty Name="NUMERICAL_RATING_IMT" ColumnName="NUMERICAL_RATING_IMT" />
+                <ScalarProperty Name="ADJECTIVE_RATING_IMT" ColumnName="ADJECTIVE_RATING_IMT" />
+                <ScalarProperty Name="BUSINESS" ColumnName="BUSINESS" />
+                <ScalarProperty Name="NUMERICAL_RATING" ColumnName="NUMERICAL_RATING" />
+                <ScalarProperty Name="ADJECTIVE_RATING" ColumnName="ADJECTIVE_RATING" />
+                <ScalarProperty Name="VI" ColumnName="VI" />
+                <ScalarProperty Name="EXPENSES_DIRECT" ColumnName="EXPENSES_DIRECT" />
+                <ScalarProperty Name="EXPENSES" ColumnName="EXPENSES" />
+                <ScalarProperty Name="INCOME" ColumnName="INCOME" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="IA_STATUS" ColumnName="IA_STATUS" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="DATE_REGISTERED" ColumnName="DATE_REGISTERED" />
+                <ScalarProperty Name="SEC" ColumnName="SEC" />
+                <ScalarProperty Name="DATE_ORGANIZED" ColumnName="DATE_ORGANIZED" />
+                <ScalarProperty Name="CONTRACT_DATE_ORIGINAL" ColumnName="CONTRACT_DATE_ORIGINAL" />
+                <ScalarProperty Name="CONTRACT" ColumnName="CONTRACT" />
+                <ScalarProperty Name="TECHNICIAN" ColumnName="TECHNICIAN" />
+                <ScalarProperty Name="WRFT" ColumnName="WRFT" />
+                <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+                <ScalarProperty Name="IMO" ColumnName="IMO" />
+                <ScalarProperty Name="FEDERATION" ColumnName="FEDERATION" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="IA_NAME" ColumnName="IA_NAME" />
+                <ScalarProperty Name="SYSTEM_NAME" ColumnName="SYSTEM_NAME" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YearReferences">
+            <EntityTypeMapping TypeName="IAModel.YearReference">
+              <MappingFragment StoreEntitySet="YearReference">
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="idyear" ColumnName="idyear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IA_AREA">
+            <EntityTypeMapping TypeName="IAModel.IA_AREA">
+              <MappingFragment StoreEntitySet="IA_AREA">
+                <ScalarProperty Name="IAAREAID" ColumnName="IAAREAID" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="NONOPERATIONAL" ColumnName="NONOPERATIONAL" />
+                <ScalarProperty Name="OPERATIONAL" ColumnName="OPERATIONAL" />
+                <ScalarProperty Name="MAIN" ColumnName="MAIN" />
+                <ScalarProperty Name="SERVICE_AREA" ColumnName="SERVICE_AREA" />
+                <ScalarProperty Name="FB" ColumnName="FB" />
+                <ScalarProperty Name="FUSA" ColumnName="FUSA" />
+                <ScalarProperty Name="FARMERS_FEMALE" ColumnName="FARMERS_FEMALE" />
+                <ScalarProperty Name="FARMERS" ColumnName="FARMERS" />
+                <ScalarProperty Name="TSA_NO" ColumnName="TSA_NO" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+                <ScalarProperty Name="IA_NAME" ColumnName="IA_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IA_AREA_VIEW">
+            <EntityTypeMapping TypeName="IAModel.IA_AREA_VIEW">
+              <MappingFragment StoreEntitySet="IA_AREA_VIEW">
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="IAAREAID" ColumnName="IAAREAID" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="SYSTEM_NAME" ColumnName="SYSTEM_NAME" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="NONOPERATIONAL" ColumnName="NONOPERATIONAL" />
+                <ScalarProperty Name="OPERATIONAL" ColumnName="OPERATIONAL" />
+                <ScalarProperty Name="MAIN" ColumnName="MAIN" />
+                <ScalarProperty Name="SERVICE_AREA" ColumnName="SERVICE_AREA" />
+                <ScalarProperty Name="FB" ColumnName="FB" />
+                <ScalarProperty Name="FUSA" ColumnName="FUSA" />
+                <ScalarProperty Name="FARMERS_FEMALE" ColumnName="FARMERS_FEMALE" />
+                <ScalarProperty Name="FARMERS" ColumnName="FARMERS" />
+                <ScalarProperty Name="TSA_NO" ColumnName="TSA_NO" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="ID_PROVINCE" ColumnName="ID_PROVINCE" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="ID_DISTRICT" ColumnName="ID_DISTRICT" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+                <ScalarProperty Name="IA_NAME" ColumnName="IA_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CANALS_STATIONING">
+            <EntityTypeMapping TypeName="IAModel.CANALS_STATIONING">
+              <MappingFragment StoreEntitySet="CANALS_STATIONING">
+                <ScalarProperty Name="CANALID" ColumnName="CANALID" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="LENGTH_CANAL" ColumnName="LENGTH_CANAL" />
+                <ScalarProperty Name="TOLENGTH" ColumnName="TOLENGTH" />
+                <ScalarProperty Name="FROMLENGTH" ColumnName="FROMLENGTH" />
+                <ScalarProperty Name="NAME_CANAL" ColumnName="NAME_CANAL" />
+                <ScalarProperty Name="TYPE_CANAL" ColumnName="TYPE_CANAL" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="IA_NAME" ColumnName="IA_NAME" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MappingDataSystemIAs">
+            <EntityTypeMapping TypeName="IAModel.MappingDataSystemIA">
+              <MappingFragment StoreEntitySet="MappingDataSystemIA">
+                <ScalarProperty Name="year_covered" ColumnName="year_covered" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="polygonarea" ColumnName="polygonarea" />
+                <ScalarProperty Name="overlayid" ColumnName="overlayid" />
+                <ScalarProperty Name="Iddam" ColumnName="Iddam" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="farmername" ColumnName="farmername" />
+                <ScalarProperty Name="farmerlot" ColumnName="farmerlot" />
+                <ScalarProperty Name="drawingtype" ColumnName="drawingtype" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="IdPolygon" ColumnName="IdPolygon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MappingDataIAViews">
+            <EntityTypeMapping TypeName="IAModel.MappingDataIAView">
+              <MappingFragment StoreEntitySet="MappingDataIAView">
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="year_covered" ColumnName="year_covered" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="polygonarea" ColumnName="polygonarea" />
+                <ScalarProperty Name="overlayid" ColumnName="overlayid" />
+                <ScalarProperty Name="Iddam" ColumnName="Iddam" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="farmername" ColumnName="farmername" />
+                <ScalarProperty Name="farmerlot" ColumnName="farmerlot" />
+                <ScalarProperty Name="drawingtype" ColumnName="drawingtype" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="IdPolygon" ColumnName="IdPolygon" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="systemID" ColumnName="systemID" />
+                <ScalarProperty Name="systemname" ColumnName="systemname" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="IAname" ColumnName="IAname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOARDs">
+            <EntityTypeMapping TypeName="IAModel.BOARD">
+              <MappingFragment StoreEntitySet="BOARD">
+                <ScalarProperty Name="BOARDID" ColumnName="BOARDID" />
+                <ScalarProperty Name="IDIA" ColumnName="IDIA" />
+                <ScalarProperty Name="DATETERM" ColumnName="DATETERM" />
+                <ScalarProperty Name="NOTERM" ColumnName="NOTERM" />
+                <ScalarProperty Name="OFFICER_POSITION" ColumnName="OFFICER_POSITION" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="CONTACTNO" ColumnName="CONTACTNO" />
+                <ScalarProperty Name="TINNO" ColumnName="TINNO" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="BOARDNAME" ColumnName="BOARDNAME" />
+                <ScalarProperty Name="IA_NAME" ColumnName="IA_NAME" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIST_OF_POSITION">
+            <EntityTypeMapping TypeName="IAModel.LIST_OF_POSITION">
+              <MappingFragment StoreEntitySet="LIST_OF_POSITION">
+                <ScalarProperty Name="idposition" ColumnName="idposition" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,226 @@
+﻿@model AccompProject.Models.ProjectInfoView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProjectInfoView</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDAccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDAccomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.district)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subsubproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subsubproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maindescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maindescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectmonitor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectmonitor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.infra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.infra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.financeRegion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.financeRegion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperationRegion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperationRegion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contractor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contractor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contractname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contractname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDProjectInfo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

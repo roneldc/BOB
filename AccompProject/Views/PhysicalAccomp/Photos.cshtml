@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AccompProject.Models.DamModel.Photos>
+@{ ViewBag.Title = "Gallery"; }
+<link href="~/Content/photos.css" rel="stylesheet" />
+<script src="~/Scripts/_photos.js"></script>
+@*<div class="row">
+    <div class="text-center">
+        <ul class="list-inline">
+            <li>@Html.ActionLink("Cars", "Photos", "Home", new { id = 2 }, null)</li>
+            <li>@Html.ActionLink("Cameras", "Photos", "Home", new { id = 1 }, null)</li>
+            <li>@Html.ActionLink("Default", "Photos", "Home", new { id = 0 }, null)</li>
+            <li>@Html.ActionLink("Ships", "Photos", "Home", new { id = 3 }, null)</li>
+        </ul>
+    </div>
+</div>*@
+
+
+<p>
+    @Html.ActionLink("Upload New", "Upload")
+</p>
+<div class="row-fluid">
+    <div class="span2">
+        <div>
+            @foreach (var image in Model)
+            {
+                <div class="photo-div">
+                    <img alt="@image.Description" src="@Url.Content(@image.Path)" class="photo" onclick="display(this);"  />
+                @*    <img alt="@image.Description" src="(@image.Path)" class="photo" onclick="display(this);" />*@
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div id="divimage" class="modal">
+    <img class="modal-content" id="modalimg">
+    <div id="caption"></div>
+</div>

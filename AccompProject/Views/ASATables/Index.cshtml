@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AccompProject.Models.ASATable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+</p>
+
+@using (Html.BeginForm("Index", "ASATables", FormMethod.Get))
+
+{
+    <p>
+        Genre: @Html.DropDownList("asabag", "123")
+        <input type="submit" value="Filter" />
+    </p>
+    
+        }
+        <table id="customers" class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IDAccomp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ASANo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ASAAmount)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDAccomp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ASANo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ASAAmount)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDASA }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IDASA }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDASA })
+                    </td>
+                </tr>
+    }
+
+        </table>
+        <div>
+            @Html.ActionLink("Back to Subproject", "Edit", new { Controller = "ACCOMPLISHMENT", Id = Session["idaccomp"].ToString() })
+        </div>
+
+
+
+        @section Scripts{
+
+            <script>
+
+                $(function () {
+
+                    $('#customers').DataTable();
+
+                });
+
+            </script>
+        }

@@ -1,0 +1,66 @@
+﻿@model AccompProject.Models.CityBoundary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CityBoundary</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cityname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cityname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityBoundariesname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityBoundariesname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CovidPositive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CovidPositive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CovidDied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CovidDied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CovidRecovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CovidRecovered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateasof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateasof)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CityID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

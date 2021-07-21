@@ -1,0 +1,215 @@
+﻿@model AccompProject.Models.ACCOMPLISHMENT
+
+@{
+    ViewBag.Title = "EditAccomp";
+}
+
+<h2>EditAccomp</h2>
+@Html.Raw(TempData["msg"])
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ACCOMPLISHMENT</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.IDAccomp)
+        @Html.HiddenFor(model => model.year)
+
+        @Html.HiddenFor(model => model.region)
+        @Html.HiddenFor(model => model.province)
+        @Html.HiddenFor(model => model.district)
+        @Html.HiddenFor(model => model.Category1)
+        @Html.HiddenFor(model => model.Category2)
+        @Html.HiddenFor(model => model.Category3)
+        @Html.HiddenFor(model => model.Category4)
+
+        @Html.HiddenFor(model => model.mainproject)
+        @Html.HiddenFor(model => model.subsubproject)
+        @Html.HiddenFor(model => model.Allotment)
+
+
+
+        @Html.HiddenFor(model => model.Obligation)
+        @Html.HiddenFor(model => model.farmer_beneficiaries)
+        @Html.HiddenFor(model => model.jobs)
+       
+
+        @Html.HiddenFor(model => model.Obligation)
+
+
+
+        @Html.HiddenFor(model => model.subproject)
+
+
+        @Html.HiddenFor(model => model.municipality)
+
+
+
+        @Html.HiddenFor(model => model.amount)
+
+
+
+
+
+
+
+
+
+        @Html.HiddenFor(model => model.newed)
+
+
+        @Html.HiddenFor(model => model.restored)
+
+
+
+        @Html.HiddenFor(model => model.rehab)
+
+        @Html.HiddenFor(model => model.canals)
+        @Html.HiddenFor(model => model.canal_lining)
+        @Html.HiddenFor(model => model.structures)
+
+        @Html.HiddenFor(model => model.roads)
+     
+
+    
+
+        
+
+       
+
+        @Html.HiddenFor(model => model.new_accomp)
+        @Html.HiddenFor(model => model.resto_accomp)
+        @Html.HiddenFor(model => model.rehab_accomp)
+
+
+        @Html.HiddenFor(model => model.canals_accomp)
+        @Html.HiddenFor(model => model.canal_lining_accomp)
+        @Html.HiddenFor(model => model.structures_accomp)
+        @Html.HiddenFor(model => model.roads_accomp)
+        @Html.HiddenFor(model => model.Beneficiary_accomp)
+
+
+        @Html.HiddenFor(model => model.JobGen)
+        @Html.HiddenFor(model => model.Physical)
+        @Html.HiddenFor(model => model.Financial)
+        @Html.HiddenFor(model => model.Remarks_accomp)
+        @Html.HiddenFor(model => model.status)
+        @Html.HiddenFor(model => model.Value_accomp)
+        @Html.HiddenFor(model => model.Expenditures)
+        @Html.HiddenFor(model => model.Phy)
+        @Html.HiddenFor(model => model.Fin)
+        @Html.HiddenFor(model => model.FUSA)
+        @Html.HiddenFor(model => model.OK)
+        @Html.HiddenFor(model => model.MONITORING1)
+        @Html.HiddenFor(model => model.MONITORING2)
+        @Html.HiddenFor(model => model.PC)
+        @Html.HiddenFor(model => model.VAL)
+        @Html.HiddenFor(model => model.EXP)
+
+
+
+        @Html.HiddenFor(model => model.as_of)
+        @Html.HiddenFor(model => model.SAMPLE)
+        @Html.HiddenFor(model => model.saro)
+        @Html.HiddenFor(model => model.asa)
+        @Html.HiddenFor(model => model.lat)
+        @Html.HiddenFor(model => model.longi)
+        @Html.HiddenFor(model => model.p_rehab)
+
+
+        @Html.HiddenFor(model => model.p_canal)
+        @Html.HiddenFor(model => model.p_canal_lining)
+        @Html.HiddenFor(model => model.p_new)
+        @Html.HiddenFor(model => model.p_rehab)
+        @Html.HiddenFor(model => model.p_job)
+      
+
+
+        @Html.HiddenFor(model => model.p_fb)
+        @Html.HiddenFor(model => model.disbursement)
+        @Html.HiddenFor(model => model.RowVersion)
+        @Html.HiddenFor(model => model.mnt)
+        @Html.HiddenFor(model => model.year_covered)
+        @Html.HiddenFor(model => model.cash)
+        @Html.HiddenFor(model => model.saro_region)
+        @Html.HiddenFor(model => model.asa_region)
+        @Html.HiddenFor(model => model.cash_region)
+        @Html.HiddenFor(model => model.remarks_financial)
+        @Html.HiddenFor(model => model.asano)
+        @Html.HiddenFor(model => model.maindescription)
+
+        @Html.HiddenFor(model => model.asof)
+        @Html.HiddenFor(model => model.infra)
+        @Html.HiddenFor(model => model.projectmonitor)
+        @Html.HiddenFor(model => model.HDPEACCOMP)
+        @Html.HiddenFor(model => model.COCONETACCOMP)
+        @Html.HiddenFor(model => model.GRAVELACCOMP)
+        @Html.HiddenFor(model => model.Nosystem)
+
+
+
+
+
+        @Html.HiddenFor(model => model.HDPE)
+        @Html.HiddenFor(model => model.COCONET)
+        @Html.HiddenFor(model => model.GRAVEL)
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_structure, "LATITUDE",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_structure)
+                @Html.ValidationMessageFor(model => model.p_structure)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.p_road,"LONGITUDE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.p_road)
+                @Html.ValidationMessageFor(model => model.p_road)
+            </div>
+        </div>
+
+
+
+
+        @Html.HiddenFor(model => model.imo)
+     
+        @Html.HiddenFor(model => model.financeRegion)
+
+        @Html.HiddenFor(model => model.OperationRegion)
+
+        @Html.HiddenFor(model => model.category5)
+
+        @Html.HiddenFor(model => model.category6)
+        @Html.HiddenFor(model => model.powerbiregion)
+        @Html.HiddenFor(model => model.powerbifund)
+        @Html.HiddenFor(model => model.@long)
+
+        @Html.HiddenFor(model => model.remarks)
+
+
+      
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

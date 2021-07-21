@@ -1,0 +1,62 @@
+﻿@model  PagedList.IPagedList<AccompProject.Models.ToClusterView>
+
+@*@model IEnumerable<Accomplishment.Models.EntityModel.ACCOMPLISHMENT>*@
+
+
+
+
+@{
+    ViewBag.Title = "List of Projects to be Cluster";
+
+}
+<div class="container-fluid">
+    <h2>List of Projects to be Cluster</h2>
+
+
+    @*<p data-jtv-sample ="true"> sample lang</p>*@
+
+    <ul class="nav navbar-nav navbar-right navbar-brand">
+        <li>
+      @*     As of @ViewBag.DTETME*@
+        </li>
+
+    </ul>
+
+    
+
+    @*@using (Ajax.BeginForm(
+            new AjaxOptions
+            {
+                HttpMethod = "get",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "listofprojects"
+            }))
+        {
+            <input type="search" name="searchTerm" />
+            <input type="submit" value="Search by Subproject" />
+        }*@
+
+
+
+    @Html.Partial("_ListOfProjectCluster", Model)
+
+</div>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("div.alert").click(function () {
+        $("div.alert").removeClass('hidden').addClass('visible');
+        setTimeout(function () {
+            $("div.alert").removeClass('visible').addClass('hidden');
+        }, 5000)
+        return false;
+    });
+</script>

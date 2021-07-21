@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AccompProject.Models.IAListView>
+
+@{
+    ViewBag.Title = "IAList";
+}
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/custom_table.css" rel="stylesheet" />
+
+<h2>LIST OF IA</h2>
+
+<p>@Html.ActionLink("ADD NEW IA RECORD", "CreateIA", "IA", new { @class = " btn btn-info" }) </p>
+
+
+
+<table id="example" class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.region)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.IAname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESCRIPTION)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.region)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.IAname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCRIPTION)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditIA", new { id = item.IDIA }) |
+                @Html.ActionLink("IA PROFILE", "ListIAProfile", new { id = item.IDIA }) |
+              
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+        var table = $('#example').DataTable(
+
+        );
+    })(jQuery);
+</script>

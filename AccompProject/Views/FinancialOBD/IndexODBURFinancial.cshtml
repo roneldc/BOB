@@ -1,0 +1,128 @@
+﻿@*@model  PagedList.IPagedList<AccompProject.Models.FinancialView>
+@using PagedList.Mvc;
+@using PagedList;*@
+@model IEnumerable<AccompProject.Models.FinancialView>
+
+
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/custom_table.css" rel="stylesheet" />
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    @*<div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("MyIndexODBUR", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>*@
+
+    <table id="customers" class="table table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    TYPE RELEASE
+                </th>
+                <th>
+                    REGION
+                </th>
+                <th>
+                    REFERENCE NO.
+                </th>
+                <th>
+                    ASA AMOUNT
+                </th>
+                <th>
+                    BUR AMOUNT
+                </th>
+                <th>
+                    OR AMOUNT
+                </th>
+                <th>
+                    MAINPROJECT
+                </th>
+                <th>
+                    SUBPROJECT
+                </th>
+                <th>
+                    Province
+                </th>
+                <th>
+                    Municipality
+                </th>
+                <th>
+                    Allotment (P'000)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.TYPERELEASE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REFERENCENO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asaamount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.buramount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.obligation_co)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+
+                <td>
+
+                    @Html.ActionLink("OBLIGATION AND DISBURSEMENT", "EditODBUR", "FinancialOBD", new { id = item.IDFinance }, new { @class = " btn btn-info" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+        var table = $('#customers').DataTable(
+
+        );
+    })(jQuery);
+</script>

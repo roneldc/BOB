@@ -1,0 +1,85 @@
+﻿@model AccompProject.Models.IAListView
+
+@{
+    ViewBag.Title = "EDIT IA";
+}
+
+<h2>EDIT IA</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>IAList</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.IDIA)
+        @Html.HiddenFor(model => model.id_region)
+        @Html.HiddenFor(model => model.ID_CATEGORY)
+    
+        @Html.HiddenFor(model => model.DESCRIPTION)
+
+
+        @Html.HiddenFor(model => model.CODE)
+
+
+        @Html.HiddenFor(model => model.region)
+
+
+        @Html.HiddenFor(model => model.systemname, new { id = "systemname" })
+
+
+
+       
+         <div class="form-group">
+            @Html.LabelFor(model => model.IAname,"NAME OF IA", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IAname)
+                @Html.ValidationMessageFor(model => model.IAname)
+            </div>
+        </div>
+
+   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.systemID, "NAME OF SYSTEM", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.systemID, (IEnumerable<SelectListItem>)ViewBag.TypeSystem, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.systemID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<input type="hidden" id="systemname" name="systemname" />*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+        $("#systemID").on("change", function () {
+
+            alert('here');
+            $("#systemname").val($(this).find("option:selected").text());
+        });
+
+     
+    });
+
+</script>

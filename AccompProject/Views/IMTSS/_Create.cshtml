@@ -1,0 +1,969 @@
+﻿@model AccompProject.Models.IMTSSViewModel
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Add New Acomplishments</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDACCOMP, new { @Value = Session["idaccomp"].ToString() })
+            @Html.HiddenFor(model => model.MNT, new { @Value = "", id = "mnts" })
+            @Html.HiddenFor(model => model.YEAR_COVERED, new { @Value = "", id = "yrs" })
+            @*@Html.HiddenFor(model => model.as_of, new { @Value = Session["asof"].ToString() })
+            @Html.HiddenFor(model => model.year_covered, new { @Value = Session["yr"].ToString() })
+            @Html.HiddenFor(model => model.mnt, new { @Value = Session["mnt"].ToString() })*@
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.AS_OF, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AS_OF, new { htmlAttributes = new { @class = "form-control", id="amndtimtss" } })
+                    @Html.ValidationMessageFor(model => model.AS_OF, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+
+                <div class="control-label col-md-2">
+                  PARTICULARS
+                </div>
+                <div class="control-label col-md-4">
+                   TOTAL TARGET
+                </div>
+                <div class="control-label col-md-4">
+                    ACCOMPLISHMENT
+                </div>
+            </div>
+
+            <hr />
+            <h5>NO. OF IDP PERSONNEL (IDO)</h5>
+            <hr />
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.joborder_target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.joborder_target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.joborder_target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.joborder, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.joborder, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+               
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.dailyjob_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.dailyjob_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dailyjob_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.dailyjob, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dailyjob, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Contractual_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Contractual_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contractual_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Contractual, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Contractual, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+          
+
+            <hr />
+            <h5>IA ORGANIZATION</h5>
+            <hr />
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Org_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Org_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_Area_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Org_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoFB_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Org_NoMember_Target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoMember_Target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoMember_Target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Org_NoMember, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Org_NoMember, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <hr />
+            <h5>IA REGISTRATION</h5>
+            <hr />
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Reg_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Reg_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_Area_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Reg_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoFB_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Reg_NoMember_Target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoMember_Target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoMember_Target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Reg_NoMember, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Reg_NoMember, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <hr />
+            <h5>IA STRENGTHENING</h5>
+            <hr />
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Str_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Str_Tsag_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_Tsag_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_Tsag_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_Tsag, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_Tsag, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Str_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_Area_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Str_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_NoFB_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Str_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Str_NoFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <hr />
+            <h5>IA SUSTENANCE</h5>
+            <hr />
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Sus_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Sus_Tsag_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_Tsag_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_Tsag_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_Tsag, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_Tsag, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Sus_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_Area_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Sus_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_NoFB_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Sus_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sus_NoFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <hr />
+            <h5>IMT / O&M CONTRACTING</h5>
+            <hr />
+
+            <div class="form-group">
+                <div class="control-label col-md-1">
+                    Modified Contract (MC 13 s. 2017)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModCon_SA_target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_SA_target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_SA_target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_SA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_SA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModCon_FUSA_target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_FUSA_target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_FUSA_target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_FUSA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_FUSA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ModCon_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoIA_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoIA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ModCon_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_Area_Covered, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ModCon_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoFB_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoFB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.ModCon_NoMember_Target, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoMember_Target, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoMember_Target, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ModCon_NoMember, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ModCon_NoMember, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">
+                    Length of Canals (km.)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModCon_unlined_target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_unlined_target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_unlined_target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_unlined, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_unlined, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModCon_lined_target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_lined_target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_lined_target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_lined, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_lined, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="control-label col-md-1">
+                   Other O & M Contracts
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModOther_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModOther_Area_Covered_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_Area_Covered_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_Area_Covered_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_Area_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_Area_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModOther_NoFB_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoFB_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoFB_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoFB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModOther_NoMember_Target, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoMember_Target, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoMember_Target, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModOther_NoMember, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModOther_NoMember, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+                <hr />
+                <h5>CAPACITY BUILDING FOR IA</h5>
+                <hr />
+
+
+            <div class="form-group">
+                <div class="control-label col-md-1">
+                   REGULAR TRAINING
+                </div>
+            </div>
+
+
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityIA_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_NoIA_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_NoIA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityIA_Batches_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_Batches_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_Batches_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_Batches_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_Batches_Covered, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityIA_Participants_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_Participants_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_Participants_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIA_Participants, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIA_Participants, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+       
+                
+            <div class="form-group">
+                <div class="control-label col-md-1">
+                   Other Capacity Buildings
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.CapacityIAWORKSHOP_COST_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityIAWORKSHOP_COST_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CapacityIA_COST_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityIAWORKSHOP_COST, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CapacityIA_COST, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityIAWORKSHOP_Batches_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIAWORKSHOP_Batches_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIAWORKSHOP_Batches_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIAWORKSHOP_Batches_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIAWORKSHOP_Batches_Covered, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityIAWORKSHOP_Participants_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIAWORKSHOP_Participants_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIAWORKSHOP_Participants_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityIAWORKSHOP_Participants, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityIAWORKSHOP_Participants, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+              
+
+
+                <hr />
+                <h5>CAPACITY BUILDING FOR NIA STAFF</h5>
+                <hr />
+
+                <div class="form-group">
+                    <div class="form-group control-label col-md-1">
+                        REGULAR TRAINING
+                    </div>
+                </div>
+
+           
+
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityStaff_Batches_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaff_Batches_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaff_Batches_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaff_Batches_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaff_Batches_Covered, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityStaff_Participants_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaff_Participants_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaff_Participants_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaff_Participants, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaff_Participants, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+     
+
+            <div class="form-group">
+                <div class="control-label col-md-1">
+                    Other Capacity Buildings
+                </div>
+            </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityStaffWORKSHOP_Batches_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaffWORKSHOP_Batches_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaffWORKSHOP_Batches_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaffWORKSHOP_Batches_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaffWORKSHOP_Batches_Covered, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.CapacityStaffWORKSHOP_Participants_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaffWORKSHOP_Participants_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaffWORKSHOP_Participants_TARGET, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CapacityStaffWORKSHOP_Participants, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CapacityStaffWORKSHOP_Participants, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+    
+
+
+            <hr />
+            <h5>ASSISTANCE PROGRAM/S ITERAGENCY COORDINATION</h5>
+            <hr />
+
+
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Assist_NoIA_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_NoIA_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_NoIA_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_NoIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Assist_Batches_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_Batches_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_Batches_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_Batches_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_Batches_Covered, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Assist_Participants_TARGET, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_Participants_TARGET, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_Participants_TARGET, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Assist_Participants, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist_Participants, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        
+            <hr />
+            <h5>REMARKS</h5>
+            <hr />
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ModCon_Remarks, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModCon_Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModCon_Remarks, "", new { @class = "text-danger" })
+                </div>
+
+            
+            </div>
+
+
+
+
+
+            </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#mndtimtss').datepicker(
+                       {
+                           dateFormat: "mm/yy",
+                           changeMonth: true,
+                           changeYear: true,
+                           showButtonPanel: true,
+                           onClose: function (dateText, inst) {
+
+
+                               function isDonePressed() {
+                                   return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                               }
+
+                               if (isDonePressed()) {
+                                   var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                   var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                   $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+
+                                   var a = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+                                   var b = parseInt(1);
+                                   var c = a + b;
+
+
+                                   $('#mnts').val(c);
+
+                                   $('#yrs').val(year);
+
+                                   $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                               }
+                           },
+                           beforeShow: function (input, inst) {
+
+                               inst.dpDiv.addClass('month_year_datepicker')
+
+                               if ((datestr = $(this).val()).length > 0) {
+                                   year = datestr.substring(datestr.length - 4, datestr.length);
+                                   month = datestr.substring(0, 2);
+                                   $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                   $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                   $(".ui-datepicker-calendar").hide();
+                               }
+                           }
+                       });
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+    });
+
+</script>

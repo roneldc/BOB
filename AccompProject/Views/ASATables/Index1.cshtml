@@ -1,0 +1,68 @@
+﻿@*@model IEnumerable<AccompProject.Models.ASATable>
+
+@{*@
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div>
+    <table id="customers" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    IDAccomp
+                </th>
+                <th>
+                    ASANo
+                </th>
+                <th>
+                    ASAAmount
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+
+
+
+<div>
+    @Html.ActionLink("Back to Subproject", "Edit", new { Controller = "ACCOMPLISHMENT", Id = Session["idaccomp"].ToString() })
+</div>
+
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+    }
+</style>
+@* Load datatable css *@
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+@* Load datatable js *@
+@section Scripts{
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#customers').DataTable({
+                "ajax": {
+                    "url": "/ASATables/loaddata",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                        { "data": "IDAccomp", "autoWidth": true },
+                        { "data": "ASANo", "autoWidth": true },
+                        { "data": "ASAAmount", "autoWidth": true },
+                      
+                ]
+            });
+        });
+    </script>
+}

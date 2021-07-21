@@ -1,0 +1,1006 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="procurementss_onlinejervyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PRNOStatus">
+          <Key>
+            <PropertyRef Name="IDProcStatus" />
+          </Key>
+          <Property Name="IDProcStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="150" />
+          <Property Name="PRNO" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateLog" Type="date" />
+          <Property Name="timeLog" Type="time" Precision="7" />
+          <Property Name="id_key" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProcurementAbstractofQuotation">
+          <Key>
+            <PropertyRef Name="AbstractID" />
+          </Key>
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="255" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="AbstractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentCode" Type="int" />
+          <Property Name="Document_status" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProcurementDocuments">
+          <Key>
+            <PropertyRef Name="IDDocument" />
+          </Key>
+          <Property Name="IDDocument" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentDescription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProcurementFileDocument">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="varbinary(max)" />
+          <Property Name="FileType" Type="int" />
+          <Property Name="procurementID" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocumentCode" Type="int" />
+          <Property Name="abstractid" Type="int" />
+          <Property Name="userid" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProcurementModeCartApproved">
+          <Key>
+            <PropertyRef Name="StatID" />
+          </Key>
+          <Property Name="StatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_key" Type="int" />
+          <Property Name="procurementmode" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="official_id" Type="int" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreated" Type="date" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="255" />
+          <Property Name="deadline" Type="date" />
+          <Property Name="quotationno" Type="nvarchar" MaxLength="150" />
+          <Property Name="requisitionno" Type="nvarchar" MaxLength="150" />
+          <Property Name="openingdate" Type="date" />
+          <Property Name="openingtime" Type="time" Precision="7" />
+          <Property Name="philgeps" Type="nvarchar" MaxLength="150" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="validityPeriod" Type="int" />
+          <Property Name="deliveryPeriod" Type="int" />
+          <Property Name="article" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProcurementPerSupplierDocument">
+          <Key>
+            <PropertyRef Name="IDSupplierDocu" />
+          </Key>
+          <Property Name="IDSupplierDocu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="255" />
+          <Property Name="DOcuID" Type="int" />
+          <Property Name="Filename" Type="nvarchar" MaxLength="255" />
+          <Property Name="Filetype" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SuplierName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="statusbid" Type="nvarchar" MaxLength="150" />
+          <Property Name="procurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="Userid" Type="nvarchar" MaxLength="250" />
+          <Property Name="CategorySupplier" Type="nvarchar" MaxLength="50" />
+          <Property Name="draft" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierProfile">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SupplierAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="userid" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Appoved" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateApproved" Type="date" />
+          <Property Name="SupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="region" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierQuotation">
+          <Key>
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="QuotationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="StatID" Type="int" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="SupplierQuotation" Type="nvarchar(max)" />
+          <Property Name="unitPrice" Type="float" />
+          <Property Name="totalBidPrice" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.ProcurementCartApprovedViewSum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcurementCartApprovedViewSum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="qty" Type="float" />
+          <Property Name="procurementmode" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="deadline" Type="date" />
+          <Property Name="quotationno" Type="nvarchar" MaxLength="150" />
+          <Property Name="requisitionno" Type="nvarchar" MaxLength="150" />
+          <Property Name="openingdate" Type="date" />
+          <Property Name="openingtime" Type="time" Precision="7" />
+          <Property Name="philgeps" Type="nvarchar" MaxLength="150" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="deliveryPeriod" Type="int" />
+          <Property Name="validityPeriod" Type="int" />
+          <Property Name="article" Type="nvarchar" MaxLength="250" />
+          <Property Name="total_price" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.ProcurementListForSupplier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcurementListForSupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="qty" Type="float" />
+          <Property Name="procurementmode" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="deadline" Type="date" />
+          <Property Name="quotationno" Type="nvarchar" MaxLength="150" />
+          <Property Name="requisitionno" Type="nvarchar" MaxLength="150" />
+          <Property Name="openingdate" Type="date" />
+          <Property Name="openingtime" Type="time" Precision="7" />
+          <Property Name="philgeps" Type="nvarchar" MaxLength="150" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="deliveryPeriod" Type="int" />
+          <Property Name="validityPeriod" Type="int" />
+          <Property Name="article" Type="nvarchar" MaxLength="250" />
+          <Property Name="total_price" Type="float" />
+          <Property Name="supplierid" Type="int" />
+          <Property Name="supplieridstring" Type="nvarchar" MaxLength="255" />
+          <Property Name="draft" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.ProcurementStandardDocumentView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcurementStandardDocumentView">
+          <Key>
+            <PropertyRef Name="StandardIDDocu" />
+          </Key>
+          <Property Name="StandardIDDocu" Type="int" Nullable="false" />
+          <Property Name="Procurementmode" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDDocument" Type="int" />
+          <Property Name="documentDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="lowestbidder" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.ProcurementSupplierProcurementIDView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcurementSupplierProcurementIDView">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="SuplierName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="PONumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="WordedAmount" Type="nvarchar(max)" />
+          <Property Name="statusbid" Type="nvarchar" MaxLength="150" />
+          <Property Name="userid" Type="nvarchar" MaxLength="250" />
+          <Property Name="draft" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.ProcurementSupplierQuotationView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcurementSupplierQuotationView">
+          <Key>
+            
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="SuplierName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="QuotationID" Type="int" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" />
+          <Property Name="SupplierQuotation" Type="nvarchar(max)" />
+          <Property Name="unitPrice" Type="float" />
+          <Property Name="totalBidPrice" Type="float" />
+          <Property Name="id_key" Type="int" />
+          <Property Name="procurementmode" Type="nvarchar" MaxLength="150" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="official_id" Type="int" />
+          <Property Name="ProcurementID" Type="nvarchar" MaxLength="250" />
+          <Property Name="datecreated" Type="date" />
+          <Property Name="ref_no" Type="nvarchar" MaxLength="500" />
+          <Property Name="pr_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="yr" Type="nvarchar" MaxLength="50" />
+          <Property Name="office_reg" Type="nvarchar" MaxLength="50" />
+          <Property Name="dept" Type="nvarchar" MaxLength="500" />
+          <Property Name="div" Type="nvarchar" MaxLength="500" />
+          <Property Name="sec" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_cat" Type="nvarchar" MaxLength="150" />
+          <Property Name="cat" Type="nvarchar" MaxLength="150" />
+          <Property Name="date_created" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_desc" Type="nvarchar(max)" />
+          <Property Name="qty" Type="float" />
+          <Property Name="unit_price" Type="money" />
+          <Property Name="total_price" Type="money" />
+          <Property Name="cancelled" Type="bit" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="cart" Type="bit" />
+          <Property Name="specs" Type="nvarchar(max)" />
+          <Property Name="StatID" Type="int" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="draft" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'procurementss_onlinejervy.dbo.vwPRNODetailsJ' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPRNODetailsJ">
+          <Key>
+            <PropertyRef Name="id" />
+            
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ref_no" Type="nvarchar" MaxLength="500" />
+          <Property Name="pr_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_key" Type="int" Nullable="false" />
+          <Property Name="item_cat" Type="nvarchar" MaxLength="150" />
+          <Property Name="yr" Type="nvarchar" MaxLength="50" />
+          <Property Name="office_reg" Type="nvarchar" MaxLength="50" />
+          <Property Name="dept" Type="nvarchar" MaxLength="150" />
+          <Property Name="div" Type="nvarchar" MaxLength="50" />
+          <Property Name="sec" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_created" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="proj_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_desc" Type="nvarchar(max)" />
+          <Property Name="qty" Type="float" />
+          <Property Name="unit_price" Type="nvarchar" MaxLength="50" />
+          <Property Name="total_price" Type="nvarchar" MaxLength="50" />
+          <Property Name="cancelled" Type="bit" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="cart" Type="bit" />
+          <Property Name="specs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="procurementss_onlinejervyModelStoreContainer">
+          <EntitySet Name="PRNOStatus" EntityType="Self.PRNOStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementAbstractofQuotation" EntityType="Self.ProcurementAbstractofQuotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementDocuments" EntityType="Self.ProcurementDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementFileDocument" EntityType="Self.ProcurementFileDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementModeCartApproved" EntityType="Self.ProcurementModeCartApproved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementPerSupplierDocument" EntityType="Self.ProcurementPerSupplierDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementSupplier" EntityType="Self.ProcurementSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementSupplierProfile" EntityType="Self.ProcurementSupplierProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementSupplierQuotation" EntityType="Self.ProcurementSupplierQuotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementCartApprovedViewSum" EntityType="Self.ProcurementCartApprovedViewSum" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcurementCartApprovedViewSum].[ID] AS [ID], 
+    [ProcurementCartApprovedViewSum].[ProcurementID] AS [ProcurementID], 
+    [ProcurementCartApprovedViewSum].[qty] AS [qty], 
+    [ProcurementCartApprovedViewSum].[procurementmode] AS [procurementmode], 
+    [ProcurementCartApprovedViewSum].[user_id] AS [user_id], 
+    [ProcurementCartApprovedViewSum].[deadline] AS [deadline], 
+    [ProcurementCartApprovedViewSum].[quotationno] AS [quotationno], 
+    [ProcurementCartApprovedViewSum].[requisitionno] AS [requisitionno], 
+    [ProcurementCartApprovedViewSum].[openingdate] AS [openingdate], 
+    [ProcurementCartApprovedViewSum].[openingtime] AS [openingtime], 
+    [ProcurementCartApprovedViewSum].[philgeps] AS [philgeps], 
+    [ProcurementCartApprovedViewSum].[notes] AS [notes], 
+    [ProcurementCartApprovedViewSum].[deliveryPeriod] AS [deliveryPeriod], 
+    [ProcurementCartApprovedViewSum].[validityPeriod] AS [validityPeriod], 
+    [ProcurementCartApprovedViewSum].[article] AS [article], 
+    [ProcurementCartApprovedViewSum].[total_price] AS [total_price]
+    FROM [dbo].[ProcurementCartApprovedViewSum] AS [ProcurementCartApprovedViewSum]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProcurementListForSupplier" EntityType="Self.ProcurementListForSupplier" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcurementListForSupplier].[ID] AS [ID], 
+    [ProcurementListForSupplier].[ProcurementID] AS [ProcurementID], 
+    [ProcurementListForSupplier].[qty] AS [qty], 
+    [ProcurementListForSupplier].[procurementmode] AS [procurementmode], 
+    [ProcurementListForSupplier].[user_id] AS [user_id], 
+    [ProcurementListForSupplier].[deadline] AS [deadline], 
+    [ProcurementListForSupplier].[quotationno] AS [quotationno], 
+    [ProcurementListForSupplier].[requisitionno] AS [requisitionno], 
+    [ProcurementListForSupplier].[openingdate] AS [openingdate], 
+    [ProcurementListForSupplier].[openingtime] AS [openingtime], 
+    [ProcurementListForSupplier].[philgeps] AS [philgeps], 
+    [ProcurementListForSupplier].[notes] AS [notes], 
+    [ProcurementListForSupplier].[deliveryPeriod] AS [deliveryPeriod], 
+    [ProcurementListForSupplier].[validityPeriod] AS [validityPeriod], 
+    [ProcurementListForSupplier].[article] AS [article], 
+    [ProcurementListForSupplier].[total_price] AS [total_price], 
+    [ProcurementListForSupplier].[supplierid] AS [supplierid], 
+    [ProcurementListForSupplier].[supplieridstring] AS [supplieridstring], 
+    [ProcurementListForSupplier].[draft] AS [draft]
+    FROM [dbo].[ProcurementListForSupplier] AS [ProcurementListForSupplier]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProcurementStandardDocumentView" EntityType="Self.ProcurementStandardDocumentView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcurementStandardDocumentView].[StandardIDDocu] AS [StandardIDDocu], 
+    [ProcurementStandardDocumentView].[Procurementmode] AS [Procurementmode], 
+    [ProcurementStandardDocumentView].[IDDocument] AS [IDDocument], 
+    [ProcurementStandardDocumentView].[documentDescription] AS [documentDescription], 
+    [ProcurementStandardDocumentView].[lowestbidder] AS [lowestbidder]
+    FROM [dbo].[ProcurementStandardDocumentView] AS [ProcurementStandardDocumentView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProcurementSupplierProcurementIDView" EntityType="Self.ProcurementSupplierProcurementIDView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcurementSupplierProcurementIDView].[ID] AS [ID], 
+    [ProcurementSupplierProcurementIDView].[SuplierName] AS [SuplierName], 
+    [ProcurementSupplierProcurementIDView].[SupplierID] AS [SupplierID], 
+    [ProcurementSupplierProcurementIDView].[Address] AS [Address], 
+    [ProcurementSupplierProcurementIDView].[ProcurementID] AS [ProcurementID], 
+    [ProcurementSupplierProcurementIDView].[ContactNo] AS [ContactNo], 
+    [ProcurementSupplierProcurementIDView].[PONumber] AS [PONumber], 
+    [ProcurementSupplierProcurementIDView].[WordedAmount] AS [WordedAmount], 
+    [ProcurementSupplierProcurementIDView].[statusbid] AS [statusbid], 
+    [ProcurementSupplierProcurementIDView].[userid] AS [userid], 
+    [ProcurementSupplierProcurementIDView].[draft] AS [draft]
+    FROM [dbo].[ProcurementSupplierProcurementIDView] AS [ProcurementSupplierProcurementIDView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProcurementSupplierQuotationView" EntityType="Self.ProcurementSupplierQuotationView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcurementSupplierQuotationView].[SupplierID] AS [SupplierID], 
+    [ProcurementSupplierQuotationView].[SuplierName] AS [SuplierName], 
+    [ProcurementSupplierQuotationView].[Address] AS [Address], 
+    [ProcurementSupplierQuotationView].[QuotationID] AS [QuotationID], 
+    [ProcurementSupplierQuotationView].[remarks] AS [remarks], 
+    [ProcurementSupplierQuotationView].[SupplierQuotation] AS [SupplierQuotation], 
+    [ProcurementSupplierQuotationView].[unitPrice] AS [unitPrice], 
+    [ProcurementSupplierQuotationView].[totalBidPrice] AS [totalBidPrice], 
+    [ProcurementSupplierQuotationView].[id_key] AS [id_key], 
+    [ProcurementSupplierQuotationView].[procurementmode] AS [procurementmode], 
+    [ProcurementSupplierQuotationView].[user_id] AS [user_id], 
+    [ProcurementSupplierQuotationView].[official_id] AS [official_id], 
+    [ProcurementSupplierQuotationView].[ProcurementID] AS [ProcurementID], 
+    [ProcurementSupplierQuotationView].[datecreated] AS [datecreated], 
+    [ProcurementSupplierQuotationView].[ref_no] AS [ref_no], 
+    [ProcurementSupplierQuotationView].[pr_no] AS [pr_no], 
+    [ProcurementSupplierQuotationView].[unit] AS [unit], 
+    [ProcurementSupplierQuotationView].[yr] AS [yr], 
+    [ProcurementSupplierQuotationView].[office_reg] AS [office_reg], 
+    [ProcurementSupplierQuotationView].[dept] AS [dept], 
+    [ProcurementSupplierQuotationView].[div] AS [div], 
+    [ProcurementSupplierQuotationView].[sec] AS [sec], 
+    [ProcurementSupplierQuotationView].[item_cat] AS [item_cat], 
+    [ProcurementSupplierQuotationView].[cat] AS [cat], 
+    [ProcurementSupplierQuotationView].[date_created] AS [date_created], 
+    [ProcurementSupplierQuotationView].[item_id] AS [item_id], 
+    [ProcurementSupplierQuotationView].[item_desc] AS [item_desc], 
+    [ProcurementSupplierQuotationView].[qty] AS [qty], 
+    [ProcurementSupplierQuotationView].[unit_price] AS [unit_price], 
+    [ProcurementSupplierQuotationView].[total_price] AS [total_price], 
+    [ProcurementSupplierQuotationView].[cancelled] AS [cancelled], 
+    [ProcurementSupplierQuotationView].[order_no] AS [order_no], 
+    [ProcurementSupplierQuotationView].[cart] AS [cart], 
+    [ProcurementSupplierQuotationView].[specs] AS [specs], 
+    [ProcurementSupplierQuotationView].[StatID] AS [StatID], 
+    [ProcurementSupplierQuotationView].[ContactNo] AS [ContactNo], 
+    [ProcurementSupplierQuotationView].[draft] AS [draft]
+    FROM [dbo].[ProcurementSupplierQuotationView] AS [ProcurementSupplierQuotationView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPRNODetailsJ" EntityType="Self.vwPRNODetailsJ" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPRNODetailsJ].[id] AS [id], 
+    [vwPRNODetailsJ].[ref_no] AS [ref_no], 
+    [vwPRNODetailsJ].[pr_no] AS [pr_no], 
+    [vwPRNODetailsJ].[id_key] AS [id_key], 
+    [vwPRNODetailsJ].[item_cat] AS [item_cat], 
+    [vwPRNODetailsJ].[yr] AS [yr], 
+    [vwPRNODetailsJ].[office_reg] AS [office_reg], 
+    [vwPRNODetailsJ].[dept] AS [dept], 
+    [vwPRNODetailsJ].[div] AS [div], 
+    [vwPRNODetailsJ].[sec] AS [sec], 
+    [vwPRNODetailsJ].[date_created] AS [date_created], 
+    [vwPRNODetailsJ].[item_id] AS [item_id], 
+    [vwPRNODetailsJ].[proj_id] AS [proj_id], 
+    [vwPRNODetailsJ].[item_desc] AS [item_desc], 
+    [vwPRNODetailsJ].[qty] AS [qty], 
+    [vwPRNODetailsJ].[unit_price] AS [unit_price], 
+    [vwPRNODetailsJ].[total_price] AS [total_price], 
+    [vwPRNODetailsJ].[cancelled] AS [cancelled], 
+    [vwPRNODetailsJ].[order_no] AS [order_no], 
+    [vwPRNODetailsJ].[cart] AS [cart], 
+    [vwPRNODetailsJ].[specs] AS [specs]
+    FROM [dbo].[vwPRNODetailsJ] AS [vwPRNODetailsJ]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="procurementss_onlinejervyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ProcurementSupplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SuplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="statusbid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="procurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Userid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CategorySupplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="draft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="procurementss_onlinejervyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProcurementSuppliers" EntityType="Self.ProcurementSupplier" />
+          <EntitySet Name="ProcurementCartApprovedViewSums" EntityType="procurementss_onlinejervyModel.ProcurementCartApprovedViewSum" />
+          <EntitySet Name="ProcurementSupplierProfiles" EntityType="procurementss_onlinejervyModel.ProcurementSupplierProfile" />
+          <EntitySet Name="ProcurementListForSuppliers" EntityType="procurementss_onlinejervyModel.ProcurementListForSupplier" />
+          <EntitySet Name="ProcurementModeCartApproveds" EntityType="procurementss_onlinejervyModel.ProcurementModeCartApproved" />
+          <EntitySet Name="ProcurementSupplierQuotations" EntityType="procurementss_onlinejervyModel.ProcurementSupplierQuotation" />
+          <EntitySet Name="ProcurementSupplierProcurementIDViews" EntityType="procurementss_onlinejervyModel.ProcurementSupplierProcurementIDView" />
+          <EntitySet Name="ProcurementFileDocuments" EntityType="procurementss_onlinejervyModel.ProcurementFileDocument" />
+          <EntitySet Name="ProcurementPerSupplierDocuments" EntityType="procurementss_onlinejervyModel.ProcurementPerSupplierDocument" />
+          <EntitySet Name="ProcurementDocuments" EntityType="procurementss_onlinejervyModel.ProcurementDocument" />
+          <EntitySet Name="ProcurementStandardDocumentViews" EntityType="procurementss_onlinejervyModel.ProcurementStandardDocumentView" />
+          <EntitySet Name="ProcurementAbstractofQuotations" EntityType="procurementss_onlinejervyModel.ProcurementAbstractofQuotation" />
+          <EntitySet Name="PRNOStatus" EntityType="procurementss_onlinejervyModel.PRNOStatu" />
+          <EntitySet Name="vwPRNODetailsJs" EntityType="procurementss_onlinejervyModel.vwPRNODetailsJ" />
+          <EntitySet Name="ProcurementSupplierQuotationViews" EntityType="procurementss_onlinejervyModel.ProcurementSupplierQuotationView" />
+        </EntityContainer>
+        <EntityType Name="ProcurementCartApprovedViewSum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ProcurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Double" />
+          <Property Name="procurementmode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="deadline" Type="DateTime" Precision="0" />
+          <Property Name="quotationno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="requisitionno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="openingdate" Type="DateTime" Precision="0" />
+          <Property Name="openingtime" Type="Time" Precision="7" />
+          <Property Name="philgeps" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryPeriod" Type="Int32" />
+          <Property Name="validityPeriod" Type="Int32" />
+          <Property Name="article" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="total_price" Type="Double" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierProfile">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Appoved" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateApproved" Type="DateTime" Precision="0" />
+          <Property Name="SupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementListForSupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ProcurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Double" />
+          <Property Name="procurementmode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="deadline" Type="DateTime" Precision="0" />
+          <Property Name="quotationno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="requisitionno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="openingdate" Type="DateTime" Precision="0" />
+          <Property Name="openingtime" Type="Time" Precision="7" />
+          <Property Name="philgeps" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deliveryPeriod" Type="Int32" />
+          <Property Name="validityPeriod" Type="Int32" />
+          <Property Name="article" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="total_price" Type="Double" />
+          <Property Name="supplierid" Type="Int32" />
+          <Property Name="supplieridstring" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="draft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementModeCartApproved">
+          <Key>
+            <PropertyRef Name="StatID" />
+          </Key>
+          <Property Name="StatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_key" Type="Int32" />
+          <Property Name="procurementmode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="official_id" Type="Int32" />
+          <Property Name="ProcurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreated" Type="DateTime" Precision="0" />
+          <Property Name="remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="deadline" Type="DateTime" Precision="0" />
+          <Property Name="quotationno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="requisitionno" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="openingdate" Type="DateTime" Precision="0" />
+          <Property Name="openingtime" Type="Time" Precision="7" />
+          <Property Name="philgeps" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="validityPeriod" Type="Int32" />
+          <Property Name="deliveryPeriod" Type="Int32" />
+          <Property Name="article" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierQuotation">
+          <Key>
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="QuotationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="StatID" Type="Int32" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierQuotation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unitPrice" Type="Double" />
+          <Property Name="totalBidPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierProcurementIDView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="SuplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProcurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PONumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WordedAmount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="statusbid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="draft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementFileDocument">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileType" Type="Int32" />
+          <Property Name="procurementID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentCode" Type="Int32" />
+          <Property Name="abstractid" Type="Int32" />
+          <Property Name="userid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementPerSupplierDocument">
+          <Key>
+            <PropertyRef Name="IDSupplierDocu" />
+          </Key>
+          <Property Name="IDSupplierDocu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DOcuID" Type="Int32" />
+          <Property Name="Filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Filetype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementDocument">
+          <Key>
+            <PropertyRef Name="IDDocument" />
+          </Key>
+          <Property Name="IDDocument" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementStandardDocumentView">
+          <Key>
+            <PropertyRef Name="StandardIDDocu" />
+          </Key>
+          <Property Name="StandardIDDocu" Type="Int32" Nullable="false" />
+          <Property Name="Procurementmode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDDocument" Type="Int32" />
+          <Property Name="documentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lowestbidder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementAbstractofQuotation">
+          <Key>
+            <PropertyRef Name="AbstractID" />
+          </Key>
+          <Property Name="ProcurementID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="AbstractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentCode" Type="Int32" />
+          <Property Name="Document_status" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PRNOStatu">
+          <Key>
+            <PropertyRef Name="IDProcStatus" />
+          </Key>
+          <Property Name="IDProcStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcurementID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PRNO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateLog" Type="DateTime" Precision="0" />
+          <Property Name="timeLog" Type="Time" Precision="7" />
+          <Property Name="id_key" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwPRNODetailsJ">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ref_no" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pr_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_key" Type="Int32" Nullable="false" />
+          <Property Name="item_cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="yr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="office_reg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dept" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="div" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="proj_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Double" />
+          <Property Name="unit_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="total_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cancelled" Type="Boolean" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cart" Type="Boolean" />
+          <Property Name="specs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcurementSupplierQuotationView">
+          <Key>
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="SuplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuotationID" Type="Int32" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierQuotation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unitPrice" Type="Double" />
+          <Property Name="totalBidPrice" Type="Double" />
+          <Property Name="id_key" Type="Int32" />
+          <Property Name="procurementmode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="official_id" Type="Int32" />
+          <Property Name="ProcurementID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datecreated" Type="DateTime" Precision="0" />
+          <Property Name="ref_no" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pr_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="office_reg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dept" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="div" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="sec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qty" Type="Double" />
+          <Property Name="unit_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="total_price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="cancelled" Type="Boolean" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cart" Type="Boolean" />
+          <Property Name="specs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatID" Type="Int32" />
+          <Property Name="ContactNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="draft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="procurementss_onlinejervyModelStoreContainer" CdmEntityContainer="procurementss_onlinejervyEntities">
+          <EntitySetMapping Name="ProcurementSuppliers">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementSupplier">
+              <MappingFragment StoreEntitySet="ProcurementSupplier">
+                <ScalarProperty Name="draft" ColumnName="draft" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SuplierName" ColumnName="SuplierName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="statusbid" ColumnName="statusbid" />
+                <ScalarProperty Name="procurementID" ColumnName="procurementID" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="CategorySupplier" ColumnName="CategorySupplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementCartApprovedViewSums">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementCartApprovedViewSum">
+              <MappingFragment StoreEntitySet="ProcurementCartApprovedViewSum">
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="article" ColumnName="article" />
+                <ScalarProperty Name="validityPeriod" ColumnName="validityPeriod" />
+                <ScalarProperty Name="deliveryPeriod" ColumnName="deliveryPeriod" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="philgeps" ColumnName="philgeps" />
+                <ScalarProperty Name="openingtime" ColumnName="openingtime" />
+                <ScalarProperty Name="openingdate" ColumnName="openingdate" />
+                <ScalarProperty Name="requisitionno" ColumnName="requisitionno" />
+                <ScalarProperty Name="quotationno" ColumnName="quotationno" />
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="procurementmode" ColumnName="procurementmode" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementSupplierProfiles">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementSupplierProfile">
+              <MappingFragment StoreEntitySet="ProcurementSupplierProfile">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="SupID" ColumnName="SupID" />
+                <ScalarProperty Name="dateApproved" ColumnName="dateApproved" />
+                <ScalarProperty Name="Appoved" ColumnName="Appoved" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementListForSuppliers">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementListForSupplier">
+              <MappingFragment StoreEntitySet="ProcurementListForSupplier">
+                <ScalarProperty Name="draft" ColumnName="draft" />
+                <ScalarProperty Name="supplieridstring" ColumnName="supplieridstring" />
+                <ScalarProperty Name="supplierid" ColumnName="supplierid" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="article" ColumnName="article" />
+                <ScalarProperty Name="validityPeriod" ColumnName="validityPeriod" />
+                <ScalarProperty Name="deliveryPeriod" ColumnName="deliveryPeriod" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="philgeps" ColumnName="philgeps" />
+                <ScalarProperty Name="openingtime" ColumnName="openingtime" />
+                <ScalarProperty Name="openingdate" ColumnName="openingdate" />
+                <ScalarProperty Name="requisitionno" ColumnName="requisitionno" />
+                <ScalarProperty Name="quotationno" ColumnName="quotationno" />
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="procurementmode" ColumnName="procurementmode" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementModeCartApproveds">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementModeCartApproved">
+              <MappingFragment StoreEntitySet="ProcurementModeCartApproved">
+                <ScalarProperty Name="article" ColumnName="article" />
+                <ScalarProperty Name="deliveryPeriod" ColumnName="deliveryPeriod" />
+                <ScalarProperty Name="validityPeriod" ColumnName="validityPeriod" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="philgeps" ColumnName="philgeps" />
+                <ScalarProperty Name="openingtime" ColumnName="openingtime" />
+                <ScalarProperty Name="openingdate" ColumnName="openingdate" />
+                <ScalarProperty Name="requisitionno" ColumnName="requisitionno" />
+                <ScalarProperty Name="quotationno" ColumnName="quotationno" />
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="official_id" ColumnName="official_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="procurementmode" ColumnName="procurementmode" />
+                <ScalarProperty Name="id_key" ColumnName="id_key" />
+                <ScalarProperty Name="StatID" ColumnName="StatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementSupplierQuotations">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementSupplierQuotation">
+              <MappingFragment StoreEntitySet="ProcurementSupplierQuotation">
+                <ScalarProperty Name="totalBidPrice" ColumnName="totalBidPrice" />
+                <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+                <ScalarProperty Name="SupplierQuotation" ColumnName="SupplierQuotation" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="StatID" ColumnName="StatID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementSupplierProcurementIDViews">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementSupplierProcurementIDView">
+              <MappingFragment StoreEntitySet="ProcurementSupplierProcurementIDView">
+                <ScalarProperty Name="draft" ColumnName="draft" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="statusbid" ColumnName="statusbid" />
+                <ScalarProperty Name="WordedAmount" ColumnName="WordedAmount" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SuplierName" ColumnName="SuplierName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementFileDocuments">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementFileDocument">
+              <MappingFragment StoreEntitySet="ProcurementFileDocument">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="abstractid" ColumnName="abstractid" />
+                <ScalarProperty Name="DocumentCode" ColumnName="DocumentCode" />
+                <ScalarProperty Name="procurementID" ColumnName="procurementID" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementPerSupplierDocuments">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementPerSupplierDocument">
+              <MappingFragment StoreEntitySet="ProcurementPerSupplierDocument">
+                <ScalarProperty Name="Filetype" ColumnName="Filetype" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="DOcuID" ColumnName="DOcuID" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="IDSupplierDocu" ColumnName="IDSupplierDocu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementDocuments">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementDocument">
+              <MappingFragment StoreEntitySet="ProcurementDocuments">
+                <ScalarProperty Name="documentDescription" ColumnName="documentDescription" />
+                <ScalarProperty Name="IDDocument" ColumnName="IDDocument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementStandardDocumentViews">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementStandardDocumentView">
+              <MappingFragment StoreEntitySet="ProcurementStandardDocumentView">
+                <ScalarProperty Name="lowestbidder" ColumnName="lowestbidder" />
+                <ScalarProperty Name="documentDescription" ColumnName="documentDescription" />
+                <ScalarProperty Name="IDDocument" ColumnName="IDDocument" />
+                <ScalarProperty Name="Procurementmode" ColumnName="Procurementmode" />
+                <ScalarProperty Name="StandardIDDocu" ColumnName="StandardIDDocu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementAbstractofQuotations">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementAbstractofQuotation">
+              <MappingFragment StoreEntitySet="ProcurementAbstractofQuotation">
+                <ScalarProperty Name="Document_status" ColumnName="Document_status" />
+                <ScalarProperty Name="DocumentCode" ColumnName="DocumentCode" />
+                <ScalarProperty Name="AbstractID" ColumnName="AbstractID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRNOStatus">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.PRNOStatu">
+              <MappingFragment StoreEntitySet="PRNOStatus">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="id_key" ColumnName="id_key" />
+                <ScalarProperty Name="timeLog" ColumnName="timeLog" />
+                <ScalarProperty Name="dateLog" ColumnName="dateLog" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PRNO" ColumnName="PRNO" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="IDProcStatus" ColumnName="IDProcStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPRNODetailsJs">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.vwPRNODetailsJ">
+              <MappingFragment StoreEntitySet="vwPRNODetailsJ">
+                <ScalarProperty Name="specs" ColumnName="specs" />
+                <ScalarProperty Name="cart" ColumnName="cart" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="item_desc" ColumnName="item_desc" />
+                <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="div" ColumnName="div" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="office_reg" ColumnName="office_reg" />
+                <ScalarProperty Name="yr" ColumnName="yr" />
+                <ScalarProperty Name="item_cat" ColumnName="item_cat" />
+                <ScalarProperty Name="id_key" ColumnName="id_key" />
+                <ScalarProperty Name="pr_no" ColumnName="pr_no" />
+                <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementSupplierQuotationViews">
+            <EntityTypeMapping TypeName="procurementss_onlinejervyModel.ProcurementSupplierQuotationView">
+              <MappingFragment StoreEntitySet="ProcurementSupplierQuotationView">
+                <ScalarProperty Name="draft" ColumnName="draft" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="StatID" ColumnName="StatID" />
+                <ScalarProperty Name="specs" ColumnName="specs" />
+                <ScalarProperty Name="cart" ColumnName="cart" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="item_desc" ColumnName="item_desc" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="item_cat" ColumnName="item_cat" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="div" ColumnName="div" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="office_reg" ColumnName="office_reg" />
+                <ScalarProperty Name="yr" ColumnName="yr" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="pr_no" ColumnName="pr_no" />
+                <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+                <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="ProcurementID" ColumnName="ProcurementID" />
+                <ScalarProperty Name="official_id" ColumnName="official_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="procurementmode" ColumnName="procurementmode" />
+                <ScalarProperty Name="id_key" ColumnName="id_key" />
+                <ScalarProperty Name="totalBidPrice" ColumnName="totalBidPrice" />
+                <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+                <ScalarProperty Name="SupplierQuotation" ColumnName="SupplierQuotation" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SuplierName" ColumnName="SuplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

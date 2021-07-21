@@ -1,0 +1,123 @@
+﻿@model AccompProject.Models.IA_PROFILE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.IA_NAME)</h2>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASJVuQHTbnowA2fyqOgCg7r67ru71lAmQ&libraries=drawing,geometry"></script>
+
+
+
+
+<form>
+
+
+    <input type="text" style="display:none" class="form-control" id="idsystem" placeholder="Id" disabled="disabled" value=@Session["idsystem"].ToString() />
+
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.AMOUNT_NIA_CIA,"LATITUDE", htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-md-2">
+            @Html.EditorFor(model => model.AMOUNT_NIA_CIA, new { htmlAttributes = new { @class = "form-control", id = "LATITUDE" } })
+            @Html.ValidationMessageFor(model => model.AMOUNT_NIA_CIA, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.AMOUNT_NIA_FIA,"LONGITUDE", htmlAttributes: new { @class = "control-label " })
+        </div>
+        <div class="col-md-2">
+            @Html.EditorFor(model => model.AMOUNT_NIA_FIA, new { htmlAttributes = new { @class = "form-control", id = "LONGITUDE" } })
+            @Html.ValidationMessageFor(model => model.AMOUNT_NIA_FIA, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary" id="btnupdate">Update Coordinates</button>
+
+        </div>
+
+    </div>
+
+
+
+</form>
+
+<br />
+<br />
+<br />
+<hr />
+
+
+
+
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+
+    <div class="row">
+        <div id="replacetarget">
+            @*@if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                {*@
+
+            @{ Html.RenderAction("IndexDelineate", "IA", new { id = Model.IAPROFILEID, lati = Model.AMOUNT_NIA_CIA, longi = Model.AMOUNT_NIA_FIA }); }
+
+            @*}*@
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+
+        $('#btnupdate').click(function () {
+
+            var data = JSON.stringify({
+                'latitude': $('#LATITUDE').val(),
+                'longitude': $('#LONGITUDE').val(),
+                'id': $('#idsystem').val()
+            });
+
+        
+
+            $.ajax({
+                url: "/IA/UpdateCoord",
+                data: data,
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.success) {
+                        $('#replacetarget').load(result.url);
+                    }
+                },
+                error: function (errormessage) {
+                    console.log(errormessage.responseText);
+
+                }
+
+            });
+
+
+        });
+
+    });
+
+</script>

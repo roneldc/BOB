@@ -1,0 +1,388 @@
+﻿@model AccompProject.Models.ContractView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Profile of Contracts</h4>  <h4>
+        @Session["subproject"].ToString()
+    </h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractName, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContractName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractorName, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractorName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContractorName, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractReferenceNo, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractReferenceNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContractReferenceNo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractDescription, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContractDescription, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ABCAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ABCAmount, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.ABCAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractAmount, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.ContractAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractDate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ContractDate, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractDuration, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractDuration, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.ContractDuration, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.RevisedExpiryDate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.RevisedExpiryDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.RevisedExpiryDate, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ReviseContractDuration, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ReviseContractDuration, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.ReviseContractDuration, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ReviseContractAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ReviseContractAmount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReviseContractAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+
+            <hr />
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.TargetStart, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.TargetStart, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.TargetStart, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.TargetEnd, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.TargetEnd, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.TargetEnd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ActualStart, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ActualStart, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ActualStart, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.EstimatedEnd, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EstimatedEnd, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.EstimatedEnd, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.PhilGepsPositng, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.PhilGepsPositng, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.PhilGepsPositng, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+            </div>
+
+            <hr />
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.RemarksContract, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.RemarksContract, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.RemarksContract, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.type,
+  new SelectList(Enum.GetValues(typeof(TypeContract))),
+            "Select type")
+                    @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+        $('.datepicker').datepicker();
+
+
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+
+
+
+
+    });
+    //$("#jd").focusout(function () {
+    //    var d = $("#jd").val();
+    //    alert(d);
+    //});
+
+
+    //$("#as_of").val(function () {
+
+
+    //var date = new Date();
+    //var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    //var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    //var lastDayWithSlashes = (lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear();
+
+    //return lastDayWithSlashes;
+
+
+    //});
+
+
+    //$(".date").datepicker(
+
+    //    {
+    //        dateFormat: 'mm-dd-yy',
+    //        minDate: '+5d',
+    //        changeMonth: true,
+    //        changeYear: true,
+    //        altField: ".date"
+    //        //onSelect: function (dateText, inst) {
+    //        //    var date = $(this).datepicker('getDate'),
+    //        //        day = date.getDate(),
+    //        //        month = date.getMonth() + 1,
+    //        //        year = date.getFullYear();
+    //        //    alert(day + '-' + month + '-' + year);
+    //        // }
+
+    //    });
+
+    //$(".asadate").datepicker(
+
+    //       {
+    //dateFormat: 'mm-dd-yy',
+    //minDate: '+5d',
+    //changeMonth: true,
+    //changeYear: true,
+    //altField: ".asadate"
+    //onSelect: function (dateText, inst) {
+    //    var date = $(this).datepicker('getDate'),
+    //        day = date.getDate(),
+    //        month = date.getMonth() + 1,
+    //        year = date.getFullYear();
+    //    alert(day + '-' + month + '-' + year);
+    // }
+
+    //      });
+
+
+    //$(".dates").datepicker({
+    //    dateFormat: 'mm-dd-yy',
+    //    minDate: '+5d',
+    //    changeMonth: true,
+    //    changeYear: true,
+    //    altField: ".dates"
+
+
+    //    });
+
+    // });
+
+
+
+</script>

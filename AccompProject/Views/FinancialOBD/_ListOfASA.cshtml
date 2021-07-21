@@ -1,0 +1,101 @@
+﻿@model  PagedList.IPagedList<AccompProject.Models.FinancialNCAADAView>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("MyIndex", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+
+    <table id="customers" class="table table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    ASA NO.
+                </th>
+                <th>
+                    ASA AMOUNT
+                </th>
+                <th>
+                    NCA NO.
+                </th>
+                <th>
+                    NTA NO.
+                </th>
+                <th>
+                    ADA NO.
+                </th>
+                <th>
+                    MAINPROJECT
+                </th>
+                <th>
+                    SUBPROJECT
+                </th>
+                <th>
+                MUNICIPALITY
+                </th>
+                <th>
+                ALLOTMENT (P'000)
+                </th>
+               <th>
+                ACTIONS
+                </th>
+            </tr>
+
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.asano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asaamount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NCANO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NTANO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ADANO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("OBLIGATION & DISBURSEMENT", "Edit", "FinancialOBD", new { id = item.IDNCAADA }, new { @class = " btn btn-info" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+

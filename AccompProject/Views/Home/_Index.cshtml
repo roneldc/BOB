@@ -1,0 +1,21 @@
+﻿@using MvcReportViewer
+
+<div id="myreport" class="container">
+    @{
+        string tempA = ViewBag.kindReport;
+        string strREGION = Session["regiontolog"].ToString();
+        //string   strREGION = "UPRIIS";
+        var parameter = new List<KeyValuePair<string, object>>
+
+
+    {
+        new KeyValuePair<string, object>("REGION",strREGION),
+   
+    };
+
+    }
+
+
+
+    @Html.MvcReportViewer(tempA, parameter, new { height = "500", width = "1100", style = "border: none" })
+</div>

@@ -1,0 +1,77 @@
+﻿@model AccompProject.Models.CityBoundary
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>CityBoundary</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CityID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cityname, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cityname)
+                @Html.ValidationMessageFor(model => model.Cityname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CityBoundariesname, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CityBoundariesname)
+                @Html.ValidationMessageFor(model => model.CityBoundariesname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CovidPositive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CovidPositive)
+                @Html.ValidationMessageFor(model => model.CovidPositive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CovidDied, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CovidDied)
+                @Html.ValidationMessageFor(model => model.CovidDied)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CovidRecovered, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CovidRecovered)
+                @Html.ValidationMessageFor(model => model.CovidRecovered)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateasof, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dateasof)
+                @Html.ValidationMessageFor(model => model.dateasof)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,205 @@
+﻿@model IEnumerable<AccompProject.Models.UsersProfile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<form>
+
+
+    <div class="form-group">
+        <div class="row">
+
+            <div class="col-md-1">
+                <label for="mnt">Month</label>
+            </div>
+
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="mnt" value="" />
+            </div>
+            <div class="col-md-1">
+                <label for="yr">Year</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="yr" value="" />
+            </div>
+
+            <div class="col-md-3">
+                <button type="button" class="btn btn-primary" id="btnupdate">Update Month and Year</button>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+<h2>Index</h2>
+@if (User.IsInRole("Admin"))
+{
+
+    @Html.ActionLink("Create New Role", "Create")
+}
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        @if (User.IsInRole("Admin"))
+        {
+
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TypeUser)
+            </th>
+        }else
+        { 
+        
+           <th>
+                @Html.DisplayNameFor(model => model.mnt)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.yr)
+            </th>
+        
+        
+        
+        }
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeUser)
+                </td>
+            }
+            else { 
+            
+              <td>
+                    @Html.DisplayFor(modelItem => item.mnt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.yr)
+                </td>
+            
+            
+            }
+            
+
+
+            <td>
+
+                @if (User.IsInRole("Admin"))
+                {
+
+                    <ul>
+                        <li>
+
+
+                            @Html.ActionLink("Manage User Role", "ManageUserRoles", new { id = item.UserId })
+                        </li>
+                        |
+                        <li>   @Html.ActionLink("Manage User Type", "ManageUserType", new { id = item.UserId })</li>
+
+
+                    </ul>
+
+
+                }
+                @if (User.IsInRole("AdminFinance"))
+                {
+
+                    @Html.ActionLink("Manage Month", "ManageUserMonth", new { id = item.UserId })
+
+
+                }
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+
+
+        $('#btnupdate').click(function () {
+
+            var data = JSON.stringify({
+                'mnt': $('#mnt').val(),
+                'yr': $('#yr').val()
+               
+            });
+
+
+            alert("hellow");
+            $.ajax({
+                url: "/Roles/UpdateMntYr",
+                data: data,
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result, url) {
+                    //   loadData();
+                    //  $('#myModal').modal('hide');
+                    //   clearTextBox();
+                  //  alert('success ' + result.url);
+                    window.location.reload();
+                },
+                error: function (errormessage) {
+                    console.log(errormessage.responseText);
+
+                }
+
+            });
+
+
+        });
+
+
+
+
+    });
+
+</script>

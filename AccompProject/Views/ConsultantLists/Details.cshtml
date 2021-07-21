@@ -1,0 +1,26 @@
+﻿@model AccompProject.Models.ConsultantList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ConsultantList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdConsultant }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

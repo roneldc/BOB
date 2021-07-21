@@ -1,0 +1,89 @@
+﻿@model  PagedList.IPagedList<RegionalFinancialViewSummaryProjectASA>
+    @using PagedList.Mvc;
+    @using PagedList;
+
+
+
+
+
+    <div id="listofprojects" class="container-fluid">
+
+
+
+
+        <div class="pagedList" data-jtv-target="#listofprojects">
+            @Html.PagedListPager(Model, page => Url.Action("MyIndexODASA", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+        </div>
+
+        <table id="customers" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        PARTICULARS
+                    </th>
+                    <th>
+                        SARO AMOUNT
+                    </th>
+                    <th>
+                        ASA AMOUNT
+                    </th>
+                   
+                    <th>
+                        OBLIGATION
+                    </th>
+                    <th>
+                        DISBURSEMENT
+                    </th>
+
+                    <th>
+                        CASH
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+
+
+            </thead>
+
+
+            @foreach (var item in Model)
+            {
+                <tr class="oddnum">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.asano)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.saroamount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.asaamount)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Obligationamount)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disbursement)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cash)
+                    </td>
+
+
+
+                    <td>
+
+                        @Html.ActionLink("VIEW", "MyIndexODASASubproject", "FinancialOBD", new { ids = item.maindescription, asano = item.asano, asabag = item.year }, new { @class = " btn btn-info" })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+

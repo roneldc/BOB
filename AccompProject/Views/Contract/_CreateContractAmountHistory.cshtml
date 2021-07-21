@@ -1,0 +1,217 @@
+﻿@model AccompProject.Models.ContractAmountHistoryView
+
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Status of Contracts</h4>  <h4>
+        @Session["subproject"].ToString()
+    </h4>
+</div>
+
+@using (Html.BeginForm())
+   
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ContractID, new { @Value = Session["ContractID"].ToString() })
+            
+
+
+            <div class="form-group">
+                @*<div class="col-md-2">
+                    @Html.LabelFor(model => model.DateApplied, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DateApplied, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.DateApplied, "", new { @class = "text-danger" })
+                </div>*@
+
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.DateReceived, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DateReceived, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.DateReceived, "", new { @class = "text-danger" })
+                </div>
+
+            </div>      
+        
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.AmountBilled, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AmountBilled, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.AmountBilled, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+      
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+       
+
+            <hr />
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+       
+
+        $('.datepicker').datepicker();
+
+
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+
+
+
+
+    });
+    //$("#jd").focusout(function () {
+    //    var d = $("#jd").val();
+    //    alert(d);
+    //});
+
+
+    //$("#as_of").val(function () {
+
+
+    //var date = new Date();
+    //var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    //var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    //var lastDayWithSlashes = (lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear();
+
+    //return lastDayWithSlashes;
+
+
+    //});
+
+
+    //$(".date").datepicker(
+
+    //    {
+    //        dateFormat: 'mm-dd-yy',
+    //        minDate: '+5d',
+    //        changeMonth: true,
+    //        changeYear: true,
+    //        altField: ".date"
+    //        //onSelect: function (dateText, inst) {
+    //        //    var date = $(this).datepicker('getDate'),
+    //        //        day = date.getDate(),
+    //        //        month = date.getMonth() + 1,
+    //        //        year = date.getFullYear();
+    //        //    alert(day + '-' + month + '-' + year);
+    //        // }
+
+    //    });
+
+    //$(".asadate").datepicker(
+
+    //       {
+    //dateFormat: 'mm-dd-yy',
+    //minDate: '+5d',
+    //changeMonth: true,
+    //changeYear: true,
+    //altField: ".asadate"
+    //onSelect: function (dateText, inst) {
+    //    var date = $(this).datepicker('getDate'),
+    //        day = date.getDate(),
+    //        month = date.getMonth() + 1,
+    //        year = date.getFullYear();
+    //    alert(day + '-' + month + '-' + year);
+    // }
+
+    //      });
+
+
+    //$(".dates").datepicker({
+    //    dateFormat: 'mm-dd-yy',
+    //    minDate: '+5d',
+    //    changeMonth: true,
+    //    changeYear: true,
+    //    altField: ".dates"
+
+
+    //    });
+
+    // });
+
+
+
+</script>

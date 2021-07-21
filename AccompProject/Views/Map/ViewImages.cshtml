@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AccompProject.Models.SYSTEMPICTURE>
+
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.MAPsystem)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td width="200" height="200">
+       
+          
+            @*@{ byte[] photo = item.MAPsystem;
+             string imageSrc = null;
+             if (photo != null)
+             {
+                 MemoryStream ms = new MemoryStream();
+                 ms.Write(photo, 78, photo.Length - 78);
+                 string imageBase64 = Convert.ToBase64String(ms.ToArray());
+                 imageSrc = string.Format("data:image/jpeg;base64,{0}", imageBase64);
+             }
+            }
+
+            <img src="@imageSrc" width="200" height="200" alt="Image" />*@
+          @*  <img src="data:image;base64,@System.Convert.ToBase64String(item.MAPsystem)" width="80" height="80" />*@ 
+        @*    <img src="data:image/jpg;base64,{0},@Convert.ToBase64String(item.MAPsystem)" width="200" height="200" alt="Image" />*@
+            
+            @Html.Image(item.MAPsystem)
+           
+            
+          @*  <div width="200" height="200">  @Html.GetBytes(itemP1 => item.IDtable, item.MAPsystem, "Idtag")</div>*@
+        
+        
+        </td>
+    </tr>
+}
+
+</table>

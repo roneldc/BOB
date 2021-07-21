@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AccompProject.Models.ASAAttachmentView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ASANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FILENAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FILEPATH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.year)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FILENAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FILEPATH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.year)
+        </td>
+        <td>
+            @Html.ActionLink("DownloadFile", "DownloadFile", new { fileName = item.FILENAME })
+        </td>
+    </tr>
+}
+
+</table>

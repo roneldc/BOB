@@ -1,0 +1,383 @@
+﻿@model AccompProject.Models.FSEntry
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+    
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.HiddenFor(model => model.FSId)
+        @Html.HiddenFor(model => model.Region)*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+
+                @Html.DropDownListFor(model => model.Category, (IEnumerable<SelectListItem>)ViewBag.CAT, string.Empty, new { @Id = "mydropdowncat", @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Year_Covered, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Year_Covered, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Year_Covered, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Criteria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+
+                @Html.DropDownListFor(model => model.Criteria, (IEnumerable<SelectListItem>)ViewBag.BASED, string.Empty, new { @Id = "mydropdown", @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.Criteria, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+
+
+        <div id="myform">
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NoIA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NoIA, new { htmlAttributes = new { @class = "form-control", @Id = "noia" } })
+                    @Html.ValidationMessageFor(model => model.NoIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry1, htmlAttributes: new { @class = "control-label col-md-2", @Id = "entry1" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Entry1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry1_Percent, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry1_Percent, new { htmlAttributes = new { @class = "form-control group2", id = "Entry1_Percent", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Entry1_Percent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry2, htmlAttributes: new { @class = "control-label col-md-2", id = "entry2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Entry2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry2_Percent, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry2_Percent, new { htmlAttributes = new { @class = "form-control group2", id = "Entry2_Percent", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Entry2_Percent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry3, htmlAttributes: new { @class = "control-label col-md-2 ", id = "entry3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry3, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.Entry3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry3_Percent, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry3_Percent, new { htmlAttributes = new { @class = "form-control group2", id = "Entry3_Percent", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Entry3_Percent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry4, htmlAttributes: new { @class = "control-label col-md-2", id = "entry4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry4, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Entry4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry4_Percent, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry4_Percent, new { htmlAttributes = new { @class = "form-control group2", id = "Entry4_Percent", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Entry4_Percent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry5, htmlAttributes: new { @class = "control-label col-md-2", id = "entry5" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry5, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Entry5, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Entry5_Percent, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Entry5_Percent, new { htmlAttributes = new { @class = "form-control group2", id = "Entry5_Percent", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Entry5_Percent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TotalScore, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TotalScore, new { htmlAttributes = new { @class = "form-control group1", id = "totalscore" } })
+                    @Html.ValidationMessageFor(model => model.TotalScore, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+           
+
+
+          
+
+        
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        $('#myform').hide();
+
+        $('#mydropdown').change(function () {
+
+            var $value = $(this);
+
+            if ($value.val()) {
+
+                switch ($value.val()) {
+
+                    case 'MAJOR CRITERIA':
+                        $('#myform').show();
+                        $('.group2').hide();
+                        $('.group1').show();
+                        $('#entry1').text("O & M PERFORMANCE (HIGHEST POSSIBLE SCORE = 35)");
+                        $('#entry2').text("FINANCIAL PERFORMANCE (HIGHEST POSSIBLE SCORE = 26)");
+                        $('#entry3').text("ORGANIZATION AND ORGN'L DISCIPLINE (HIGHEST POSSIBLE SCORE = 25)");
+                        $('#entry4').text("ASSISTANCE PROGRAM (HIGHEST POSSIBLE SCORE = 10)");
+                        $('#entry5').text("SPECIAL FEATURES (HIGHEST POSSIBLE SCORE = 4)");
+
+                        ($("#Entry1").val(0));
+                        ($("#Entry2").val(0));
+                        ($("#Entry3").val(0));
+                        ($("#Entry4").val(0));
+                        ($("#Entry5").val(0));
+                        break;
+                    case 'IA FUNCTIONALITY RATING':
+
+                        $('#myform').show();
+                        $('#entry1').text("OUTSTANDING (O)");
+                        $('#entry2').text("VERY SATISFACTORY (VS)");
+                        $('#entry3').text("SATISFACTORY (S)");
+                        $('#entry4').text("FAIR (F)");
+                        $('#entry5').text("POOR (P)");
+                        $('.group1').hide();
+                        $('.group2').show();
+
+                        ($("#Entry1").val(0));
+                        ($("#Entry2").val(0));
+                        ($("#Entry3").val(0));
+                        ($("#Entry4").val(0));
+                        ($("#Entry5").val(0));
+
+                        break;
+
+              
+
+                }
+
+            }
+
+        })
+
+
+     
+
+        $("#Entry1").keyup(function (event) {
+         
+            if ($('#mydropdown').val() == 'IA FUNCTIONALITY RATING') {
+
+                var ival = parseFloat($("#Entry1").val());
+                var amt1 = parseFloat($("#noia").val());
+                var equal = ((ival / amt1) * 100);
+                equal = equal.toFixed(2);
+
+                $("#Entry1_Percent").val(equal);
+
+            }
+            else {
+                alert("dsds");
+                var e1 = ($("#Entry1").val());
+                var e2 = ($("#Entry2").val());
+                var e3 = ($("#Entry3").val());
+                var e4 = ($("#Entry4").val());
+                var e5 = ($("#Entry5").val());
+                $("#totalscore").val(((isNaN(parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)) ? 0 : (parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)))));
+
+            }
+
+        });
+
+        $("#Entry2").keyup(function (event) {
+            console.log("a");
+            if ($('#mydropdown').val() == 'IA FUNCTIONALITY RATING') {
+
+                var ival = parseFloat($("#Entry2").val());
+                var amt1 = parseFloat($("#noia").val());
+                var equal = ((ival / amt1) * 100);
+                equal = equal.toFixed(2);
+
+                $("#Entry2_Percent").val(equal);
+
+            }
+            else {
+                var e1 = ($("#Entry1").val());
+                var e2 = ($("#Entry2").val());
+                var e3 = ($("#Entry3").val());
+                var e4 = ($("#Entry4").val());
+                var e5 = ($("#Entry5").val());
+                $("#totalscore").val(((isNaN(parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)) ? 0 : (parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)))));
+
+
+            //    $("#totalscore").val(((parseInt(e1) + parseInt(e2) + parseInt(e3) + parseInt(e4) + parseInt(e5))));
+
+            }
+
+        });
+
+
+        $("#Entry3").keyup(function (event) {
+            console.log("a");
+            if ($('#mydropdown').val() == 'IA FUNCTIONALITY RATING') {
+
+                var ival = parseFloat($("#Entry3").val());
+                var amt1 = parseFloat($("#noia").val());
+                var equal = ((ival / amt1) * 100);
+                equal = equal.toFixed(2);
+
+                $("#Entry3_Percent").val(equal);
+
+            }
+            else {
+
+                var e1 = ($("#Entry1").val());
+                var e2 = ($("#Entry2").val());
+                var e3 = ($("#Entry3").val());
+                var e4 = ($("#Entry4").val());
+                var e5 = ($("#Entry5").val());
+                $("#totalscore").val(((isNaN(parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)) ? 0 : (parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)))));
+
+
+            }
+
+        });
+
+
+
+
+        $("#Entry4").keyup(function (event) {
+            console.log("a");
+            if ($('#mydropdown').val() == 'IA FUNCTIONALITY RATING') {
+
+                var ival = parseFloat($("#Entry4").val());
+                var amt1 = parseFloat($("#noia").val());
+                var equal = ((ival / amt1) * 100);
+                equal = equal.toFixed(2);
+
+                $("#Entry4_Percent").val(equal);
+
+            }
+            else {
+
+                var e1 = ($("#Entry1").val());
+                var e2 = ($("#Entry2").val());
+                var e3 = ($("#Entry3").val());
+                var e4 = ($("#Entry4").val());
+                var e5 = ($("#Entry5").val());
+                $("#totalscore").val(((isNaN(parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)) ? 0 : (parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)))));
+
+
+            }
+
+        });
+
+        $("#Entry5").keyup(function (event) {
+            console.log("a");
+            if ($('#mydropdown').val() == 'IA FUNCTIONALITY RATING') {
+
+                var ival = parseFloat($("#Entry5").val());
+                var amt1 = parseFloat($("#noia").val());
+                var equal = ((ival / amt1) * 100);
+                equal = equal.toFixed(2);
+
+                $("#Entry5_Percent").val(equal);
+
+            }
+            else {
+
+                var e1 = ($("#Entry1").val());
+                var e2 = ($("#Entry2").val());
+                var e3 = ($("#Entry3").val());
+                var e4 = ($("#Entry4").val());
+                var e5 = ($("#Entry5").val());
+                $("#totalscore").val(((isNaN(parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)) ? 0 : (parseFloat(e1) + parseFloat(e2) + parseFloat(e3) + parseFloat(e4) + parseFloat(e5)))));
+
+
+            }
+
+        });
+
+
+    });
+
+</script>

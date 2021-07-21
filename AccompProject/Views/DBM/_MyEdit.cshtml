@@ -1,0 +1,363 @@
+﻿@model AccompProject.Models.DBMView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+
+    @if (User.IsInRole("Physical"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>  <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDAccomp)
+            @Html.HiddenFor(model => model.IDDBM)
+
+            @Html.HiddenFor(model => model.asof)
+                        @Html.HiddenFor(model => model.mnt)
+            <a href="~/Views/DBM/_MyEdit.cshtml">~/Views/DBM/_MyEdit.cshtml</a>
+
+
+
+            @Html.HiddenFor(model => model.yr)
+
+
+
+       
+
+
+        <h4>BIDDED POW's</h4>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.noofpow, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.noofpow, new { htmlAttributes = new { @class = "form-control check", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.noofpow, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amountbidded, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amountbidded, new { htmlAttributes = new { @class = "form-control check", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.amountbidded, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <h4>UNBIDDED POW's</h4>
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.UnbiddedNoOfPOW, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.UnbiddedNoOfPOW, new { htmlAttributes = new { @class = "form-control check", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.UnbiddedNoOfPOW, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+          
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.UnbiddedAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.UnbiddedAmount, new { htmlAttributes = new { @class = "form-control check", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.UnbiddedAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+            <h4>Force Account Works (FAW)</h4>
+
+
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amountfaw, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amountfaw, new { htmlAttributes = new { @class = "form-control check", Id = "Phy" } })
+                    @Html.ValidationMessageFor(model => model.amountfaw, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-7 text-nowrap">
+                    @Html.LabelFor(model => model.CW_Bidded, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="checkbox col-md-5">
+                    @Html.CheckBoxFor(model => model.CW_Bidded)
+                    @Html.ValidationMessageFor(model => model.CW_Bidded, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-6 text-nowrap">
+                    @Html.LabelFor(model => model.bid_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.bid_date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bid_date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-6 text-nowrap">
+                    @Html.LabelFor(model => model.CW_Schedule, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.CW_Schedule, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CW_Schedule, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-7 text-nowrap">
+                    @Html.LabelFor(model => model.FAW, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-5">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.FAW)
+                        @Html.ValidationMessageFor(model => model.FAW, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-6 text-nowrap">
+                    @Html.LabelFor(model => model.FAW_Schedule, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.FAW_Schedule, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FAW_Schedule, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 text-nowrap">
+                    @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*<div class="form-group">
+                    @Html.Label("FILE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type ="file" id="Avatar" name="upload" />
+                    </div>
+                </div>*@
+
+
+
+            @if (Model.FileType.Equals(0))
+            {
+                <div class="form-group">
+                    <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                    <div class="col-md-10">
+                        <img src="~/Pic/filelogo.png" alt="avatar" />
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" id="Avatar" name="upload" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <font color="red">  <input type="submit" value="Save" class="btn btn-default" /> </font>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+        $('.datepicker').datepicker();
+
+
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+
+
+
+
+    });
+    //$("#jd").focusout(function () {
+    //    var d = $("#jd").val();
+    //    alert(d);
+    //});
+
+
+    //$("#as_of").val(function () {
+
+
+    //var date = new Date();
+    //var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    //var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    //var lastDayWithSlashes = (lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear();
+
+    //return lastDayWithSlashes;
+
+
+    //});
+
+
+    //$(".date").datepicker(
+
+    //    {
+    //        dateFormat: 'mm-dd-yy',
+    //        minDate: '+5d',
+    //        changeMonth: true,
+    //        changeYear: true,
+    //        altField: ".date"
+    //        //onSelect: function (dateText, inst) {
+    //        //    var date = $(this).datepicker('getDate'),
+    //        //        day = date.getDate(),
+    //        //        month = date.getMonth() + 1,
+    //        //        year = date.getFullYear();
+    //        //    alert(day + '-' + month + '-' + year);
+    //        // }
+
+    //    });
+
+    //$(".asadate").datepicker(
+
+    //       {
+    //dateFormat: 'mm-dd-yy',
+    //minDate: '+5d',
+    //changeMonth: true,
+    //changeYear: true,
+    //altField: ".asadate"
+    //onSelect: function (dateText, inst) {
+    //    var date = $(this).datepicker('getDate'),
+    //        day = date.getDate(),
+    //        month = date.getMonth() + 1,
+    //        year = date.getFullYear();
+    //    alert(day + '-' + month + '-' + year);
+    // }
+
+    //      });
+
+
+    //$(".dates").datepicker({
+    //    dateFormat: 'mm-dd-yy',
+    //    minDate: '+5d',
+    //    changeMonth: true,
+    //    changeYear: true,
+    //    altField: ".dates"
+
+
+    //    });
+
+    // });
+
+
+
+</script>

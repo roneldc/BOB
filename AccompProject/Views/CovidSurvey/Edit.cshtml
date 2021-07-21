@@ -1,0 +1,805 @@
+﻿@model AccompProject.Models.CovidSurvey
+
+
+
+
+<style>
+    .label {
+        float: left;
+    }
+</style>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>COVID-19 SURVEY FORM</h2>
+<h2>
+    As of @ViewBag.asof
+</h2>
+<h2>
+    @ViewBag.STAT
+</h2>
+<h2>
+    @ViewBag.tot
+</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Raw(TempData["msg"])
+    <div class="container">
+        <div class="row">
+            <hr />
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.TimeTaken)
+            @Html.HiddenFor(model => model.IDSurvey)
+            @Html.HiddenFor(model => model.DateEncoded)
+            @Html.HiddenFor(model => model.DateTaken)
+            @Html.HiddenFor(model => model.PersonnelCategory)
+            @Html.HiddenFor(model => model.alcohol)
+            @Html.HiddenFor(model => model.vitamins)
+            @Html.HiddenFor(model => model.facemask)
+            @Html.HiddenFor(model => model.faceshield)
+            @Html.HiddenFor(model => model.newid)
+            @Html.HiddenFor(model => model.trance)
+
+
+
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.PersonnelCategory, "PERSONNEL CATEGORY", htmlAttributes: new { @class = "control-label col-md-12" })
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.PersonnelCategory, (IEnumerable<SelectListItem>)ViewBag.empcat, new { @class = "form-control", id = "combocat" })
+                    @Html.ValidationMessageFor(model => model.PersonnelCategory, "", new { @class = "text-danger" })
+
+                </div>
+            </div>*@
+
+            <div class="loademp">
+
+                <div class="loadempid">
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a href="#" id="myButton" class="btn btn-primary">Search Employee</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.EmployeeID, "EMPLOYEE ID", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+
+
+                            @Html.TextBoxFor(model => model.EmployeeID, new { id = "empid", @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmployeeID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+
+                    @Html.LabelFor(model => model.Lname, "LASTNAME", htmlAttributes: new { @class = "control-label col-md-3" })
+
+
+                    @Html.LabelFor(model => model.Fname, "FIRSTNAME", htmlAttributes: new { @class = "control-label col-md-3" })
+
+                    @Html.LabelFor(model => model.Midname, "MIDDLENAME", htmlAttributes: new { @class = "control-label col-md-3" })
+                    @Html.LabelFor(model => model.Sufix, "SUFIX", htmlAttributes: new { @class = "control-label col-md-3" })
+
+
+
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Lname, new { id = "emplname", @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Lname, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Fname, new { id = "empfname", @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Fname, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-md-3">
+
+                        @Html.TextBoxFor(model => model.Midname, new { id = "empmidname", @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Midname, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-md-3">
+
+                        @Html.TextBoxFor(model => model.Sufix, new { id = "empsuffix",  @readonly = "readonly",htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sufix, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Office, "OFFICE", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+
+                        @Html.TextBoxFor(model => model.Office, new { id = "empoffice", @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Office, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.ContactNo, "CONTACT NO.", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+
+                        @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <hr />
+
+
+
+                @*<div class="form-group">
+
+                    @Html.LabelFor(model => model.DateTaken, "DATE", htmlAttributes: new { @class = "control-label col-md-10" })
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DateTaken, new { htmlAttributes = new { @class = "form-control", id = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.DateTaken, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.temp, "BODY TEMPERATURE", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+
+                        @Html.EditorFor(model => model.temp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.temp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.cough, "DO YOU HAVE COUGH?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.cough, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.cough, "NO", new { htmlAttributes = new { @class = "form-control radio-inline", } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.cold, "DO YOU HAVE COLDS?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.cold, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.cold, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.diarrhea, "DO YOU HAVE DIARRHEA?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.diarrhea, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.diarrhea, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.sore, "DO YOU HAVE SORE THROAT?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.sore, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.sore, "NO", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.bodyache, "ARE YOU EXPERIENCING BODY ACHE?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.bodyache, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.bodyache, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.headache, "DO YOU HAVE HEADACHE?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.headache, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.headache, "NO", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.breathing, "ARE YOU HAVING DIFFICULTY IN BREATHING?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.breathing, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.breathing, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.fatigue, "DO YOU EXPERIENCE FATIGUE?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.fatigue, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.fatigue, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.travelled, "HAVE YOU TRAVELLED RECENTLY ABROAD/LOCAL? IF YES, WHEN AND WHERE?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.travelled, "YES", new { @class = "travelyesno", htmlAttributes = new { @class = "form-control radio-inline travelyesno" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.travelled, "NO", new {  @class = "travelyesno", htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+                <div id="travel">
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.travelWHere, "WHERE?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+
+
+                            @Html.TextBoxFor(model => model.travelWHere, new { id  = "twhere", htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.travelWHere, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.travelWhen, "WHEN?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+
+
+                            @Html.TextBoxFor(model => model.travelWhen, new { id = "twhen", htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.travelWhen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.travelInfectedArea, "DO YOU HAVE TRAVEL HISTORY TO COVID-19 INFECTED AREA?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.travelInfectedArea, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.travelInfectedArea, "NO", new {  htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.directContact, "DO YOU HAVE DIRECT CONTACT OR TAKING CARE OF A SYMPTOMATIC PATIENT?", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="radio-inline">YES</label>
+                        @Html.RadioButtonFor(model => model.directContact, "YES", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <label class="radio-inline">NO</label>
+                        @Html.RadioButtonFor(model => model.directContact, "NO", new { htmlAttributes = new { @class = "form-control radio-inline" } })
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Remarks, "REMARKS", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+
+
+                        @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="SAVE" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+
+    </div>
+}
+
+@section scripts {
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            //     $.ajaxSetup({ cache: false });
+
+            $('#datepicker').datepicker();
+            //    $('.loademp').hide();
+            $('#travel').hide();
+
+            $('.travelyesno').change(
+                function () {
+                    //   alert("no");
+
+                    if ($(this).is(':checked') && $(this).val() == 'YES') {
+
+                        $('#travel').show();
+
+                    } else {
+                        //alert("");
+                        $('#twhere').val("");
+                        $('#twhen').val("");
+                        $('#travel').hide();
+
+                    }
+                });
+
+
+            if ($('.travelyesno').val() == 'YES') {
+                $('#travel').show();
+
+
+            } else {
+                $('#twhere').val("");
+                $('#twhen').val("");
+
+                $('#travel').hide();
+
+            }
+
+            $('#combocat').change(
+              function () {
+                  //  alert("no");
+
+                  $('.loademp').show();
+
+                  $('.loadempid').show();
+                  if ($(this).val() == 'NIA') {
+
+                      $('.loadempid').show();
+                      //  $('#empid').val($(this).val());
+                      //load employee
+
+                      //     var $buttonClicked = $(this);
+                      //  var id = $buttonClicked.attr('data-id');
+                      var options = { "backdrop": "static", keyboard: true };
+                      $.ajax({
+                          type: "GET",
+                          url: '/CovidSurvey/SearchEmp',
+                          contentType: "application/json; charset=utf-8",
+                          datatype: "json",
+                          success: function (data) {
+                              debugger;
+                              $('#myModalContent').html(data);
+                              $('#myModal').modal(options);
+                              $('#myModal').modal('show');
+
+                          }
+
+                      });
+
+
+
+
+
+
+                  }
+                  if ($(this).val() == 'M8' || $(this).val() == 'TOUGH GUARD' || $(this).val() == 'NWRB' || $(this).val() == 'PCIC' || $(this).val() == 'COA' || $(this).val() == 'NIACOOP' || $(this).val() == 'NIAESP' || $(this).val() == 'NIASLA' || $(this).val() == 'CONSULTANT' || $(this).val() == 'REGION' || $(this).val() == 'VISITOR' || $(this).val() == 'CSC' || $(this).val() == 'PHIL CARABAO') {
+                      // $('.loadempid').hide();
+                      //  alert($(this).val());
+                      $('.loadempid').show();
+                      var office = $(this).val();
+                      var options = { "backdrop": "static", keyboard: true };
+                      $.ajax({
+                          type: "GET",
+                          url: '/CovidSurvey/SearchEmpTenant',
+                          contentType: "application/json; charset=utf-8",
+                          datatype: "json",
+                          data: { "office": office },
+                          success: function (data) {
+                              debugger;
+                              $('#myModalContent').html(data);
+                              $('#myModal').modal(options);
+                              $('#myModal').modal('show');
+
+                          }
+                      });
+
+                  }
+
+                  if ($(this).val() == 'VISITOR') {
+
+                      $('.loadempid').hide();
+
+                  }
+
+              });
+
+
+
+
+
+            $('#myButton').click(
+     function () {
+         //  alert("no");
+
+         //    $('.loademp').show();
+
+
+         if ($('#combocat').val() == 'NIA') {
+
+             //       $('.loadempid').show();
+             //  $('#empid').val($(this).val());
+             //load employee
+             //  alert('here');
+             //     var $buttonClicked = $(this);
+             //  var id = $buttonClicked.attr('data-id');
+             var options = { keyboard: true };
+             debugger;
+             $.ajax({
+                 type: "GET",
+                 url: '/CovidSurvey/SearchEmp',
+                 contentType: "application/json; charset=utf-8",
+                 datatype: "json",
+                 success: function (data) {
+                     debugger;
+                     $('#myModalContent').html(data);
+                     $('#myModal').modal(options);
+                     $('#myModal').modal('show');
+
+                 }
+                 ,
+                 error: function () {
+                     alert("Dynamic content load failed.");
+                 }
+             });
+
+
+
+
+
+
+         }
+         if ($('#combocat').val() == 'M8' || $('#combocat').val() == 'TOUGH GUARD' || $('#combocat').val() == 'NWRB' || $('#combocat').val() == 'PCIC' || $('#combocat').val() == 'COA' || $('#combocat').val() == 'NIACOOP' || $('#combocat').val() == 'NIAESP' || $('#combocat').val() == 'NIASLA' || $('#combocat').val() == 'VISITOR' || $('#combocat').val() == 'REGION' || $('#combocat').val() == 'CONSULTANT' || $('#combocat').val() == 'PHIL CARABAO' || $('#combocat').val() == 'CSC') {
+             // $('.loadempid').hide();
+             $('.loadempid').show();
+             var office = $('#combocat').val();
+             var options = { "backdrop": "static", keyboard: true };
+             $.ajax({
+                 type: "GET",
+                 url: '/CovidSurvey/SearchEmpTenant',
+                 contentType: "application/json; charset=utf-8",
+                 datatype: "json",
+                 data: { "office": office },
+                 success: function (data) {
+                     debugger;
+                     $('#myModalContent').html(data);
+                     $('#myModal').modal(options);
+                     $('#myModal').modal('show');
+
+                 }
+                 ,
+                 error: function () {
+                     alert("Dynamic content load failed.");
+                 }
+             });
+
+         }
+
+         if ($('#combocat').val() == 'VISITOR') {
+
+             $('.loadempid').hide();
+
+         }
+     });
+
+
+
+            ////$(".anchorDetail").click(function () {
+            //    debugger;
+            //    var $buttonClicked = $(this);
+            //  //  var id = $buttonClicked.attr('data-id');
+            //    var options = { "backdrop": "static", keyboard: true };
+            //    $.ajax({
+            //        type: "GET",
+            //        url: '/CovidSurvey/SearchEmp',
+            //        contentType: "application/json; charset=utf-8",
+            //        datatype: "json",
+            //        success: function (data) {
+            //            debugger;
+            //            $('#myModalContent').html(data);
+            //            $('#myModal').modal(options);
+            //            $('#myModal').modal('show');
+
+            //        },
+            //        error: function () {
+            //            alert("Dynamic content load failed.");
+            //        }
+            //    });
+            //});
+            //$("#closebtn").on('click',function(){
+            //    $('#myModal').modal('hide');
+
+
+
+
+
+        });
+    </script>
+}
+
+
+
+

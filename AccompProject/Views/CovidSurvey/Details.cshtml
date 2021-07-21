@@ -1,0 +1,210 @@
+﻿@model AccompProject.Models.CovidSurvey
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CovidSurvey</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonnelCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonnelCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Midname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Midname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sufix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sufix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTaken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTaken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeTaken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeTaken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Office)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Office)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cough)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cough)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diarrhea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diarrhea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bodyache)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bodyache)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.headache)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.headache)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.breathing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.breathing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fatigue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fatigue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.travelled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.travelled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.travelWHere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.travelWHere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.travelWhen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.travelWhen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.travelInfectedArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.travelInfectedArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.directContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.directContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDSurvey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

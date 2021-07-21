@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HealthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DailyRecordEmployee">
+          <Key>
+            <PropertyRef Name="DailyRecordID" />
+          </Key>
+          <Property Name="DailyRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="mname" Type="nvarchar" MaxLength="255" />
+          <Property Name="datescan" Type="date" />
+          <Property Name="timescan" Type="time" Precision="7" />
+          <Property Name="gate1" Type="nvarchar" MaxLength="50" />
+          <Property Name="gate1time" Type="time" Precision="7" />
+          <Property Name="guard" Type="nvarchar" MaxLength="50" />
+          <Property Name="guardtime" Type="time" Precision="7" />
+          <Property Name="temp" Type="float" />
+          <Property Name="medical" Type="nvarchar" MaxLength="50" />
+          <Property Name="medicaltime" Type="time" Precision="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Health.dbo.EmployeeWorkStatusView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmployeeWorkStatusView">
+          <Key>
+            <PropertyRef Name="ChecklistID" />
+          </Key>
+          <Property Name="ChecklistID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="comor" Type="nvarchar" MaxLength="255" />
+          <Property Name="Office" Type="nvarchar" MaxLength="255" />
+          <Property Name="WA" Type="nvarchar" MaxLength="50" />
+          <Property Name="WAState" Type="nvarchar" MaxLength="255" />
+          <Property Name="OneNW" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoA" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoB" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoC" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoE" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoF" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoG" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoGState" Type="nvarchar" MaxLength="255" />
+          <Property Name="TwoH" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoHState" Type="nvarchar" MaxLength="255" />
+          <Property Name="TwoI" Type="nvarchar" MaxLength="50" />
+          <Property Name="TwoIState" Type="nvarchar" MaxLength="255" />
+          <Property Name="ThreeA" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeB" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeC" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeF" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeG" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeH" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreeI" Type="nvarchar" MaxLength="50" />
+          <Property Name="FourTemperature" Type="float" />
+          <Property Name="FiveA" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveB" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveC" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveD" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveE" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveF" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveG" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveH" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveHState" Type="nvarchar" MaxLength="255" />
+          <Property Name="FiveI" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveIState" Type="nvarchar" MaxLength="255" />
+          <Property Name="FiveJ" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiveJState" Type="nvarchar" MaxLength="255" />
+          <Property Name="SixDataPrivacy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateTaken" Type="date" />
+          <Property Name="TimeTaken" Type="time" Precision="7" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mname" Type="nvarchar" MaxLength="255" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDEmployeeStatus" Type="int" />
+          <Property Name="DateGiven" Type="date" />
+          <Property Name="TimeGiven" Type="time" Precision="7" />
+          <Property Name="LockdownOffice" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="768" />
+          <Property Name="FortheDate" Type="date" />
+          <Property Name="medicalstat" Type="nvarchar" MaxLength="50" />
+          <Property Name="note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="HealthModelStoreContainer">
+          <EntitySet Name="DailyRecordEmployee" EntityType="Self.DailyRecordEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeWorkStatusView" EntityType="Self.EmployeeWorkStatusView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeeWorkStatusView].[ChecklistID] AS [ChecklistID], 
+    [EmployeeWorkStatusView].[employeeID] AS [employeeID], 
+    [EmployeeWorkStatusView].[comor] AS [comor], 
+    [EmployeeWorkStatusView].[Office] AS [Office], 
+    [EmployeeWorkStatusView].[WA] AS [WA], 
+    [EmployeeWorkStatusView].[WAState] AS [WAState], 
+    [EmployeeWorkStatusView].[OneNW] AS [OneNW], 
+    [EmployeeWorkStatusView].[TwoA] AS [TwoA], 
+    [EmployeeWorkStatusView].[TwoB] AS [TwoB], 
+    [EmployeeWorkStatusView].[TwoC] AS [TwoC], 
+    [EmployeeWorkStatusView].[TwoD] AS [TwoD], 
+    [EmployeeWorkStatusView].[TwoE] AS [TwoE], 
+    [EmployeeWorkStatusView].[TwoF] AS [TwoF], 
+    [EmployeeWorkStatusView].[TwoG] AS [TwoG], 
+    [EmployeeWorkStatusView].[TwoGState] AS [TwoGState], 
+    [EmployeeWorkStatusView].[TwoH] AS [TwoH], 
+    [EmployeeWorkStatusView].[TwoHState] AS [TwoHState], 
+    [EmployeeWorkStatusView].[TwoI] AS [TwoI], 
+    [EmployeeWorkStatusView].[TwoIState] AS [TwoIState], 
+    [EmployeeWorkStatusView].[ThreeA] AS [ThreeA], 
+    [EmployeeWorkStatusView].[ThreeB] AS [ThreeB], 
+    [EmployeeWorkStatusView].[ThreeC] AS [ThreeC], 
+    [EmployeeWorkStatusView].[ThreeD] AS [ThreeD], 
+    [EmployeeWorkStatusView].[ThreeE] AS [ThreeE], 
+    [EmployeeWorkStatusView].[ThreeF] AS [ThreeF], 
+    [EmployeeWorkStatusView].[ThreeG] AS [ThreeG], 
+    [EmployeeWorkStatusView].[ThreeH] AS [ThreeH], 
+    [EmployeeWorkStatusView].[ThreeI] AS [ThreeI], 
+    [EmployeeWorkStatusView].[FourTemperature] AS [FourTemperature], 
+    [EmployeeWorkStatusView].[FiveA] AS [FiveA], 
+    [EmployeeWorkStatusView].[FiveB] AS [FiveB], 
+    [EmployeeWorkStatusView].[FiveC] AS [FiveC], 
+    [EmployeeWorkStatusView].[FiveD] AS [FiveD], 
+    [EmployeeWorkStatusView].[FiveE] AS [FiveE], 
+    [EmployeeWorkStatusView].[FiveF] AS [FiveF], 
+    [EmployeeWorkStatusView].[FiveG] AS [FiveG], 
+    [EmployeeWorkStatusView].[FiveH] AS [FiveH], 
+    [EmployeeWorkStatusView].[FiveHState] AS [FiveHState], 
+    [EmployeeWorkStatusView].[FiveI] AS [FiveI], 
+    [EmployeeWorkStatusView].[FiveIState] AS [FiveIState], 
+    [EmployeeWorkStatusView].[FiveJ] AS [FiveJ], 
+    [EmployeeWorkStatusView].[FiveJState] AS [FiveJState], 
+    [EmployeeWorkStatusView].[SixDataPrivacy] AS [SixDataPrivacy], 
+    [EmployeeWorkStatusView].[DateTaken] AS [DateTaken], 
+    [EmployeeWorkStatusView].[TimeTaken] AS [TimeTaken], 
+    [EmployeeWorkStatusView].[Lname] AS [Lname], 
+    [EmployeeWorkStatusView].[Fname] AS [Fname], 
+    [EmployeeWorkStatusView].[Mname] AS [Mname], 
+    [EmployeeWorkStatusView].[Suffix] AS [Suffix], 
+    [EmployeeWorkStatusView].[IDEmployeeStatus] AS [IDEmployeeStatus], 
+    [EmployeeWorkStatusView].[DateGiven] AS [DateGiven], 
+    [EmployeeWorkStatusView].[TimeGiven] AS [TimeGiven], 
+    [EmployeeWorkStatusView].[LockdownOffice] AS [LockdownOffice], 
+    [EmployeeWorkStatusView].[Status] AS [Status], 
+    [EmployeeWorkStatusView].[Fullname] AS [Fullname], 
+    [EmployeeWorkStatusView].[FortheDate] AS [FortheDate], 
+    [EmployeeWorkStatusView].[medicalstat] AS [medicalstat], 
+    [EmployeeWorkStatusView].[note] AS [note]
+    FROM [dbo].[EmployeeWorkStatusView] AS [EmployeeWorkStatusView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HealthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HealthEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DailyRecordEmployees" EntityType="HealthModel.DailyRecordEmployee" />
+          <EntitySet Name="EmployeeWorkStatusViews" EntityType="HealthModel.EmployeeWorkStatusView" />
+        </EntityContainer>
+        <EntityType Name="DailyRecordEmployee">
+          <Key>
+            <PropertyRef Name="DailyRecordID" />
+          </Key>
+          <Property Name="DailyRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="datescan" Type="DateTime" Precision="0" />
+          <Property Name="timescan" Type="Time" Precision="7" />
+          <Property Name="gate1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gate1time" Type="Time" Precision="7" />
+          <Property Name="guard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="guardtime" Type="Time" Precision="7" />
+          <Property Name="temp" Type="Double" />
+          <Property Name="medical" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="medicaltime" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="EmployeeWorkStatusView">
+          <Key>
+            <PropertyRef Name="ChecklistID" />
+          </Key>
+          <Property Name="ChecklistID" Type="Int32" Nullable="false" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="comor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Office" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WAState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OneNW" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoGState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TwoH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoHState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TwoI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TwoIState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreeI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FourTemperature" Type="Double" />
+          <Property Name="FiveA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveHState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FiveI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveIState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FiveJ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiveJState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SixDataPrivacy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <Property Name="TimeTaken" Type="Time" Precision="7" />
+          <Property Name="Lname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDEmployeeStatus" Type="Int32" />
+          <Property Name="DateGiven" Type="DateTime" Precision="0" />
+          <Property Name="TimeGiven" Type="Time" Precision="7" />
+          <Property Name="LockdownOffice" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fullname" Type="String" MaxLength="768" FixedLength="false" Unicode="true" />
+          <Property Name="FortheDate" Type="DateTime" Precision="0" />
+          <Property Name="medicalstat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HealthModelStoreContainer" CdmEntityContainer="HealthEntities">
+          <EntitySetMapping Name="DailyRecordEmployees">
+            <EntityTypeMapping TypeName="HealthModel.DailyRecordEmployee">
+              <MappingFragment StoreEntitySet="DailyRecordEmployee">
+                <ScalarProperty Name="medicaltime" ColumnName="medicaltime" />
+                <ScalarProperty Name="medical" ColumnName="medical" />
+                <ScalarProperty Name="temp" ColumnName="temp" />
+                <ScalarProperty Name="guardtime" ColumnName="guardtime" />
+                <ScalarProperty Name="guard" ColumnName="guard" />
+                <ScalarProperty Name="gate1time" ColumnName="gate1time" />
+                <ScalarProperty Name="gate1" ColumnName="gate1" />
+                <ScalarProperty Name="timescan" ColumnName="timescan" />
+                <ScalarProperty Name="datescan" ColumnName="datescan" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DailyRecordID" ColumnName="DailyRecordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeWorkStatusViews">
+            <EntityTypeMapping TypeName="HealthModel.EmployeeWorkStatusView">
+              <MappingFragment StoreEntitySet="EmployeeWorkStatusView">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="medicalstat" ColumnName="medicalstat" />
+                <ScalarProperty Name="FortheDate" ColumnName="FortheDate" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LockdownOffice" ColumnName="LockdownOffice" />
+                <ScalarProperty Name="TimeGiven" ColumnName="TimeGiven" />
+                <ScalarProperty Name="DateGiven" ColumnName="DateGiven" />
+                <ScalarProperty Name="IDEmployeeStatus" ColumnName="IDEmployeeStatus" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Mname" ColumnName="Mname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="TimeTaken" ColumnName="TimeTaken" />
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="SixDataPrivacy" ColumnName="SixDataPrivacy" />
+                <ScalarProperty Name="FiveJState" ColumnName="FiveJState" />
+                <ScalarProperty Name="FiveJ" ColumnName="FiveJ" />
+                <ScalarProperty Name="FiveIState" ColumnName="FiveIState" />
+                <ScalarProperty Name="FiveI" ColumnName="FiveI" />
+                <ScalarProperty Name="FiveHState" ColumnName="FiveHState" />
+                <ScalarProperty Name="FiveH" ColumnName="FiveH" />
+                <ScalarProperty Name="FiveG" ColumnName="FiveG" />
+                <ScalarProperty Name="FiveF" ColumnName="FiveF" />
+                <ScalarProperty Name="FiveE" ColumnName="FiveE" />
+                <ScalarProperty Name="FiveD" ColumnName="FiveD" />
+                <ScalarProperty Name="FiveC" ColumnName="FiveC" />
+                <ScalarProperty Name="FiveB" ColumnName="FiveB" />
+                <ScalarProperty Name="FiveA" ColumnName="FiveA" />
+                <ScalarProperty Name="FourTemperature" ColumnName="FourTemperature" />
+                <ScalarProperty Name="ThreeI" ColumnName="ThreeI" />
+                <ScalarProperty Name="ThreeH" ColumnName="ThreeH" />
+                <ScalarProperty Name="ThreeG" ColumnName="ThreeG" />
+                <ScalarProperty Name="ThreeF" ColumnName="ThreeF" />
+                <ScalarProperty Name="ThreeE" ColumnName="ThreeE" />
+                <ScalarProperty Name="ThreeD" ColumnName="ThreeD" />
+                <ScalarProperty Name="ThreeC" ColumnName="ThreeC" />
+                <ScalarProperty Name="ThreeB" ColumnName="ThreeB" />
+                <ScalarProperty Name="ThreeA" ColumnName="ThreeA" />
+                <ScalarProperty Name="TwoIState" ColumnName="TwoIState" />
+                <ScalarProperty Name="TwoI" ColumnName="TwoI" />
+                <ScalarProperty Name="TwoHState" ColumnName="TwoHState" />
+                <ScalarProperty Name="TwoH" ColumnName="TwoH" />
+                <ScalarProperty Name="TwoGState" ColumnName="TwoGState" />
+                <ScalarProperty Name="TwoG" ColumnName="TwoG" />
+                <ScalarProperty Name="TwoF" ColumnName="TwoF" />
+                <ScalarProperty Name="TwoE" ColumnName="TwoE" />
+                <ScalarProperty Name="TwoD" ColumnName="TwoD" />
+                <ScalarProperty Name="TwoC" ColumnName="TwoC" />
+                <ScalarProperty Name="TwoB" ColumnName="TwoB" />
+                <ScalarProperty Name="TwoA" ColumnName="TwoA" />
+                <ScalarProperty Name="OneNW" ColumnName="OneNW" />
+                <ScalarProperty Name="WAState" ColumnName="WAState" />
+                <ScalarProperty Name="WA" ColumnName="WA" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="comor" ColumnName="comor" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="ChecklistID" ColumnName="ChecklistID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

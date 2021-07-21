@@ -1,0 +1,201 @@
+﻿@model AccompProject.Models.DBMView
+
+
+
+
+
+@using (Html.BeginForm("Edit","DBM", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDAccomp)
+
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.mainproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.mainproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.mainproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", Id = "amt" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.subproject, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.subproject, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.subproject, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.municipality, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.municipality, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.municipality, "", new { @class = "text-danger" })
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.province, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                </div>
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.province, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.province, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+
+      
+
+     
+        <div class="form-group">
+            @Html.LabelFor(model => model.CW_Bidded, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.CW_Bidded)
+
+
+                    @Html.ValidationMessageFor(model => model.CW_Bidded, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bid_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.bid_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bid_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CW_Schedule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CW_Schedule, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CW_Schedule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FAW, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.FAW)
+                    @Html.ValidationMessageFor(model => model.FAW, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FAW_Schedule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FAW_Schedule, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FAW_Schedule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            @Html.Label("FILE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type ="file" id="Avatar" name="upload" />
+            </div>
+        </div>*@
+
+
+
+        @if (Model.FileType.Equals(0))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                <div class="col-md-10">
+                    <img src="~/Pic/filelogo.png" alt="avatar" />
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <font color="red">  <input type="submit" value="Save" class="btn btn-default"  /> </font>
+            </div>
+        </div>
+
+
+    </div>
+
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

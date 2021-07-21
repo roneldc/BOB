@@ -1,0 +1,260 @@
+﻿
+@model AccompProject.Models.FinancialNCAADA
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+    @if (User.IsInRole("Financial"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Central Office</h4>
+    }
+
+    @if (User.IsInRole("Financial Region"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+            @Html.HiddenFor(model => model.IDFinance, new { @Value = Session["idfinance"].ToString() })
+          
+
+      
+       
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.AccountNo, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.AccountNo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <h4>NCA</h4>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NCADate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NCADate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.NCADate, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+           
+            
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NCANO, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NCANO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NCANO, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NCAAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NCAAmount, new { htmlAttributes = new { @class = "form-control numformat", @title="NCA" } })
+                    @Html.ValidationMessageFor(model => model.NCAAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+
+            <h4>NTA</h4>
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NTADate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NTADate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.NTADate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Validity, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Validity, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.Validity, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NTANO, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NTANO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NTANO, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.NTAAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.NTAAmount, new { htmlAttributes = new { @class = "form-control numformat", @title = "NTA" } })
+                    @Html.ValidationMessageFor(model => model.NTAAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+
+            <h4>ADA</h4>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ADADate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ADADate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.ADADate, "", new { @class = "text-danger" })
+                </div>
+            
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ADANO, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ADANO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ADANO, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ADAAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ADAAmount, new { htmlAttributes = new { @class = "form-control numformat", @title="ADA" } })
+                    @Html.ValidationMessageFor(model => model.ADAAmount, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Covering, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Covering, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Covering, "", new { @class = "text-danger" })
+                </div>
+               
+            </div>
+           
+
+        
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $('.datepicker').datepicker();
+        $('#mndt').datepicker(
+                       {
+                           dateFormat: "mm/yy",
+                           changeMonth: true,
+                           changeYear: true,
+                           showButtonPanel: true,
+                           onClose: function (dateText, inst) {
+
+
+                               function isDonePressed() {
+                                   return ($('#ui-datepicker-div').html().indexOf('ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all ui-state-hover') > -1);
+                               }
+
+                               if (isDonePressed()) {
+                                   var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                   var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                   $(this).datepicker('setDate', new Date(year, month, 1)).trigger('change');
+
+
+                                   var a = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+                                   var b = parseInt(1);
+                                   var c = a + b;
+
+
+                                   $('#mnts').val(c);
+
+                                   $('#yrs').val(year);
+
+                                   $('.date-picker').focusout()//Added to remove focus from datepicker input box on selecting date
+                               }
+                           },
+                           beforeShow: function (input, inst) {
+
+                               inst.dpDiv.addClass('month_year_datepicker')
+
+                               if ((datestr = $(this).val()).length > 0) {
+                                   year = datestr.substring(datestr.length - 4, datestr.length);
+                                   month = datestr.substring(0, 2);
+                                   $(this).datepicker('option', 'defaultDate', new Date(year, month - 1, 1));
+                                   $(this).datepicker('setDate', new Date(year, month - 1, 1));
+                                   $(".ui-datepicker-calendar").hide();
+                               }
+                           }
+                       });
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+    });
+
+</script>

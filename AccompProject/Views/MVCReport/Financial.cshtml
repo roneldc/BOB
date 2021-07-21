@@ -1,0 +1,18 @@
+﻿@using MvcReportViewer
+
+@{
+    ViewBag.Title = "View Report";
+}
+
+<h2>@ViewBag.nameReport</h2>
+<br />
+
+<div>
+    @*@Html.ActionLink("List Of ASA", "Financial", new { temp = "FList" }, new { id = "reg4", @class = "btn btn-primary btn-large" }) |
+    @Html.ActionLink("FAR", "Financial", new { temp = "FAR" }, new { id = "reg5", @class = "btn btn-primary btn-large" }) |*@
+    @Html.ActionLink("Detail Financial", "Financial", new { temp = "FDetail" }, new { id = "reg6", @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Monthly Financial", "Financial", new { temp = "Monthly" }, new { id = "reg7", @class = "btn btn-primary btn-large" })
+</div>
+
+
+@Html.Partial("_FinancialView")

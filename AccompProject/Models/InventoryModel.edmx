@@ -1,0 +1,2161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CityBoundaries">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cityname" Type="nvarchar" MaxLength="150" />
+          <Property Name="CityBoundariesname" Type="nvarchar" MaxLength="150" />
+          <Property Name="CovidPositive" Type="int" />
+          <Property Name="CovidDied" Type="int" />
+          <Property Name="CovidRecovered" Type="int" />
+          <Property Name="dateasof" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CovidActivityEmployee">
+          <Key>
+            <PropertyRef Name="IDActivityEmployee" />
+          </Key>
+          <Property Name="IDActivityEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeFrom" Type="datetime" />
+          <Property Name="TimeTo" Type="datetime" />
+          <Property Name="DateTaken" Type="date" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateEncoded" Type="date" />
+        </EntityType>
+        <EntityType Name="CovidEquipmentEmployee">
+          <Key>
+            <PropertyRef Name="CovidEquipmentID" />
+          </Key>
+          <Property Name="CovidEquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mnt" Type="int" />
+          <Property Name="yr" Type="int" />
+          <Property Name="dateGiven" Type="date" />
+          <Property Name="facemask" Type="nvarchar" MaxLength="50" />
+          <Property Name="vitamins" Type="nvarchar" MaxLength="50" />
+          <Property Name="alcohol" Type="nvarchar" MaxLength="50" />
+          <Property Name="employeeid" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="150" />
+          <Property Name="fname" Type="nvarchar" MaxLength="150" />
+          <Property Name="midname" Type="nvarchar" MaxLength="150" />
+          <Property Name="faceshield" Type="nvarchar" MaxLength="50" />
+          <Property Name="trance" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CovidPlaces">
+          <Key>
+            <PropertyRef Name="IdPlaces" />
+          </Key>
+          <Property Name="IdPlaces" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="places" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CovidSurvey">
+          <Key>
+            <PropertyRef Name="IDSurvey" />
+          </Key>
+          <Property Name="IDSurvey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonnelCategory" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="250" />
+          <Property Name="Midname" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sufix" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateTaken" Type="date" />
+          <Property Name="TimeTaken" Type="time" Precision="7" />
+          <Property Name="Office" Type="nvarchar" MaxLength="250" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="cough" Type="nvarchar" MaxLength="50" />
+          <Property Name="cold" Type="nvarchar" MaxLength="50" />
+          <Property Name="diarrhea" Type="nvarchar" MaxLength="50" />
+          <Property Name="sore" Type="nvarchar" MaxLength="50" />
+          <Property Name="bodyache" Type="nvarchar" MaxLength="50" />
+          <Property Name="headache" Type="nvarchar" MaxLength="50" />
+          <Property Name="temp" Type="float" />
+          <Property Name="breathing" Type="nvarchar" MaxLength="50" />
+          <Property Name="fatigue" Type="nvarchar" MaxLength="50" />
+          <Property Name="travelled" Type="nvarchar" MaxLength="50" />
+          <Property Name="travelWHere" Type="nvarchar" MaxLength="50" />
+          <Property Name="travelWhen" Type="nvarchar" MaxLength="50" />
+          <Property Name="travelInfectedArea" Type="nvarchar" MaxLength="50" />
+          <Property Name="directContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="DateEncoded" Type="date" />
+          <Property Name="facemask" Type="nvarchar" MaxLength="50" />
+          <Property Name="vitamins" Type="nvarchar" MaxLength="50" />
+          <Property Name="alcohol" Type="nvarchar" MaxLength="50" />
+          <Property Name="faceshield" Type="nvarchar" MaxLength="50" />
+          <Property Name="trance" Type="nvarchar" MaxLength="50" />
+          <Property Name="newid" Type="int" />
+        </EntityType>
+        <EntityType Name="CovidTrance">
+          <Key>
+            <PropertyRef Name="IDTRANCE" />
+          </Key>
+          <Property Name="IDTRANCE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trance" Type="nvarchar" MaxLength="50" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EM_ERoster">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empno" Type="nvarchar" MaxLength="50" />
+          <Property Name="newid" Type="nvarchar" MaxLength="50" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="mname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="abrev_currdept" Type="nvarchar(max)" />
+          <Property Name="office" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.emp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="name1" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="number" Type="nvarchar" MaxLength="255" />
+          <Property Name="stat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeCategory">
+          <Key>
+            <PropertyRef Name="EMpCatID" />
+          </Key>
+          <Property Name="EMpCatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+          <Property Name="imagename" Type="nvarchar" MaxLength="50" />
+          <Property Name="lat" Type="nvarchar" MaxLength="150" />
+          <Property Name="lng" Type="nvarchar" MaxLength="150" />
+          <Property Name="SG" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="150" />
+          <Property Name="Cp" Type="nvarchar" MaxLength="150" />
+          <Property Name="sms" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EmployeeSMSReceived">
+          <Key>
+            <PropertyRef Name="SMSEmployeeID" />
+          </Key>
+          <Property Name="SMSEmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="smsNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="smsMessage" Type="nvarchar" MaxLength="255" />
+          <Property Name="smsName" Type="nvarchar" MaxLength="250" />
+          <Property Name="idnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="typehome" Type="nvarchar" MaxLength="50" />
+          <Property Name="smsdate" Type="date" />
+        </EntityType>
+        <EntityType Name="EmployeeSMSReceivedConso">
+          <Key>
+            <PropertyRef Name="SMSEmployeeID" />
+          </Key>
+          <Property Name="SMSEmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="smsNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="smsMessage" Type="nvarchar" MaxLength="255" />
+          <Property Name="smsName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EmployeeTenant">
+          <Key>
+            <PropertyRef Name="TenantID" />
+          </Key>
+          <Property Name="TenantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="250" />
+          <Property Name="midname" Type="nvarchar" MaxLength="250" />
+          <Property Name="contact" Type="nvarchar" MaxLength="250" />
+          <Property Name="Office" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MAPPIC">
+          <Key>
+            <PropertyRef Name="IDtable" />
+          </Key>
+          <Property Name="IDtable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDsystem" Type="nvarchar" MaxLength="255" />
+          <Property Name="MAPsystem" Type="varbinary(max)" />
+          <Property Name="MAPLOC" Type="nvarchar" MaxLength="150" />
+          <Property Name="imagesize" Type="int" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MappingDataSystems">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IdPolygon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geometry" Type="nvarchar" MaxLength="255" />
+          <Property Name="drawingtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmerlot" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmername" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="nvarchar" MaxLength="255" />
+          <Property Name="Iddam" Type="nvarchar" MaxLength="255" />
+          <Property Name="overlayid" Type="int" />
+          <Property Name="polygonarea" Type="float" />
+        </EntityType>
+        <EntityType Name="SystemsProfile">
+          <Key>
+            <PropertyRef Name="IDSystems" />
+          </Key>
+          <Property Name="IDSystems" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Systems" Type="nvarchar" MaxLength="255" />
+          <Property Name="Region" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblCategory">
+          <Key>
+            <PropertyRef Name="ID_CATEGORY" />
+          </Key>
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblCropsplanted' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblCropsplanted">
+          <Key>
+            <PropertyRef Name="ID_CROPS" />
+          </Key>
+          <Property Name="ID_CROPS" Type="int" Nullable="false" />
+          <Property Name="CROPS" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TblData">
+          <Key>
+            <PropertyRef Name="IDSystem" />
+          </Key>
+          <Property Name="ID_DATA" Type="int" />
+          <Property Name="PROJECT" Type="float" />
+          <Property Name="YEAR_COVERED" Type="float" />
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="CATEGORY" Type="float" />
+          <Property Name="REGION" Type="float" />
+          <Property Name="PROVINCE" Type="float" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="DISTRICT" Type="float" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="IRRIGATED_WET" Type="float" />
+          <Property Name="IRRIGATED_DRY" Type="float" />
+          <Property Name="BENEFITED_WET" Type="float" />
+          <Property Name="BENEFITED_DRY" Type="float" />
+          <Property Name="AVERAGE_YIELD" Type="float" />
+          <Property Name="DATE_CONSTRUCTED" Type="nvarchar" MaxLength="255" />
+          <Property Name="OCI" Type="int" />
+          <Property Name="SPECIFY_AGENCY" Type="nvarchar" MaxLength="255" />
+          <Property Name="REHAB_YEAR" Type="nvarchar" MaxLength="255" />
+          <Property Name="LOCAL_COUNTERPART" Type="nvarchar" MaxLength="255" />
+          <Property Name="LOCAL_COUNTERPART_AMOUNT" Type="float" />
+          <Property Name="FOREX" Type="nvarchar" MaxLength="255" />
+          <Property Name="FOREX_AMOUNT" Type="float" />
+          <Property Name="REHAB_PROJECT" Type="nvarchar" MaxLength="255" />
+          <Property Name="DIVERSION" Type="int" />
+          <Property Name="SPECIFIC_DIVERSION" Type="nvarchar" MaxLength="255" />
+          <Property Name="WATER_SUPPLY" Type="nvarchar" MaxLength="255" />
+          <Property Name="LATITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="LONGITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="CROPS" Type="int" />
+          <Property Name="REMARKS" Type="nvarchar(max)" />
+          <Property Name="DATE_UPDATED" Type="nvarchar" MaxLength="255" />
+          <Property Name="NOSYSTEM" Type="float" />
+          <Property Name="AMORTIZING" Type="nvarchar" MaxLength="255" />
+          <Property Name="IRRIGATED_RATOONING" Type="float" />
+          <Property Name="BENEFITED_RATOONING" Type="float" />
+          <Property Name="AVERAGE_YIELD_DRY" Type="float" />
+          <Property Name="AVERAGE_YIELD_RATOONING" Type="float" />
+          <Property Name="REMARKS_REASON" Type="nvarchar(max)" />
+          <Property Name="FARMERS_BENEFICIARIES" Type="float" />
+          <Property Name="CONVERTED_LAND" Type="float" />
+          <Property Name="PERMANENT" Type="float" />
+          <Property Name="THIRD_IRRIGATED" Type="float" />
+          <Property Name="THIRD_BENEFITED" Type="float" />
+          <Property Name="THIRD_AVERAGE" Type="float" />
+          <Property Name="RESPONSIBILITY" Type="float" />
+          <Property Name="IMO_RES" Type="nvarchar" MaxLength="255" />
+          <Property Name="spec" Type="varchar" MaxLength="50" />
+          <Property Name="LINED" Type="float" />
+          <Property Name="UNLINED" Type="float" />
+          <Property Name="NEWLY" Type="float" />
+          <Property Name="DAMTYPE" Type="nvarchar" MaxLength="150" />
+          <Property Name="SD" Type="nvarchar" MaxLength="150" />
+          <Property Name="newlyarea" Type="float" />
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="iano" Type="float" />
+          <Property Name="iaarea" Type="float" />
+          <Property Name="iafb" Type="float" />
+          <Property Name="iamember" Type="float" />
+          <Property Name="main_total" Type="float" />
+          <Property Name="main_lined" Type="float" />
+          <Property Name="main_earth" Type="float" />
+          <Property Name="lateral_total" Type="float" />
+          <Property Name="lateral_lined" Type="float" />
+          <Property Name="lateral_earth" Type="float" />
+          <Property Name="municipalityCode" Type="int" />
+          <Property Name="provinceCode" Type="int" />
+          <Property Name="dam" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblDistrict' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblDistrict">
+          <Key>
+            <PropertyRef Name="ID_DISTRICT" />
+          </Key>
+          <Property Name="ID_DISTRICT" Type="int" Nullable="false" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblDiversion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblDiversion">
+          <Key>
+            <PropertyRef Name="ID_DIVERSION" />
+          </Key>
+          <Property Name="ID_DIVERSION" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblIMO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblIMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="255" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+          <Property Name="IMO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ENG" Type="nvarchar" MaxLength="255" />
+          <Property Name="RIM" Type="nvarchar" MaxLength="255" />
+          <Property Name="res" Type="int" />
+          <Property Name="area_monitor" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblOCI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblOCI">
+          <Key>
+            <PropertyRef Name="ID_OCI" />
+          </Key>
+          <Property Name="ID_OCI" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblProvince' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblProvince">
+          <Key>
+            <PropertyRef Name="ID_PROVINCE" />
+          </Key>
+          <Property Name="ID_PROVINCE" Type="int" Nullable="false" />
+          <Property Name="ID_REGION" Type="int" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_POLITICAL" Type="int" />
+          <Property Name="POP" Type="float" />
+          <Property Name="potential" Type="float" />
+          <Property Name="num" Type="int" />
+          <Property Name="3019" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.TblRegionLogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblRegionLogin">
+          <Key>
+            <PropertyRef Name="id_region" />
+          </Key>
+          <Property Name="id_region" Type="int" Nullable="false" />
+          <Property Name="region" Type="nvarchar" MaxLength="255" />
+          <Property Name="pwd" Type="nvarchar" MaxLength="255" />
+          <Property Name="cntlog" Type="int" />
+          <Property Name="SORT" Type="int" />
+          <Property Name="ISLAND" Type="nvarchar" MaxLength="50" />
+          <Property Name="reg_pot" Type="float" />
+          <Property Name="master_pot" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.CoordinatesPerSystem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CoordinatesPerSystem">
+          <Key>
+            
+            
+            
+            <PropertyRef Name="Row" />
+          </Key>
+          <Property Name="Row" Type="bigint" Nullable="false" />
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="lat" Type="nvarchar" MaxLength="255" />
+          <Property Name="longi" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESPONSIBILITY" Type="float" />
+          <Property Name="res_region" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID_REGION" Type="int" />
+          <Property Name="ID_PROVINCE" Type="int" Nullable="false" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="province" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.Inventory_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Inventory_view">
+          <Key>
+            
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="IDSystem" />
+            
+          </Key>
+          <Property Name="ID_DATA" Type="int" />
+          <Property Name="YEAR_COVERED" Type="float" />
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_REGION" Type="int" />
+          <Property Name="REGION" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_PROVINCE" Type="int" Nullable="false" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="PERMANENT" Type="float" />
+          <Property Name="CONVERTED_LAND" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="IRRIGATED_WET" Type="float" />
+          <Property Name="IRRIGATED_DRY" Type="float" />
+          <Property Name="IRRIGATED_RATOONING" Type="float" />
+          <Property Name="THIRD_IRRIGATED" Type="float" />
+          <Property Name="BENEFITED_WET" Type="float" />
+          <Property Name="BENEFITED_DRY" Type="float" />
+          <Property Name="BENEFITED_RATOONING" Type="float" />
+          <Property Name="THIRD_BENEFITED" Type="float" />
+          <Property Name="AVERAGE_YIELD" Type="float" />
+          <Property Name="AVERAGE_YIELD_DRY" Type="float" />
+          <Property Name="AVERAGE_YIELD_RATOONING" Type="float" />
+          <Property Name="THIRD_AVERAGE" Type="float" />
+          <Property Name="DATE_CONSTRUCTED" Type="nvarchar" MaxLength="255" />
+          <Property Name="SPECIFIC_DIVERSION" Type="nvarchar" MaxLength="255" />
+          <Property Name="WATER_SUPPLY" Type="nvarchar" MaxLength="255" />
+          <Property Name="LATITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="LONGITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATE_UPDATED" Type="nvarchar" MaxLength="255" />
+          <Property Name="REMARKS" Type="nvarchar(max)" />
+          <Property Name="NOSYSTEM" Type="float" />
+          <Property Name="AMORTIZING" Type="nvarchar" MaxLength="255" />
+          <Property Name="REMARKS_REASON" Type="nvarchar(max)" />
+          <Property Name="FARMERS_BENEFICIARIES" Type="float" />
+          <Property Name="RESPONSIBILITY" Type="float" />
+          <Property Name="IMO_RES" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_DISTRICT" Type="int" Nullable="false" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_OCI" Type="int" Nullable="false" />
+          <Property Name="OCI_DES" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_DIVERSION" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_CROPS" Type="int" Nullable="false" />
+          <Property Name="CROPS" Type="nvarchar" MaxLength="255" />
+          <Property Name="RES" Type="nvarchar" MaxLength="255" />
+          <Property Name="DES_IMO" Type="nvarchar" MaxLength="255" />
+          <Property Name="IMO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ENG" Type="nvarchar" MaxLength="255" />
+          <Property Name="RIM" Type="nvarchar" MaxLength="255" />
+          <Property Name="res_region" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_monitor" Type="nvarchar" MaxLength="255" />
+          <Property Name="POP" Type="float" />
+          <Property Name="political" Type="nvarchar" MaxLength="255" />
+          <Property Name="spec" Type="varchar" MaxLength="50" />
+          <Property Name="ISLAND" Type="nvarchar" MaxLength="50" />
+          <Property Name="POLITICAL_ID" Type="int" Nullable="false" />
+          <Property Name="LINED" Type="float" />
+          <Property Name="UNLINED" Type="float" />
+          <Property Name="NEWLY" Type="float" />
+          <Property Name="DAMTYPE" Type="nvarchar" MaxLength="150" />
+          <Property Name="SD" Type="nvarchar" MaxLength="150" />
+          <Property Name="newlyarea" Type="int" />
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="iano" Type="float" />
+          <Property Name="iaarea" Type="float" />
+          <Property Name="iafb" Type="float" />
+          <Property Name="iamember" Type="float" />
+          <Property Name="main_total" Type="float" />
+          <Property Name="main_lined" Type="float" />
+          <Property Name="main_earth" Type="float" />
+          <Property Name="lateral_total" Type="float" />
+          <Property Name="lateral_lined" Type="float" />
+          <Property Name="lateral_earth" Type="float" />
+          <Property Name="CoordinatesChecking" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="municipalityCode" Type="int" />
+          <Property Name="provinceCode" Type="int" />
+          <Property Name="dam" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.MAPInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MAPInventory">
+          <Key>
+            
+            <PropertyRef Name="IDSYSTEM" />
+          </Key>
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="LATITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="LONGITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDSYSTEM" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.MappingDataSystemsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MappingDataSystemsView">
+          <Key>
+            
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IDSystems" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Systems" Type="nvarchar" MaxLength="255" />
+          <Property Name="Region" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdPolygon" Type="int" Nullable="false" />
+          <Property Name="geometry" Type="nvarchar" MaxLength="255" />
+          <Property Name="drawingtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmerlot" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmername" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="nvarchar" MaxLength="255" />
+          <Property Name="overlayid" Type="int" />
+          <Property Name="polygonarea" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.MappingDataview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MappingDataview">
+          <Key>
+            
+            
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="IdPolygon" Type="int" Nullable="false" />
+          <Property Name="geometry" Type="nvarchar" MaxLength="255" />
+          <Property Name="drawingtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmerlot" Type="nvarchar" MaxLength="50" />
+          <Property Name="farmername" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Iddam" Type="nvarchar" MaxLength="255" />
+          <Property Name="overlayid" Type="int" />
+          <Property Name="polygonarea" Type="float" />
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="REGION" Type="nvarchar" MaxLength="255" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="PERMANENT" Type="float" />
+          <Property Name="CONVERTED_LAND" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="LATITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="LONGITUDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.SYSTEMPICTURES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SYSTEMPICTURES">
+          <Key>
+            
+            <PropertyRef Name="IDtable" />
+          </Key>
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" />
+          <Property Name="res_region" Type="nvarchar" MaxLength="255" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="MAPsystem" Type="image" />
+          <Property Name="ID_REGION" Type="int" Nullable="false" />
+          <Property Name="SERVICE_ORIGINAL" Type="float" />
+          <Property Name="SERVICE_FIRMED" Type="float" />
+          <Property Name="AREA_OPERATIONAL" Type="float" />
+          <Property Name="AREA_NONOPERATIONAL" Type="float" />
+          <Property Name="IDtable" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.SystemProfileView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SystemProfileView">
+          <Key>
+            <PropertyRef Name="IDSystems" />
+          </Key>
+          <Property Name="id_region" Type="int" />
+          <Property Name="ID_CATEGORY" Type="int" />
+          <Property Name="IDSystems" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Systems" Type="nvarchar" MaxLength="255" />
+          <Property Name="Region" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory.dbo.SystemSelection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SystemSelection">
+          <Key>
+            <PropertyRef Name="IDSystem" />
+          </Key>
+          <Property Name="SYSTEMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="res_region" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDSystem" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RESPONSIBILITY" Type="float" />
+          <Property Name="ID_CATEGORY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="InventoryModelStoreContainer">
+          <EntitySet Name="CityBoundaries" EntityType="Self.CityBoundaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidActivityEmployee" EntityType="Self.CovidActivityEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidEquipmentEmployee" EntityType="Self.CovidEquipmentEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidPlaces" EntityType="Self.CovidPlaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidSurvey" EntityType="Self.CovidSurvey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidTrance" EntityType="Self.CovidTrance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EM_ERoster" EntityType="Self.EM_ERoster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeCategory" EntityType="Self.EmployeeCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLocation" EntityType="Self.EmployeeLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSMSReceived" EntityType="Self.EmployeeSMSReceived" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSMSReceivedConso" EntityType="Self.EmployeeSMSReceivedConso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTenant" EntityType="Self.EmployeeTenant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAPPIC" EntityType="Self.MAPPIC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MappingDataSystems" EntityType="Self.MappingDataSystems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemsProfile" EntityType="Self.SystemsProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblData" EntityType="Self.TblData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emp" EntityType="Self.emp" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [emp].[name] AS [name], 
+    [emp].[name1] AS [name1], 
+    [emp].[ID] AS [ID], 
+    [emp].[number] AS [number], 
+    [emp].[stat] AS [stat]
+    FROM [dbo].[emp] AS [emp]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblCategory" EntityType="Self.TblCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblCategory].[ID_CATEGORY] AS [ID_CATEGORY], 
+    [TblCategory].[CODE] AS [CODE], 
+    [TblCategory].[DESCRIPTION] AS [DESCRIPTION]
+    FROM [dbo].[TblCategory] AS [TblCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblCropsplanted" EntityType="Self.TblCropsplanted" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblCropsplanted].[ID_CROPS] AS [ID_CROPS], 
+    [TblCropsplanted].[CROPS] AS [CROPS]
+    FROM [dbo].[TblCropsplanted] AS [TblCropsplanted]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblDistrict" EntityType="Self.TblDistrict" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblDistrict].[ID_DISTRICT] AS [ID_DISTRICT], 
+    [TblDistrict].[DISTRICT] AS [DISTRICT]
+    FROM [dbo].[TblDistrict] AS [TblDistrict]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblDiversion" EntityType="Self.TblDiversion" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblDiversion].[ID_DIVERSION] AS [ID_DIVERSION], 
+    [TblDiversion].[TYPE] AS [TYPE]
+    FROM [dbo].[TblDiversion] AS [TblDiversion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblIMO" EntityType="Self.TblIMO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblIMO].[ID] AS [ID], 
+    [TblIMO].[code] AS [code], 
+    [TblIMO].[description] AS [description], 
+    [TblIMO].[IMO] AS [IMO], 
+    [TblIMO].[ENG] AS [ENG], 
+    [TblIMO].[RIM] AS [RIM], 
+    [TblIMO].[res] AS [res], 
+    [TblIMO].[area_monitor] AS [area_monitor]
+    FROM [dbo].[TblIMO] AS [TblIMO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblOCI" EntityType="Self.TblOCI" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblOCI].[ID_OCI] AS [ID_OCI], 
+    [TblOCI].[DESCRIPTION] AS [DESCRIPTION]
+    FROM [dbo].[TblOCI] AS [TblOCI]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblProvince" EntityType="Self.TblProvince" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblProvince].[ID_PROVINCE] AS [ID_PROVINCE], 
+    [TblProvince].[ID_REGION] AS [ID_REGION], 
+    [TblProvince].[PROVINCE] AS [PROVINCE], 
+    [TblProvince].[ID_POLITICAL] AS [ID_POLITICAL], 
+    [TblProvince].[POP] AS [POP], 
+    [TblProvince].[potential] AS [potential], 
+    [TblProvince].[num] AS [num], 
+    [TblProvince].[3019] AS [3019]
+    FROM [dbo].[TblProvince] AS [TblProvince]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblRegionLogin" EntityType="Self.TblRegionLogin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblRegionLogin].[id_region] AS [id_region], 
+    [TblRegionLogin].[region] AS [region], 
+    [TblRegionLogin].[pwd] AS [pwd], 
+    [TblRegionLogin].[cntlog] AS [cntlog], 
+    [TblRegionLogin].[SORT] AS [SORT], 
+    [TblRegionLogin].[ISLAND] AS [ISLAND], 
+    [TblRegionLogin].[reg_pot] AS [reg_pot], 
+    [TblRegionLogin].[master_pot] AS [master_pot]
+    FROM [dbo].[TblRegionLogin] AS [TblRegionLogin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CoordinatesPerSystem" EntityType="Self.CoordinatesPerSystem" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CoordinatesPerSystem].[Row] AS [Row], 
+    [CoordinatesPerSystem].[SYSTEMS] AS [SYSTEMS], 
+    [CoordinatesPerSystem].[lat] AS [lat], 
+    [CoordinatesPerSystem].[longi] AS [longi], 
+    [CoordinatesPerSystem].[MUNICIPALITY] AS [MUNICIPALITY], 
+    [CoordinatesPerSystem].[RESPONSIBILITY] AS [RESPONSIBILITY], 
+    [CoordinatesPerSystem].[res_region] AS [res_region], 
+    [CoordinatesPerSystem].[IDSystem] AS [IDSystem], 
+    [CoordinatesPerSystem].[ID_REGION] AS [ID_REGION], 
+    [CoordinatesPerSystem].[ID_PROVINCE] AS [ID_PROVINCE], 
+    [CoordinatesPerSystem].[SERVICE_ORIGINAL] AS [SERVICE_ORIGINAL], 
+    [CoordinatesPerSystem].[SERVICE_FIRMED] AS [SERVICE_FIRMED], 
+    [CoordinatesPerSystem].[AREA_OPERATIONAL] AS [AREA_OPERATIONAL], 
+    [CoordinatesPerSystem].[AREA_NONOPERATIONAL] AS [AREA_NONOPERATIONAL], 
+    [CoordinatesPerSystem].[province] AS [province], 
+    [CoordinatesPerSystem].[ID_CATEGORY] AS [ID_CATEGORY]
+    FROM [dbo].[CoordinatesPerSystem] AS [CoordinatesPerSystem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Inventory_view" EntityType="Self.Inventory_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Inventory_view].[ID_DATA] AS [ID_DATA], 
+    [Inventory_view].[YEAR_COVERED] AS [YEAR_COVERED], 
+    [Inventory_view].[SYSTEMS] AS [SYSTEMS], 
+    [Inventory_view].[ID_REGION] AS [ID_REGION], 
+    [Inventory_view].[REGION] AS [REGION], 
+    [Inventory_view].[ID_PROVINCE] AS [ID_PROVINCE], 
+    [Inventory_view].[PROVINCE] AS [PROVINCE], 
+    [Inventory_view].[MUNICIPALITY] AS [MUNICIPALITY], 
+    [Inventory_view].[SERVICE_ORIGINAL] AS [SERVICE_ORIGINAL], 
+    [Inventory_view].[PERMANENT] AS [PERMANENT], 
+    [Inventory_view].[CONVERTED_LAND] AS [CONVERTED_LAND], 
+    [Inventory_view].[SERVICE_FIRMED] AS [SERVICE_FIRMED], 
+    [Inventory_view].[AREA_OPERATIONAL] AS [AREA_OPERATIONAL], 
+    [Inventory_view].[AREA_NONOPERATIONAL] AS [AREA_NONOPERATIONAL], 
+    [Inventory_view].[IRRIGATED_WET] AS [IRRIGATED_WET], 
+    [Inventory_view].[IRRIGATED_DRY] AS [IRRIGATED_DRY], 
+    [Inventory_view].[IRRIGATED_RATOONING] AS [IRRIGATED_RATOONING], 
+    [Inventory_view].[THIRD_IRRIGATED] AS [THIRD_IRRIGATED], 
+    [Inventory_view].[BENEFITED_WET] AS [BENEFITED_WET], 
+    [Inventory_view].[BENEFITED_DRY] AS [BENEFITED_DRY], 
+    [Inventory_view].[BENEFITED_RATOONING] AS [BENEFITED_RATOONING], 
+    [Inventory_view].[THIRD_BENEFITED] AS [THIRD_BENEFITED], 
+    [Inventory_view].[AVERAGE_YIELD] AS [AVERAGE_YIELD], 
+    [Inventory_view].[AVERAGE_YIELD_DRY] AS [AVERAGE_YIELD_DRY], 
+    [Inventory_view].[AVERAGE_YIELD_RATOONING] AS [AVERAGE_YIELD_RATOONING], 
+    [Inventory_view].[THIRD_AVERAGE] AS [THIRD_AVERAGE], 
+    [Inventory_view].[DATE_CONSTRUCTED] AS [DATE_CONSTRUCTED], 
+    [Inventory_view].[SPECIFIC_DIVERSION] AS [SPECIFIC_DIVERSION], 
+    [Inventory_view].[WATER_SUPPLY] AS [WATER_SUPPLY], 
+    [Inventory_view].[LATITUDE] AS [LATITUDE], 
+    [Inventory_view].[LONGITUDE] AS [LONGITUDE], 
+    [Inventory_view].[DATE_UPDATED] AS [DATE_UPDATED], 
+    [Inventory_view].[REMARKS] AS [REMARKS], 
+    [Inventory_view].[NOSYSTEM] AS [NOSYSTEM], 
+    [Inventory_view].[AMORTIZING] AS [AMORTIZING], 
+    [Inventory_view].[REMARKS_REASON] AS [REMARKS_REASON], 
+    [Inventory_view].[FARMERS_BENEFICIARIES] AS [FARMERS_BENEFICIARIES], 
+    [Inventory_view].[RESPONSIBILITY] AS [RESPONSIBILITY], 
+    [Inventory_view].[IMO_RES] AS [IMO_RES], 
+    [Inventory_view].[ID_CATEGORY] AS [ID_CATEGORY], 
+    [Inventory_view].[DESCRIPTION] AS [DESCRIPTION], 
+    [Inventory_view].[ID_DISTRICT] AS [ID_DISTRICT], 
+    [Inventory_view].[DISTRICT] AS [DISTRICT], 
+    [Inventory_view].[ID_OCI] AS [ID_OCI], 
+    [Inventory_view].[OCI_DES] AS [OCI_DES], 
+    [Inventory_view].[ID_DIVERSION] AS [ID_DIVERSION], 
+    [Inventory_view].[TYPE] AS [TYPE], 
+    [Inventory_view].[ID_CROPS] AS [ID_CROPS], 
+    [Inventory_view].[CROPS] AS [CROPS], 
+    [Inventory_view].[RES] AS [RES], 
+    [Inventory_view].[DES_IMO] AS [DES_IMO], 
+    [Inventory_view].[IMO] AS [IMO], 
+    [Inventory_view].[ENG] AS [ENG], 
+    [Inventory_view].[RIM] AS [RIM], 
+    [Inventory_view].[res_region] AS [res_region], 
+    [Inventory_view].[area_monitor] AS [area_monitor], 
+    [Inventory_view].[POP] AS [POP], 
+    [Inventory_view].[political] AS [political], 
+    [Inventory_view].[spec] AS [spec], 
+    [Inventory_view].[ISLAND] AS [ISLAND], 
+    [Inventory_view].[POLITICAL_ID] AS [POLITICAL_ID], 
+    [Inventory_view].[LINED] AS [LINED], 
+    [Inventory_view].[UNLINED] AS [UNLINED], 
+    [Inventory_view].[NEWLY] AS [NEWLY], 
+    [Inventory_view].[DAMTYPE] AS [DAMTYPE], 
+    [Inventory_view].[SD] AS [SD], 
+    [Inventory_view].[newlyarea] AS [newlyarea], 
+    [Inventory_view].[IDSystem] AS [IDSystem], 
+    [Inventory_view].[iano] AS [iano], 
+    [Inventory_view].[iaarea] AS [iaarea], 
+    [Inventory_view].[iafb] AS [iafb], 
+    [Inventory_view].[iamember] AS [iamember], 
+    [Inventory_view].[main_total] AS [main_total], 
+    [Inventory_view].[main_lined] AS [main_lined], 
+    [Inventory_view].[main_earth] AS [main_earth], 
+    [Inventory_view].[lateral_total] AS [lateral_total], 
+    [Inventory_view].[lateral_lined] AS [lateral_lined], 
+    [Inventory_view].[lateral_earth] AS [lateral_earth], 
+    [Inventory_view].[CoordinatesChecking] AS [CoordinatesChecking], 
+    [Inventory_view].[municipalityCode] AS [municipalityCode], 
+    [Inventory_view].[provinceCode] AS [provinceCode], 
+    [Inventory_view].[dam] AS [dam]
+    FROM [dbo].[Inventory_view] AS [Inventory_view]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MAPInventory" EntityType="Self.MAPInventory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MAPInventory].[SYSTEMS] AS [SYSTEMS], 
+    [MAPInventory].[SERVICE_ORIGINAL] AS [SERVICE_ORIGINAL], 
+    [MAPInventory].[SERVICE_FIRMED] AS [SERVICE_FIRMED], 
+    [MAPInventory].[AREA_OPERATIONAL] AS [AREA_OPERATIONAL], 
+    [MAPInventory].[AREA_NONOPERATIONAL] AS [AREA_NONOPERATIONAL], 
+    [MAPInventory].[ID_CATEGORY] AS [ID_CATEGORY], 
+    [MAPInventory].[DESCRIPTION] AS [DESCRIPTION], 
+    [MAPInventory].[LATITUDE] AS [LATITUDE], 
+    [MAPInventory].[LONGITUDE] AS [LONGITUDE], 
+    [MAPInventory].[IDSYSTEM] AS [IDSYSTEM]
+    FROM [dbo].[MAPInventory] AS [MAPInventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MappingDataSystemsView" EntityType="Self.MappingDataSystemsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MappingDataSystemsView].[IDSystems] AS [IDSystems], 
+    [MappingDataSystemsView].[Systems] AS [Systems], 
+    [MappingDataSystemsView].[Region] AS [Region], 
+    [MappingDataSystemsView].[Latitude] AS [Latitude], 
+    [MappingDataSystemsView].[Longitude] AS [Longitude], 
+    [MappingDataSystemsView].[IdPolygon] AS [IdPolygon], 
+    [MappingDataSystemsView].[geometry] AS [geometry], 
+    [MappingDataSystemsView].[drawingtype] AS [drawingtype], 
+    [MappingDataSystemsView].[farmerlot] AS [farmerlot], 
+    [MappingDataSystemsView].[farmername] AS [farmername], 
+    [MappingDataSystemsView].[id] AS [id], 
+    [MappingDataSystemsView].[overlayid] AS [overlayid], 
+    [MappingDataSystemsView].[polygonarea] AS [polygonarea]
+    FROM [dbo].[MappingDataSystemsView] AS [MappingDataSystemsView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MappingDataview" EntityType="Self.MappingDataview" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MappingDataview].[IdPolygon] AS [IdPolygon], 
+    [MappingDataview].[geometry] AS [geometry], 
+    [MappingDataview].[drawingtype] AS [drawingtype], 
+    [MappingDataview].[farmerlot] AS [farmerlot], 
+    [MappingDataview].[farmername] AS [farmername], 
+    [MappingDataview].[id] AS [id], 
+    [MappingDataview].[Iddam] AS [Iddam], 
+    [MappingDataview].[overlayid] AS [overlayid], 
+    [MappingDataview].[polygonarea] AS [polygonarea], 
+    [MappingDataview].[SYSTEMS] AS [SYSTEMS], 
+    [MappingDataview].[REGION] AS [REGION], 
+    [MappingDataview].[PROVINCE] AS [PROVINCE], 
+    [MappingDataview].[MUNICIPALITY] AS [MUNICIPALITY], 
+    [MappingDataview].[SERVICE_ORIGINAL] AS [SERVICE_ORIGINAL], 
+    [MappingDataview].[PERMANENT] AS [PERMANENT], 
+    [MappingDataview].[CONVERTED_LAND] AS [CONVERTED_LAND], 
+    [MappingDataview].[SERVICE_FIRMED] AS [SERVICE_FIRMED], 
+    [MappingDataview].[AREA_OPERATIONAL] AS [AREA_OPERATIONAL], 
+    [MappingDataview].[AREA_NONOPERATIONAL] AS [AREA_NONOPERATIONAL], 
+    [MappingDataview].[LATITUDE] AS [LATITUDE], 
+    [MappingDataview].[LONGITUDE] AS [LONGITUDE], 
+    [MappingDataview].[IDSystem] AS [IDSystem]
+    FROM [dbo].[MappingDataview] AS [MappingDataview]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SYSTEMPICTURES" EntityType="Self.SYSTEMPICTURES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SYSTEMPICTURES].[IDSystem] AS [IDSystem], 
+    [SYSTEMPICTURES].[res_region] AS [res_region], 
+    [SYSTEMPICTURES].[MUNICIPALITY] AS [MUNICIPALITY], 
+    [SYSTEMPICTURES].[MAPsystem] AS [MAPsystem], 
+    [SYSTEMPICTURES].[ID_REGION] AS [ID_REGION], 
+    [SYSTEMPICTURES].[SERVICE_ORIGINAL] AS [SERVICE_ORIGINAL], 
+    [SYSTEMPICTURES].[SERVICE_FIRMED] AS [SERVICE_FIRMED], 
+    [SYSTEMPICTURES].[AREA_OPERATIONAL] AS [AREA_OPERATIONAL], 
+    [SYSTEMPICTURES].[AREA_NONOPERATIONAL] AS [AREA_NONOPERATIONAL], 
+    [SYSTEMPICTURES].[IDtable] AS [IDtable]
+    FROM [dbo].[SYSTEMPICTURES] AS [SYSTEMPICTURES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemProfileView" EntityType="Self.SystemProfileView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemProfileView].[id_region] AS [id_region], 
+    [SystemProfileView].[ID_CATEGORY] AS [ID_CATEGORY], 
+    [SystemProfileView].[IDSystems] AS [IDSystems], 
+    [SystemProfileView].[Systems] AS [Systems], 
+    [SystemProfileView].[Region] AS [Region], 
+    [SystemProfileView].[Latitude] AS [Latitude], 
+    [SystemProfileView].[Longitude] AS [Longitude], 
+    [SystemProfileView].[Category] AS [Category]
+    FROM [dbo].[SystemProfileView] AS [SystemProfileView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SystemSelection" EntityType="Self.SystemSelection" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SystemSelection].[SYSTEMS] AS [SYSTEMS], 
+    [SystemSelection].[res_region] AS [res_region], 
+    [SystemSelection].[IDSystem] AS [IDSystem], 
+    [SystemSelection].[RESPONSIBILITY] AS [RESPONSIBILITY], 
+    [SystemSelection].[ID_CATEGORY] AS [ID_CATEGORY]
+    FROM [dbo].[SystemSelection] AS [SystemSelection]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Inventory_view">
+          <Key>
+            <PropertyRef Name="IDSystem" />
+          </Key>
+          <Property Name="ID_DATA" Type="Int32" />
+          <Property Name="YEAR_COVERED" Type="Double" />
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <Property Name="REGION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_PROVINCE" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="PERMANENT" Type="Double" />
+          <Property Name="CONVERTED_LAND" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="IRRIGATED_WET" Type="Double" />
+          <Property Name="IRRIGATED_DRY" Type="Double" />
+          <Property Name="IRRIGATED_RATOONING" Type="Double" />
+          <Property Name="THIRD_IRRIGATED" Type="Double" />
+          <Property Name="BENEFITED_WET" Type="Double" />
+          <Property Name="BENEFITED_DRY" Type="Double" />
+          <Property Name="BENEFITED_RATOONING" Type="Double" />
+          <Property Name="THIRD_BENEFITED" Type="Double" />
+          <Property Name="AVERAGE_YIELD" Type="Double" />
+          <Property Name="AVERAGE_YIELD_DRY" Type="Double" />
+          <Property Name="AVERAGE_YIELD_RATOONING" Type="Double" />
+          <Property Name="THIRD_AVERAGE" Type="Double" />
+          <Property Name="DATE_CONSTRUCTED" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SPECIFIC_DIVERSION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WATER_SUPPLY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_UPDATED" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NOSYSTEM" Type="Double" />
+          <Property Name="AMORTIZING" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS_REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FARMERS_BENEFICIARIES" Type="Double" />
+          <Property Name="RESPONSIBILITY" Type="Double" />
+          <Property Name="IMO_RES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_DISTRICT" Type="Int32" Nullable="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_OCI" Type="Int32" Nullable="false" />
+          <Property Name="OCI_DES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_DIVERSION" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_CROPS" Type="Int32" Nullable="false" />
+          <Property Name="CROPS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DES_IMO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IMO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ENG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RIM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="res_region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_monitor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="POP" Type="Double" />
+          <Property Name="political" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="spec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ISLAND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POLITICAL_ID" Type="Int32" Nullable="false" />
+          <Property Name="LINED" Type="Double" />
+          <Property Name="UNLINED" Type="Double" />
+          <Property Name="NEWLY" Type="Double" />
+          <Property Name="DAMTYPE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="newlyarea" Type="Int32" />
+          <Property Name="IDSystem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="iano" Type="Double" />
+          <Property Name="iaarea" Type="Double" />
+          <Property Name="iafb" Type="Double" />
+          <Property Name="iamember" Type="Double" />
+          <Property Name="main_total" Type="Double" />
+          <Property Name="main_lined" Type="Double" />
+          <Property Name="main_earth" Type="Double" />
+          <Property Name="lateral_total" Type="Double" />
+          <Property Name="lateral_lined" Type="Double" />
+          <Property Name="lateral_earth" Type="Double" />
+          <Property Name="CoordinatesChecking" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="municipalityCode" Type="Int32" />
+          <Property Name="provinceCode" Type="Int32" />
+          <Property Name="dam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="InventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Inventory_view" EntityType="Self.Inventory_view" />
+          <EntitySet Name="CoordinatesPerSystems" EntityType="InventoryModel.CoordinatesPerSystem" />
+          <EntitySet Name="SYSTEMPICTURES" EntityType="InventoryModel.SYSTEMPICTURE" />
+          <EntitySet Name="TblCategories" EntityType="InventoryModel.TblCategory" />
+          <EntitySet Name="TblRegionLogins" EntityType="InventoryModel.TblRegionLogin" />
+          <EntitySet Name="TblCropsplanteds" EntityType="InventoryModel.TblCropsplanted" />
+          <EntitySet Name="TblDistricts" EntityType="InventoryModel.TblDistrict" />
+          <EntitySet Name="TblDiversions" EntityType="InventoryModel.TblDiversion" />
+          <EntitySet Name="TblIMOes" EntityType="InventoryModel.TblIMO" />
+          <EntitySet Name="TblOCIs" EntityType="InventoryModel.TblOCI" />
+          <EntitySet Name="TblProvinces" EntityType="InventoryModel.TblProvince" />
+          <EntitySet Name="MAPPICs" EntityType="InventoryModel.MAPPIC" />
+          <EntitySet Name="TblDatas" EntityType="InventoryModel.TblData" />
+          <EntitySet Name="MappingDataviews" EntityType="InventoryModel.MappingDataview" />
+          <EntitySet Name="SystemsProfiles" EntityType="InventoryModel.SystemsProfile" />
+          <EntitySet Name="MappingDataSystems" EntityType="InventoryModel.MappingDataSystem" />
+          <EntitySet Name="MappingDataSystemsViews" EntityType="InventoryModel.MappingDataSystemsView" />
+          <EntitySet Name="EmployeeLocations" EntityType="InventoryModel.EmployeeLocation" />
+          <EntitySet Name="CityBoundaries" EntityType="InventoryModel.CityBoundary" />
+          <EntitySet Name="emps" EntityType="InventoryModel.emp" />
+          <EntitySet Name="EmployeeSMSReceiveds" EntityType="InventoryModel.EmployeeSMSReceived" />
+          <EntitySet Name="EmployeeSMSReceivedConsoes" EntityType="InventoryModel.EmployeeSMSReceivedConso" />
+          <EntitySet Name="EmployeeTenants" EntityType="InventoryModel.EmployeeTenant" />
+          <EntitySet Name="EM_ERoster" EntityType="InventoryModel.EM_ERoster" />
+          <EntitySet Name="EmployeeCategories" EntityType="InventoryModel.EmployeeCategory" />
+          <EntitySet Name="CovidEquipmentEmployees" EntityType="InventoryModel.CovidEquipmentEmployee" />
+          <EntitySet Name="CovidSurveys" EntityType="InventoryModel.CovidSurvey" />
+          <EntitySet Name="CovidTrances" EntityType="InventoryModel.CovidTrance" />
+          <EntitySet Name="CovidActivityEmployees" EntityType="InventoryModel.CovidActivityEmployee" />
+          <EntitySet Name="CovidPlaces" EntityType="InventoryModel.CovidPlace" />
+          <EntitySet Name="MAPInventories" EntityType="InventoryModel.MAPInventory" />
+          <EntitySet Name="SystemProfileViews" EntityType="InventoryModel.SystemProfileView" />
+          <EntitySet Name="SystemSelections" EntityType="InventoryModel.SystemSelection" />
+        </EntityContainer>
+        <EntityType Name="CoordinatesPerSystem">
+          <Key>
+            <PropertyRef Name="Row" />
+          </Key>
+          <Property Name="Row" Type="Int64" Nullable="false" />
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="longi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSIBILITY" Type="Double" />
+          <Property Name="res_region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDSystem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <Property Name="ID_PROVINCE" Type="Int32" Nullable="false" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="province" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYSTEMPICTURE">
+          <Key>
+            <PropertyRef Name="IDtable" />
+          </Key>
+          <Property Name="IDSystem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="res_region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MAPsystem" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID_REGION" Type="Int32" Nullable="false" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="IDtable" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblCategory">
+          <Key>
+            <PropertyRef Name="ID_CATEGORY" />
+          </Key>
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblRegionLogin">
+          <Key>
+            <PropertyRef Name="id_region" />
+          </Key>
+          <Property Name="id_region" Type="Int32" Nullable="false" />
+          <Property Name="region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pwd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cntlog" Type="Int32" />
+          <Property Name="SORT" Type="Int32" />
+          <Property Name="ISLAND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reg_pot" Type="Double" />
+          <Property Name="master_pot" Type="Double" />
+        </EntityType>
+        <EntityType Name="TblCropsplanted">
+          <Key>
+            <PropertyRef Name="ID_CROPS" />
+          </Key>
+          <Property Name="ID_CROPS" Type="Int32" Nullable="false" />
+          <Property Name="CROPS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblDistrict">
+          <Key>
+            <PropertyRef Name="ID_DISTRICT" />
+          </Key>
+          <Property Name="ID_DISTRICT" Type="Int32" Nullable="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblDiversion">
+          <Key>
+            <PropertyRef Name="ID_DIVERSION" />
+          </Key>
+          <Property Name="ID_DIVERSION" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblIMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IMO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ENG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RIM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="res" Type="Int32" />
+          <Property Name="area_monitor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblOCI">
+          <Key>
+            <PropertyRef Name="ID_OCI" />
+          </Key>
+          <Property Name="ID_OCI" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblProvince">
+          <Key>
+            <PropertyRef Name="ID_PROVINCE" />
+          </Key>
+          <Property Name="ID_PROVINCE" Type="Int32" Nullable="false" />
+          <Property Name="ID_REGION" Type="Int32" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_POLITICAL" Type="Int32" />
+          <Property Name="POP" Type="Double" />
+          <Property Name="potential" Type="Double" />
+          <Property Name="num" Type="Int32" />
+          <Property Name="C3019" Type="Double" />
+        </EntityType>
+        <EntityType Name="MAPPIC">
+          <Key>
+            <PropertyRef Name="IDtable" />
+          </Key>
+          <Property Name="IDtable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDsystem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MAPsystem" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MAPLOC" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="imagesize" Type="Int32" />
+          <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblData">
+          <Key>
+            <PropertyRef Name="IDSystem" />
+          </Key>
+          <Property Name="ID_DATA" Type="Int32" />
+          <Property Name="PROJECT" Type="Double" />
+          <Property Name="YEAR_COVERED" Type="Double" />
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY" Type="Double" />
+          <Property Name="REGION" Type="Double" />
+          <Property Name="PROVINCE" Type="Double" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT" Type="Double" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="IRRIGATED_WET" Type="Double" />
+          <Property Name="IRRIGATED_DRY" Type="Double" />
+          <Property Name="BENEFITED_WET" Type="Double" />
+          <Property Name="BENEFITED_DRY" Type="Double" />
+          <Property Name="AVERAGE_YIELD" Type="Double" />
+          <Property Name="DATE_CONSTRUCTED" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OCI" Type="Int32" />
+          <Property Name="SPECIFY_AGENCY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REHAB_YEAR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LOCAL_COUNTERPART" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LOCAL_COUNTERPART_AMOUNT" Type="Double" />
+          <Property Name="FOREX" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FOREX_AMOUNT" Type="Double" />
+          <Property Name="REHAB_PROJECT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DIVERSION" Type="Int32" />
+          <Property Name="SPECIFIC_DIVERSION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WATER_SUPPLY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CROPS" Type="Int32" />
+          <Property Name="REMARKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_UPDATED" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NOSYSTEM" Type="Double" />
+          <Property Name="AMORTIZING" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IRRIGATED_RATOONING" Type="Double" />
+          <Property Name="BENEFITED_RATOONING" Type="Double" />
+          <Property Name="AVERAGE_YIELD_DRY" Type="Double" />
+          <Property Name="AVERAGE_YIELD_RATOONING" Type="Double" />
+          <Property Name="REMARKS_REASON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FARMERS_BENEFICIARIES" Type="Double" />
+          <Property Name="CONVERTED_LAND" Type="Double" />
+          <Property Name="PERMANENT" Type="Double" />
+          <Property Name="THIRD_IRRIGATED" Type="Double" />
+          <Property Name="THIRD_BENEFITED" Type="Double" />
+          <Property Name="THIRD_AVERAGE" Type="Double" />
+          <Property Name="RESPONSIBILITY" Type="Double" />
+          <Property Name="IMO_RES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="spec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LINED" Type="Double" />
+          <Property Name="UNLINED" Type="Double" />
+          <Property Name="NEWLY" Type="Double" />
+          <Property Name="DAMTYPE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="newlyarea" Type="Double" />
+          <Property Name="IDSystem" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="iano" Type="Double" />
+          <Property Name="iaarea" Type="Double" />
+          <Property Name="iafb" Type="Double" />
+          <Property Name="iamember" Type="Double" />
+          <Property Name="main_total" Type="Double" />
+          <Property Name="main_lined" Type="Double" />
+          <Property Name="main_earth" Type="Double" />
+          <Property Name="lateral_total" Type="Double" />
+          <Property Name="lateral_lined" Type="Double" />
+          <Property Name="lateral_earth" Type="Double" />
+          <Property Name="municipalityCode" Type="Int32" />
+          <Property Name="provinceCode" Type="Int32" />
+          <Property Name="dam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MappingDataview">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="IdPolygon" Type="Int32" Nullable="false" />
+          <Property Name="geometry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drawingtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmerlot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Iddam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overlayid" Type="Int32" />
+          <Property Name="polygonarea" Type="Double" />
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REGION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="PERMANENT" Type="Double" />
+          <Property Name="CONVERTED_LAND" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="LATITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDSystem" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemsProfile">
+          <Key>
+            <PropertyRef Name="IDSystems" />
+          </Key>
+          <Property Name="IDSystems" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Systems" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MappingDataSystem">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IdPolygon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geometry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drawingtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmerlot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Iddam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overlayid" Type="Int32" />
+          <Property Name="polygonarea" Type="Double" />
+        </EntityType>
+        <EntityType Name="MappingDataSystemsView">
+          <Key>
+            <PropertyRef Name="IdPolygon" />
+          </Key>
+          <Property Name="IDSystems" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Systems" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdPolygon" Type="Int32" Nullable="false" />
+          <Property Name="geometry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drawingtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmerlot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="farmername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="overlayid" Type="Int32" />
+          <Property Name="polygonarea" Type="Double" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imagename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="lng" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SG" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Cp" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="sms" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CityBoundary">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cityname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CityBoundariesname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CovidPositive" Type="Int32" />
+          <Property Name="CovidDied" Type="Int32" />
+          <Property Name="CovidRecovered" Type="Int32" />
+          <Property Name="dateasof" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeSMSReceived">
+          <Key>
+            <PropertyRef Name="SMSEmployeeID" />
+          </Key>
+          <Property Name="SMSEmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smsNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="smsMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="smsName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="idnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typehome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="smsdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="EmployeeSMSReceivedConso">
+          <Key>
+            <PropertyRef Name="SMSEmployeeID" />
+          </Key>
+          <Property Name="SMSEmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smsNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="smsMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="smsName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeTenant">
+          <Key>
+            <PropertyRef Name="TenantID" />
+          </Key>
+          <Property Name="TenantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="midname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="contact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Office" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EM_ERoster">
+          <Key>
+            <PropertyRef Name="num" />
+          </Key>
+          <Property Name="num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="newid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="abrev_currdept" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="office" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeCategory">
+          <Key>
+            <PropertyRef Name="EMpCatID" />
+          </Key>
+          <Property Name="EMpCatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CovidEquipmentEmployee">
+          <Key>
+            <PropertyRef Name="CovidEquipmentID" />
+          </Key>
+          <Property Name="CovidEquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mnt" Type="Int32" />
+          <Property Name="yr" Type="Int32" />
+          <Property Name="dateGiven" Type="DateTime" Precision="0" />
+          <Property Name="facemask" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vitamins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alcohol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employeeid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="midname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="faceshield" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CovidSurvey">
+          <Key>
+            <PropertyRef Name="IDSurvey" />
+          </Key>
+          <Property Name="IDSurvey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonnelCategory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Midname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sufix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <Property Name="TimeTaken" Type="Time" Precision="7" />
+          <Property Name="Office" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cough" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cold" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diarrhea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bodyache" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="headache" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="temp" Type="Double" />
+          <Property Name="breathing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fatigue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="travelled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="travelWHere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="travelWhen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="travelInfectedArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="directContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateEncoded" Type="DateTime" Precision="0" />
+          <Property Name="facemask" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vitamins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alcohol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="faceshield" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="newid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CovidTrance">
+          <Key>
+            <PropertyRef Name="IDTRANCE" />
+          </Key>
+          <Property Name="IDTRANCE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CovidActivityEmployee">
+          <Key>
+            <PropertyRef Name="IDActivityEmployee" />
+          </Key>
+          <Property Name="IDActivityEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeFrom" Type="DateTime" Precision="3" />
+          <Property Name="TimeTo" Type="DateTime" Precision="3" />
+          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateEncoded" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="CovidPlace">
+          <Key>
+            <PropertyRef Name="IdPlaces" />
+          </Key>
+          <Property Name="IdPlaces" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="places" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MAPInventory">
+          <Key>
+            <PropertyRef Name="IDSYSTEM" />
+          </Key>
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SERVICE_ORIGINAL" Type="Double" />
+          <Property Name="SERVICE_FIRMED" Type="Double" />
+          <Property Name="AREA_OPERATIONAL" Type="Double" />
+          <Property Name="AREA_NONOPERATIONAL" Type="Double" />
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LATITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LONGITUDE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDSYSTEM" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemProfileView">
+          <Key>
+            <PropertyRef Name="IDSystems" />
+          </Key>
+          <Property Name="id_region" Type="Int32" />
+          <Property Name="ID_CATEGORY" Type="Int32" />
+          <Property Name="IDSystems" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Systems" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemSelection">
+          <Key>
+            <PropertyRef Name="IDSystem" />
+          </Key>
+          <Property Name="SYSTEMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="res_region" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDSystem" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSIBILITY" Type="Double" />
+          <Property Name="ID_CATEGORY" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
+          <EntitySetMapping Name="Inventory_view">
+            <EntityTypeMapping TypeName="InventoryModel.Inventory_view">
+              <MappingFragment StoreEntitySet="Inventory_view">
+                <ScalarProperty Name="dam" ColumnName="dam" />
+                <ScalarProperty Name="provinceCode" ColumnName="provinceCode" />
+                <ScalarProperty Name="municipalityCode" ColumnName="municipalityCode" />
+                <ScalarProperty Name="CoordinatesChecking" ColumnName="CoordinatesChecking" />
+                <ScalarProperty Name="lateral_earth" ColumnName="lateral_earth" />
+                <ScalarProperty Name="lateral_lined" ColumnName="lateral_lined" />
+                <ScalarProperty Name="lateral_total" ColumnName="lateral_total" />
+                <ScalarProperty Name="main_earth" ColumnName="main_earth" />
+                <ScalarProperty Name="main_lined" ColumnName="main_lined" />
+                <ScalarProperty Name="main_total" ColumnName="main_total" />
+                <ScalarProperty Name="iamember" ColumnName="iamember" />
+                <ScalarProperty Name="iafb" ColumnName="iafb" />
+                <ScalarProperty Name="iaarea" ColumnName="iaarea" />
+                <ScalarProperty Name="iano" ColumnName="iano" />
+                <ScalarProperty Name="ID_DATA" ColumnName="ID_DATA" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="ID_PROVINCE" ColumnName="ID_PROVINCE" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="PERMANENT" ColumnName="PERMANENT" />
+                <ScalarProperty Name="CONVERTED_LAND" ColumnName="CONVERTED_LAND" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="IRRIGATED_WET" ColumnName="IRRIGATED_WET" />
+                <ScalarProperty Name="IRRIGATED_DRY" ColumnName="IRRIGATED_DRY" />
+                <ScalarProperty Name="IRRIGATED_RATOONING" ColumnName="IRRIGATED_RATOONING" />
+                <ScalarProperty Name="THIRD_IRRIGATED" ColumnName="THIRD_IRRIGATED" />
+                <ScalarProperty Name="BENEFITED_WET" ColumnName="BENEFITED_WET" />
+                <ScalarProperty Name="BENEFITED_DRY" ColumnName="BENEFITED_DRY" />
+                <ScalarProperty Name="BENEFITED_RATOONING" ColumnName="BENEFITED_RATOONING" />
+                <ScalarProperty Name="THIRD_BENEFITED" ColumnName="THIRD_BENEFITED" />
+                <ScalarProperty Name="AVERAGE_YIELD" ColumnName="AVERAGE_YIELD" />
+                <ScalarProperty Name="AVERAGE_YIELD_DRY" ColumnName="AVERAGE_YIELD_DRY" />
+                <ScalarProperty Name="AVERAGE_YIELD_RATOONING" ColumnName="AVERAGE_YIELD_RATOONING" />
+                <ScalarProperty Name="THIRD_AVERAGE" ColumnName="THIRD_AVERAGE" />
+                <ScalarProperty Name="DATE_CONSTRUCTED" ColumnName="DATE_CONSTRUCTED" />
+                <ScalarProperty Name="SPECIFIC_DIVERSION" ColumnName="SPECIFIC_DIVERSION" />
+                <ScalarProperty Name="WATER_SUPPLY" ColumnName="WATER_SUPPLY" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="NOSYSTEM" ColumnName="NOSYSTEM" />
+                <ScalarProperty Name="AMORTIZING" ColumnName="AMORTIZING" />
+                <ScalarProperty Name="REMARKS_REASON" ColumnName="REMARKS_REASON" />
+                <ScalarProperty Name="FARMERS_BENEFICIARIES" ColumnName="FARMERS_BENEFICIARIES" />
+                <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+                <ScalarProperty Name="IMO_RES" ColumnName="IMO_RES" />
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID_DISTRICT" ColumnName="ID_DISTRICT" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="ID_OCI" ColumnName="ID_OCI" />
+                <ScalarProperty Name="OCI_DES" ColumnName="OCI_DES" />
+                <ScalarProperty Name="ID_DIVERSION" ColumnName="ID_DIVERSION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ID_CROPS" ColumnName="ID_CROPS" />
+                <ScalarProperty Name="CROPS" ColumnName="CROPS" />
+                <ScalarProperty Name="RES" ColumnName="RES" />
+                <ScalarProperty Name="DES_IMO" ColumnName="DES_IMO" />
+                <ScalarProperty Name="IMO" ColumnName="IMO" />
+                <ScalarProperty Name="ENG" ColumnName="ENG" />
+                <ScalarProperty Name="RIM" ColumnName="RIM" />
+                <ScalarProperty Name="res_region" ColumnName="res_region" />
+                <ScalarProperty Name="area_monitor" ColumnName="area_monitor" />
+                <ScalarProperty Name="POP" ColumnName="POP" />
+                <ScalarProperty Name="political" ColumnName="political" />
+                <ScalarProperty Name="spec" ColumnName="spec" />
+                <ScalarProperty Name="ISLAND" ColumnName="ISLAND" />
+                <ScalarProperty Name="POLITICAL_ID" ColumnName="POLITICAL_ID" />
+                <ScalarProperty Name="LINED" ColumnName="LINED" />
+                <ScalarProperty Name="UNLINED" ColumnName="UNLINED" />
+                <ScalarProperty Name="NEWLY" ColumnName="NEWLY" />
+                <ScalarProperty Name="DAMTYPE" ColumnName="DAMTYPE" />
+                <ScalarProperty Name="SD" ColumnName="SD" />
+                <ScalarProperty Name="newlyarea" ColumnName="newlyarea" />
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoordinatesPerSystems">
+            <EntityTypeMapping TypeName="InventoryModel.CoordinatesPerSystem">
+              <MappingFragment StoreEntitySet="CoordinatesPerSystem">
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="ID_PROVINCE" ColumnName="ID_PROVINCE" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+                <ScalarProperty Name="res_region" ColumnName="res_region" />
+                <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="longi" ColumnName="longi" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSTEMPICTURES">
+            <EntityTypeMapping TypeName="InventoryModel.SYSTEMPICTURE">
+              <MappingFragment StoreEntitySet="SYSTEMPICTURES">
+                <ScalarProperty Name="IDtable" ColumnName="IDtable" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="MAPsystem" ColumnName="MAPsystem" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="res_region" ColumnName="res_region" />
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCategories">
+            <EntityTypeMapping TypeName="InventoryModel.TblCategory">
+              <MappingFragment StoreEntitySet="TblCategory">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRegionLogins">
+            <EntityTypeMapping TypeName="InventoryModel.TblRegionLogin">
+              <MappingFragment StoreEntitySet="TblRegionLogin">
+                <ScalarProperty Name="master_pot" ColumnName="master_pot" />
+                <ScalarProperty Name="reg_pot" ColumnName="reg_pot" />
+                <ScalarProperty Name="ISLAND" ColumnName="ISLAND" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="cntlog" ColumnName="cntlog" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCropsplanteds">
+            <EntityTypeMapping TypeName="InventoryModel.TblCropsplanted">
+              <MappingFragment StoreEntitySet="TblCropsplanted">
+                <ScalarProperty Name="CROPS" ColumnName="CROPS" />
+                <ScalarProperty Name="ID_CROPS" ColumnName="ID_CROPS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDistricts">
+            <EntityTypeMapping TypeName="InventoryModel.TblDistrict">
+              <MappingFragment StoreEntitySet="TblDistrict">
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="ID_DISTRICT" ColumnName="ID_DISTRICT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDiversions">
+            <EntityTypeMapping TypeName="InventoryModel.TblDiversion">
+              <MappingFragment StoreEntitySet="TblDiversion">
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ID_DIVERSION" ColumnName="ID_DIVERSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblIMOes">
+            <EntityTypeMapping TypeName="InventoryModel.TblIMO">
+              <MappingFragment StoreEntitySet="TblIMO">
+                <ScalarProperty Name="area_monitor" ColumnName="area_monitor" />
+                <ScalarProperty Name="res" ColumnName="res" />
+                <ScalarProperty Name="RIM" ColumnName="RIM" />
+                <ScalarProperty Name="ENG" ColumnName="ENG" />
+                <ScalarProperty Name="IMO" ColumnName="IMO" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOCIs">
+            <EntityTypeMapping TypeName="InventoryModel.TblOCI">
+              <MappingFragment StoreEntitySet="TblOCI">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID_OCI" ColumnName="ID_OCI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProvinces">
+            <EntityTypeMapping TypeName="InventoryModel.TblProvince">
+              <MappingFragment StoreEntitySet="TblProvince">
+                <ScalarProperty Name="C3019" ColumnName="3019" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="potential" ColumnName="potential" />
+                <ScalarProperty Name="POP" ColumnName="POP" />
+                <ScalarProperty Name="ID_POLITICAL" ColumnName="ID_POLITICAL" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="ID_PROVINCE" ColumnName="ID_PROVINCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAPPICs">
+            <EntityTypeMapping TypeName="InventoryModel.MAPPIC">
+              <MappingFragment StoreEntitySet="MAPPIC">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="imagesize" ColumnName="imagesize" />
+                <ScalarProperty Name="MAPLOC" ColumnName="MAPLOC" />
+                <ScalarProperty Name="MAPsystem" ColumnName="MAPsystem" />
+                <ScalarProperty Name="IDsystem" ColumnName="IDsystem" />
+                <ScalarProperty Name="IDtable" ColumnName="IDtable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDatas">
+            <EntityTypeMapping TypeName="InventoryModel.TblData">
+              <MappingFragment StoreEntitySet="TblData">
+                <ScalarProperty Name="dam" ColumnName="dam" />
+                <ScalarProperty Name="provinceCode" ColumnName="provinceCode" />
+                <ScalarProperty Name="municipalityCode" ColumnName="municipalityCode" />
+                <ScalarProperty Name="lateral_earth" ColumnName="lateral_earth" />
+                <ScalarProperty Name="lateral_lined" ColumnName="lateral_lined" />
+                <ScalarProperty Name="lateral_total" ColumnName="lateral_total" />
+                <ScalarProperty Name="main_earth" ColumnName="main_earth" />
+                <ScalarProperty Name="main_lined" ColumnName="main_lined" />
+                <ScalarProperty Name="main_total" ColumnName="main_total" />
+                <ScalarProperty Name="iamember" ColumnName="iamember" />
+                <ScalarProperty Name="iafb" ColumnName="iafb" />
+                <ScalarProperty Name="iaarea" ColumnName="iaarea" />
+                <ScalarProperty Name="iano" ColumnName="iano" />
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+                <ScalarProperty Name="newlyarea" ColumnName="newlyarea" />
+                <ScalarProperty Name="SD" ColumnName="SD" />
+                <ScalarProperty Name="DAMTYPE" ColumnName="DAMTYPE" />
+                <ScalarProperty Name="NEWLY" ColumnName="NEWLY" />
+                <ScalarProperty Name="UNLINED" ColumnName="UNLINED" />
+                <ScalarProperty Name="LINED" ColumnName="LINED" />
+                <ScalarProperty Name="spec" ColumnName="spec" />
+                <ScalarProperty Name="IMO_RES" ColumnName="IMO_RES" />
+                <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+                <ScalarProperty Name="THIRD_AVERAGE" ColumnName="THIRD_AVERAGE" />
+                <ScalarProperty Name="THIRD_BENEFITED" ColumnName="THIRD_BENEFITED" />
+                <ScalarProperty Name="THIRD_IRRIGATED" ColumnName="THIRD_IRRIGATED" />
+                <ScalarProperty Name="PERMANENT" ColumnName="PERMANENT" />
+                <ScalarProperty Name="CONVERTED_LAND" ColumnName="CONVERTED_LAND" />
+                <ScalarProperty Name="FARMERS_BENEFICIARIES" ColumnName="FARMERS_BENEFICIARIES" />
+                <ScalarProperty Name="REMARKS_REASON" ColumnName="REMARKS_REASON" />
+                <ScalarProperty Name="AVERAGE_YIELD_RATOONING" ColumnName="AVERAGE_YIELD_RATOONING" />
+                <ScalarProperty Name="AVERAGE_YIELD_DRY" ColumnName="AVERAGE_YIELD_DRY" />
+                <ScalarProperty Name="BENEFITED_RATOONING" ColumnName="BENEFITED_RATOONING" />
+                <ScalarProperty Name="IRRIGATED_RATOONING" ColumnName="IRRIGATED_RATOONING" />
+                <ScalarProperty Name="AMORTIZING" ColumnName="AMORTIZING" />
+                <ScalarProperty Name="NOSYSTEM" ColumnName="NOSYSTEM" />
+                <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="CROPS" ColumnName="CROPS" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="WATER_SUPPLY" ColumnName="WATER_SUPPLY" />
+                <ScalarProperty Name="SPECIFIC_DIVERSION" ColumnName="SPECIFIC_DIVERSION" />
+                <ScalarProperty Name="DIVERSION" ColumnName="DIVERSION" />
+                <ScalarProperty Name="REHAB_PROJECT" ColumnName="REHAB_PROJECT" />
+                <ScalarProperty Name="FOREX_AMOUNT" ColumnName="FOREX_AMOUNT" />
+                <ScalarProperty Name="FOREX" ColumnName="FOREX" />
+                <ScalarProperty Name="LOCAL_COUNTERPART_AMOUNT" ColumnName="LOCAL_COUNTERPART_AMOUNT" />
+                <ScalarProperty Name="LOCAL_COUNTERPART" ColumnName="LOCAL_COUNTERPART" />
+                <ScalarProperty Name="REHAB_YEAR" ColumnName="REHAB_YEAR" />
+                <ScalarProperty Name="SPECIFY_AGENCY" ColumnName="SPECIFY_AGENCY" />
+                <ScalarProperty Name="OCI" ColumnName="OCI" />
+                <ScalarProperty Name="DATE_CONSTRUCTED" ColumnName="DATE_CONSTRUCTED" />
+                <ScalarProperty Name="AVERAGE_YIELD" ColumnName="AVERAGE_YIELD" />
+                <ScalarProperty Name="BENEFITED_DRY" ColumnName="BENEFITED_DRY" />
+                <ScalarProperty Name="BENEFITED_WET" ColumnName="BENEFITED_WET" />
+                <ScalarProperty Name="IRRIGATED_DRY" ColumnName="IRRIGATED_DRY" />
+                <ScalarProperty Name="IRRIGATED_WET" ColumnName="IRRIGATED_WET" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+                <ScalarProperty Name="YEAR_COVERED" ColumnName="YEAR_COVERED" />
+                <ScalarProperty Name="PROJECT" ColumnName="PROJECT" />
+                <ScalarProperty Name="ID_DATA" ColumnName="ID_DATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MappingDataviews">
+            <EntityTypeMapping TypeName="InventoryModel.MappingDataview">
+              <MappingFragment StoreEntitySet="MappingDataview">
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="CONVERTED_LAND" ColumnName="CONVERTED_LAND" />
+                <ScalarProperty Name="PERMANENT" ColumnName="PERMANENT" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+                <ScalarProperty Name="polygonarea" ColumnName="polygonarea" />
+                <ScalarProperty Name="overlayid" ColumnName="overlayid" />
+                <ScalarProperty Name="Iddam" ColumnName="Iddam" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="farmername" ColumnName="farmername" />
+                <ScalarProperty Name="farmerlot" ColumnName="farmerlot" />
+                <ScalarProperty Name="drawingtype" ColumnName="drawingtype" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="IdPolygon" ColumnName="IdPolygon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemsProfiles">
+            <EntityTypeMapping TypeName="InventoryModel.SystemsProfile">
+              <MappingFragment StoreEntitySet="SystemsProfile">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Systems" ColumnName="Systems" />
+                <ScalarProperty Name="IDSystems" ColumnName="IDSystems" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MappingDataSystems">
+            <EntityTypeMapping TypeName="InventoryModel.MappingDataSystem">
+              <MappingFragment StoreEntitySet="MappingDataSystems">
+                <ScalarProperty Name="polygonarea" ColumnName="polygonarea" />
+                <ScalarProperty Name="overlayid" ColumnName="overlayid" />
+                <ScalarProperty Name="Iddam" ColumnName="Iddam" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="farmername" ColumnName="farmername" />
+                <ScalarProperty Name="farmerlot" ColumnName="farmerlot" />
+                <ScalarProperty Name="drawingtype" ColumnName="drawingtype" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="IdPolygon" ColumnName="IdPolygon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MappingDataSystemsViews">
+            <EntityTypeMapping TypeName="InventoryModel.MappingDataSystemsView">
+              <MappingFragment StoreEntitySet="MappingDataSystemsView">
+                <ScalarProperty Name="polygonarea" ColumnName="polygonarea" />
+                <ScalarProperty Name="overlayid" ColumnName="overlayid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="farmername" ColumnName="farmername" />
+                <ScalarProperty Name="farmerlot" ColumnName="farmerlot" />
+                <ScalarProperty Name="drawingtype" ColumnName="drawingtype" />
+                <ScalarProperty Name="geometry" ColumnName="geometry" />
+                <ScalarProperty Name="IdPolygon" ColumnName="IdPolygon" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Systems" ColumnName="Systems" />
+                <ScalarProperty Name="IDSystems" ColumnName="IDSystems" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLocations">
+            <EntityTypeMapping TypeName="InventoryModel.EmployeeLocation">
+              <MappingFragment StoreEntitySet="EmployeeLocation">
+                <ScalarProperty Name="sms" ColumnName="sms" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="SG" ColumnName="SG" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="imagename" ColumnName="imagename" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityBoundaries">
+            <EntityTypeMapping TypeName="InventoryModel.CityBoundary">
+              <MappingFragment StoreEntitySet="CityBoundaries">
+                <ScalarProperty Name="dateasof" ColumnName="dateasof" />
+                <ScalarProperty Name="CovidRecovered" ColumnName="CovidRecovered" />
+                <ScalarProperty Name="CovidDied" ColumnName="CovidDied" />
+                <ScalarProperty Name="CovidPositive" ColumnName="CovidPositive" />
+                <ScalarProperty Name="CityBoundariesname" ColumnName="CityBoundariesname" />
+                <ScalarProperty Name="Cityname" ColumnName="Cityname" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emps">
+            <EntityTypeMapping TypeName="InventoryModel.emp">
+              <MappingFragment StoreEntitySet="emp">
+                <ScalarProperty Name="stat" ColumnName="stat" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name1" ColumnName="name1" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSMSReceiveds">
+            <EntityTypeMapping TypeName="InventoryModel.EmployeeSMSReceived">
+              <MappingFragment StoreEntitySet="EmployeeSMSReceived">
+                <ScalarProperty Name="smsdate" ColumnName="smsdate" />
+                <ScalarProperty Name="typehome" ColumnName="typehome" />
+                <ScalarProperty Name="idnumber" ColumnName="idnumber" />
+                <ScalarProperty Name="smsName" ColumnName="smsName" />
+                <ScalarProperty Name="smsMessage" ColumnName="smsMessage" />
+                <ScalarProperty Name="smsNumber" ColumnName="smsNumber" />
+                <ScalarProperty Name="SMSEmployeeID" ColumnName="SMSEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSMSReceivedConsoes">
+            <EntityTypeMapping TypeName="InventoryModel.EmployeeSMSReceivedConso">
+              <MappingFragment StoreEntitySet="EmployeeSMSReceivedConso">
+                <ScalarProperty Name="smsName" ColumnName="smsName" />
+                <ScalarProperty Name="smsMessage" ColumnName="smsMessage" />
+                <ScalarProperty Name="smsNumber" ColumnName="smsNumber" />
+                <ScalarProperty Name="SMSEmployeeID" ColumnName="SMSEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTenants">
+            <EntityTypeMapping TypeName="InventoryModel.EmployeeTenant">
+              <MappingFragment StoreEntitySet="EmployeeTenant">
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="midname" ColumnName="midname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="TenantID" ColumnName="TenantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EM_ERoster">
+            <EntityTypeMapping TypeName="InventoryModel.EM_ERoster">
+              <MappingFragment StoreEntitySet="EM_ERoster">
+                <ScalarProperty Name="office" ColumnName="office" />
+                <ScalarProperty Name="abrev_currdept" ColumnName="abrev_currdept" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="newid" ColumnName="newid" />
+                <ScalarProperty Name="empno" ColumnName="empno" />
+                <ScalarProperty Name="num" ColumnName="num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeCategories">
+            <EntityTypeMapping TypeName="InventoryModel.EmployeeCategory">
+              <MappingFragment StoreEntitySet="EmployeeCategory">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="EMpCatID" ColumnName="EMpCatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidEquipmentEmployees">
+            <EntityTypeMapping TypeName="InventoryModel.CovidEquipmentEmployee">
+              <MappingFragment StoreEntitySet="CovidEquipmentEmployee">
+                <ScalarProperty Name="trance" ColumnName="trance" />
+                <ScalarProperty Name="faceshield" ColumnName="faceshield" />
+                <ScalarProperty Name="midname" ColumnName="midname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+                <ScalarProperty Name="alcohol" ColumnName="alcohol" />
+                <ScalarProperty Name="vitamins" ColumnName="vitamins" />
+                <ScalarProperty Name="facemask" ColumnName="facemask" />
+                <ScalarProperty Name="dateGiven" ColumnName="dateGiven" />
+                <ScalarProperty Name="yr" ColumnName="yr" />
+                <ScalarProperty Name="mnt" ColumnName="mnt" />
+                <ScalarProperty Name="CovidEquipmentID" ColumnName="CovidEquipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidSurveys">
+            <EntityTypeMapping TypeName="InventoryModel.CovidSurvey">
+              <MappingFragment StoreEntitySet="CovidSurvey">
+                <ScalarProperty Name="newid" ColumnName="newid" />
+                <ScalarProperty Name="trance" ColumnName="trance" />
+                <ScalarProperty Name="faceshield" ColumnName="faceshield" />
+                <ScalarProperty Name="alcohol" ColumnName="alcohol" />
+                <ScalarProperty Name="vitamins" ColumnName="vitamins" />
+                <ScalarProperty Name="facemask" ColumnName="facemask" />
+                <ScalarProperty Name="DateEncoded" ColumnName="DateEncoded" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="directContact" ColumnName="directContact" />
+                <ScalarProperty Name="travelInfectedArea" ColumnName="travelInfectedArea" />
+                <ScalarProperty Name="travelWhen" ColumnName="travelWhen" />
+                <ScalarProperty Name="travelWHere" ColumnName="travelWHere" />
+                <ScalarProperty Name="travelled" ColumnName="travelled" />
+                <ScalarProperty Name="fatigue" ColumnName="fatigue" />
+                <ScalarProperty Name="breathing" ColumnName="breathing" />
+                <ScalarProperty Name="temp" ColumnName="temp" />
+                <ScalarProperty Name="headache" ColumnName="headache" />
+                <ScalarProperty Name="bodyache" ColumnName="bodyache" />
+                <ScalarProperty Name="sore" ColumnName="sore" />
+                <ScalarProperty Name="diarrhea" ColumnName="diarrhea" />
+                <ScalarProperty Name="cold" ColumnName="cold" />
+                <ScalarProperty Name="cough" ColumnName="cough" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="TimeTaken" ColumnName="TimeTaken" />
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="Sufix" ColumnName="Sufix" />
+                <ScalarProperty Name="Midname" ColumnName="Midname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PersonnelCategory" ColumnName="PersonnelCategory" />
+                <ScalarProperty Name="IDSurvey" ColumnName="IDSurvey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidTrances">
+            <EntityTypeMapping TypeName="InventoryModel.CovidTrance">
+              <MappingFragment StoreEntitySet="CovidTrance">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="trance" ColumnName="trance" />
+                <ScalarProperty Name="IDTRANCE" ColumnName="IDTRANCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidActivityEmployees">
+            <EntityTypeMapping TypeName="InventoryModel.CovidActivityEmployee">
+              <MappingFragment StoreEntitySet="CovidActivityEmployee">
+                <ScalarProperty Name="dateEncoded" ColumnName="dateEncoded" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+                <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+                <ScalarProperty Name="CategoryPlace" ColumnName="CategoryPlace" />
+                <ScalarProperty Name="IDActivityEmployee" ColumnName="IDActivityEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidPlaces">
+            <EntityTypeMapping TypeName="InventoryModel.CovidPlace">
+              <MappingFragment StoreEntitySet="CovidPlaces">
+                <ScalarProperty Name="places" ColumnName="places" />
+                <ScalarProperty Name="IdPlaces" ColumnName="IdPlaces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAPInventories">
+            <EntityTypeMapping TypeName="InventoryModel.MAPInventory">
+              <MappingFragment StoreEntitySet="MAPInventory">
+                <ScalarProperty Name="IDSYSTEM" ColumnName="IDSYSTEM" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="AREA_NONOPERATIONAL" ColumnName="AREA_NONOPERATIONAL" />
+                <ScalarProperty Name="AREA_OPERATIONAL" ColumnName="AREA_OPERATIONAL" />
+                <ScalarProperty Name="SERVICE_FIRMED" ColumnName="SERVICE_FIRMED" />
+                <ScalarProperty Name="SERVICE_ORIGINAL" ColumnName="SERVICE_ORIGINAL" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemProfileViews">
+            <EntityTypeMapping TypeName="InventoryModel.SystemProfileView">
+              <MappingFragment StoreEntitySet="SystemProfileView">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Systems" ColumnName="Systems" />
+                <ScalarProperty Name="IDSystems" ColumnName="IDSystems" />
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemSelections">
+            <EntityTypeMapping TypeName="InventoryModel.SystemSelection">
+              <MappingFragment StoreEntitySet="SystemSelection">
+                <ScalarProperty Name="ID_CATEGORY" ColumnName="ID_CATEGORY" />
+                <ScalarProperty Name="RESPONSIBILITY" ColumnName="RESPONSIBILITY" />
+                <ScalarProperty Name="IDSystem" ColumnName="IDSystem" />
+                <ScalarProperty Name="res_region" ColumnName="res_region" />
+                <ScalarProperty Name="SYSTEMS" ColumnName="SYSTEMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

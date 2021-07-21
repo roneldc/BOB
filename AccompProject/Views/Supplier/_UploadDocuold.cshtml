@@ -1,0 +1,47 @@
+﻿@using AccompProject.Helpers
+@using System.Web.Mvc.Html
+@model AccompProject.Models.ProcurementSupplierDocumentView
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+   
+</div>
+<div class="modal-body">
+
+
+  
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+         @Html.HiddenFor(model => model.userid)
+         @*<div class="row">
+            <div class="form-group col">
+                 @Html.LabelFor(model => model.DOcuID, "Document", htmlAttributes: new { @class = "control-label col-md-10" })
+
+
+                <div class="col-md">
+
+                    @Html.DropDownListFor(model => model.DOcuID, (IEnumerable<SelectListItem>)ViewBag.Docu, string.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DOcuID, "", new { @class = "text-danger" })
+                  
+                </div>
+            </div>
+
+        
+        </div>*@
+        
+          
+
+            @*<div class="form-group">
+                @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" id="Avatar" name="upload" />
+                </div>
+            </div>*@
+        
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

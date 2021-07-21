@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        height: 500px; /* Should be removed. Only for demonstration */
+    }
+
+    .mycard {
+        float: center;
+        width: 50%;
+        padding: 10px;
+        height: 500px; /* Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<div class="row">
+    <div class="col-md-offset-2 col-md-10">
+        <div class="alert alert-danger" style="display:none" role="alert" id="errormessage"></div>
+        <div class="alert alert-success" style="display:none" role="alert" id="successmessage"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="column">
+        <div class=" col-md-12">
+            @*<span id="game" class="warning"></span>
+                <span id="messages" class="warning"></span>
+                <span id="messages2" class="warning"></span>
+                <span id="messages3" class="warning"></span>
+                <span id="messages4" class="warning"></span>
+                <span id="messages5" class="warning"></span>*@
+            <h2 style="color:#212529;">Draw Summary: </h2>
+            <p id="messages" class="warning"></p>
+            <p id="messages2" class="warning"></p>
+            <p id="messages3" class="warning"></p>
+            <p id="messages4" class="warning"></p>
+            <p id="messages5" class="warning"></p>
+        </div>
+    </div>
+    <div class="column">
+        <div id="myimage"></div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+        @Html.DropDownList("MySkills", (IEnumerable<SelectListItem>)ViewBag.typeBingo, string.Empty, new { @class = "form-control", id = "combocat" })
+
+        @*<div class="form-group">
+                <label for="email">User Email:</label>
+                <input type="email" class="form-control" id="toUser" value="" placeholder="shashangka@gmail.com" />
+            </div>*@
+        <div class="form-group">
+            <label for="text">Winning Number:</label>
+            <input type="number" max="75" min="0" class="form-control" id="myMessage" value="" placeholder="Number" />
+        </div>
+
+        <button type="submit" class="btn btn-default" id="submit">Submit</button>
+
+    </div>
+</div>
+
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent1'></div>
+        </div>
+    </div>
+</div>
+
+<hr />
+@section scripts{
+    <script type="text/javascript">
+        $("#submit").click(function (e) {
+
+
+
+            e.preventDefault();
+
+            var message1 = $("#myMessage").val();
+            var cate1 = $("#combocat").val();
+
+            var Notification1 = { entry: message1, title: cate1 };
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/CheckEntry",
+                data: JSON.stringify(Notification1),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+
+                    if (data.success == false) {
+
+                        var message = $("#myMessage").val();
+                        var sendtouser = $("#toUser").val();
+                        var cate = $("#combocat").val();
+
+                        var lettr = "";
+
+                        if (message > 0 && message <= 15) {
+                            lettr = "B";
+                        }
+
+                        if (message > 15 && message <= 30) {
+                            lettr = "I";
+                        }
+                        if (message >= 31 && message <= 45) {
+                            lettr = "N";
+                        }
+                        if (message >= 46 && message <= 60) {
+                            lettr = "G";
+                        }
+                        if (message >= 61 && message <= 75) {
+                            lettr = "O";
+                        }
+
+
+                        //$("#messages").append("<p>" + message + "</p>");
+
+                        var Notification = { UserID: sendtouser, Message: message, cate: cate, lettr: lettr };
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/Values/SendNotification",
+                            data: JSON.stringify(Notification),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                //reset field
+                                $("#myMessage").val("");
+                            },
+                            error: function () {
+                                alert("Error occured!!")
+                            }
+                        });
+
+
+                    }
+                    else {
+
+                        $("#errormessage").html("Duplicate Number").show().delay(5000).fadeOut();
+
+                    }
+
+
+
+                },
+                error: function () {
+                    alert("Error occured!!")
+                }
+            });
+
+
+
+
+
+
+        });
+
+
+
+        $('#combocat').change(function () {
+            var cate = $("#combocat").val();
+            var Notification = { cate: cate };
+
+            console.log(cate);
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetImage",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(Notification),
+                success: function (data) {
+                    //   alert(data.GameImage);
+                    //$.each(response, function (i, item) {
+                    //    trHTML += '<tr><td>' + item.email + '</td><td>' + item.url + '</td><td>' + item.datewin + '</td>' + '<td>' + item.timewin + '</td>' + ' </tr>';
+                    //});
+
+                    //   trHTML += <img id="imge" class="img-responsive center-block" src="~/Pic/magat.jpg" alt="First slide">
+                    //    $('#myimage').html($('<img>', { id: 'theImg', src: '/Pic/'+ response.GameImage, width :'500', height:'500' }))
+                }
+            });
+
+
+
+
+
+
+
+
+        });
+
+
+
+
+
+    </script>
+}

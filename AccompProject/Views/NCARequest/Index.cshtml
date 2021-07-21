@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AccompProject.Models.NCARequest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDAccomp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASANo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASAAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dteRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timeRequest)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDAccomp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASANo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASAAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dteRequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeRequest)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDNCARequest }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDNCARequest }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDNCARequest })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,102 @@
+﻿
+@model  AccompProject.Models.AspNetUser
+
+@{
+    ViewBag.Title = "ManageUserType";
+}
+
+<h2>Manage User Roles</h2>
+
+<hr/>
+
+<h2>Role Add to User</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        @*Username : @Html.TextBox("UserName")*@
+        @*Role Name:*@
+
+    </p>
+
+   @Html.HiddenFor(model=> model.Id)
+    @Html.HiddenFor(model => model.Email)
+    @Html.HiddenFor(model => model.EmailConfirmed)
+    @Html.HiddenFor(model => model.PasswordHash)
+    @Html.HiddenFor(model => model.SecurityStamp)
+    @Html.HiddenFor(model => model.PhoneNumber)
+    @Html.HiddenFor(model => model.PhoneNumberConfirmed)
+    @Html.HiddenFor(model => model.TwoFactorEnabled)
+    @Html.HiddenFor(model => model.LockoutEnabled)
+    @Html.HiddenFor(model => model.LockoutEndDateUtc)
+
+    @Html.HiddenFor(model => model.mnt)
+    @Html.HiddenFor(model => model.yr)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TypeUser, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.TypeUser, ViewBag.tuser as IEnumerable<SelectListItem>, new { @class = "form-control"})
+                    @*@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.TypeUser, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <input type="submit" value="Save" />
+}
+
+
+@*<hr/>
+<h3>Get Roles for a User</h3>
+@using (Html.BeginForm("GetRoles", "Roles"))
+{
+    @Html.AntiForgeryToken()
+    <p>
+        Username : @Html.TextBox("UserName")
+        <input type="submit" value="Get Roles for this User" />
+    </p>
+}
+
+@if (ViewBag.RolesForThisUser != null)
+{
+    <div style="background-color:yellow;">
+        <h3>Roles for this user </h3>
+        <ol>
+            @foreach (string s in ViewBag.RolesForThisUser)
+            {
+                <li>@s</li>
+            }
+        </ol>
+    </div>
+}*@
+
+
+
+@*@using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.TextBox("UserName")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+
+    </p>
+
+    <input type="submit" value="Delete this user from Role" />
+}*@
+

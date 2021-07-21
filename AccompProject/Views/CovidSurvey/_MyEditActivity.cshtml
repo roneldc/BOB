@@ -1,0 +1,137 @@
+﻿@model AccompProject.Models.CovidActivityEmployee
+
+
+<div class="modal-header">
+    <h3>EDIT ACTIVITY</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+   
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*@Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+            @Html.HiddenFor(model => model.IDFinance, new { @Value = Session["idfinance"].ToString() })
+            @Html.HiddenFor(model => model.IDNCAADA, new { @Value = Session["idncaada"].ToString() })*@
+
+
+@Html.HiddenFor(model => model.IDActivityEmployee)
+            @Html.HiddenFor(model => model.EmployeeID)
+            @Html.HiddenFor(model => model.dateEncoded)
+
+         
+
+        
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.CategoryPlace, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @*@Html.EditorFor(model => model.CategoryPlace, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.DropDownListFor(model => model.CategoryPlace, (IEnumerable<SelectListItem>)ViewBag.places,  new { @class = "form-control", id = "places" })
+                    @Html.ValidationMessageFor(model => model.CategoryPlace, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.DateTaken, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DateTaken, new { htmlAttributes = new { @class = "form-control", id = "datepicker" } })
+                    @Html.ValidationMessageFor(model => model.DateTaken, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.TimeFrom, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 input-group date">
+                    @Html.EditorFor(model => model.TimeFrom, new { htmlAttributes = new { @class = "form-control", id = "datetimepicker2" } })
+
+                    @Html.ValidationMessageFor(model => model.TimeFrom, "", new { @class = "text-danger" })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.TimeTo, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 input-group date">
+                    @Html.EditorFor(model => model.TimeTo, new { htmlAttributes = new { @class = "form-control", id = "datetimepicker" } })
+
+                    @Html.ValidationMessageFor(model => model.TimeTo, "", new { @class = "text-danger" })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}
+
+<script type="text/javascript">
+
+    $(function () {
+     
+
+        $('#datetimepicker2').timepicker();
+        $('#datetimepicker').timepicker();
+
+        $('#datepicker').datepicker().datepicker("setDate", new Date());;
+
+
+    });
+
+</script>

@@ -1,0 +1,350 @@
+﻿@model AccompProject.Models.IMTSS_Finance_View
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Edit Particulars</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDIMTSS_FINANCE)
+            @Html.HiddenFor(model => model.IDAccomp)
+            @Html.HiddenFor(model => model.asof)
+            @Html.HiddenFor(model => model.year_covered)
+            @Html.HiddenFor(model => model.mnt)
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.asof, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                <div class="col-md-4">
+
+                </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.asof, new { htmlAttributes = new { @class = "form-control", id = "mndtimtsdds", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.asof, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+     <hr />
+
+            <div class="form-group">
+
+                <div class="control-label col-md-2">
+                    PARTICULARS
+                </div>
+                <div class="control-label col-md-4">
+                    BUDGET ALLOCATION
+                </div>
+                <div class="control-label col-md-4">
+                    ACTUAL DISBURSEMENT
+                </div>
+            </div>
+
+   
+            <hr />
+            <h5>PERSONAL SERVICES</h5>
+            <hr />
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.JobOrder, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.JobOrderAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.JobOrderAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.JobOrder, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.JobOrder, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Daily, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DailyAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.DailyAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Daily, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.Daily, "", new { @class = "text-danger" })
+                </div>
+
+
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Contractual, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContractualAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ContractualAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Contractual, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.Contractual, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <hr />
+            <h5>MOOE</h5>
+            <hr />
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.CapacityBuildingForIA, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+        
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityBuildingForIAAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.CapacityBuildingForIAAllocation, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityBuildingForIA, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.CapacityBuildingForIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.CapacityBuildingForNIAStaff, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityBuildingForNIAStaffAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.CapacityBuildingForNIAStaffAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CapacityBuildingForNIAStaff, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.CapacityBuildingForNIAStaff, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.AssistanceProgram, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AssistanceProgramAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.AssistanceProgramAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AssistanceProgram, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.AssistanceProgram, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.SupervisionCost, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.SupervisionCostAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.SupervisionCostAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.SupervisionCost, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.SupervisionCost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+       
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.OfficeSuppliesMaterials, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.OfficeSuppliesMaterialsAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.OfficeSuppliesMaterialsAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.OfficeSuppliesMaterials, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.OfficeSuppliesMaterials, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Miscellaneous, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.MiscellaneousAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.MiscellaneousAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Miscellaneous, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.Miscellaneous, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.FSS, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.FSSAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FSSAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.FSS, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.FSS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.DBMS, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DBMSAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.DBMSAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DBMS, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.DBMS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+     
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.OtherMOOE, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.OtherMOOEAllocation, new { htmlAttributes = new { @class = "form-control numformat", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.OtherMOOEAllocation, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.OtherMOOE, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.OtherMOOE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+          
+
+       
+            <hr />
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn" type="button" data-dismiss="modal">Cancel</button>
+                <input class="btn btn-primary" type="submit" value="Save" />
+            </div>
+            @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-40">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>*@
+        </div>
+    </div>
+}
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+
+
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+    });
+
+</script>
+

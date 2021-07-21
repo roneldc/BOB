@@ -1,0 +1,212 @@
+﻿@model AccompProject.Models.EntityModel.DatabaseFirstContext.BingoUser
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+        /** {
+            box-sizing: border-box;
+        }*/
+
+        /* Create two equal columns that floats next to each other */
+        /*.column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 500px;*/ /* Should be removed. Only for demonstration */
+        /*}
+        .mycard {
+            float: center;
+            width: 50%;
+            padding: 10px;
+            height: 500px;*/ /* Should be removed. Only for demonstration */
+        /*}*/
+        /* Clear floats after the columns */
+        /*.row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .btn {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }*/
+    </style>
+
+@Html.HiddenFor(model => model.empno, new { id = "empno" })
+@Html.HiddenFor(model => model.lname, new { id = "lname" })
+
+@Html.HiddenFor(model => model.url, new { id = "url" })
+@Html.HiddenFor(model => model.fname, new { id = "fname" })
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<div class="container-fluid">
+
+
+    <div class="alert alert-info text-center" style="margin-top:2%;">
+        <span id="game" class="warning "></span>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+
+            <h2 style="color:#212529;">Draw Summary: </h2>
+            <p id="messages" class="warning"></p>
+            <p id="messages2" class="warning"></p>
+            <p id="messages3" class="warning"></p>
+            <p id="messages4" class="warning"></p>
+            <p id="messages5" class="warning"></p>
+
+        </div>
+        <div class="col-lg-6">
+            <div id="myimage"></div>
+        </div>
+    </div>
+    
+
+    @*<div class="text-center alert alert-success">
+        <button type="submit" class="btn btn-success btn-lg" id="submit">BINGO!</button>
+    </div>*@
+
+    <div class="alert alert-danger" id="msg" hidden>
+        <p>You're bingo card is invalid. Please save the link of your new bingo card.</p>
+    </div>
+
+<div class="row" style="margin-top:5%;">
+    <div class="col-lg-10">
+        <div>
+            @using (Html.BeginForm("IndexBingo", "Home", new {}, FormMethod.Post))
+            {
+            <label>Bingo card link</label>
+            <input type="text" name="url" />
+            <input type="hidden" value="@ViewBag.myid" name="myid" />
+            <span id="myurl" hidden>@Model.url</span>
+            <button class="btn btn-primary" type="submit">Change Card</button>
+            }
+        </div>
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" id="idFrame" src="@Model.url" onload="loadFrame();" allowfullscreen></iframe>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg" id="submit">BINGO!</button>
+        </div>
+    </div>
+    <div class="col-lg-2">
+            <label><strong style="color:#212529;">Current Draw:</strong></label>
+            <div id="cdraw" class="text-center" style="padding:5%;color:#ffd800;font-size:60px;font-weight:bolder;background-color:black;">
+                X
+            </div>
+        </div>
+</div>
+    </div>
+
+
+    <div class="row">
+
+        <h2>
+            @ViewBag.myids
+        </h2>
+
+    </div>
+
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent1'></div>
+            </div>
+        </div>
+    </div>
+
+
+@section scripts{
+    <!-- JavaScript Bundle with Popper -->
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+
+        //; (function ($) {
+        //    $("#msg").hide();
+        //})(jQuery);
+
+        function loadFrame() {
+         //   alert("test");
+        //    var value = document.getElementById("idFrame").src;
+        //    alert(value);
+            //alert(value.split('#')[1]);
+            //alert($("#myurl").text().split('#')[1]);
+            ////var string = "example.com/hello#item1".split('#')[0];
+            //if (value.split('#')[1] != $("#myurl").text().split('#')[1]) {
+            //    $("#msg").removeAttr("hidden");
+            //}
+            //else {
+            //    $("#msg").attr("hidden");
+            //}
+        }
+
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            //   var noto = "bingo";
+            //  hub.server.bingoModal(noto);
+            //var message = $("#myMessage").val();
+            //var sendtouser = $("#toUser").val();
+            //var cate = $("#combocat").val();
+            var bingoS = "bingo";
+            var empnoS = $("#empno").val();
+            var lnameS = $("#lname").val();
+            var fnameS = $("#fname").val();
+            var urlS = $("#url").val();
+            //   $("#messages").append("<p>" + message + "</p>");
+            console.log(empnoS);
+            var Notification = { empno: empnoS, lname: lnameS, fname: fnameS, url: urlS, bingo: bingoS };
+            //   console.log(Notification.bingo.toString());
+            $.ajax({
+                type: "POST",
+                url: "/Home/SendBingonoti",
+                data: JSON.stringify(Notification),
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    //reset field
+                    // $("#myMessage").val("");
+                },
+                error: function () {
+                    alert("Error occured!!")
+                }
+            });
+
+        });
+
+
+            //var hubbingo = $.connection.notificationBingoHub;
+            //$.connection.hub.start()
+            //  .done(function () {
+
+            //      console.log("Hub Connected again!");
+
+            //      //Server Call
+
+
+            //    //  hub.server.getNotificationsssss();
+            //      hubbingo.server.getNotification();
+            //  })
+            //  .fail(function () {
+            //      console.log("Could not Connect!");
+            //  });
+
+
+
+
+    </script>
+}

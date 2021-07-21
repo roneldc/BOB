@@ -1,0 +1,176 @@
+﻿@model  PagedList.IPagedList<RegionalFinancialViewForOD>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("MyIndexODASASubproject", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+
+    <table id="customers" class="table table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    ASA NO.
+                </th>
+                <th>
+                    ASA AMOUNT
+                </th>
+                <th>
+                    PROVINCE
+                </th>
+                <th>
+                    MUNICIPALITY
+                </th>
+                <th>
+                    SUBPROJECT
+                </th>
+                <th>
+                    OBLIGATION
+                </th>
+                <th>
+                    DISBURSEMENT
+                </th>
+                <th>
+                    CASH
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.asano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asaamount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.province)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Obligationamount)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disbursement)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cash)
+
+                </td>
+
+
+                <td>
+
+                
+
+
+
+
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-default">MENU SELECTION</button>
+
+                        <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                @Html.ActionLink("OBLIGATION AND DISBURSEMENT", "EditOD", "FinancialOBD", new { id = item.IDFinance }, new { @class = " btn btn-info" })
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                 @Html.ActionLink("Request For NCA", "NCARequest", "FinancialOBD", new { ids = item.maindescription, asano = item.asano, asabag = item.year }, new { @class = " btn btn-info"})
+
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
+
+
+@*<script type="text/javascript">
+
+
+    $(function () {
+
+
+
+
+
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            var mydata = $(this);
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                contentType: this.enctype,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        console.log(mydata.serialize());
+
+                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+
+
+
+
+</script>*@

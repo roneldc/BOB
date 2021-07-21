@@ -1,0 +1,535 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - NIA</title>
+
+    @*<title></title>*@
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("NIA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Procurement", "MyIndexPR", "Procurement")</li>*@
+
+
+
+
+
+                    @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Climate Physical") || User.IsInRole("IMTSS1 Physical") || User.IsInRole("IMTSS1 Financial") || User.IsInRole("Central") || User.IsInRole("NISRIP") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                    {
+
+
+                        <li>@Html.ActionLink("Project Monitoring", "Index", "ACCOMPLISHMENT")</li>
+                        <li>@Html.ActionLink("Dam", "Index", "Dam")</li>
+                        @*<li> @Html.ActionLink("DBM POW", "Index", "DBM") </li>
+                            <li> @Html.ActionLink("DBM POW Reports", "DBMPOW", "MVCReport") </li>*@
+
+
+
+                        @*<li class="dropdown">
+
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    DBM POW
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li> @Html.ActionLink("DBM POW", "Index", "DBM") </li>
+                                    <li> @Html.ActionLink("DBM POW Reports", "DBMPOW", "MVCReport") </li>
+                                </ul>
+                            </li>*@
+
+
+                    }
+
+
+
+                    @if (User.IsInRole("SUPPLIER"))
+                    {
+                        <li>@Html.ActionLink("List of Items", "Index", "Supplier")</li>
+                        <li>@Html.ActionLink("My Documents", "EditSupplierDocument", "Supplier")</li>
+                        <li>@Html.ActionLink("Submitted Items", "IndexSubmitted", "Supplier")</li>
+                    }
+
+                    @if (User.IsInRole("Personnel"))
+                    {
+                        <li>@Html.ActionLink("Personnel Monitoring", "IndexEmployee", "InventoryMapping")</li>
+                        <li>@Html.ActionLink("Survey Dashboard", "CovidSurveyDashboard", "InventoryMapping")</li>
+
+                    }
+                    @if (User.IsInRole("Medical"))
+                    {
+                        <li>@Html.ActionLink("Covid Monitoring", "Index", "Covid")</li>
+                        <li>@Html.ActionLink("Covid Survey List", "Index", "CovidSurvey")</li>
+                        <li>@Html.ActionLink("Covid Survey Form", "Create", "CovidSurvey")</li>
+                        <li>@Html.ActionLink("Medical Supplies Per Employee", "IndexEquip", "CovidSurvey")</li>
+                    }
+
+
+                    @if (User.IsInRole("FSDE Monitors"))
+                    {
+                        <li>@Html.ActionLink("Position", "Index", "PositionLists")</li>
+                        <li>@Html.ActionLink("Consultant", "Index", "ConsultantLists")</li>
+                    }
+
+
+                    @if (User.IsInRole("Financial"))
+                    {
+                        <li>@Html.ActionLink("ASA AND BUR/OR", "IndexOld", "ACCOMPLISHMENT")</li>
+                    }
+                    @if (User.IsInRole("Financial Region"))
+                    {
+
+                        <li> @Html.ActionLink("Obligation/Disbursement", "MyIndexOD", "FinancialOBD") </li>
+                        <li> @Html.ActionLink("ASA Attachment", "Index", "ASAAttachment")  </li>
+
+                        <li> @Html.ActionLink("NCA REQUEST", "Index", "NCARequest") </li>
+
+                        @*<li>
+                                <a href="@Url.Action("Index", "ASAAttachment")">
+                                    ASA Attachment <span class="badge">99</span>
+                                </a>
+                            </li>*@
+                    }
+
+                    @if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                    {
+                        @*<li>@Html.ActionLink("NCA, NTA AND ADA", "MyIndexNCA", "FinancialOBD")</li>*@
+                    }
+
+
+                    @if (User.IsInRole("Financial"))
+                    {
+                        @*<li> @Html.ActionLink("NCA / Disbursement", "MyIndex", "FinancialOBD") </li>*@
+
+                        @*<li> @Html.ActionLink("BUR Obligation/Disbursement", "MyIndexODBUR", "FinancialOBD") </li>*@
+
+                        <li> @Html.ActionLink("BUR Obligation/Disbursement", "IndexODBURFinancial", "FinancialOBD") </li>
+                    }
+
+                    @if (User.IsInRole("Physical"))
+                    {
+                        <li>@Html.ActionLink("Cluster Projects", "IndexCluster", "ACCOMPLISHMENT")</li>
+                        <li> @Html.ActionLink("Physical Reports", "ViewReport", "MVCReport") </li>
+                        <li> @Html.ActionLink("Map Project", "IndexProj", "Map") </li>
+
+                    }
+
+                    @if (User.IsInRole("Inventory"))
+                    {
+                        @*if (Session["yrtoedit"].ToString() == "2020") //must be remove after od encoding
+                            {
+                                <li> @Html.ActionLink("Inventory IS", "Index", "Inventory") </li>
+                                <li> @Html.ActionLink("Inventory Reports", "Inventory", "MVCReport") </li>
+                                <li>@Html.ActionLink("Dam", "Index", "Dam")</li>
+
+                                <li class="dropdown">
+
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Maps
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li> @Html.ActionLink("Map Per System", "Index", "Map") </li>
+                                        <li> @Html.ActionLink("Map Uploaded Image", "IndexPic", "Map") </li>
+                                        <li> @Html.ActionLink("Map Uploaded Image 12345", "IndexMapExe", "Map") </li>
+                                    </ul>
+                                </li>
+                            }
+                            else //else clause used only for 2020 special case - od
+                            {
+                                <li> @Html.ActionLink("Inventory Reports", "Inventory", "MVCReport") </li>
+                            }*@
+
+                        <li> @Html.ActionLink("Inventory IS", "Index", "Inventory") </li>
+                        <li> @Html.ActionLink("Inventory Reports", "Inventory", "MVCReport") </li>
+                        <li>@Html.ActionLink("Dam", "Index", "Dam")</li>
+
+                        <li class="dropdown">
+
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Maps
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li> @Html.ActionLink("Map Per System", "Index", "Map") </li>
+                                <li> @Html.ActionLink("Map Uploaded Image", "IndexPic", "Map") </li>
+                                <li> @Html.ActionLink("Map Uploaded Image 12345", "IndexMapExe", "Map") </li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Viewer"))
+                    {
+                        <li> @Html.ActionLink("Inventory Reports", "Inventory", "MVCReport") </li>
+
+
+                    }
+
+
+
+                    @if (User.IsInRole("Financial Region"))
+                    {
+                        <li> @Html.ActionLink("Financial Reports", "Financial", "MVCReport") </li>
+                    }
+
+
+
+                    @if (User.IsInRole("IMTSS Financial"))
+                    {
+
+                    }
+
+                    @if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial"))
+                    {
+                        <li>@Html.ActionLink("Project Monitoring", "Index", "ACCOMPLISHMENT")</li>
+                        <li>@Html.ActionLink("List of IA", "IAList", "IA")</li>
+                        <li> @Html.ActionLink("Financial Reports", "IMTSSFINANCIAL", "MVCReport") </li>
+                        @*<li>@Html.ActionLink("IA Functionality Survey", "Index", "IA")</li>*@
+
+                        <li> @Html.ActionLink("Physical Reports", "IMTSSphysical", "MVCReport") </li>
+                    }
+
+                    @if (User.IsInRole("NISRIP"))
+                    {
+                        <li> @Html.ActionLink("Physical Reports", "NISRIPphysical", "MVCReport") </li>
+                    }
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("AdminFinance"))
+                    {
+                        <li>@Html.ActionLink("User Management", "Index", "Roles")</li>
+                        <li>@Html.ActionLink("Finance Current to Monthly 1", "CurrentToMonthly", "Roles")</li>
+
+                        <li>@Html.ActionLink("Finance Current to Monthly 2", "CurrentToMonthlyLeftBehind", "Roles")</li>
+
+
+                        @*<li> @Html.ActionLink("BUR Obligation/Disbursement", "MyIndexODBUR", "FinancialOBD") </li>
+
+                             <li> @Html.ActionLink("Obligation/Disbursement", "MyIndexOD", "FinancialOBD") </li>
+                            <li> @Html.ActionLink("ASA Attachment", "Index", "ASAAttachment")  </li>*@
+
+
+                    }
+
+
+                    @if (User.IsInRole("Presentation"))
+                    {
+                        <li> @Html.ActionLink("Presentation Reports", "Presentation", "MVCReport") </li>
+
+
+                    }
+
+
+
+                    @if (User.IsInRole("Physical") || User.IsInRole("Financial Region") || User.IsInRole("ED"))
+                    {
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Statistics", "POWERBIView", "Home")</li>
+                    }
+
+
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container body-content">
+        <section class="main-content">
+            @RenderBody()
+        </section>
+
+        <footer>
+            <hr />
+            @*    <p class="pull-right" ><a class="btn btn-lg btn-primary" href="#">Back to top</a></p>*@
+            <p>&copy; @DateTime.Now.Year - JTV</p>
+            <p>Total Number of visitors: @ApplicationInstance.Application["Totaluser"]</p>
+        </footer>
+    </div>
+
+
+    @*  @Scripts.Render("~/bundles/signalr")*@
+
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+            function openAddWindow(url, userid, lname, fname) {
+
+                $('#myModalContent1').load("/Home/Bingo", function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    //    //  $("#messagesbingo").html("<h1>" + userid + "</h1>");
+
+                    //    $.ajax({
+                    //        url: "/Home/GetWinners",
+                    //        type: "GET",
+                    //        contentType: "application/json; charset=utf-8",
+                    //        data: "{}",
+                    //        dataType: "json",
+                    //        success: function (response) {
+                    //            var trHTML = '';
+                    //            $.each(response, function (i, item) {
+                    //                alert(item.datewin);
+                    //                trHTML += '<tr><td>' + item.email + '</td><td>' + item.url + '</td><td>' + Date.parse(item.datewin.toString()) + '</td>' + '<td>' + item.timewin + '</td>'  + ' </tr>';
+                    //            });
+                    //            $('#example').append(trHTML);
+                    //        }
+                    //    });
+
+
+
+                    $.ajax({
+                        url: "/Home/GetWinners",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        data: "{}",
+                        dataType: "json",
+                        success: function (response) {
+                            var trHTML = '';
+                            $.each(response, function (i, item) {
+                                //       alert(item.datewinner);
+                                trHTML += '<tr><td>' + item.lname + ', ' + item.fname + '</td><td>' + item.datewinner + '</td>' + '<td>' + item.timewinner + '</td>' + '<td><a href=' + item.url + ' target="_blank">Bingo Card!</a></td>' + ' </tr>';
+                            });
+                            $('#example').append(trHTML);
+                        }
+                    });
+
+
+                });
+
+            }
+
+            function setTotalNotification1(totalNotif, gameplayed, lttr, localletter) {
+                //      console.log(totalNotif);
+
+                if (lttr == 'B') {
+
+                    if (lttr == localletter) {
+                        var res = totalNotif.substring(totalNotif.length - 2, totalNotif.length);
+                        //      alert(res);
+                        totalNotif = totalNotif.replace(res, '');
+                        //   alert(res1);
+                        //  totalNotif = totalNotif + res
+
+                        $("#messages").html("<h2>" + "<p>" + "B: " + totalNotif + "</p>" + '<p style="color:red;">' + res + "</p></h2>");
+
+                        $("#cdraw").html("<span>" + res + "</span>");
+
+                    } else {
+
+
+                        $("#messages").html("<h2> B:" + totalNotif + "</h3>");
+
+                    }
+
+
+
+                }
+
+                if (lttr == 'I') {
+                    if (lttr == localletter) {
+
+                        // $("#messages2").html("<h1> I:" + totalNotif + "</h1>");
+                        var res = totalNotif.substring(totalNotif.length - 2, totalNotif.length);
+                        //  alert(res);
+                        totalNotif = totalNotif.replace(res, '');
+                        //   alert(res1);
+                        //  totalNotif = totalNotif + res
+
+                        $("#messages2").html("<h2>" + "<p>" + "I: " + totalNotif + "</p>" + '<p style="color:red;">' + res + "</p></h2>");
+
+                        $("#cdraw").html("<span>" + res + "</span>");
+
+
+                    } else {
+                        $("#messages2").html("<h2> I:" + totalNotif + "</h3>");
+
+                    }
+
+                }
+                if (lttr == 'N') {
+                    if (lttr == localletter) {
+                        //  $("#messages3").html("<h1> N:" + totalNotif + "</h1>");
+                        var res = totalNotif.substring(totalNotif.length - 2, totalNotif.length);
+                        //   alert(res);
+                        totalNotif = totalNotif.replace(res, '');
+                        //   alert(res1);
+                        //  totalNotif = totalNotif + res
+
+                        $("#messages3").html("<h2>" + "<p>" + "N: " + totalNotif + "</p>" + '<p style="color:red;">' + res + "</p></h2>");
+
+                        $("#cdraw").html("<span>" + res + "</span>");
+
+                        $("#cdiv").fadeOut();
+
+                    } else {
+
+                        $("#messages3").html("<h2> N:" + totalNotif + "</h3>");
+
+                    }
+              
+                }
+                if (lttr == 'G') {
+                    if (lttr == localletter) {
+
+                        //  $("#messages4").html("<h1> G:" + totalNotif + "</h1>");
+                        var res = totalNotif.substring(totalNotif.length - 2, totalNotif.length);
+                        //   alert(res);
+                        totalNotif = totalNotif.replace(res, '');
+                        //   alert(res1);
+                        //  totalNotif = totalNotif + res
+
+                        $("#messages4").html("<h2>" + "<p>" + "G: " + totalNotif + "</p>" + '<p style="color:red;">' + res + "</p></h2>");
+
+                        $("#cdiv").fadeOut();
+
+                        $("#cdiv").fadeIn();
+                        $("#cdiv").fadeIn("slow");
+                        $("#cdiv").fadeIn(3000);
+
+                        $("#cdraw").html("<span>" + res + "</span>");
+
+                    } else {
+
+                        $("#messages4").html("<h2> G:" + totalNotif + "</h3>");
+
+                    }
+
+                }
+                if (lttr == 'O') {
+
+
+                    if (lttr == localletter) {
+                        // $("#messages5").html("<h1> O:" + totalNotif + "</h1>");
+
+                        var res = totalNotif.substring(totalNotif.length - 2, totalNotif.length);
+                        //     alert(res);
+                        totalNotif = totalNotif.replace(res, '');
+                        //   alert(res1);
+                        //  totalNotif = totalNotif + res
+
+                        $("#messages5").html("<h2>" + "<p>" + "O: " + totalNotif + "</p>" + '<p style="color:red;">' + res + "</p></h2>");
+
+                        $("#cdiv").fadeOut();
+                        $("#cdiv").fadeIn();
+                        $("#cdraw").html("<span>" + res + "</span>");
+
+                    } else {
+
+                        $("#messages5").html("<h2> O:" + totalNotif + "</h3>");
+
+                    }
+
+                }
+
+                //              $("#messages").html("<h1> Winning Number:" + totalNotif + "</h1>");
+                //
+
+
+                $("#game").html("<h2 style='color:#212529;'> Winning Pattern: <span style='color:#212529;'>" + gameplayed + "</span></h1>");
+            }
+
+            function setTotalNotification(totalNotif) {
+                console.log(totalNotif);
+                //$("#messages").html("<p> Total Notif:" + totalNotif + "</p>");
+
+                $("#badge").text("Total Notif:" + totalNotif);
+            }
+
+            var hub = $.connection.notificationHub;
+            var hubbingo = $.connection.notificationBingoHub;
+
+            //Client Call
+            hub.client.broadcaastNotif = function (totalNotif) {
+                console.log("3");
+                setTotalNotification(totalNotif);
+            };
+
+
+
+            hubbingo.client.broadcaastNotif = function (totalNotif, gameplayed, lttr, localletter) {
+                //    alert('testing');
+                setTotalNotification1(totalNotif, gameplayed, lttr, localletter)
+            };
+            hubbingo.client.bingoModal = function (url, userid, lname, fname) {
+
+                openAddWindow(url, userid, lname, fname)
+
+            };
+
+            hubbingo.client.imageBingo = function (imgurl) {
+
+                $('#myimage').html($('<img>', { id: 'theImg', src: '/Pic/' + imgurl, width: '500', height: '500' }))
+
+            };
+            //$.connection.hub.start().done(function () { });
+
+            $.connection.hub.start()
+                .done(function () {
+                    console.log("1");
+                    console.log("Hub Connected!");
+
+                    //Server Call
+
+                    console.log("2");
+                    hub.server.getNotificationsssss();
+                    hubbingo.server.getNotification();
+                })
+                .fail(function () {
+                    console.log("Could not Connect!");
+                });
+
+            //$.connection.hubbingo.start()
+            // .done(function () {
+            //     console.log("Hub Connected!");
+
+            //     //Server Call
+
+
+            // })
+            // .fail(function () {
+            //     console.log("Could not Connect!");
+            // });
+        });
+    </script>
+</body>
+</html>

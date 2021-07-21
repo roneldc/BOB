@@ -1,0 +1,514 @@
+﻿@model AccompProject.Models.ACCOMPLISHMENT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ACCOMPLISHMENT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.district)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subsubproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subsubproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allotment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allotment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obligation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obligation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.restored)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.restored)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rehab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rehab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canal_lining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canal_lining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.structures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.structures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roads)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roads)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.farmer_beneficiaries)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.farmer_beneficiaries)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.new_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.new_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resto_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resto_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rehab_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rehab_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canals_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canals_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.canal_lining_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.canal_lining_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.structures_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.structures_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roads_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roads_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beneficiary_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beneficiary_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobGen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobGen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Physical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Physical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Financial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Financial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value_accomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value_accomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expenditures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expenditures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FUSA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FUSA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONITORING1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONITORING1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONITORING2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONITORING2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.as_of)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.as_of)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SAMPLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SAMPLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.asa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_new)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_new)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_resto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_resto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_rehab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_rehab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_canal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_canal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_canal_lining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_canal_lining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_structure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_structure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_road)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_road)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_job)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_job)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_fb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_fb)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDAccomp }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

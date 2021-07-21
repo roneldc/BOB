@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AccompProject.Models.CANALS_STATIONING>
+
+@{
+    ViewBag.Title = "IAAreaPeryear";
+}
+
+<h2>
+    <div class="form-group">
+        <h1> @Session["ianame"].ToString()</h1>
+    </div>
+</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateIACanal")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.YEAR_COVERED)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.TYPE_CANAL)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_CANAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LENGTH_CANAL)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.YEAR_COVERED)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.TYPE_CANAL)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_CANAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LENGTH_CANAL)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "EditIACanal", new { id=item.CANALID }) |
+         
+            @Html.ActionLink("Delete", "DeleteIACanal", new { id = item.CANALID })
+        </td>
+    </tr>
+}
+
+</table>

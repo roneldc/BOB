@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<AccompProject.Models.NotificationsView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.subproject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remarks)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        if (item.IsRead == false)
+        {
+
+            <tr style="font-weight:bold">
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.remarks)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Mark as Read", "Read", new { id = item.Id, sentto = User.Identity.GetUserName() }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+        }
+        else
+        {
+            <tr id="rowlist">
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.remarks)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Mark as Read", "Read", new { id = item.Id, sentto = User.Identity.GetUserName() }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+        }
+
+
+
+    }
+
+</table>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+           
+
+        });
+    </script>

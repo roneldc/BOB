@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OPAIPBP_YR_2021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OPAIPBP_YR_2021.dbo.inventoryLocationMunicipalityDistrict' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="inventoryLocationMunicipalityDistrict">
+          <Key>
+            <PropertyRef Name="ID" />
+            
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Province" Type="varchar" MaxLength="255" />
+          <Property Name="ProvincePK" Type="int" />
+          <Property Name="Municipality" Type="varchar" MaxLength="255" />
+          <Property Name="MunicipalityPk" Type="int" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="255" />
+          <Property Name="DistrictPK" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OPAIPBP_YR_2021.dbo.inventoryLocationProvinceMunicipality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="inventoryLocationProvinceMunicipality">
+          <Key>
+            
+            <PropertyRef Name="MunicipalityPk" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Municipality" Type="varchar" MaxLength="255" />
+          <Property Name="MunicipalityPk" Type="int" Nullable="false" />
+          <Property Name="Province" Type="varchar" MaxLength="255" />
+          <Property Name="Provincepk" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OPAIPBP_YR_2021.dbo.inventoryLocationRegionProvince' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="inventoryLocationRegionProvince">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="varchar" MaxLength="255" />
+          <Property Name="ProvincePk" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OPAIPBP_YR_2021.dbo.VWLOCATION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VWLOCATION">
+          <Key>
+            <PropertyRef Name="MunicipalityPk" />
+          </Key>
+          <Property Name="MunicipalityPk" Type="int" Nullable="false" />
+          <Property Name="Municipality" Type="varchar" MaxLength="255" />
+          <Property Name="RegionPk" Type="int" />
+          <Property Name="ProvincePk" Type="int" />
+          <Property Name="DistrictPk" Type="int" />
+          <Property Name="District" Type="varchar" MaxLength="255" />
+          <Property Name="Province" Type="varchar" MaxLength="255" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="CropCode" Type="int" />
+        </EntityType>
+        <EntityContainer Name="OPAIPBP_YR_2021ModelStoreContainer">
+          <EntitySet Name="inventoryLocationMunicipalityDistrict" EntityType="Self.inventoryLocationMunicipalityDistrict" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [inventoryLocationMunicipalityDistrict].[ID] AS [ID], 
+    [inventoryLocationMunicipalityDistrict].[Province] AS [Province], 
+    [inventoryLocationMunicipalityDistrict].[ProvincePK] AS [ProvincePK], 
+    [inventoryLocationMunicipalityDistrict].[Municipality] AS [Municipality], 
+    [inventoryLocationMunicipalityDistrict].[MunicipalityPk] AS [MunicipalityPk], 
+    [inventoryLocationMunicipalityDistrict].[District] AS [District], 
+    [inventoryLocationMunicipalityDistrict].[DistrictPK] AS [DistrictPK]
+    FROM [dbo].[inventoryLocationMunicipalityDistrict] AS [inventoryLocationMunicipalityDistrict]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="inventoryLocationProvinceMunicipality" EntityType="Self.inventoryLocationProvinceMunicipality" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [inventoryLocationProvinceMunicipality].[ID] AS [ID], 
+    [inventoryLocationProvinceMunicipality].[Municipality] AS [Municipality], 
+    [inventoryLocationProvinceMunicipality].[MunicipalityPk] AS [MunicipalityPk], 
+    [inventoryLocationProvinceMunicipality].[Province] AS [Province], 
+    [inventoryLocationProvinceMunicipality].[Provincepk] AS [Provincepk]
+    FROM [dbo].[inventoryLocationProvinceMunicipality] AS [inventoryLocationProvinceMunicipality]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="inventoryLocationRegionProvince" EntityType="Self.inventoryLocationRegionProvince" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [inventoryLocationRegionProvince].[ID] AS [ID], 
+    [inventoryLocationRegionProvince].[Region] AS [Region], 
+    [inventoryLocationRegionProvince].[Province] AS [Province], 
+    [inventoryLocationRegionProvince].[ProvincePk] AS [ProvincePk]
+    FROM [dbo].[inventoryLocationRegionProvince] AS [inventoryLocationRegionProvince]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VWLOCATION" EntityType="Self.VWLOCATION" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VWLOCATION].[MunicipalityPk] AS [MunicipalityPk], 
+    [VWLOCATION].[Municipality] AS [Municipality], 
+    [VWLOCATION].[RegionPk] AS [RegionPk], 
+    [VWLOCATION].[ProvincePk] AS [ProvincePk], 
+    [VWLOCATION].[DistrictPk] AS [DistrictPk], 
+    [VWLOCATION].[District] AS [District], 
+    [VWLOCATION].[Province] AS [Province], 
+    [VWLOCATION].[Region] AS [Region], 
+    [VWLOCATION].[CropCode] AS [CropCode]
+    FROM [dbo].[VWLOCATION] AS [VWLOCATION]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OPAIPBP_YR_2021Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="VWLOCATION">
+          <Key>
+            <PropertyRef Name="MunicipalityPk" />
+          </Key>
+          <Property Name="MunicipalityPk" Type="Int32" Nullable="false" />
+          <Property Name="Municipality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RegionPk" Type="Int32" />
+          <Property Name="ProvincePk" Type="Int32" />
+          <Property Name="DistrictPk" Type="Int32" />
+          <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CropCode" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="OPAIPBP_YR_2021Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VWLOCATIONs" EntityType="Self.VWLOCATION" />
+          <EntitySet Name="inventoryLocationProvinceMunicipalities" EntityType="OPAIPBP_YR_2021Model.inventoryLocationProvinceMunicipality" />
+          <EntitySet Name="inventoryLocationRegionProvinces" EntityType="OPAIPBP_YR_2021Model.inventoryLocationRegionProvince" />
+          <EntitySet Name="inventoryLocationMunicipalityDistricts" EntityType="OPAIPBP_YR_2021Model.inventoryLocationMunicipalityDistrict" />
+        </EntityContainer>
+        <EntityType Name="inventoryLocationProvinceMunicipality">
+          <Key>
+            <PropertyRef Name="MunicipalityPk" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Municipality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipalityPk" Type="Int32" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Provincepk" Type="Int32" />
+        </EntityType>
+        <EntityType Name="inventoryLocationRegionProvince">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProvincePk" Type="Int32" />
+        </EntityType>
+        <EntityType Name="inventoryLocationMunicipalityDistrict">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Municipality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipalityPk" Type="Int32" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictPK" Type="Int32" />
+          <Property Name="Province" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProvincePK" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OPAIPBP_YR_2021ModelStoreContainer" CdmEntityContainer="OPAIPBP_YR_2021Entities">
+          <EntitySetMapping Name="VWLOCATIONs">
+            <EntityTypeMapping TypeName="OPAIPBP_YR_2021Model.VWLOCATION">
+              <MappingFragment StoreEntitySet="VWLOCATION">
+                <ScalarProperty Name="MunicipalityPk" ColumnName="MunicipalityPk" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="RegionPk" ColumnName="RegionPk" />
+                <ScalarProperty Name="ProvincePk" ColumnName="ProvincePk" />
+                <ScalarProperty Name="DistrictPk" ColumnName="DistrictPk" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventoryLocationProvinceMunicipalities">
+            <EntityTypeMapping TypeName="OPAIPBP_YR_2021Model.inventoryLocationProvinceMunicipality">
+              <MappingFragment StoreEntitySet="inventoryLocationProvinceMunicipality">
+                <ScalarProperty Name="Provincepk" ColumnName="Provincepk" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="MunicipalityPk" ColumnName="MunicipalityPk" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventoryLocationRegionProvinces">
+            <EntityTypeMapping TypeName="OPAIPBP_YR_2021Model.inventoryLocationRegionProvince">
+              <MappingFragment StoreEntitySet="inventoryLocationRegionProvince">
+                <ScalarProperty Name="ProvincePk" ColumnName="ProvincePk" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventoryLocationMunicipalityDistricts">
+            <EntityTypeMapping TypeName="OPAIPBP_YR_2021Model.inventoryLocationMunicipalityDistrict">
+              <MappingFragment StoreEntitySet="inventoryLocationMunicipalityDistrict">
+                <ScalarProperty Name="ProvincePK" ColumnName="ProvincePK" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="DistrictPK" ColumnName="DistrictPK" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="MunicipalityPk" ColumnName="MunicipalityPk" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

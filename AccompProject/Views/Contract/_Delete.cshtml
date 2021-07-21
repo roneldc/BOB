@@ -1,0 +1,50 @@
+﻿
+@model AccompProject.Models.ContractView
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete?</h4>
+</div>
+<div class="modal-body">
+
+
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractDate)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

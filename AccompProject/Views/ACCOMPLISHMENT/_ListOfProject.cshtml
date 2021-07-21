@@ -1,0 +1,149 @@
+﻿@using AccompProject.Helpers
+@model  PagedList.IPagedList<AccompProject.Models.ACCOMPLISHMENT>
+    @using PagedList.Mvc;
+    @using PagedList;
+
+
+    @Html.Raw(TempData["msg"])
+
+
+    <br />
+
+    @*<div id="listofprojects" class="container-fluid">*@
+
+
+
+
+    @*<div class="pagedList" data-jtv-target="#listofprojects">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+        </div>*@
+
+    <table id="example" class="table table-hover">
+
+        <thead class="thead-dark">
+
+            <tr>
+                <th>
+                    Year
+                </th>
+                <th>
+                    REGION
+                </th>
+                <th>
+                    Mainproject
+                </th>
+                <th>
+                    Province
+                </th>
+                <th>
+                    Subproject
+                </th>
+                <th>
+                    Municipality
+                </th>
+                <th>
+                    Allotment (P'000)
+                </th>
+                <th colspan="2" style="text-align:center">
+                    Actions
+                </th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.region)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mainproject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.province)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subproject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.municipality)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+
+
+
+
+                    <td>
+
+
+
+           
+
+                    </td>
+
+
+
+
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @*</div>*@
+
+
+
+
+
+
+
+
+
+
+
+    @*<div id="listofprojects">
+
+            <div class="pagedList" data-jtv-target="#listofprojects" >
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+            </div>
+
+
+            @foreach (var item in Model)
+            {
+                <div>
+                    <h4>@item.subproject</h4>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.year)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.mainproject)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.municipality)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </div>
+
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IDAccomp })
+                     </div>
+                    <hr />
+                </div>
+            }
+
+        </div>
+    *@

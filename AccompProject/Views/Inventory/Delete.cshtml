@@ -1,0 +1,560 @@
+﻿@model AccompProject.Models.Inventory_view
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Inventory_view</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DATA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_DATA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YEAR_COVERED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YEAR_COVERED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SYSTEMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SYSTEMS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_REGION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_REGION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REGION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REGION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PROVINCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PROVINCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MUNICIPALITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MUNICIPALITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SERVICE_ORIGINAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SERVICE_ORIGINAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERMANENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERMANENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONVERTED_LAND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONVERTED_LAND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SERVICE_FIRMED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SERVICE_FIRMED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_OPERATIONAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_OPERATIONAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA_NONOPERATIONAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA_NONOPERATIONAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IRRIGATED_WET)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IRRIGATED_WET)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IRRIGATED_DRY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IRRIGATED_DRY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IRRIGATED_RATOONING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IRRIGATED_RATOONING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIRD_IRRIGATED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIRD_IRRIGATED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BENEFITED_WET)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENEFITED_WET)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BENEFITED_DRY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENEFITED_DRY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BENEFITED_RATOONING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENEFITED_RATOONING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIRD_BENEFITED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIRD_BENEFITED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVERAGE_YIELD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVERAGE_YIELD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVERAGE_YIELD_DRY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVERAGE_YIELD_DRY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVERAGE_YIELD_RATOONING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVERAGE_YIELD_RATOONING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIRD_AVERAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIRD_AVERAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_CONSTRUCTED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_CONSTRUCTED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPECIFIC_DIVERSION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPECIFIC_DIVERSION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WATER_SUPPLY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WATER_SUPPLY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LATITUDE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LATITUDE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LONGITUDE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LONGITUDE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_UPDATED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_UPDATED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOSYSTEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOSYSTEM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AMORTIZING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AMORTIZING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS_REASON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS_REASON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FARMERS_BENEFICIARIES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FARMERS_BENEFICIARIES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RESPONSIBILITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESPONSIBILITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMO_RES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMO_RES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_CATEGORY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_CATEGORY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DISTRICT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_DISTRICT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTRICT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTRICT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_OCI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_OCI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OCI_DES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OCI_DES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DIVERSION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_DIVERSION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_CROPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_CROPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CROPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CROPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DES_IMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DES_IMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RIM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RIM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.area_monitor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.area_monitor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.political)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.political)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISLAND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISLAND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POLITICAL_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POLITICAL_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LINED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UNLINED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UNLINED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NEWLY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NEWLY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAMTYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAMTYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newlyarea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newlyarea)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

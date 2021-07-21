@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AccompProject.Models.EmployeeTenant>
+
+@{
+    ViewBag.Title = "Tenant Employee";
+}
+
+
+<h1></h1>
+<table class="table" id="example">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.midname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Office)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.midname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Office)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditEmp", new { id = item.TenantID }) |
+                @Html.ActionLink("Delete", "DeleteEmp", new { id = item.TenantID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    (function ($) {
+        var table = $('#example').DataTable();
+
+    })(jQuery);
+</script>

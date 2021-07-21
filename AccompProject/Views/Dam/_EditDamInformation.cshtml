@@ -1,0 +1,429 @@
+﻿@model AccompProject.Models.DamInforamtion
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.IDDam)
+        @Html.HiddenFor(model => model.IDDamBody)
+        @Html.HiddenFor(model => model.IDCatachment)
+        @Html.HiddenFor(model => model.IDAppurtenance)
+        
+        @Html.HiddenFor(model => model.YearCovered)
+
+
+
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDDam, new { @Value = Session["iddam"].ToString() })
+            
+
+     
+            <div class="form-group">
+                <div class="col-md-offset-5">
+                    <b><u>APPURTENANCE STRUCTURES</u></b>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1">
+                    <b><u>SPILLWAY</u></b>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.status, (IEnumerable<SelectListItem>)ViewBag.stats, new { @class = "form-control" })
+
+
+                    @*@Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SpillwayType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayType, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.SpillwayDimension, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayDimension, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayDimension, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SpillwayIDF, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayIDF, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayIDF, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    @Html.LabelFor(model => model.SpillwayCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayCapacity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayCapacity, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SpillwayCrestlength, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayCrestlength, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayCrestlength, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    @Html.LabelFor(model => model.SpillwayCrestLevel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SpillwayCrestLevel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SpillwayCrestLevel, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <b><u>OUTLET WORKS</u></b>
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OutletType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletType, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.OutletDimension, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletDimension, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletDimension, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OutletIDF, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletIDF, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletIDF, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.OutletDesignDischarge, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletDesignDischarge, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletDesignDischarge, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OutletConduitSize, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletConduitSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletConduitSize, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.OutletConduitLength, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.OutletConduitLength, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OutletConduitLength, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <b><u>CONSTRUCTION DIVERSION</u></b>
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiversionType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DiversionType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiversionType, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.DiversionDesignCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DiversionDesignCapacity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiversionDesignCapacity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiversionConduitDiameter, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DiversionConduitDiameter, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiversionConduitDiameter, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.DiversionConduitLength, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DiversionConduitLength, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiversionConduitLength, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <hr />
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-5">
+                        <b><u>DAM BODY</u></b>
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Structural, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Structural, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Structural, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.CrestLength, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CrestLength, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CrestLength, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RiverbedElevation, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.RiverbedElevation, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RiverbedElevation, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.CrestWidth, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CrestWidth, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CrestWidth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ReservoirCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ReservoirCapacity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ReservoirCapacity, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <b><u>SLOPE (H:V)</u></b>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SlopeUpstream, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SlopeUpstream, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SlopeUpstream, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.SlopeDownstream, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SlopeDownstream, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SlopeDownstream, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <b><u>DAM/RESERVOIR DETAILS</u></b>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DamSize, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DamSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DamSize, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.DamHazardRisk, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DamHazardRisk, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DamHazardRisk, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ElevationLowestStreambed, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ElevationLowestStreambed, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ElevationLowestStreambed, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.HeightLowestStreambed, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.HeightLowestStreambed, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HeightLowestStreambed, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DamCrest, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.DamCrest, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DamCrest, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.NormalReservoir, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.NormalReservoir, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NormalReservoir, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TopInactive, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.TopInactive, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TopInactive, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.MaximumReservoir, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.MaximumReservoir, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MaximumReservoir, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SurfaceArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.SurfaceArea, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SurfaceArea, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-5">
+                        <b><u>CATCHMENT AREA DETAILS</u></b>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-1">
+                        <b><u>LATEST SEDIMENT YIELD</u></b>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SedimentVolume, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SedimentVolume, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SedimentVolume, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.SedimentArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SedimentArea, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SedimentArea, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                 
+                    @Html.LabelFor(model => model.CatchmentArea, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.CatchmentArea, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CatchmentArea, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cover, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Cover, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cover, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.LandUse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.LandUse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LandUse, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}

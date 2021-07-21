@@ -1,0 +1,260 @@
+﻿@model AccompProject.Models.IA_PROFILE
+
+@{
+    ViewBag.Title = "EditIAProfile";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true)
+
+
+        @Html.HiddenFor(model => model.YEAR_COVERED)
+
+        @Html.HiddenFor(model => model.REGION)
+
+
+        @Html.HiddenFor(model => model.CATEGORY)
+
+
+        @Html.HiddenFor(model => model.SYSTEM_NAME)
+        @Html.HiddenFor(model => model.IAID)
+
+
+
+        @Html.HiddenFor(model => model.IA_NAME)
+        @Html.HiddenFor(model => model.IMO)
+
+
+
+
+        <div class="form-group">
+            <h1>@Model.IA_NAME</h1>
+        </div>
+
+
+
+
+        <h4>DETAILS</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FEDERATION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.FEDERATION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FEDERATION, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ZONE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ZONE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ZONE, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DATE_ORGANIZED, "DATE ORGANIZED",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DATE_ORGANIZED, new { htmlAttributes = new { @class = "form-control", id = "datepicker1" } })
+                @Html.ValidationMessageFor(model => model.DATE_ORGANIZED, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.TIN,"TIN NO.", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.TIN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TIN, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WRFT, "IDO", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.WRFT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WRFT, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.TECHNICIAN, "SWRF TECHNICIAN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.TECHNICIAN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TECHNICIAN, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LOC_SOURCE, "LOCATION FROM THE WATERSOURCE", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.LOC_SOURCE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LOC_SOURCE, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.CIA, "CIA", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CIA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CIA, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <h4>SEC REGISTRATION</h4>
+        <hr />
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SEC,"SEC NO.", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SEC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SEC, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.DATE_REGISTERED,"DATE REGISTERED", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DATE_REGISTERED, new { htmlAttributes = new { @class = "form-control", id = "datepicker2" } })
+                @Html.ValidationMessageFor(model => model.DATE_REGISTERED, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IA_STATUS, "STATUS", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IA_STATUS, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IA_STATUS, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+
+
+
+        <h4>COOP</h4>
+        <hr />
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.coopno,"COOP NO.", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.coopno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.coopno, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.coopreg,"DATE REGISTERED", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.coopreg, new { htmlAttributes = new { @class = "form-control", id = "datepicker3" } })
+                @Html.ValidationMessageFor(model => model.coopreg, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <h4>IA CONTRACT</h4>
+        <hr />
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CONTRACT, "NAME OF CONTRACT", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CONTRACT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CONTRACT, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.IA_CONTRACTING, "TYPE OF CONTRACT", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IA_CONTRACTING, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IA_CONTRACTING, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CONTRACT_DATE_ORIGINAL, "DATE OF CONTRACT", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CONTRACT_DATE_ORIGINAL, new { htmlAttributes = new { @class = "form-control", id = "datepicker4" } })
+                @Html.ValidationMessageFor(model => model.CONTRACT_DATE_ORIGINAL, "", new { @class = "text-danger" })
+            </div>
+
+         
+
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-1">
+                <b><u>COORDINATES</u></b>
+
+            </div>
+        </div>
+
+
+
+
+        <a href="@Url.Action("IndexIAMap", "IA", new { id = Model.IAPROFILEID })" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-download-alt"></span> View IA in Map
+        </a>
+
+    @Html.HiddenFor(model => model.IAPROFILEID)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+<script type="text/javascript">
+
+
+
+    $(function () {
+
+
+        $('#datepicker1').datepicker();
+        $('#datepicker2').datepicker();
+        $('#datepicker3').datepicker();
+        $('#datepicker4').datepicker();
+
+      
+
+
+    });
+
+</script>

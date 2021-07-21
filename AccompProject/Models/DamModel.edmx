@@ -1,0 +1,1753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appurtenance">
+          <Key>
+            <PropertyRef Name="IDAppurtenance" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDAppurtenance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpillwayType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpillwayDimension" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpillwayIDF" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpillwayCapacity" Type="float" />
+          <Property Name="SpillwayCrestlength" Type="float" />
+          <Property Name="SpillwayCrestLevel" Type="float" />
+          <Property Name="OutletType" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletDimension" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletIDF" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletDesignDischarge" Type="float" />
+          <Property Name="OutletConduitSize" Type="float" />
+          <Property Name="OutletConduitLength" Type="float" />
+          <Property Name="DiversionType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiversionDesignCapacity" Type="float" />
+          <Property Name="DiversionConduitDiameter" Type="float" />
+          <Property Name="DiversionConduitLength" Type="float" />
+          <Property Name="YearCovered" Type="int" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Catchment">
+          <Key>
+            <PropertyRef Name="IDCatachment" />
+          </Key>
+          <Property Name="IDDAm" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDCatachment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SedimentVolume" Type="float" />
+          <Property Name="SedimentArea" Type="float" />
+          <Property Name="SurfaceArea" Type="float" />
+          <Property Name="CatchmentArea" Type="float" />
+          <Property Name="Cover" Type="float" />
+          <Property Name="LandUse" Type="float" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <EntityType Name="DamBody">
+          <Key>
+            <PropertyRef Name="IDDamBody" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDDamBody" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Structural" Type="float" />
+          <Property Name="CrestLength" Type="float" />
+          <Property Name="RiverbedElevation" Type="float" />
+          <Property Name="CrestWidth" Type="float" />
+          <Property Name="ReservoirCapacity" Type="float" />
+          <Property Name="SlopeUpstream" Type="nvarchar" MaxLength="50" />
+          <Property Name="SlopeDownstream" Type="nvarchar" MaxLength="50" />
+          <Property Name="DamSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="DamHazardRisk" Type="nvarchar" MaxLength="50" />
+          <Property Name="YearCovered" Type="int" />
+          <Property Name="ElevationLowestStreambed" Type="float" />
+          <Property Name="HeightLowestStreambed" Type="float" />
+          <Property Name="DamCrest" Type="float" />
+          <Property Name="NormalReservoir" Type="float" />
+          <Property Name="TopInactive" Type="float" />
+          <Property Name="MaximumReservoir" Type="float" />
+        </EntityType>
+        <EntityType Name="DamPic">
+          <Key>
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="PicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamPic" Type="varbinary(max)" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="mapLoc" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="GeneralInformation">
+          <Key>
+            <PropertyRef Name="IDDam" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SA" Type="float" />
+        </EntityType>
+        <EntityType Name="HydrologicalData">
+          <Key>
+            <PropertyRef Name="IDHydro" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="DrainageArea" Type="float" />
+          <Property Name="InflowDesignFlood" Type="float" />
+          <Property Name="FloodFrequency" Type="float" />
+          <Property Name="AveAnnualRunoff" Type="float" />
+          <Property Name="IDHydro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InspectionReports">
+          <Key>
+            <PropertyRef Name="IDInspection" />
+          </Key>
+          <Property Name="IDDAm" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDInspection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DamSafetyInspection" Type="date" />
+          <Property Name="TypeofInspection" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <EntityType Name="InstrumentData">
+          <Key>
+            <PropertyRef Name="IDInstrument" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="255" />
+          <Property Name="IDInstrument" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ElevationTip" Type="float" />
+          <Property Name="ElevationUpper" Type="float" />
+          <Property Name="ElevationLower" Type="float" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Instrument" Type="nvarchar" MaxLength="50" />
+          <Property Name="WaterLocation" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="InstrumentReading">
+          <Key>
+            <PropertyRef Name="IDReading" />
+          </Key>
+          <Property Name="IDInstrument" Type="int" />
+          <Property Name="IDReading" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateRead" Type="date" />
+          <Property Name="TimeRead" Type="time" Precision="7" />
+          <Property Name="DataRead" Type="float" />
+          <Property Name="DataNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataX" Type="float" />
+          <Property Name="DataY" Type="float" />
+          <Property Name="UploadedFile" Type="varbinary(max)" />
+          <Property Name="filetype" Type="int" />
+          <Property Name="contenttype" Type="nvarchar" MaxLength="255" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <EntityType Name="Rehabilitation">
+          <Key>
+            <PropertyRef Name="IDRehab" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDRehab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Daterehab" Type="date" />
+          <Property Name="NatureOfRevision" Type="nvarchar" MaxLength="250" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <EntityType Name="TypeDam">
+          <Key>
+            <PropertyRef Name="IDDamType" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamType" Type="nvarchar" MaxLength="150" />
+          <Property Name="HeightStreambed" Type="float" />
+          <Property Name="CrestElevation" Type="float" />
+          <Property Name="CrestWidth" Type="float" />
+          <Property Name="CrestLength" Type="float" />
+          <Property Name="Embankment" Type="float" />
+          <Property Name="IDDamType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeDiversion">
+          <Key>
+            <PropertyRef Name="IDDiversion" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="DiversionType" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumberAndSize" Type="float" />
+          <Property Name="Control" Type="nvarchar" MaxLength="50" />
+          <Property Name="DesignCapacity" Type="float" />
+          <Property Name="IDDiversion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeReservoirArea">
+          <Key>
+            <PropertyRef Name="IDReservoirArea" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="TopSediment" Type="float" />
+          <Property Name="TopConservation" Type="float" />
+          <Property Name="MaximumRes" Type="float" />
+          <Property Name="IDReservoirArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeReservoirCapacities">
+          <Key>
+            <PropertyRef Name="IDReservoirCapacity" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="InactiveStorage" Type="float" />
+          <Property Name="ConservationStorage" Type="float" />
+          <Property Name="SurchargeStorage" Type="float" />
+          <Property Name="IDReservoirCapacity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeReservoirElevation">
+          <Key>
+            <PropertyRef Name="IDReservoirElevation" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="255" />
+          <Property Name="Maximum" Type="float" />
+          <Property Name="Normal" Type="float" />
+          <Property Name="Minimum" Type="float" />
+          <Property Name="IDReservoirElevation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeSpillway">
+          <Key>
+            <PropertyRef Name="IDSpillway" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+          <Property Name="SpillwayType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CrestWidth" Type="float" />
+          <Property Name="CrestElevation" Type="float" />
+          <Property Name="DesignCapacity" Type="float" />
+          <Property Name="TypeDissipitator" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDSpillway" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.DamInforamtion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DamInforamtion">
+          <Key>
+            
+            <PropertyRef Name="IDAppurtenance" />
+            
+            
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="YearCovered" Type="int" />
+          <Property Name="IDAppurtenance" Type="int" Nullable="false" />
+          <Property Name="SpillwayType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpillwayDimension" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpillwayIDF" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletType" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletDimension" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutletIDF" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDCatachment" Type="int" Nullable="false" />
+          <Property Name="SedimentVolume" Type="float" />
+          <Property Name="SedimentArea" Type="float" />
+          <Property Name="SurfaceArea" Type="float" />
+          <Property Name="CatchmentArea" Type="float" />
+          <Property Name="Cover" Type="float" />
+          <Property Name="LandUse" Type="float" />
+          <Property Name="IDDamBody" Type="int" Nullable="false" />
+          <Property Name="Structural" Type="float" />
+          <Property Name="CrestLength" Type="float" />
+          <Property Name="RiverbedElevation" Type="float" />
+          <Property Name="CrestWidth" Type="float" />
+          <Property Name="ReservoirCapacity" Type="float" />
+          <Property Name="SlopeUpstream" Type="nvarchar" MaxLength="50" />
+          <Property Name="SlopeDownstream" Type="nvarchar" MaxLength="50" />
+          <Property Name="DamSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="DamHazardRisk" Type="nvarchar" MaxLength="50" />
+          <Property Name="SA" Type="float" />
+          <Property Name="ElevationLowestStreambed" Type="float" />
+          <Property Name="HeightLowestStreambed" Type="float" />
+          <Property Name="DamCrest" Type="float" />
+          <Property Name="NormalReservoir" Type="float" />
+          <Property Name="TopInactive" Type="float" />
+          <Property Name="MaximumReservoir" Type="float" />
+          <Property Name="SpillwayCapacity" Type="float" />
+          <Property Name="SpillwayCrestlength" Type="float" />
+          <Property Name="SpillwayCrestLevel" Type="float" />
+          <Property Name="OutletDesignDischarge" Type="float" />
+          <Property Name="OutletConduitSize" Type="float" />
+          <Property Name="OutletConduitLength" Type="float" />
+          <Property Name="DiversionType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiversionDesignCapacity" Type="float" />
+          <Property Name="DiversionConduitDiameter" Type="float" />
+          <Property Name="DiversionConduitLength" Type="float" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.DamInspection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DamInspection">
+          <Key>
+            
+            <PropertyRef Name="IDInspection" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IDInspection" Type="int" Nullable="false" />
+          <Property Name="DamSafetyInspection" Type="date" />
+          <Property Name="TypeofInspection" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.DamPicView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DamPicView">
+          <Key>
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="PicID" Type="int" Nullable="false" />
+          <Property Name="DamPic" Type="varbinary(max)" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="mapLoc" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamLongitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamLatitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.DamRehabilitation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DamRehabilitation">
+          <Key>
+            
+            <PropertyRef Name="IDRehab" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Daterehab" Type="date" />
+          <Property Name="NatureOfRevision" Type="nvarchar" MaxLength="250" />
+          <Property Name="IDRehab" Type="int" Nullable="false" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.DamView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DamView">
+          <Key>
+            <PropertyRef Name="IDDam" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="nvarchar" MaxLength="150" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamType" Type="nvarchar" MaxLength="150" />
+          <Property Name="HeightStreambed" Type="float" />
+          <Property Name="CrestElevation" Type="float" />
+          <Property Name="CrestWidth" Type="float" />
+          <Property Name="CrestLength" Type="float" />
+          <Property Name="Embankment" Type="float" />
+          <Property Name="DrainageArea" Type="float" />
+          <Property Name="InflowDesignFlood" Type="float" />
+          <Property Name="FloodFrequency" Type="float" />
+          <Property Name="AveAnnualRunoff" Type="float" />
+          <Property Name="DiversionType" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumberAndSize" Type="float" />
+          <Property Name="Control" Type="nvarchar" MaxLength="50" />
+          <Property Name="DesignCapacity" Type="float" />
+          <Property Name="TopSediment" Type="float" />
+          <Property Name="TopConservation" Type="float" />
+          <Property Name="MaximumRes" Type="float" />
+          <Property Name="InactiveStorage" Type="float" />
+          <Property Name="ConservationStorage" Type="float" />
+          <Property Name="SurchargeStorage" Type="float" />
+          <Property Name="Maximum" Type="float" />
+          <Property Name="Normal" Type="float" />
+          <Property Name="Minimum" Type="float" />
+          <Property Name="SpillwayType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CrestWidth_spillway" Type="float" />
+          <Property Name="CrestElevation_spillway" Type="float" />
+          <Property Name="DesignCapacity_spillway" Type="float" />
+          <Property Name="TypeDissipitator" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDHydro" Type="int" />
+          <Property Name="IDReservoirArea" Type="int" />
+          <Property Name="IDDamType" Type="int" />
+          <Property Name="IDReservoirCapacity" Type="int" />
+          <Property Name="IDReservoirElevation" Type="int" />
+          <Property Name="IDDiversion" Type="int" />
+          <Property Name="IDSpillway" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.InstrumentDataView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="InstrumentDataView">
+          <Key>
+            
+            <PropertyRef Name="IDInstrument" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamLongitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Damlatitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SA" Type="float" />
+          <Property Name="IDInstrument" Type="int" Nullable="false" />
+          <Property Name="ElevationTip" Type="float" />
+          <Property Name="ElevationUpper" Type="float" />
+          <Property Name="ElevationLower" Type="float" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Instrument" Type="nvarchar" MaxLength="50" />
+          <Property Name="WaterLocation" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dam.dbo.InstrumentReadingView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="InstrumentReadingView">
+          <Key>
+            
+            
+            <PropertyRef Name="IDReading" />
+          </Key>
+          <Property Name="IDDam" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DamName" Type="nvarchar" MaxLength="150" />
+          <Property Name="TypeDam" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" />
+          <Property Name="DamLongitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Damlatitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompletionDate" Type="date" />
+          <Property Name="ConstructionCost" Type="float" />
+          <Property Name="WaterSource" Type="nvarchar" MaxLength="150" />
+          <Property Name="Region" Type="nvarchar" MaxLength="150" />
+          <Property Name="Province" Type="nvarchar" MaxLength="150" />
+          <Property Name="Municipality" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IDInstrument" Type="int" Nullable="false" />
+          <Property Name="ElevationTip" Type="float" />
+          <Property Name="ElevationUpper" Type="float" />
+          <Property Name="ElevationLower" Type="float" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="150" />
+          <Property Name="Instrument" Type="nvarchar" MaxLength="50" />
+          <Property Name="WaterLocation" Type="nvarchar" MaxLength="250" />
+          <Property Name="IDReading" Type="int" Nullable="false" />
+          <Property Name="DateRead" Type="date" />
+          <Property Name="TimeRead" Type="time" Precision="7" />
+          <Property Name="DataRead" Type="float" />
+          <Property Name="DataNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataX" Type="float" />
+          <Property Name="DataY" Type="float" />
+          <Property Name="UploadedFile" Type="varbinary(max)" />
+          <Property Name="filetype" Type="int" />
+          <Property Name="contenttype" Type="nvarchar" MaxLength="255" />
+          <Property Name="YearCovered" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DamModelStoreContainer">
+          <EntitySet Name="Appurtenance" EntityType="Self.Appurtenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Catchment" EntityType="Self.Catchment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamBody" EntityType="Self.DamBody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamPic" EntityType="Self.DamPic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralInformation" EntityType="Self.GeneralInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HydrologicalData" EntityType="Self.HydrologicalData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InspectionReports" EntityType="Self.InspectionReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstrumentData" EntityType="Self.InstrumentData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstrumentReading" EntityType="Self.InstrumentReading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rehabilitation" EntityType="Self.Rehabilitation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeDam" EntityType="Self.TypeDam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeDiversion" EntityType="Self.TypeDiversion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeReservoirArea" EntityType="Self.TypeReservoirArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeReservoirCapacities" EntityType="Self.TypeReservoirCapacities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeReservoirElevation" EntityType="Self.TypeReservoirElevation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeSpillway" EntityType="Self.TypeSpillway" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DamInforamtion" EntityType="Self.DamInforamtion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DamInforamtion].[IDDam] AS [IDDam], 
+    [DamInforamtion].[DamName] AS [DamName], 
+    [DamInforamtion].[TypeDam] AS [TypeDam], 
+    [DamInforamtion].[Location] AS [Location], 
+    [DamInforamtion].[Longitude] AS [Longitude], 
+    [DamInforamtion].[Latitude] AS [Latitude], 
+    [DamInforamtion].[CompletionDate] AS [CompletionDate], 
+    [DamInforamtion].[ConstructionCost] AS [ConstructionCost], 
+    [DamInforamtion].[WaterSource] AS [WaterSource], 
+    [DamInforamtion].[Region] AS [Region], 
+    [DamInforamtion].[Province] AS [Province], 
+    [DamInforamtion].[Municipality] AS [Municipality], 
+    [DamInforamtion].[Description] AS [Description], 
+    [DamInforamtion].[YearCovered] AS [YearCovered], 
+    [DamInforamtion].[IDAppurtenance] AS [IDAppurtenance], 
+    [DamInforamtion].[SpillwayType] AS [SpillwayType], 
+    [DamInforamtion].[SpillwayDimension] AS [SpillwayDimension], 
+    [DamInforamtion].[SpillwayIDF] AS [SpillwayIDF], 
+    [DamInforamtion].[OutletType] AS [OutletType], 
+    [DamInforamtion].[OutletDimension] AS [OutletDimension], 
+    [DamInforamtion].[OutletIDF] AS [OutletIDF], 
+    [DamInforamtion].[IDCatachment] AS [IDCatachment], 
+    [DamInforamtion].[SedimentVolume] AS [SedimentVolume], 
+    [DamInforamtion].[SedimentArea] AS [SedimentArea], 
+    [DamInforamtion].[SurfaceArea] AS [SurfaceArea], 
+    [DamInforamtion].[CatchmentArea] AS [CatchmentArea], 
+    [DamInforamtion].[Cover] AS [Cover], 
+    [DamInforamtion].[LandUse] AS [LandUse], 
+    [DamInforamtion].[IDDamBody] AS [IDDamBody], 
+    [DamInforamtion].[Structural] AS [Structural], 
+    [DamInforamtion].[CrestLength] AS [CrestLength], 
+    [DamInforamtion].[RiverbedElevation] AS [RiverbedElevation], 
+    [DamInforamtion].[CrestWidth] AS [CrestWidth], 
+    [DamInforamtion].[ReservoirCapacity] AS [ReservoirCapacity], 
+    [DamInforamtion].[SlopeUpstream] AS [SlopeUpstream], 
+    [DamInforamtion].[SlopeDownstream] AS [SlopeDownstream], 
+    [DamInforamtion].[DamSize] AS [DamSize], 
+    [DamInforamtion].[DamHazardRisk] AS [DamHazardRisk], 
+    [DamInforamtion].[SA] AS [SA], 
+    [DamInforamtion].[ElevationLowestStreambed] AS [ElevationLowestStreambed], 
+    [DamInforamtion].[HeightLowestStreambed] AS [HeightLowestStreambed], 
+    [DamInforamtion].[DamCrest] AS [DamCrest], 
+    [DamInforamtion].[NormalReservoir] AS [NormalReservoir], 
+    [DamInforamtion].[TopInactive] AS [TopInactive], 
+    [DamInforamtion].[MaximumReservoir] AS [MaximumReservoir], 
+    [DamInforamtion].[SpillwayCapacity] AS [SpillwayCapacity], 
+    [DamInforamtion].[SpillwayCrestlength] AS [SpillwayCrestlength], 
+    [DamInforamtion].[SpillwayCrestLevel] AS [SpillwayCrestLevel], 
+    [DamInforamtion].[OutletDesignDischarge] AS [OutletDesignDischarge], 
+    [DamInforamtion].[OutletConduitSize] AS [OutletConduitSize], 
+    [DamInforamtion].[OutletConduitLength] AS [OutletConduitLength], 
+    [DamInforamtion].[DiversionType] AS [DiversionType], 
+    [DamInforamtion].[DiversionDesignCapacity] AS [DiversionDesignCapacity], 
+    [DamInforamtion].[DiversionConduitDiameter] AS [DiversionConduitDiameter], 
+    [DamInforamtion].[DiversionConduitLength] AS [DiversionConduitLength], 
+    [DamInforamtion].[status] AS [status]
+    FROM [dbo].[DamInforamtion] AS [DamInforamtion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DamInspection" EntityType="Self.DamInspection" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DamInspection].[IDDam] AS [IDDam], 
+    [DamInspection].[DamName] AS [DamName], 
+    [DamInspection].[TypeDam] AS [TypeDam], 
+    [DamInspection].[Location] AS [Location], 
+    [DamInspection].[Longitude] AS [Longitude], 
+    [DamInspection].[Latitude] AS [Latitude], 
+    [DamInspection].[CompletionDate] AS [CompletionDate], 
+    [DamInspection].[ConstructionCost] AS [ConstructionCost], 
+    [DamInspection].[WaterSource] AS [WaterSource], 
+    [DamInspection].[Region] AS [Region], 
+    [DamInspection].[Province] AS [Province], 
+    [DamInspection].[Municipality] AS [Municipality], 
+    [DamInspection].[Description] AS [Description], 
+    [DamInspection].[IDInspection] AS [IDInspection], 
+    [DamInspection].[DamSafetyInspection] AS [DamSafetyInspection], 
+    [DamInspection].[TypeofInspection] AS [TypeofInspection], 
+    [DamInspection].[Remarks] AS [Remarks], 
+    [DamInspection].[YearCovered] AS [YearCovered]
+    FROM [dbo].[DamInspection] AS [DamInspection]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DamPicView" EntityType="Self.DamPicView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DamPicView].[PicID] AS [PicID], 
+    [DamPicView].[DamPic] AS [DamPic], 
+    [DamPicView].[latitude] AS [latitude], 
+    [DamPicView].[longitude] AS [longitude], 
+    [DamPicView].[mapLoc] AS [mapLoc], 
+    [DamPicView].[DamName] AS [DamName], 
+    [DamPicView].[TypeDam] AS [TypeDam], 
+    [DamPicView].[Location] AS [Location], 
+    [DamPicView].[DamLongitude] AS [DamLongitude], 
+    [DamPicView].[DamLatitude] AS [DamLatitude], 
+    [DamPicView].[CompletionDate] AS [CompletionDate], 
+    [DamPicView].[ConstructionCost] AS [ConstructionCost], 
+    [DamPicView].[WaterSource] AS [WaterSource], 
+    [DamPicView].[Region] AS [Region], 
+    [DamPicView].[Province] AS [Province], 
+    [DamPicView].[IDDam] AS [IDDam]
+    FROM [dbo].[DamPicView] AS [DamPicView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DamRehabilitation" EntityType="Self.DamRehabilitation" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DamRehabilitation].[IDDam] AS [IDDam], 
+    [DamRehabilitation].[DamName] AS [DamName], 
+    [DamRehabilitation].[Location] AS [Location], 
+    [DamRehabilitation].[Longitude] AS [Longitude], 
+    [DamRehabilitation].[Latitude] AS [Latitude], 
+    [DamRehabilitation].[CompletionDate] AS [CompletionDate], 
+    [DamRehabilitation].[ConstructionCost] AS [ConstructionCost], 
+    [DamRehabilitation].[WaterSource] AS [WaterSource], 
+    [DamRehabilitation].[Region] AS [Region], 
+    [DamRehabilitation].[Province] AS [Province], 
+    [DamRehabilitation].[Municipality] AS [Municipality], 
+    [DamRehabilitation].[Description] AS [Description], 
+    [DamRehabilitation].[Daterehab] AS [Daterehab], 
+    [DamRehabilitation].[NatureOfRevision] AS [NatureOfRevision], 
+    [DamRehabilitation].[IDRehab] AS [IDRehab], 
+    [DamRehabilitation].[YearCovered] AS [YearCovered]
+    FROM [dbo].[DamRehabilitation] AS [DamRehabilitation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DamView" EntityType="Self.DamView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DamView].[IDDam] AS [IDDam], 
+    [DamView].[DamName] AS [DamName], 
+    [DamView].[TypeDam] AS [TypeDam], 
+    [DamView].[Location] AS [Location], 
+    [DamView].[Longitude] AS [Longitude], 
+    [DamView].[Latitude] AS [Latitude], 
+    [DamView].[CompletionDate] AS [CompletionDate], 
+    [DamView].[ConstructionCost] AS [ConstructionCost], 
+    [DamView].[WaterSource] AS [WaterSource], 
+    [DamView].[Region] AS [Region], 
+    [DamView].[Province] AS [Province], 
+    [DamView].[Municipality] AS [Municipality], 
+    [DamView].[DamType] AS [DamType], 
+    [DamView].[HeightStreambed] AS [HeightStreambed], 
+    [DamView].[CrestElevation] AS [CrestElevation], 
+    [DamView].[CrestWidth] AS [CrestWidth], 
+    [DamView].[CrestLength] AS [CrestLength], 
+    [DamView].[Embankment] AS [Embankment], 
+    [DamView].[DrainageArea] AS [DrainageArea], 
+    [DamView].[InflowDesignFlood] AS [InflowDesignFlood], 
+    [DamView].[FloodFrequency] AS [FloodFrequency], 
+    [DamView].[AveAnnualRunoff] AS [AveAnnualRunoff], 
+    [DamView].[DiversionType] AS [DiversionType], 
+    [DamView].[NumberAndSize] AS [NumberAndSize], 
+    [DamView].[Control] AS [Control], 
+    [DamView].[DesignCapacity] AS [DesignCapacity], 
+    [DamView].[TopSediment] AS [TopSediment], 
+    [DamView].[TopConservation] AS [TopConservation], 
+    [DamView].[MaximumRes] AS [MaximumRes], 
+    [DamView].[InactiveStorage] AS [InactiveStorage], 
+    [DamView].[ConservationStorage] AS [ConservationStorage], 
+    [DamView].[SurchargeStorage] AS [SurchargeStorage], 
+    [DamView].[Maximum] AS [Maximum], 
+    [DamView].[Normal] AS [Normal], 
+    [DamView].[Minimum] AS [Minimum], 
+    [DamView].[SpillwayType] AS [SpillwayType], 
+    [DamView].[CrestWidth_spillway] AS [CrestWidth_spillway], 
+    [DamView].[CrestElevation_spillway] AS [CrestElevation_spillway], 
+    [DamView].[DesignCapacity_spillway] AS [DesignCapacity_spillway], 
+    [DamView].[TypeDissipitator] AS [TypeDissipitator], 
+    [DamView].[IDHydro] AS [IDHydro], 
+    [DamView].[IDReservoirArea] AS [IDReservoirArea], 
+    [DamView].[IDDamType] AS [IDDamType], 
+    [DamView].[IDReservoirCapacity] AS [IDReservoirCapacity], 
+    [DamView].[IDReservoirElevation] AS [IDReservoirElevation], 
+    [DamView].[IDDiversion] AS [IDDiversion], 
+    [DamView].[IDSpillway] AS [IDSpillway], 
+    [DamView].[Description] AS [Description]
+    FROM [dbo].[DamView] AS [DamView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="InstrumentDataView" EntityType="Self.InstrumentDataView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InstrumentDataView].[IDDam] AS [IDDam], 
+    [InstrumentDataView].[DamName] AS [DamName], 
+    [InstrumentDataView].[TypeDam] AS [TypeDam], 
+    [InstrumentDataView].[Location] AS [Location], 
+    [InstrumentDataView].[DamLongitude] AS [DamLongitude], 
+    [InstrumentDataView].[Damlatitude] AS [Damlatitude], 
+    [InstrumentDataView].[CompletionDate] AS [CompletionDate], 
+    [InstrumentDataView].[ConstructionCost] AS [ConstructionCost], 
+    [InstrumentDataView].[WaterSource] AS [WaterSource], 
+    [InstrumentDataView].[Region] AS [Region], 
+    [InstrumentDataView].[Province] AS [Province], 
+    [InstrumentDataView].[Municipality] AS [Municipality], 
+    [InstrumentDataView].[Description] AS [Description], 
+    [InstrumentDataView].[SA] AS [SA], 
+    [InstrumentDataView].[IDInstrument] AS [IDInstrument], 
+    [InstrumentDataView].[ElevationTip] AS [ElevationTip], 
+    [InstrumentDataView].[ElevationUpper] AS [ElevationUpper], 
+    [InstrumentDataView].[ElevationLower] AS [ElevationLower], 
+    [InstrumentDataView].[Latitude] AS [Latitude], 
+    [InstrumentDataView].[Longitude] AS [Longitude], 
+    [InstrumentDataView].[Instrument] AS [Instrument], 
+    [InstrumentDataView].[WaterLocation] AS [WaterLocation]
+    FROM [dbo].[InstrumentDataView] AS [InstrumentDataView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="InstrumentReadingView" EntityType="Self.InstrumentReadingView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InstrumentReadingView].[IDDam] AS [IDDam], 
+    [InstrumentReadingView].[DamName] AS [DamName], 
+    [InstrumentReadingView].[TypeDam] AS [TypeDam], 
+    [InstrumentReadingView].[Location] AS [Location], 
+    [InstrumentReadingView].[DamLongitude] AS [DamLongitude], 
+    [InstrumentReadingView].[Damlatitude] AS [Damlatitude], 
+    [InstrumentReadingView].[CompletionDate] AS [CompletionDate], 
+    [InstrumentReadingView].[ConstructionCost] AS [ConstructionCost], 
+    [InstrumentReadingView].[WaterSource] AS [WaterSource], 
+    [InstrumentReadingView].[Region] AS [Region], 
+    [InstrumentReadingView].[Province] AS [Province], 
+    [InstrumentReadingView].[Municipality] AS [Municipality], 
+    [InstrumentReadingView].[Description] AS [Description], 
+    [InstrumentReadingView].[IDInstrument] AS [IDInstrument], 
+    [InstrumentReadingView].[ElevationTip] AS [ElevationTip], 
+    [InstrumentReadingView].[ElevationUpper] AS [ElevationUpper], 
+    [InstrumentReadingView].[ElevationLower] AS [ElevationLower], 
+    [InstrumentReadingView].[Latitude] AS [Latitude], 
+    [InstrumentReadingView].[Instrument] AS [Instrument], 
+    [InstrumentReadingView].[WaterLocation] AS [WaterLocation], 
+    [InstrumentReadingView].[IDReading] AS [IDReading], 
+    [InstrumentReadingView].[DateRead] AS [DateRead], 
+    [InstrumentReadingView].[TimeRead] AS [TimeRead], 
+    [InstrumentReadingView].[DataRead] AS [DataRead], 
+    [InstrumentReadingView].[DataNo] AS [DataNo], 
+    [InstrumentReadingView].[DataX] AS [DataX], 
+    [InstrumentReadingView].[DataY] AS [DataY], 
+    [InstrumentReadingView].[UploadedFile] AS [UploadedFile], 
+    [InstrumentReadingView].[filetype] AS [filetype], 
+    [InstrumentReadingView].[contenttype] AS [contenttype], 
+    [InstrumentReadingView].[YearCovered] AS [YearCovered]
+    FROM [dbo].[InstrumentReadingView] AS [InstrumentReadingView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DamViews" EntityType="DamModel.DamView" />
+          <EntitySet Name="HydrologicalDatas" EntityType="DamModel.HydrologicalData" />
+          <EntitySet Name="TypeDams" EntityType="DamModel.TypeDam" />
+          <EntitySet Name="TypeDiversions" EntityType="DamModel.TypeDiversion" />
+          <EntitySet Name="TypeReservoirAreas" EntityType="DamModel.TypeReservoirArea" />
+          <EntitySet Name="TypeReservoirCapacities" EntityType="DamModel.TypeReservoirCapacity" />
+          <EntitySet Name="TypeReservoirElevations" EntityType="DamModel.TypeReservoirElevation" />
+          <EntitySet Name="TypeSpillways" EntityType="DamModel.TypeSpillway" />
+          <EntitySet Name="Appurtenances" EntityType="DamModel.Appurtenance" />
+          <EntitySet Name="Catchments" EntityType="DamModel.Catchment" />
+          <EntitySet Name="DamBodies" EntityType="DamModel.DamBody" />
+          <EntitySet Name="InspectionReports" EntityType="DamModel.InspectionReport" />
+          <EntitySet Name="Rehabilitations" EntityType="DamModel.Rehabilitation" />
+          <EntitySet Name="DamInforamtions" EntityType="DamModel.DamInforamtion" />
+          <EntitySet Name="DamInspections" EntityType="DamModel.DamInspection" />
+          <EntitySet Name="DamRehabilitations" EntityType="DamModel.DamRehabilitation" />
+          <EntitySet Name="GeneralInformations" EntityType="DamModel.GeneralInformation" />
+          <EntitySet Name="InstrumentDatas" EntityType="DamModel.InstrumentData" />
+          <EntitySet Name="InstrumentDataViews" EntityType="DamModel.InstrumentDataView" />
+          <EntitySet Name="InstrumentReadings" EntityType="DamModel.InstrumentReading" />
+          <EntitySet Name="InstrumentReadingViews" EntityType="DamModel.InstrumentReadingView" />
+          <EntitySet Name="DamPics" EntityType="DamModel.DamPic" />
+          <EntitySet Name="DamPicViews" EntityType="DamModel.DamPicView" />
+        </EntityContainer>
+        <EntityType Name="DamView">
+          <Key>
+            <PropertyRef Name="IDDam" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HeightStreambed" Type="Double" />
+          <Property Name="CrestElevation" Type="Double" />
+          <Property Name="CrestWidth" Type="Double" />
+          <Property Name="CrestLength" Type="Double" />
+          <Property Name="Embankment" Type="Double" />
+          <Property Name="DrainageArea" Type="Double" />
+          <Property Name="InflowDesignFlood" Type="Double" />
+          <Property Name="FloodFrequency" Type="Double" />
+          <Property Name="AveAnnualRunoff" Type="Double" />
+          <Property Name="DiversionType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumberAndSize" Type="Double" />
+          <Property Name="Control" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DesignCapacity" Type="Double" />
+          <Property Name="TopSediment" Type="Double" />
+          <Property Name="TopConservation" Type="Double" />
+          <Property Name="MaximumRes" Type="Double" />
+          <Property Name="InactiveStorage" Type="Double" />
+          <Property Name="ConservationStorage" Type="Double" />
+          <Property Name="SurchargeStorage" Type="Double" />
+          <Property Name="Maximum" Type="Double" />
+          <Property Name="Normal" Type="Double" />
+          <Property Name="Minimum" Type="Double" />
+          <Property Name="SpillwayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CrestWidth_spillway" Type="Double" />
+          <Property Name="CrestElevation_spillway" Type="Double" />
+          <Property Name="DesignCapacity_spillway" Type="Double" />
+          <Property Name="TypeDissipitator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDHydro" Type="Int32" Nullable="true" />
+          <Property Name="IDReservoirArea" Type="Int32" Nullable="true" />
+          <Property Name="IDDamType" Type="Int32" />
+          <Property Name="IDReservoirCapacity" Type="Int32" />
+          <Property Name="IDReservoirElevation" Type="Int32" />
+          <Property Name="IDDiversion" Type="Int32" />
+          <Property Name="IDSpillway" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HydrologicalData">
+          <Key>
+            <PropertyRef Name="IDHydro" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DrainageArea" Type="Double" />
+          <Property Name="InflowDesignFlood" Type="Double" />
+          <Property Name="FloodFrequency" Type="Double" />
+          <Property Name="AveAnnualRunoff" Type="Double" />
+          <Property Name="IDHydro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeDam">
+          <Key>
+            <PropertyRef Name="IDDamType" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HeightStreambed" Type="Double" />
+          <Property Name="CrestElevation" Type="Double" />
+          <Property Name="CrestWidth" Type="Double" />
+          <Property Name="CrestLength" Type="Double" />
+          <Property Name="Embankment" Type="Double" />
+          <Property Name="IDDamType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeDiversion">
+          <Key>
+            <PropertyRef Name="IDDiversion" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DiversionType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumberAndSize" Type="Double" />
+          <Property Name="Control" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DesignCapacity" Type="Double" />
+          <Property Name="IDDiversion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeReservoirArea">
+          <Key>
+            <PropertyRef Name="IDReservoirArea" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TopSediment" Type="Double" />
+          <Property Name="TopConservation" Type="Double" />
+          <Property Name="MaximumRes" Type="Double" />
+          <Property Name="IDReservoirArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeReservoirCapacity">
+          <Key>
+            <PropertyRef Name="IDReservoirCapacity" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="InactiveStorage" Type="Double" />
+          <Property Name="ConservationStorage" Type="Double" />
+          <Property Name="SurchargeStorage" Type="Double" />
+          <Property Name="IDReservoirCapacity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeReservoirElevation">
+          <Key>
+            <PropertyRef Name="IDReservoirElevation" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Maximum" Type="Double" />
+          <Property Name="Normal" Type="Double" />
+          <Property Name="Minimum" Type="Double" />
+          <Property Name="IDReservoirElevation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TypeSpillway">
+          <Key>
+            <PropertyRef Name="IDSpillway" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SpillwayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CrestWidth" Type="Double" />
+          <Property Name="CrestElevation" Type="Double" />
+          <Property Name="DesignCapacity" Type="Double" />
+          <Property Name="TypeDissipitator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDSpillway" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Appurtenance">
+          <Key>
+            <PropertyRef Name="IDAppurtenance" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDAppurtenance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpillwayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpillwayDimension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpillwayIDF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletDimension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletIDF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+          <Property Name="SpillwayCapacity" Type="Double" />
+          <Property Name="SpillwayCrestlength" Type="Double" />
+          <Property Name="SpillwayCrestLevel" Type="Double" />
+          <Property Name="OutletDesignDischarge" Type="Double" />
+          <Property Name="OutletConduitSize" Type="Double" />
+          <Property Name="OutletConduitLength" Type="Double" />
+          <Property Name="DiversionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiversionDesignCapacity" Type="Double" />
+          <Property Name="DiversionConduitDiameter" Type="Double" />
+          <Property Name="DiversionConduitLength" Type="Double" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Catchment">
+          <Key>
+            <PropertyRef Name="IDCatachment" />
+          </Key>
+          <Property Name="IDDAm" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDCatachment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SedimentVolume" Type="Double" />
+          <Property Name="SedimentArea" Type="Double" />
+          <Property Name="SurfaceArea" Type="Double" />
+          <Property Name="CatchmentArea" Type="Double" />
+          <Property Name="Cover" Type="Double" />
+          <Property Name="LandUse" Type="Double" />
+          <Property Name="YearCovered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DamBody">
+          <Key>
+            <PropertyRef Name="IDDamBody" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDDamBody" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Structural" Type="Double" />
+          <Property Name="CrestLength" Type="Double" />
+          <Property Name="RiverbedElevation" Type="Double" />
+          <Property Name="CrestWidth" Type="Double" />
+          <Property Name="ReservoirCapacity" Type="Double" />
+          <Property Name="SlopeUpstream" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SlopeDownstream" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DamSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DamHazardRisk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+          <Property Name="ElevationLowestStreambed" Type="Double" />
+          <Property Name="HeightLowestStreambed" Type="Double" />
+          <Property Name="DamCrest" Type="Double" />
+          <Property Name="NormalReservoir" Type="Double" />
+          <Property Name="TopInactive" Type="Double" />
+          <Property Name="MaximumReservoir" Type="Double" />
+        </EntityType>
+        <EntityType Name="InspectionReport">
+          <Key>
+            <PropertyRef Name="IDInspection" />
+          </Key>
+          <Property Name="IDDAm" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDInspection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DamSafetyInspection" Type="DateTime" Precision="0" />
+          <Property Name="TypeofInspection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Rehabilitation">
+          <Key>
+            <PropertyRef Name="IDRehab" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDRehab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Daterehab" Type="DateTime" Precision="0" />
+          <Property Name="NatureOfRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DamInforamtion">
+          <Key>
+            <PropertyRef Name="IDAppurtenance" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+          <Property Name="IDAppurtenance" Type="Int32" Nullable="false" />
+          <Property Name="SpillwayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpillwayDimension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpillwayIDF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletDimension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutletIDF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDCatachment" Type="Int32" Nullable="false" />
+          <Property Name="SedimentVolume" Type="Double" />
+          <Property Name="SedimentArea" Type="Double" />
+          <Property Name="SurfaceArea" Type="Double" />
+          <Property Name="CatchmentArea" Type="Double" />
+          <Property Name="Cover" Type="Double" />
+          <Property Name="LandUse" Type="Double" />
+          <Property Name="IDDamBody" Type="Int32" Nullable="false" />
+          <Property Name="Structural" Type="Double" />
+          <Property Name="CrestLength" Type="Double" />
+          <Property Name="RiverbedElevation" Type="Double" />
+          <Property Name="CrestWidth" Type="Double" />
+          <Property Name="ReservoirCapacity" Type="Double" />
+          <Property Name="SlopeUpstream" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SlopeDownstream" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DamSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DamHazardRisk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SA" Type="Double" />
+          <Property Name="ElevationLowestStreambed" Type="Double" />
+          <Property Name="HeightLowestStreambed" Type="Double" />
+          <Property Name="DamCrest" Type="Double" />
+          <Property Name="NormalReservoir" Type="Double" />
+          <Property Name="TopInactive" Type="Double" />
+          <Property Name="MaximumReservoir" Type="Double" />
+          <Property Name="SpillwayCapacity" Type="Double" />
+          <Property Name="SpillwayCrestlength" Type="Double" />
+          <Property Name="SpillwayCrestLevel" Type="Double" />
+          <Property Name="OutletDesignDischarge" Type="Double" />
+          <Property Name="OutletConduitSize" Type="Double" />
+          <Property Name="OutletConduitLength" Type="Double" />
+          <Property Name="DiversionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiversionDesignCapacity" Type="Double" />
+          <Property Name="DiversionConduitDiameter" Type="Double" />
+          <Property Name="DiversionConduitLength" Type="Double" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DamInspection">
+          <Key>
+            <PropertyRef Name="IDInspection" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+          <Property Name="IDInspection" Type="Int32" Nullable="false" />
+          <Property Name="DamSafetyInspection" Type="DateTime" Precision="0" />
+          <Property Name="TypeofInspection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DamRehabilitation">
+          <Key>
+            <PropertyRef Name="IDRehab" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+          <Property Name="Daterehab" Type="DateTime" Precision="0" />
+          <Property Name="NatureOfRevision" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IDRehab" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralInformation">
+          <Key>
+            <PropertyRef Name="IDDam" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SA" Type="Double" />
+        </EntityType>
+        <EntityType Name="InstrumentData">
+          <Key>
+            <PropertyRef Name="IDInstrument" />
+          </Key>
+          <Property Name="IDDam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IDInstrument" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ElevationTip" Type="Double" />
+          <Property Name="ElevationUpper" Type="Double" />
+          <Property Name="ElevationLower" Type="Double" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Instrument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WaterLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InstrumentDataView">
+          <Key>
+            <PropertyRef Name="IDInstrument" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SA" Type="Double" />
+          <Property Name="IDInstrument" Type="Int32" Nullable="false" />
+          <Property Name="ElevationTip" Type="Double" />
+          <Property Name="ElevationUpper" Type="Double" />
+          <Property Name="ElevationLower" Type="Double" />
+          <Property Name="Damlatitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamLongitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Instrument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WaterLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InstrumentReading">
+          <Key>
+            <PropertyRef Name="IDReading" />
+          </Key>
+          <Property Name="IDInstrument" Type="Int32" />
+          <Property Name="IDReading" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateRead" Type="DateTime" Precision="0" />
+          <Property Name="TimeRead" Type="Time" Precision="7" />
+          <Property Name="DataRead" Type="Double" />
+          <Property Name="DataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataX" Type="Double" />
+          <Property Name="DataY" Type="Double" />
+          <Property Name="UploadedFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="filetype" Type="Int32" />
+          <Property Name="contenttype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="InstrumentReadingView">
+          <Key>
+            <PropertyRef Name="IDReading" />
+          </Key>
+          <Property Name="IDDam" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamLongitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Damlatitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Municipality" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDInstrument" Type="Int32" Nullable="false" />
+          <Property Name="ElevationTip" Type="Double" />
+          <Property Name="ElevationUpper" Type="Double" />
+          <Property Name="ElevationLower" Type="Double" />
+          <Property Name="Latitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Instrument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WaterLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IDReading" Type="Int32" Nullable="false" />
+          <Property Name="DateRead" Type="DateTime" Precision="0" />
+          <Property Name="TimeRead" Type="Time" Precision="7" />
+          <Property Name="DataRead" Type="Double" />
+          <Property Name="DataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataX" Type="Double" />
+          <Property Name="DataY" Type="Double" />
+          <Property Name="UploadedFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="filetype" Type="Int32" />
+          <Property Name="contenttype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="YearCovered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DamPic">
+          <Key>
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="PicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamPic1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mapLoc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DamPicView">
+          <Key>
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="PicID" Type="Int32" Nullable="false" />
+          <Property Name="DamPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mapLoc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TypeDam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamLongitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DamLatitude" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="0" />
+          <Property Name="ConstructionCost" Type="Double" />
+          <Property Name="WaterSource" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDDam" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DamModelStoreContainer" CdmEntityContainer="DamEntities">
+          <EntitySetMapping Name="DamViews">
+            <EntityTypeMapping TypeName="DamModel.DamView">
+              <MappingFragment StoreEntitySet="DamView">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IDSpillway" ColumnName="IDSpillway" />
+                <ScalarProperty Name="IDDiversion" ColumnName="IDDiversion" />
+                <ScalarProperty Name="IDReservoirElevation" ColumnName="IDReservoirElevation" />
+                <ScalarProperty Name="IDReservoirCapacity" ColumnName="IDReservoirCapacity" />
+                <ScalarProperty Name="IDDamType" ColumnName="IDDamType" />
+                <ScalarProperty Name="IDReservoirArea" ColumnName="IDReservoirArea" />
+                <ScalarProperty Name="IDHydro" ColumnName="IDHydro" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="TypeDissipitator" ColumnName="TypeDissipitator" />
+                <ScalarProperty Name="DesignCapacity_spillway" ColumnName="DesignCapacity_spillway" />
+                <ScalarProperty Name="CrestElevation_spillway" ColumnName="CrestElevation_spillway" />
+                <ScalarProperty Name="CrestWidth_spillway" ColumnName="CrestWidth_spillway" />
+                <ScalarProperty Name="SpillwayType" ColumnName="SpillwayType" />
+                <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+                <ScalarProperty Name="Normal" ColumnName="Normal" />
+                <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+                <ScalarProperty Name="SurchargeStorage" ColumnName="SurchargeStorage" />
+                <ScalarProperty Name="ConservationStorage" ColumnName="ConservationStorage" />
+                <ScalarProperty Name="InactiveStorage" ColumnName="InactiveStorage" />
+                <ScalarProperty Name="MaximumRes" ColumnName="MaximumRes" />
+                <ScalarProperty Name="TopConservation" ColumnName="TopConservation" />
+                <ScalarProperty Name="TopSediment" ColumnName="TopSediment" />
+                <ScalarProperty Name="DesignCapacity" ColumnName="DesignCapacity" />
+                <ScalarProperty Name="Control" ColumnName="Control" />
+                <ScalarProperty Name="NumberAndSize" ColumnName="NumberAndSize" />
+                <ScalarProperty Name="DiversionType" ColumnName="DiversionType" />
+                <ScalarProperty Name="AveAnnualRunoff" ColumnName="AveAnnualRunoff" />
+                <ScalarProperty Name="FloodFrequency" ColumnName="FloodFrequency" />
+                <ScalarProperty Name="InflowDesignFlood" ColumnName="InflowDesignFlood" />
+                <ScalarProperty Name="DrainageArea" ColumnName="DrainageArea" />
+                <ScalarProperty Name="Embankment" ColumnName="Embankment" />
+                <ScalarProperty Name="CrestLength" ColumnName="CrestLength" />
+                <ScalarProperty Name="CrestWidth" ColumnName="CrestWidth" />
+                <ScalarProperty Name="CrestElevation" ColumnName="CrestElevation" />
+                <ScalarProperty Name="HeightStreambed" ColumnName="HeightStreambed" />
+                <ScalarProperty Name="DamType" ColumnName="DamType" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HydrologicalDatas">
+            <EntityTypeMapping TypeName="DamModel.HydrologicalData">
+              <MappingFragment StoreEntitySet="HydrologicalData">
+                <ScalarProperty Name="IDHydro" ColumnName="IDHydro" />
+                <ScalarProperty Name="AveAnnualRunoff" ColumnName="AveAnnualRunoff" />
+                <ScalarProperty Name="FloodFrequency" ColumnName="FloodFrequency" />
+                <ScalarProperty Name="InflowDesignFlood" ColumnName="InflowDesignFlood" />
+                <ScalarProperty Name="DrainageArea" ColumnName="DrainageArea" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeDams">
+            <EntityTypeMapping TypeName="DamModel.TypeDam">
+              <MappingFragment StoreEntitySet="TypeDam">
+                <ScalarProperty Name="IDDamType" ColumnName="IDDamType" />
+                <ScalarProperty Name="Embankment" ColumnName="Embankment" />
+                <ScalarProperty Name="CrestLength" ColumnName="CrestLength" />
+                <ScalarProperty Name="CrestWidth" ColumnName="CrestWidth" />
+                <ScalarProperty Name="CrestElevation" ColumnName="CrestElevation" />
+                <ScalarProperty Name="HeightStreambed" ColumnName="HeightStreambed" />
+                <ScalarProperty Name="DamType" ColumnName="DamType" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeDiversions">
+            <EntityTypeMapping TypeName="DamModel.TypeDiversion">
+              <MappingFragment StoreEntitySet="TypeDiversion">
+                <ScalarProperty Name="IDDiversion" ColumnName="IDDiversion" />
+                <ScalarProperty Name="DesignCapacity" ColumnName="DesignCapacity" />
+                <ScalarProperty Name="Control" ColumnName="Control" />
+                <ScalarProperty Name="NumberAndSize" ColumnName="NumberAndSize" />
+                <ScalarProperty Name="DiversionType" ColumnName="DiversionType" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeReservoirAreas">
+            <EntityTypeMapping TypeName="DamModel.TypeReservoirArea">
+              <MappingFragment StoreEntitySet="TypeReservoirArea">
+                <ScalarProperty Name="IDReservoirArea" ColumnName="IDReservoirArea" />
+                <ScalarProperty Name="MaximumRes" ColumnName="MaximumRes" />
+                <ScalarProperty Name="TopConservation" ColumnName="TopConservation" />
+                <ScalarProperty Name="TopSediment" ColumnName="TopSediment" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeReservoirCapacities">
+            <EntityTypeMapping TypeName="DamModel.TypeReservoirCapacity">
+              <MappingFragment StoreEntitySet="TypeReservoirCapacities">
+                <ScalarProperty Name="IDReservoirCapacity" ColumnName="IDReservoirCapacity" />
+                <ScalarProperty Name="SurchargeStorage" ColumnName="SurchargeStorage" />
+                <ScalarProperty Name="ConservationStorage" ColumnName="ConservationStorage" />
+                <ScalarProperty Name="InactiveStorage" ColumnName="InactiveStorage" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeReservoirElevations">
+            <EntityTypeMapping TypeName="DamModel.TypeReservoirElevation">
+              <MappingFragment StoreEntitySet="TypeReservoirElevation">
+                <ScalarProperty Name="IDReservoirElevation" ColumnName="IDReservoirElevation" />
+                <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+                <ScalarProperty Name="Normal" ColumnName="Normal" />
+                <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeSpillways">
+            <EntityTypeMapping TypeName="DamModel.TypeSpillway">
+              <MappingFragment StoreEntitySet="TypeSpillway">
+                <ScalarProperty Name="IDSpillway" ColumnName="IDSpillway" />
+                <ScalarProperty Name="TypeDissipitator" ColumnName="TypeDissipitator" />
+                <ScalarProperty Name="DesignCapacity" ColumnName="DesignCapacity" />
+                <ScalarProperty Name="CrestElevation" ColumnName="CrestElevation" />
+                <ScalarProperty Name="CrestWidth" ColumnName="CrestWidth" />
+                <ScalarProperty Name="SpillwayType" ColumnName="SpillwayType" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appurtenances">
+            <EntityTypeMapping TypeName="DamModel.Appurtenance">
+              <MappingFragment StoreEntitySet="Appurtenance">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="DiversionConduitLength" ColumnName="DiversionConduitLength" />
+                <ScalarProperty Name="DiversionConduitDiameter" ColumnName="DiversionConduitDiameter" />
+                <ScalarProperty Name="DiversionDesignCapacity" ColumnName="DiversionDesignCapacity" />
+                <ScalarProperty Name="DiversionType" ColumnName="DiversionType" />
+                <ScalarProperty Name="OutletConduitLength" ColumnName="OutletConduitLength" />
+                <ScalarProperty Name="OutletConduitSize" ColumnName="OutletConduitSize" />
+                <ScalarProperty Name="OutletDesignDischarge" ColumnName="OutletDesignDischarge" />
+                <ScalarProperty Name="SpillwayCrestLevel" ColumnName="SpillwayCrestLevel" />
+                <ScalarProperty Name="SpillwayCrestlength" ColumnName="SpillwayCrestlength" />
+                <ScalarProperty Name="SpillwayCapacity" ColumnName="SpillwayCapacity" />
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="OutletIDF" ColumnName="OutletIDF" />
+                <ScalarProperty Name="OutletDimension" ColumnName="OutletDimension" />
+                <ScalarProperty Name="OutletType" ColumnName="OutletType" />
+                <ScalarProperty Name="SpillwayIDF" ColumnName="SpillwayIDF" />
+                <ScalarProperty Name="SpillwayDimension" ColumnName="SpillwayDimension" />
+                <ScalarProperty Name="SpillwayType" ColumnName="SpillwayType" />
+                <ScalarProperty Name="IDAppurtenance" ColumnName="IDAppurtenance" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catchments">
+            <EntityTypeMapping TypeName="DamModel.Catchment">
+              <MappingFragment StoreEntitySet="Catchment">
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="LandUse" ColumnName="LandUse" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="CatchmentArea" ColumnName="CatchmentArea" />
+                <ScalarProperty Name="SurfaceArea" ColumnName="SurfaceArea" />
+                <ScalarProperty Name="SedimentArea" ColumnName="SedimentArea" />
+                <ScalarProperty Name="SedimentVolume" ColumnName="SedimentVolume" />
+                <ScalarProperty Name="IDCatachment" ColumnName="IDCatachment" />
+                <ScalarProperty Name="IDDAm" ColumnName="IDDAm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamBodies">
+            <EntityTypeMapping TypeName="DamModel.DamBody">
+              <MappingFragment StoreEntitySet="DamBody">
+                <ScalarProperty Name="MaximumReservoir" ColumnName="MaximumReservoir" />
+                <ScalarProperty Name="TopInactive" ColumnName="TopInactive" />
+                <ScalarProperty Name="NormalReservoir" ColumnName="NormalReservoir" />
+                <ScalarProperty Name="DamCrest" ColumnName="DamCrest" />
+                <ScalarProperty Name="HeightLowestStreambed" ColumnName="HeightLowestStreambed" />
+                <ScalarProperty Name="ElevationLowestStreambed" ColumnName="ElevationLowestStreambed" />
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="DamHazardRisk" ColumnName="DamHazardRisk" />
+                <ScalarProperty Name="DamSize" ColumnName="DamSize" />
+                <ScalarProperty Name="SlopeDownstream" ColumnName="SlopeDownstream" />
+                <ScalarProperty Name="SlopeUpstream" ColumnName="SlopeUpstream" />
+                <ScalarProperty Name="ReservoirCapacity" ColumnName="ReservoirCapacity" />
+                <ScalarProperty Name="CrestWidth" ColumnName="CrestWidth" />
+                <ScalarProperty Name="RiverbedElevation" ColumnName="RiverbedElevation" />
+                <ScalarProperty Name="CrestLength" ColumnName="CrestLength" />
+                <ScalarProperty Name="Structural" ColumnName="Structural" />
+                <ScalarProperty Name="IDDamBody" ColumnName="IDDamBody" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InspectionReports">
+            <EntityTypeMapping TypeName="DamModel.InspectionReport">
+              <MappingFragment StoreEntitySet="InspectionReports">
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TypeofInspection" ColumnName="TypeofInspection" />
+                <ScalarProperty Name="DamSafetyInspection" ColumnName="DamSafetyInspection" />
+                <ScalarProperty Name="IDInspection" ColumnName="IDInspection" />
+                <ScalarProperty Name="IDDAm" ColumnName="IDDAm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rehabilitations">
+            <EntityTypeMapping TypeName="DamModel.Rehabilitation">
+              <MappingFragment StoreEntitySet="Rehabilitation">
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="NatureOfRevision" ColumnName="NatureOfRevision" />
+                <ScalarProperty Name="Daterehab" ColumnName="Daterehab" />
+                <ScalarProperty Name="IDRehab" ColumnName="IDRehab" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamInforamtions">
+            <EntityTypeMapping TypeName="DamModel.DamInforamtion">
+              <MappingFragment StoreEntitySet="DamInforamtion">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="DiversionConduitLength" ColumnName="DiversionConduitLength" />
+                <ScalarProperty Name="DiversionConduitDiameter" ColumnName="DiversionConduitDiameter" />
+                <ScalarProperty Name="DiversionDesignCapacity" ColumnName="DiversionDesignCapacity" />
+                <ScalarProperty Name="DiversionType" ColumnName="DiversionType" />
+                <ScalarProperty Name="OutletConduitLength" ColumnName="OutletConduitLength" />
+                <ScalarProperty Name="OutletConduitSize" ColumnName="OutletConduitSize" />
+                <ScalarProperty Name="OutletDesignDischarge" ColumnName="OutletDesignDischarge" />
+                <ScalarProperty Name="SpillwayCrestLevel" ColumnName="SpillwayCrestLevel" />
+                <ScalarProperty Name="SpillwayCrestlength" ColumnName="SpillwayCrestlength" />
+                <ScalarProperty Name="SpillwayCapacity" ColumnName="SpillwayCapacity" />
+                <ScalarProperty Name="MaximumReservoir" ColumnName="MaximumReservoir" />
+                <ScalarProperty Name="TopInactive" ColumnName="TopInactive" />
+                <ScalarProperty Name="NormalReservoir" ColumnName="NormalReservoir" />
+                <ScalarProperty Name="DamCrest" ColumnName="DamCrest" />
+                <ScalarProperty Name="HeightLowestStreambed" ColumnName="HeightLowestStreambed" />
+                <ScalarProperty Name="ElevationLowestStreambed" ColumnName="ElevationLowestStreambed" />
+                <ScalarProperty Name="SA" ColumnName="SA" />
+                <ScalarProperty Name="DamHazardRisk" ColumnName="DamHazardRisk" />
+                <ScalarProperty Name="DamSize" ColumnName="DamSize" />
+                <ScalarProperty Name="SlopeDownstream" ColumnName="SlopeDownstream" />
+                <ScalarProperty Name="SlopeUpstream" ColumnName="SlopeUpstream" />
+                <ScalarProperty Name="ReservoirCapacity" ColumnName="ReservoirCapacity" />
+                <ScalarProperty Name="CrestWidth" ColumnName="CrestWidth" />
+                <ScalarProperty Name="RiverbedElevation" ColumnName="RiverbedElevation" />
+                <ScalarProperty Name="CrestLength" ColumnName="CrestLength" />
+                <ScalarProperty Name="Structural" ColumnName="Structural" />
+                <ScalarProperty Name="IDDamBody" ColumnName="IDDamBody" />
+                <ScalarProperty Name="LandUse" ColumnName="LandUse" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="CatchmentArea" ColumnName="CatchmentArea" />
+                <ScalarProperty Name="SurfaceArea" ColumnName="SurfaceArea" />
+                <ScalarProperty Name="SedimentArea" ColumnName="SedimentArea" />
+                <ScalarProperty Name="SedimentVolume" ColumnName="SedimentVolume" />
+                <ScalarProperty Name="IDCatachment" ColumnName="IDCatachment" />
+                <ScalarProperty Name="OutletIDF" ColumnName="OutletIDF" />
+                <ScalarProperty Name="OutletDimension" ColumnName="OutletDimension" />
+                <ScalarProperty Name="OutletType" ColumnName="OutletType" />
+                <ScalarProperty Name="SpillwayIDF" ColumnName="SpillwayIDF" />
+                <ScalarProperty Name="SpillwayDimension" ColumnName="SpillwayDimension" />
+                <ScalarProperty Name="SpillwayType" ColumnName="SpillwayType" />
+                <ScalarProperty Name="IDAppurtenance" ColumnName="IDAppurtenance" />
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamInspections">
+            <EntityTypeMapping TypeName="DamModel.DamInspection">
+              <MappingFragment StoreEntitySet="DamInspection">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TypeofInspection" ColumnName="TypeofInspection" />
+                <ScalarProperty Name="DamSafetyInspection" ColumnName="DamSafetyInspection" />
+                <ScalarProperty Name="IDInspection" ColumnName="IDInspection" />
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamRehabilitations">
+            <EntityTypeMapping TypeName="DamModel.DamRehabilitation">
+              <MappingFragment StoreEntitySet="DamRehabilitation">
+                <ScalarProperty Name="IDRehab" ColumnName="IDRehab" />
+                <ScalarProperty Name="NatureOfRevision" ColumnName="NatureOfRevision" />
+                <ScalarProperty Name="Daterehab" ColumnName="Daterehab" />
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralInformations">
+            <EntityTypeMapping TypeName="DamModel.GeneralInformation">
+              <MappingFragment StoreEntitySet="GeneralInformation">
+                <ScalarProperty Name="SA" ColumnName="SA" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstrumentDatas">
+            <EntityTypeMapping TypeName="DamModel.InstrumentData">
+              <MappingFragment StoreEntitySet="InstrumentData">
+                <ScalarProperty Name="WaterLocation" ColumnName="WaterLocation" />
+                <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="ElevationLower" ColumnName="ElevationLower" />
+                <ScalarProperty Name="ElevationUpper" ColumnName="ElevationUpper" />
+                <ScalarProperty Name="ElevationTip" ColumnName="ElevationTip" />
+                <ScalarProperty Name="IDInstrument" ColumnName="IDInstrument" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstrumentDataViews">
+            <EntityTypeMapping TypeName="DamModel.InstrumentDataView">
+              <MappingFragment StoreEntitySet="InstrumentDataView">
+                <ScalarProperty Name="WaterLocation" ColumnName="WaterLocation" />
+                <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+                <ScalarProperty Name="DamLongitude" ColumnName="DamLongitude" />
+                <ScalarProperty Name="Damlatitude" ColumnName="Damlatitude" />
+                <ScalarProperty Name="ElevationLower" ColumnName="ElevationLower" />
+                <ScalarProperty Name="ElevationUpper" ColumnName="ElevationUpper" />
+                <ScalarProperty Name="ElevationTip" ColumnName="ElevationTip" />
+                <ScalarProperty Name="IDInstrument" ColumnName="IDInstrument" />
+                <ScalarProperty Name="SA" ColumnName="SA" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstrumentReadings">
+            <EntityTypeMapping TypeName="DamModel.InstrumentReading">
+              <MappingFragment StoreEntitySet="InstrumentReading">
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="UploadedFile" ColumnName="UploadedFile" />
+                <ScalarProperty Name="DataY" ColumnName="DataY" />
+                <ScalarProperty Name="DataX" ColumnName="DataX" />
+                <ScalarProperty Name="DataNo" ColumnName="DataNo" />
+                <ScalarProperty Name="DataRead" ColumnName="DataRead" />
+                <ScalarProperty Name="TimeRead" ColumnName="TimeRead" />
+                <ScalarProperty Name="DateRead" ColumnName="DateRead" />
+                <ScalarProperty Name="IDReading" ColumnName="IDReading" />
+                <ScalarProperty Name="IDInstrument" ColumnName="IDInstrument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstrumentReadingViews">
+            <EntityTypeMapping TypeName="DamModel.InstrumentReadingView">
+              <MappingFragment StoreEntitySet="InstrumentReadingView">
+                <ScalarProperty Name="YearCovered" ColumnName="YearCovered" />
+                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="UploadedFile" ColumnName="UploadedFile" />
+                <ScalarProperty Name="DataY" ColumnName="DataY" />
+                <ScalarProperty Name="DataX" ColumnName="DataX" />
+                <ScalarProperty Name="DataNo" ColumnName="DataNo" />
+                <ScalarProperty Name="DataRead" ColumnName="DataRead" />
+                <ScalarProperty Name="TimeRead" ColumnName="TimeRead" />
+                <ScalarProperty Name="DateRead" ColumnName="DateRead" />
+                <ScalarProperty Name="IDReading" ColumnName="IDReading" />
+                <ScalarProperty Name="WaterLocation" ColumnName="WaterLocation" />
+                <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="ElevationLower" ColumnName="ElevationLower" />
+                <ScalarProperty Name="ElevationUpper" ColumnName="ElevationUpper" />
+                <ScalarProperty Name="ElevationTip" ColumnName="ElevationTip" />
+                <ScalarProperty Name="IDInstrument" ColumnName="IDInstrument" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Damlatitude" ColumnName="Damlatitude" />
+                <ScalarProperty Name="DamLongitude" ColumnName="DamLongitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamPics">
+            <EntityTypeMapping TypeName="DamModel.DamPic">
+              <MappingFragment StoreEntitySet="DamPic">
+                <ScalarProperty Name="mapLoc" ColumnName="mapLoc" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="DamPic1" ColumnName="DamPic" />
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+                <ScalarProperty Name="PicID" ColumnName="PicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DamPicViews">
+            <EntityTypeMapping TypeName="DamModel.DamPicView">
+              <MappingFragment StoreEntitySet="DamPicView">
+                <ScalarProperty Name="IDDam" ColumnName="IDDam" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="WaterSource" ColumnName="WaterSource" />
+                <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="DamLatitude" ColumnName="DamLatitude" />
+                <ScalarProperty Name="DamLongitude" ColumnName="DamLongitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="TypeDam" ColumnName="TypeDam" />
+                <ScalarProperty Name="DamName" ColumnName="DamName" />
+                <ScalarProperty Name="mapLoc" ColumnName="mapLoc" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="DamPic" ColumnName="DamPic" />
+                <ScalarProperty Name="PicID" ColumnName="PicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

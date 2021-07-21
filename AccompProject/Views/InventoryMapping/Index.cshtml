@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AccompProject.Models.SystemsProfile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <hr />
+    <p>@Html.ActionLink("ADD NEW RECORD", "Create", "InventoryMapping", new { @class = " btn btn-info" }) </p>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong></strong>
+    </div>
+
+
+    <table class="table" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Systems)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Region)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitude)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Systems)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Region)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Map", "Map", new { id = item.IDSystems })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+        var table = $('#example').DataTable(
+
+        );
+    })(jQuery);
+</script>

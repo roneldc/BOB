@@ -1,0 +1,172 @@
+﻿@model AccompProject.Models.InstrumentDataView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDDam)
+            @Html.HiddenFor(model => model.IDInstrument)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Instrument, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+
+                    @Html.DropDownListFor(model => model.Instrument, (IEnumerable<SelectListItem>)ViewBag.Instruments,  new { @Id = "mydropdown", @class = "form-control" })
+
+
+                    @Html.ValidationMessageFor(model => model.Instrument, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+            <div id="myform">
+
+                <div class="form-group group1">
+                    <div class="col-md-offset-5">
+                        <b><u>Elevation</u></b>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ElevationTip, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ElevationTip, new { htmlAttributes = new { @class = "form-control group1", id = "datepicker1" } })
+                        @Html.ValidationMessageFor(model => model.ElevationTip, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.ElevationUpper, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ElevationUpper, new { htmlAttributes = new { @class = "form-control group2" } })
+                        @Html.ValidationMessageFor(model => model.ElevationUpper, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ElevationLower, htmlAttributes: new { @class = "control-label col-md-2 group2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ElevationLower, new { htmlAttributes = new { @class = "form-control group2" } })
+                        @Html.ValidationMessageFor(model => model.ElevationLower, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group group1">
+                    <div class="col-md-offset-5">
+                        <b><u>Coordinates</u></b>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control group1" } })
+                        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+
+                    </div>
+                    @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2 group1" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control group1" } })
+                        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+                <div class="form-group group3">
+                    <div class="col-md-offset-5">
+                        <b><u>WATER SOURCE</u></b>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WaterLocation, htmlAttributes: new { @class = "control-label col-md-2 group3" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.WaterLocation, new { htmlAttributes = new { @class = "form-control group3" } })
+                        @Html.ValidationMessageFor(model => model.WaterLocation, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+        $('#myform').hide();
+
+      
+        if ($('#mydropdown').val()) {
+
+            switch ($('#mydropdown').val()) {
+
+                case 'Pneumatic Piezometer':
+                case 'Standpipe Diezometer':
+
+                    $('#myform').show();
+                    $('.group3').hide();
+                    $('.group2').show();
+                    break;
+
+                case 'Surface Monitoring Points (SMP)':
+                case 'V-NotchMeasuring Weir':
+                case 'Water Level Staff Gauge (Reservoir)':
+                case 'Pendulum':
+
+                    $('#myform').show();
+                    $('.group3').hide();
+                    $('.group1').show();
+                    $('.group2').hide();
+
+                    break;
+
+                case 'Water Quality':
+
+                    $('#myform').show();
+                    $('.group3').show();
+                    $('.group1').hide();
+                    $('.group2').hide();
+
+            }
+
+        }
+
+        
+
+    });
+
+</script>

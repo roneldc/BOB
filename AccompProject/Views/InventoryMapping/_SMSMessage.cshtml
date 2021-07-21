@@ -1,0 +1,72 @@
+﻿@model AccompProject.Models.EmployeeLocation
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+
+    <h4 class="modal-title" id="myModalLabel">Send Message</h4>
+    <h4></h4>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.Cp)
+            @Html.HiddenFor(model => model.Address)
+            @Html.HiddenFor(model => model.image)
+            @Html.HiddenFor(model => model.imagename)
+            @Html.HiddenFor(model => model.lat)
+            @Html.HiddenFor(model => model.lng)
+            @Html.HiddenFor(model => model.SG)
+            @Html.HiddenFor(model => model.City)
+
+
+            <div class="form-group">
+               
+            
+
+                @Html.LabelFor(model => model.EmployeeName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+
+
+                @Html.LabelFor(model => model.sms, "Message",htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.sms, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.sms, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Send SMS" />
+    </div>
+}

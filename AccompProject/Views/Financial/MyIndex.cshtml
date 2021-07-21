@@ -1,0 +1,60 @@
+﻿
+@model  PagedList.IPagedList<AccompProject.Models.ACCOMPLISHMENT>
+
+@*@model IEnumerable<Accomplishment.Models.EntityModel.ACCOMPLISHMENT>*@
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<div class="container-fluid">
+    <h2>Management</h2>
+
+    @*<p data-jtv-sample ="true"> sample lang</p>*@
+
+    <ul class="nav navbar-nav navbar-right navbar-brand">
+        <li>
+           As of @ViewBag.DTETME
+        </li>
+
+    </ul>
+
+
+
+
+    <form method="get" action="@Url.Action("Index")"
+          data-jtv-ajax="true" data-jtv-target="#listofprojects" class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+
+
+
+            <input type="search" name="searchTerm" data-jtv-autocomplete="@Url.Action("Autocomplete")" class="form-control" placeholder="Search" />
+
+
+         
+        </div>
+        <input type="submit" value="Search by Subproject" class="btn btn-primary btn-large" />
+    </form>
+    <br />
+    
+
+    @*@using (Ajax.BeginForm(
+            new AjaxOptions
+            {
+                HttpMethod = "get",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "listofprojects"
+            }))
+        {
+            <input type="search" name="searchTerm" />
+            <input type="submit" value="Search by Subproject" />
+        }*@
+
+
+
+    @Html.Partial("_ListOfProject", Model)
+
+</div>

@@ -1,0 +1,17 @@
+﻿@using MvcReportViewer
+
+@{
+    ViewBag.Title = "View Report";
+}
+
+<h2>@ViewBag.nameReport</h2>
+<br />
+
+<div>
+        @Html.ActionLink("IDD PER SYSTEM", "IMTSSPHYSICAL", new { temp = "IMTSSList" }, new { id = "reg4", @class = "btn btn-primary btn-large" }) |
+        @Html.ActionLink("IDD PER SYSTEM MONTHLY ACCOMPLISHMNET", "IMTSSPHYSICAL", new { temp = "IMTSSMONTHLY" }, new { id = "reg5", @class = "btn btn-primary btn-large" }) |
+       
+    </div>
+
+
+@Html.Partial("_ViewReport")

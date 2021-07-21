@@ -1,0 +1,109 @@
+﻿@model AccompProject.Models.ProjectIssue
+
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+
+    @if (User.IsInRole("Physical"))
+    {
+        <h4 class="modal-title" id="myModalLabel">Regional Office</h4>  <h4>
+            @Session["subproject"].ToString()
+        </h4>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="alert alert-danger" style="display:none" role="alert" id="errormessage"></div>
+                    <div class="alert alert-success" style="display:none" role="alert" id="successmessage"></div>
+                </div>
+            </div>
+
+            @Html.Raw(TempData["msg"])
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.Idaccomp)
+            @Html.HiddenFor(model => model.mnt)
+            @Html.HiddenFor(model => model.yr)
+            @Html.HiddenFor(model => model.asof)
+
+            @Html.HiddenFor(model => model.username)
+            @Html.HiddenFor(model => model.dateencoded)
+
+
+
+
+
+        
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.problem, "ISSUES AND PROBLEMS:", htmlAttributes: new { @class = "control-label" })
+                </div>
+                
+
+
+            </div>
+            <div class="form-group">
+              
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.problem, (IEnumerable<SelectListItem>)ViewBag.problema, string.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.problem, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.description   , "BRIEF EXPLANATION:", htmlAttributes: new { @class = "control-label" })
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Create" id="btnupdate" />
+    </div>
+
+
+
+
+}

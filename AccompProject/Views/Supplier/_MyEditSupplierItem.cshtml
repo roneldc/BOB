@@ -1,0 +1,146 @@
+﻿@using AccompProject.Helpers
+@using System.Web.Mvc.Html
+@model AccompProject.Models.ProcurementSupplierQuotationView
+
+@{
+
+}
+
+<div class="modal-header">
+    <h4 class="float-left">Data Entry</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel"></h4>
+</div>
+
+@using (Html.BeginForm())
+{
+
+    <div class="modal-body">
+
+        @Html.AntiForgeryToken()
+
+
+        @Html.HiddenFor(model => model.QuotationID)
+        @Html.HiddenFor(model => model.SupplierID)
+        @Html.HiddenFor(model => model.StatID)
+
+
+        <div class="container">
+            @*<div class="col-md-2">
+                    @Html.LabelFor(model => model.SupplierQuotation, htmlAttributes: new { @class = "control-label col-md-4" })
+                </div>*@
+
+
+            <div class="form-group row">
+
+
+                @Html.LabelFor(model => model.SupplierQuotation, htmlAttributes: new { @class = "control-label col-sm-4" })
+
+                <div class="col-sm-6">
+                    @Html.TextAreaFor(model => model.SupplierQuotation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SupplierQuotation, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group row">
+
+
+                @Html.LabelFor(model => model.unitPrice, htmlAttributes: new { @class = "control-label col-sm-4" })
+
+                <div class="col-sm-6">
+                    @Html.EditorFor(model => model.unitPrice, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.unitPrice, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+
+
+                @Html.LabelFor(model => model.totalBidPrice, htmlAttributes: new { @class = "control-label col-sm-4" })
+
+                <div class="col-sm-6">
+                    @Html.EditorFor(model => model.totalBidPrice, new { htmlAttributes = new { @class = "form-control numformat" } })
+                    @Html.ValidationMessageFor(model => model.totalBidPrice, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success btn-sm" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $('.numformat').keyup(function (event) {
+            // skip for arrow keys
+
+            //var $self = $(this);
+            //$self.tooltip('show');
+            console.log("1");
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = $(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+
+            //  $(this).val(replaceCommas(currentVal));
+
+            var newval = replaceCommas(currentVal);
+            //   $(this).tooltip("option", "content", "Superb Title");
+            $(this).attr('data-content', newval);
+            $(this).popover('show');
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1)
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+
+    });
+
+</script>

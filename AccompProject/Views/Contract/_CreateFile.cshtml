@@ -1,0 +1,110 @@
+﻿@model AccompProject.Models.FileAccompContractView
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Profile of Contracts</h4>  <h4>
+        @Session["subproject"].ToString()
+    </h4>
+</div>
+
+@using (Html.BeginForm())
+   
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+         
+            @Html.HiddenFor(model => model.IDContract)
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.title, (IEnumerable<SelectListItem>)ViewBag.ProcDoc, string.Empty, new { @class = "form-control", @id = "ProcDoc" })
+
+
+                    @*@Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                </div>
+
+              
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                </div>
+
+              
+
+
+            </div>
+
+
+
+            @if (Model.FileType.Equals(0))
+            {
+                <div class="form-group">
+                    <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                    <div class="col-md-10">
+                        <img src="~/Pic/filelogo.png" alt="avatar" />
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @*  @Html.TextBoxFor(model => model.ContentType, new { type = "file", multiple = "true" })*@
+                    <input type="file"   id="Avatar" name="upload" />
+                    @*<input type="file" multiple id="Avatar" name="upload" />*@
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input id="smsbutton" class="btn btn-primary" type="submit" value="Add" />
+    </div>
+}
+
+
+<div id="divProcessing">
+    @*<p>Processing, please wait . . . <img src="../../Content/ajax-loader.gif"></p>*@
+</div>
+<script type="text/javascript">
+
+    $(function () {
+
+       
+        $('#smsbutton').click(function () {
+
+            $("div#divProcessing").addClass('show');
+        });
+
+      
+
+
+
+
+
+
+    });
+  
+
+
+</script>

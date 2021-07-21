@@ -1,0 +1,191 @@
+﻿@using AccompProject.Helpers
+@model IEnumerable<AccompProject.Models.FileAccompContractView>
+
+
+<div id="projectaccomp">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong></strong>
+        </div>
+
+
+
+
+        <div class="panel-body">
+                @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Create", "IMTSS", null, htmlAttributes: new { data_modal = "", id = "btnCreate", @class = "btn btn-primary pull-right" })*@
+                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "CreateFile", "Contract", routeValues: new { Id = ViewBag.ContractID }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary pull-right" })
+          
+        </div>
+
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+
+                </th>
+                <th>
+                  
+                
+                 </th>
+              
+
+                @*     <th>@Html.ActionLink("Add", "Create", "IMTSS", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-primary pull-right" })</th>*@
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                  
+                    <td>
+                        <div class="pull-right">
+                            @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "MyEditContractStatus", "Contract", routeValues: new { id = item.ContractStatusID }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+*@
+                                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "DeleteFile", "Contract", routeValues: new { id = item.FileId }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+
+
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<style>
+    #divProcessing {
+        display: none;
+    }
+
+        #divProcessing.show {
+            display: block;
+            position: absolute;
+            z-index: 100;
+            background-image: url('../../Content/ajax-loader.gif');
+            background-color: #666;
+            opacity: 0.4;
+            background-repeat: no-repeat;
+            background-position: center;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+        }
+
+    #loadinggif.show {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        z-index: 101;
+        width: 32px;
+        height: 32px;
+        margin-left: -16px;
+        margin-top: -16px;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    /*backdrop: 'static',*/
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    //function bindForm(dialog) {
+    //    $('form', dialog).submit(function () {
+    //        $("div#divProcessing").addClass('show');
+
+    //        $.ajax({
+    //            url: this.action,
+    //            type: this.method,
+    //            contentType: this.enctype,
+    //            data: $(this).serialize(),
+    //            success: function (result) {
+    //                if (result.success) {
+    //                    $('#myModal').modal('hide');
+    //                    $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+    //                } else {
+    //                    $('#myModalContent').html(result);
+    //                    bindForm(dialog);
+    //                }
+    //            }
+    //        });
+    //        return false;
+    //    });
+    //}
+
+
+
+
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                //url: this.action,
+                //type: this.method,
+                //contentType: this.enctype,
+                //data: $(this).serialize(),
+                url: this.action,
+                type: this.method,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>
+

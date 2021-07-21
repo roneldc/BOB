@@ -1,0 +1,88 @@
+﻿@model  PagedList.IPagedList<AccompProject.Models.FinancialView>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("MyIndexNCA", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+
+    <table id="customers" class="table table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    YEAR
+                </th>
+                <th>
+                    ASA NO.
+                </th>
+                <th>
+                    ASA AMOUNT
+                </th>
+                <th>
+                    MAINPROJECT
+                </th>
+                <th>
+                    SUBPROJECT
+                </th>
+                <th>
+                    Municipality
+                </th>
+                <th>
+                    Allotment (P'000)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asaamount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+                <td>
+
+                 @Html.ActionLink("NCA, NTA AND ADA", "EditNCA", "FinancialOBD", new { id = item.IDFinance }, new { @class = " btn btn-info" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+

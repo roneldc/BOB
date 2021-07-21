@@ -1,0 +1,72 @@
+﻿@using AccompProject.Helpers
+@using System.Web.Mvc.Html
+@model AccompProject.Models.Supplier.Other.ProcurementSupplierDocumentView
+
+@{
+
+}
+
+<div class="modal-header">
+    <h4 class="float-left">Data Entry</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @*<h4 class="modal-title" id="myModalLabel"></h4>*@
+</div>
+
+@using (Html.BeginForm())
+{
+
+    <div class="modal-body">
+
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.userid)
+
+        <div class="form-group">
+
+
+            @Html.LabelFor(model => model.DOcuID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DOcuID, (IEnumerable<SelectListItem>)ViewBag.docu, string.Empty, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DOcuID, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+
+
+        @*<div class="form-group">
+            <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+            <div class="col-md-10">
+                <img src="~/Pic/filelogo.png" alt="avatar" />
+            </div>
+        </div>*@
+
+
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success btn-sm" />
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+

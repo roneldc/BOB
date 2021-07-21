@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AccompProject.Models.CityBoundary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cityname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityBoundariesname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CovidPositive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CovidDied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CovidRecovered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateasof)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cityname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityBoundariesname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CovidPositive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CovidDied)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CovidRecovered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateasof)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CityID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CityID })
+        </td>
+    </tr>
+}
+
+</table>

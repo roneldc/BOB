@@ -1,0 +1,180 @@
+﻿@using AccompProject.Helpers
+@model IEnumerable<AccompProject.Models.ProcurementListForSupplier>
+@*@{string data = ViewBag.Notitrigger; }*@
+
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/custom_table.css" rel="stylesheet" />
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+
+@{
+    ViewBag.Title = "MyIndexCartApproved";
+}
+
+<br />
+<div class="row">
+
+    <div id="myModal" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="myModalContent"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    @*<table class="table">*@
+    <table id="example" class="table">
+        @*<table class="table">*@
+        <thead class="thead-dark">
+
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.procurementmode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProcurementID)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.qty)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.procurementmode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcurementID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.qty)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("My Quotation", "EditSupplierItem", "Supplier", new { userid = item.supplieridstring, procid = item.ProcurementID }, htmlAttributes: new { id = "cluster", @class = "btn btn-success btn-sm mb-1", @Style = "width:150px" })
+                 
+
+
+                 
+                
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    ; (function ($) {
+        var table = $('#example').DataTable(
+
+        );
+    })(jQuery);
+</script>
+<script type="text/javascript">
+
+    $(function () {
+
+        @*var mydata =  @Html.Raw(data);
+        if (mydata == '1')
+        {
+            toastr.warning("You already created your quotation for this Item!", "Warning!");
+        }
+        if (mydata == '2')
+        {
+            toastr.warning("Please Create Quotation to Proceed!", "Warning!");
+        }
+        if (mydata == '3')
+        {
+            toastr.success("Quotation is now Submitted to the NIA PPD", "Warning!");
+        }*@
+
+
+        $.ajaxSetup({ cache: false });
+        console.log("a");
+        $(document).on('click', 'a[data-modal]', function (e) {
+
+            //     $('a[data-modal]').on("click", function (e) {
+            console.log("b");
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                console.log("c");
+
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        console.log("dd");
+        debugger;
+        $('form', dialog).submit(function () {
+            debugger;
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    debugger;
+                    console.log("f");
+                    console.log(result.url);
+                    if (result.success) {
+                        console.log("c");
+                        $('#myModal').modal('hide');
+                        //console.log(result.url);
+                        //location.href = result.url;
+                        console.log(result.redirect);
+                        if (result.redirect == 'true') {
+                            location.href = result.url;
+                        } else {
+                            $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                        }
+                    } else {
+                        console.log("d");
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                },
+                error: function (result) {
+                    debugger;
+                    console.log(result.url);
+
+
+                }
+            });
+            return false;
+        });
+    }
+</script>

@@ -1,0 +1,72 @@
+﻿@model AccompProject.Models.IMTSSViewModelPhysical
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete this Pariculars?</h4>
+</div>
+<div class="modal-body">
+   
+    
+    <dl class="dl-horizontal">
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Particulars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Particulars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubParticulars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubParticulars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubSubParticulars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubSubParticulars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_for_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_for_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.target_actual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.target_actual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accomp_actual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accomp_actual)
+        </dd>
+
+     
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="modal-footer">
+        <button class="btn" type="button" data-dismiss="modal">No</button>
+        <input class="btn btn-danger" type="submit" value="Yes" />
+    </div>
+    }
+</div>

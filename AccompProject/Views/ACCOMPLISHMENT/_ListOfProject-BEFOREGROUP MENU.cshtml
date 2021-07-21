@@ -1,0 +1,268 @@
+﻿@using AccompProject.Helpers
+@model  PagedList.IPagedList<AccompProject.Models.ACCOMPLISHMENT>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+
+    <table id="customers" class="table table-hover">
+
+
+        <tr>
+            <th>
+                Year
+            </th>
+            <th>
+                Mainproject
+            </th>
+            <th>
+                Province
+            </th>
+            <th>
+                Subproject
+            </th>
+            <th>
+                Municipality
+            </th>
+            <th>
+                Allotment (P'000)
+            </th>
+            <th colspan="2" style="text-align:center">
+                Actions
+            </th>
+        </tr>
+
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+               
+                  
+         
+                <td>
+
+
+
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-default">Action</button>
+
+                        <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                                {
+                                    @Html.ActionLink("Accomplishment", "Edit", "PhysicalAccomp", new { id = item.IDAccomp, @class = "dropdown-item" }, null)
+
+                                }
+                                @if (User.IsInRole("Climate Physical"))
+                                {
+                                    @Html.ActionLink("Target Profile", "EditProfile", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                                }
+                                @if (User.IsInRole("Climate Physical"))
+                                {
+                                    @Html.ActionLink("Update", "Edit", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                                }
+                                @if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial") || User.IsInRole("NISRIP"))
+                                {
+                                    @Html.ActionLink("Physical", "Edit", "IMTSS", new { id = item.IDAccomp }, null)
+                                }
+
+
+
+                                @if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                                {
+                                    @Html.ActionLink("Accomplishment", "Edit", "Financial", new { id = item.IDAccomp }, null)
+                                }
+
+
+
+                            </li>
+
+                            <li><a href="#">Another action</a></li>
+
+                            <li class="divider"></li>
+
+                            <li><a href="#">Separated link</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                </td>
+
+
+<td>
+                   
+                    
+                     @if (User.IsInRole("Physical") || User.IsInRole("ED") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                    {
+                        @Html.ActionLink("Accomplishment", "Edit", "PhysicalAccomp", new { id = item.IDAccomp }, null)
+
+
+                        @*@Html.ActionLink("Coordinates", "UpdateCoordinates", "PhysicalAccomp", new { id = item.IDAccomp }, null)*@
+
+
+
+                    }
+                    
+                    @if (User.IsInRole("Climate Physical"))
+                    {
+                        @Html.ActionLink("Target Profile", "EditProfile", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                    }
+                    @if (User.IsInRole("Climate Physical"))
+                    {
+                        @Html.ActionLink("Update", "Edit", "ClimateChange", new { id = item.IDAccomp }, null)
+
+
+                    }
+                    @if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial") || User.IsInRole("NISRIP"))
+                    {
+                         @Html.ActionLink("Physical", "Edit", "IMTSS", new { id = item.IDAccomp }, null)
+                    }
+
+
+
+                    @if (User.IsInRole("Financial") || User.IsInRole("Financial Region"))
+                    {
+                        @Html.ActionLink("Accomplishment", "Edit", "Financial", new { id = item.IDAccomp }, null)
+                    }
+                    @*@if (User.IsInRole("IMTSS Financial"))
+                        {
+                            @Html.ActionLink("Update", "Update", "IMTSS", new { id = item.IDAccomp }, null)
+                        }*@
+
+                </td>
+
+                <td>@if (User.IsInRole("IMTSS Physical") || User.IsInRole("IMTSS Financial") || User.IsInRole("NISRIP"))
+                {
+                    @Html.ActionLink("Financial", "EditFinance", "IMTSS", new { id = item.IDAccomp }, null)
+                }</td>
+
+                <td>
+
+                    @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                    {
+
+                    @Html.ActionLink("Status of Implementation", "EditStatus", "PhysicalAccomp", new { id = item.IDAccomp }, null)
+}
+            </td>
+              
+                @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                {
+
+                  if (item.mainproject == "FSDE") { 
+                         <td>
+                              @Html.ActionLink("FSDE MONITORING", "EditFSDE", "PhysicalAccomp", new { id = item.IDAccomp }, null)
+                         </td>
+                             }
+                }
+            <td>
+
+                @if (User.IsInRole("Physical") || User.IsInRole("Central") || User.IsInRole("Inventory") || User.IsInRole("NISRIP Physical") || User.IsInRole("FSDE Physical") || User.IsInRole("SRIP Physical") || User.IsInRole("CARP Physical") || User.IsInRole("PIDP Physical"))
+                {
+
+                    @Html.ActionLink("Coordinates", "Index", "ProjectCoordinates", new { id = item.IDAccomp, sub = item.subproject }, null)
+      
+
+
+                }
+
+            </td>
+            <td>
+                @if (User.IsInRole("Physical") || User.IsInRole("Central"))
+                {
+
+                    @Html.ActionLink("POW", "Edit", "POW", new { id = item.IDAccomp }, null)
+
+                }
+
+            </td>
+            <td>
+                @if (User.IsInRole("Physical") || User.IsInRole("Central"))
+                {
+                    @Html.ActionLink("Contract Monitoring", "Edit", "Contract", new { id = item.IDAccomp }, null)
+                }
+
+            </td>
+        </tr>
+        }
+
+    </table>
+
+</div>
+@*<div id="listofprojects">
+
+        <div class="pagedList" data-jtv-target="#listofprojects" >
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+        </div>
+
+
+        @foreach (var item in Model)
+        {
+            <div>
+                <h4>@item.subproject</h4>
+                <div>
+                    @Html.DisplayFor(modelItem => item.year)
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </div>
+
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDAccomp })
+                 </div>
+                <hr />
+            </div>
+        }
+
+    </div>
+*@

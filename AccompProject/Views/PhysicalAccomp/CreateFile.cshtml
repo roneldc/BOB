@@ -1,0 +1,145 @@
+﻿@model AccompProject.Models.FileAccompView
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("CreateFile", "PhysicalAccomp", null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        
+        
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3 control-label">
+                  MainProject
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["mainp"].ToString()
+                </div>
+
+                <div class="col-md-3 control-label">
+                    Amount
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["amt"].ToString()
+                </div>
+              
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+                <div class="col-md-3 control-label">
+                    Subproject
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["subp"].ToString()
+                </div>
+
+            </div>
+        </div>
+
+          
+        <hr />
+        
+        @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+   
+
+
+
+
+        <div class="form-group">
+            @Html.Label("FILE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id ="smsbutton" type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+
+<div id="divProcessing">
+    @*<p>Processing, please wait . . . <img src="../../Content/ajax-loader.gif"></p>*@
+</div>
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Edit", "PhysicalAccomp", new { id = Session["idaccomp"].ToString() }, null)
+</div>
+
+
+<style>
+    #divProcessing {
+        display: none;
+    }
+
+        #divProcessing.show {
+            display: block;
+            position: absolute;
+            z-index: 100;
+            background-image: url('../../Content/ajax-loader.gif');
+            background-color: #666;
+            opacity: 0.4;
+            background-repeat: no-repeat;
+            background-position: center;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+        }
+
+    #loadinggif.show {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        z-index: 101;
+        width: 32px;
+        height: 32px;
+        margin-left: -16px;
+        margin-top: -16px;
+    }
+</style>
+
+
+<script type="text/javascript">
+  
+   
+
+    $('#smsbutton').click(function () {
+
+        $("div#divProcessing").addClass('show');
+    });
+         
+         
+        
+
+
+
+
+</script>
+

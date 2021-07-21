@@ -1,0 +1,81 @@
+﻿@model  PagedList.IPagedList<AccompProject.Models.ACCOMPLISHMENT>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+
+<div id="listofprojects" class="container-fluid">
+
+
+
+
+    <div class="pagedList" data-jtv-target="#listofprojects">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+
+    </div>
+
+    <table id="customers" class="table table-hover">
+
+
+        <tr>
+            <th>
+                Year
+            </th>
+            <th>
+                Mainproject
+            </th>
+            <th>
+                Province
+            </th>
+            <th>
+                Subproject
+            </th>
+            <th>
+                Municipality
+            </th>
+            <th>
+                Allotment (P'000)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="oddnum">
+                <td>
+                    @Html.DisplayFor(modelItem => item.year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mainproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subproject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.municipality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+
+                <td>
+                  
+                    @Html.ActionLink("BIDDED/FAW", "Edit", new { id = item.IDAccomp, subp = item.subproject, mainp = item.mainproject, amt = item.amount })
+                    | @Html.ActionLink("DOWNLOAD FILE", "Download", new { id = item.IDAccomp})
+                    @*| @Html.ActionLink("DELETE", "Delete", new { id = item.IDAccomp })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

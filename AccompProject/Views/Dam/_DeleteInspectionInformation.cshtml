@@ -1,0 +1,50 @@
+﻿@model AccompProject.Models.DamInspection
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete?</h4>
+</div>
+<div class="modal-body">
+
+  
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DamName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearCovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearCovered)
+        </dd>
+
+
+      
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+    @Html.HiddenFor(model => model.IDInspection)
+        @Html.HiddenFor(model => model.IDDam)
+
+
+        <div class="modal-footer">
+            <button class="btn" type="button" data-dismiss="modal">No</button>
+            <input class="btn btn-danger" type="submit" value="Yes" />
+        </div>
+    }
+</div>

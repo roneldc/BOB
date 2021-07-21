@@ -1,0 +1,89 @@
+﻿
+@*@model IEnumerable<AccompProject.Models.DamView>*@
+@model  IPagedList<GeneralInformation>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="listofprojects" class="container-fluid">
+   
+    <div class="pagedList" data-jtv-target="#listofprojects">
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                DAM
+            </th>
+            <th>
+                LOCATION
+            </th>
+            <th>
+                DESCRIPTION
+            </th>
+
+            <th>ACTIONS</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDDam }) | @Html.ActionLink("Dam Information", "IndexInformation", new { searchTerm = item.IDDam })          |  @Html.ActionLink("Rehabilitation/Modification", "IndexRehabInformation", new { searchTerm = item.IDDam })         |  @Html.ActionLink("Dam Safety Inspection ", "IndexInspectionInformation", new { searchTerm = item.IDDam })      | @Html.ActionLink("Delete", "Delete", new { id = item.IDDam })      </td>
+
+                    *@
+                <td>
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-default">MENU SELECTION</button>
+
+                        <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                      
+                                     @Html.ActionLink("Profile Information", "Edit", new { id = item.IDDam }) 
+
+                            </li>
+
+                            <li> @Html.ActionLink("Dam Information", "IndexInformation", new { searchTerm = item.IDDam })   </li>
+                            <li> @Html.ActionLink("Rehabilitation/Modification", "IndexRehabInformation", new { searchTerm = item.IDDam })   </li>
+                            <li> @Html.ActionLink("Dam Safety Inspection ", "IndexInspectionInformation", new { searchTerm = item.IDDam })     </li>
+                            <li> @Html.ActionLink("Instrumentation", "IndexInstrumentation", new { searchTerm = item.IDDam })   </li>
+                            <li> @Html.ActionLink("Photos", "Photos", new { id = item.IDDam })   </li>
+                            <li> @Html.ActionLink("Delete", "Delete", new { id = item.IDDam })   </li>
+
+
+                             </ul>
+
+                    </div>
+
+
+
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

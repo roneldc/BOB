@@ -1,0 +1,173 @@
+﻿@model AccompProject.Models.CovidEquipmentEmployee
+
+@{
+    ViewBag.Title = "Edit Supplies";
+}
+
+<h2>Edit Supplies</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CovidEquipmentID)
+        @Html.HiddenFor(model => model.mnt)
+        @Html.HiddenFor(model => model.yr)
+        @Html.HiddenFor(model => model.dateGiven)
+        @Html.HiddenFor(model => model.employeeid)
+
+        @Html.HiddenFor(model => model.alcohol)
+        @Html.HiddenFor(model => model.vitamins)
+        @Html.HiddenFor(model => model.facemask)
+        @Html.HiddenFor(model => model.faceshield)
+        @Html.HiddenFor(model => model.trance)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lname, "LASTNAME",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.lname, new {@readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fname, "FIRSTNAME",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.fname, new {  @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.midname, "MIDDLENAME",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+            
+                @Html.TextBoxFor(model => model.midname, new { @readonly = "readonly", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.midname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.alcohol,"ALCOHOL" ,new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBox("checkbox", (Model.alcohol == "Yes") ? true : false, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.alcohol)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.vitamins, "VITAMINS", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBox("checkbox1", (Model.vitamins == "Yes") ? true : false, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.facemask)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.facemask,"FACE MASK", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBox("checkbox2", (Model.facemask   == "Yes") ? true : false, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.vitamins)
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.faceshield, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBox("checkbox3", (Model.faceshield == "Yes") ? true : false, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.faceshield)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    (function ($) {
+        var table = $('#example').DataTable();
+        //checkbox
+
+        var updateValue = function () {
+
+            var myCheckBox = $("#checkbox");
+
+            if (myCheckBox.is(":checked")) {
+                $("#alcohol").val("Yes")
+            }
+            else {
+                $("#alcohol").val("No")
+            }
+        }
+
+        $(window).load(updateValue);
+
+        $("#checkbox").on("click", updateValue);
+
+        var updateValue1 = function () {
+
+            var myCheckBox = $("#checkbox1");
+
+            if (myCheckBox.is(":checked")) {
+                $("#vitamins").val("Yes")
+            }
+            else {
+                $("#vitamins").val("No")
+            }
+        }
+
+        $(window).load(updateValue1);
+
+
+        $("#checkbox1").on("click", updateValue1);
+
+        var updateValue2 = function () {
+
+            var myCheckBox = $("#checkbox2");
+
+            if (myCheckBox.is(":checked")) {
+                $("#facemask").val("Yes")
+            }
+            else {
+                $("#facemask").val("No")
+            }
+        }
+
+        $(window).load(updateValue2);
+
+        $("#checkbox2").on("click", updateValue2);
+
+
+
+        var updateValue3 = function () {
+
+            var myCheckBox = $("#checkbox3");
+
+            if (myCheckBox.is(":checked")) {
+                $("#faceshield").val("Yes")
+            }
+            else {
+                $("#faceshield").val("No")
+            }
+        }
+
+        $(window).load(updateValue3);
+
+        $("#checkbox3").on("click", updateValue3);
+
+    })(jQuery);
+</script>

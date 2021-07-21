@@ -1,0 +1,761 @@
+﻿@*@model AccompProject.Models.SystemsProfile*@
+
+@model IEnumerable<AccompProject.Models.EmployeeLocation>
+@using System.Activities.Expressions
+@using System.Web.Script.Serialization
+@using AccompProject.Helpers
+
+@{string data = new JavaScriptSerializer().Serialize(Model); }
+@{string data1 = new JavaScriptSerializer().Serialize(ViewBag.city); }
+                      @{string data2 = new JavaScriptSerializer().Serialize(ViewBag.MM); }
+
+
+
+
+
+
+
+
+@*<style>
+        #map_canvas img {
+            max-width: none;
+        }
+    </style>*@
+
+<!-- This css is to give a nice big popup "info window" when a marker is clicked on the map -->
+<style>
+    /*.infoDiv {
+        height: 200px;
+        width: 300px;
+        -webkit-user-select: none;
+        background-color: white;
+    }*/
+
+
+
+    #map_canvas .gm-style-iw {
+        box-shadow: none;
+        color: #515151;
+        font-family: "Georgia", "Open Sans", Sans-serif;
+        text-align: center;
+        width: 300px;
+        height: 150px;
+        border-radius: 0;
+        left: 0 !important;
+        top: 0 !important;
+    }
+
+    #map_canvas .gm-style > div > div > div > div > div > div > div {
+        background: none !important;
+    }
+
+    .gm-style > div > div > div > div > div > div > div:nth-child(2) {
+        box-shadow: none !important;
+    }
+
+    #map_canvas .gm-style-iw > div > div {
+        background: #FFF !important;
+    }
+
+    /*#map_canvas .gm-style-iw {
+        background-color: white;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 300;
+        padding: 0px;
+    }*/
+
+    #map_canvas .gm-style-iw > div {
+        width: 100%;
+        height: 100%;
+    }
+
+    #map_canvas .gm-style-iw .img_wrapper {
+        height: 100%;
+        text-align: center;
+        padding-right: 0px;
+        width: 100%;
+    }
+
+
+
+
+    /*#map_canvas .gm-style-iw .img_wrapper > img {
+            width: 100%;
+            height: 100%;
+        }*/
+
+    #map_canvas img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+
+    /*#map_canvas .gm-style-iw .property_content_wrap {
+        padding: 0px 20px;
+    }
+
+    #map_canvas .gm-style-iw .property_title {
+        min-height: auto;
+    }*/
+</style>
+
+<br />
+
+
+
+<!-- This is the div that will contain the Google Map -->
+
+<div id="map_canvas" class="context-menu-one" style="height: 550px;"></div>
+<br />
+<div>
+    <p>
+        <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="Green">  Top Management
+
+        <img src="http://maps.google.com/mapfiles/ms/icons/pink-dot.png" alt="Green">  Department Manager
+
+
+        <img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="Green">  Division Manager
+        <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="Green"> Section Chief
+        <img src="http://maps.google.com/mapfiles/ms/icons/purple-dot.png" alt="Green">  Rank in File
+    </p>
+</div>
+<!-- Enclose the Javascript in a "section" so that it is rendered in the correct order after scripts have been loaded etc -->
+
+
+<section class="scripts">
+
+    <script src="~/Scripts/gmaps.js"></script>
+    <script src="~/Scripts/markerclusterer.js"></script>
+
+    <script src="~/Scripts/knockout-3.3.0.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/MappinSystems.js"></script>
+    <script type="text/javascript">
+
+
+        @*<!-- This code tells the browser to execute the "Initialize" method only when the complete document model has been loaded. -->*@
+        var map;
+      
+        $(function () {
+            //     console.log("jervypogi");
+
+
+            //google.maps.event.addDomListener(window, "load", Initialize);
+            //// global infowindow
+            //
+
+
+
+        
+
+            Initialize();
+
+        });
+
+
+        // Where all the fun happens
+        function Initialize() {
+
+          
+
+          
+            console.log("jervyjervyjervy");
+            $.ajaxSetup({ cache: false });
+         
+            jQuery(document).on("click", "a[data-modal]", function (event) {
+            
+         //   $("a[data-modal]").on("click", function (e) {
+                // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+                //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+          //      alert("jervyvalencia");
+              //  console.log(this.href);
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+
+                    bindForm(this);
+                });
+                return false;
+            });
+
+
+           //$("a[data-modal]").on("click", function (e) {
+           //     // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+           //     //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+           //     alert("ddd");
+           //     console.log(this.href);
+           //     $('#myModalContent').load(this.href, function () {
+           //         $('#myModal').modal({
+           //             /*backdrop: 'static',*/
+           //             keyboard: true
+           //         }, 'show');
+
+           //         bindForm(this);
+           //     });
+           //     return false;
+           // });
+
+
+            function bindForm(dialog) {
+                $('form', dialog).submit(function () {
+                    var mydata = $(this);
+                    $("div#divProcessing").addClass('show');
+                    // $("#divProcessing").show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        contentType: this.enctype,
+                        data: $(this).serialize(),
+                        success: function (result) {
+                            if (result.success) {
+                                $('#myModal').modal('hide');
+                                $("#divProcessing").hide();
+
+                             //   console.log(mydata.serialize());
+                                alert(result.url);
+                             //   $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                            } else {
+                                $('#myModalContent').html(result);
+                                bindForm(dialog);
+                            }
+                        }
+                    });
+                    return false;
+                });
+            }
+
+
+
+
+
+            //    var goo = google.maps;
+            var timeoutId;
+            var counter = @Html.Raw(ViewBag.cnter);
+            var markerdatabase = @Html.Raw(ViewBag.Markers);
+            var cordinates = @Html.Raw(ViewBag.Coordinates);
+            var city = @Html.Raw(data1);
+            var MM = @Html.Raw(data2);
+
+
+
+
+
+            var poly1 = @Html.Raw(data);
+            //ko.applyBindings(poly1);
+            //   alert(counter);
+
+            if (poly1.length > 0  ){
+                //  poly  = JSON.stringify(poly1);
+
+                //       alert("hulit");
+                //new
+                poly = JSON.stringify(poly1);
+                //   console.log(poly);
+            }else
+            {
+                poly = '[]';
+            }
+
+            var uniID = '';
+
+            // Google has tweaked their interface somewhat - this tells the api to use that new UI
+            google.maps.visualRefresh = true;
+            var NIA = new google.maps.LatLng(14.638659, 121.043078);
+            //   console.log(cordinates[0].longitude + ' - ' + cordinates[0].latitude);
+            //   var NIA = new google.maps.LatLng(cordinates[0].latitude, cordinates[0].longitude);
+            // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+            var mapOptions = {
+                zoom: 5,
+                center: NIA,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+
+            // This makes the div with id "map_canvas" a google map
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            // a sample list of JSON encoded data of places to visit in Tunisia
+            // you can either make up a JSON list server side, or call it from a controller using JSONResult
+
+                  //bago jervy geocode
+
+            //var geocoder = new google.maps.Geocoder();
+
+            //document.getElementById('submit').addEventListener('click', function() {
+            //    geocodeAddress(geocoder, map);
+            //});
+
+
+            //function geocodeAddress(geocoder, resultsMap) {
+            //    var address = document.getElementById('address').value;
+            //    geocoder.geocode({'address': address}, function(results, status) {
+            //        if (status === 'OK') {
+
+            //            resultsMap.setCenter(results[0].geometry.location);
+            //            var marker = new google.maps.Marker({
+            //                map: resultsMap,
+            //                position: results[0].geometry.location
+            //            });
+            //        } else {
+            //            alert('Geocode was not successful for the following reason: ' + status);
+            //        }
+            //    });
+            //}
+            //$('#btnupdate').click(function(){
+            //    clearTimeout(timeoutId);
+            //    console.log(timeoutId);
+
+            //});
+
+            var iw = new google.maps.InfoWindow({
+                maxWidth: 350
+            });
+
+
+            var geocoder = new google.maps.Geocoder();
+            var myVar;
+            console.log($('#dropdowndata').val());
+
+            var searchmoda = $('#dropdowndata').val();
+
+            $("#dropdowndata").change(function() {
+                var selected = $(this).val(); // get selected options value.
+                if (selected === "Top" || selected === "Department" || selected === "Division" || selected === "Section" || selected === "Rank") {
+                    $('#searchTerm').hide();
+                }      else
+                {
+                    $('#searchTerm').show();
+
+                }
+            });
+
+
+            if(searchmoda == 'city')
+            {
+                if(city != null){
+                    console.log("amend");
+                    console.log(city.CityBoundariesname);
+                    console.log(city.CovidPositive);
+
+
+                    var src = 'http://bob.nia.gov.ph/Pic/kml/' + city.CityBoundariesname;
+
+                    var kmlLayer = new google.maps.KmlLayer(src, {
+                        suppressInfoWindows: true,
+                        preserveViewport: false,
+                        map: map
+                    });
+
+
+
+
+
+                    infoWindowKML(kmlLayer,map,city.Cityname,city.CovidPositive,city.CovidDied,city.CovidRecovered,city.dateasof);
+
+                }
+
+            }else
+            {
+            
+
+                $.each(city, function (i, item) {
+
+
+                    var src = 'http://bob.nia.gov.ph/Pic/kml/' + item.CityBoundariesname;
+
+                    var kmlLayer = new google.maps.KmlLayer(src, {
+                        suppressInfoWindows: true,
+                        preserveViewport: false,
+                        map: map
+                    });
+
+
+
+
+
+                    infoWindowKML(kmlLayer,map,MM.Cityname,MM.CovidPositive,MM.CovidDied,MM.CovidRecovered,MM.dateasof);
+
+
+                })
+            
+            
+            
+            }
+
+
+
+            function geocodeAddress(geocoder, resultsMap, addresse, empno, image, imagename,counter,i,myid,sg) {
+                // var address = document.getElementById('address').value;
+                var address = addresse;
+                console.log(i + ". " + empno);
+
+                geocoder.geocode({'address': address}, function(results, status) {
+                    var gotime= '';
+                    var location ='';
+                    if (status === 'OVER_QUERY_LIMIT') {
+                        //    resultsMap.setCenter(results[0].geometry.location);
+                        //  location = results[0].geometry.location;
+                        //       console.log(status + "address").delay(2000);
+                        //console.log(results);
+                        //if(results != null)
+                        //{
+
+                        //var d = new Date();
+                        //var t = d.toLocaleTimeString();
+                        //console.log(t);
+                        //setTimeout(function() {console.log("pause")}, 2000);
+                        //console.log(t);
+                        //   // setTimeout(function() {goTime(results[0].geometry.location,resultsMap,empno,addresse,image,imagename)}, 2000);
+                        // }
+
+                        console.log("query over limit " +  counter + 'vs' + i);
+                    }
+
+                    else
+                    {
+                        if (status === 'OK') {
+
+                            console.log(results);
+                            //      resultsMap.setCenter(results[0].geometry.location);
+                            location = results[0].geometry.location;
+
+                            goTime(results[0].geometry.location.lat(),results[0].geometry.location.lng(),resultsMap,empno,addresse,image,imagename,myid,sg);
+
+                        }
+
+
+                        else {
+                            //  alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    }
+
+
+
+                    //if(counter != i) {
+
+                    //    console.log(counter + 'vs' + i);
+                    //}
+
+
+                    //if(counter == i) {
+
+                    //    alert("Finisdhed Loading " + counter + " Records!");
+                    //}
+
+                    //   }
+                });
+
+            }
+
+
+            function goTime(lat,lng,maps,empnos,add,img,imgname,myid,sg)
+            {
+                //  if (gotime == 'go'){
+
+                // console.log(results[0].geometry.location);
+                //  resultsMap.setCenter(results[0].geometry.location);
+
+                ////var location = results[0].geometry.location;
+                //pointA = new google.maps.LatLng(lat,lng);
+
+
+                //var marker = new google.maps.Marker({
+                //    position: pointA,
+                //    map: resultsMap
+                //});
+
+                //     infoWindow(marker,resultsMap,empno,addresse, image,imagename);
+
+
+                //                maps.setCenter(loc);
+
+                //      var locations = loc;
+                console.log(empnos);
+                
+               
+
+
+                pointB = new google.maps.LatLng(lat, lng);
+            
+                //var marker= new google.maps.Marker({
+                //    position: pointB,
+                //    map: maps
+
+                //});
+
+
+
+                 
+              //  original
+                console.log(sg);
+
+                var marker;
+                if(sg > 26){
+                    marker = new google.maps.Marker({
+                        position: pointB,
+                        map: maps,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                        }
+                    });
+                    console.log("1");
+
+                }
+                if(sg == 26)
+                {
+
+                    marker = new google.maps.Marker({
+                        position: pointB,
+                        map: maps,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"
+                        }
+
+                    });
+                    console.log("2");
+
+                }
+
+                if(sg >= 24 && sg <= 25 )
+                {
+
+                    marker = new google.maps.Marker({
+                        position: pointB,
+                        map: maps,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+                        }
+
+                    });
+                    console.log("3");
+
+                }
+                if(sg >= 22 && sg <= 23 )
+                {
+
+                    marker = new google.maps.Marker({
+                        position: pointB,
+                        map: maps,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+                        }
+
+                    });
+                    console.log("4");
+
+
+                }
+                if(sg < 22)
+                {
+
+                    marker = new google.maps.Marker({
+                        position: pointB,
+                        map: maps,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"
+                        }
+
+                    });
+                    console.log("5");
+
+                }
+
+                //// CONSOLE.LOG(parseInt(1) + parseInt(1));
+
+                //var data = JSON.stringify({
+                //    'latitude':lat,
+                //    'longitude':lng,
+                //    'id':myid
+                //});
+
+
+                //$.ajax({
+                //    url: "/InventoryMapping/UpdateEmployeeCoord",
+                //    data: data,
+                //    type: "POST",
+                //    contentType: "application/json;charset=utf-8",
+                //    dataType: "json",
+                //    success: function (result) {
+                //        //   loadData();
+                //        //  $('#myModal').modal('hide');
+                //        //   clearTextBox();
+                //        //alert('success ' + url);
+                //        //  window.location.reload();
+                //        //if (result.success) {
+                //        //    $('#replacetarget').load(result.url);
+                //        //}
+                //    },
+                //    error: function (errormessage) {
+                //        console.log(errormessage.responseText);
+
+                //    }
+                //});
+
+
+                infoWindow(marker,maps,empnos,add, img,imgname,myid);
+            }
+
+            $.each(poly1, function (i, item) {
+
+
+                 console.log(i);
+            //      var timeoutID= setTimeout(function(){geocodeAddress(geocoder, map, item.Address, item.EmployeeName, item.image, item.imagename, counter, (i+1),item.id,item.SG)  },2000*(i+1));
+                //     geocodeAddress(geocoder, map, item.Address, item.EmployeeName, item.image, item.imagename, counter, (i+1));
+                //   console.log("jervyjervyjervy");
+              
+                
+                //original
+                var chcklngth = item.lng;
+
+                if (chcklngth != null){
+
+                    if(chcklngth > 0) {
+                        //old
+                        //goTime(item.lat,item.lng,map,item.EmployeeName,item.Address,item.image,item.imagename,item.id);
+
+                        goTime(item.lat,item.lng,map,item.EmployeeName,item.Address,item.image,item.imagename,item.id,item.SG);
+                    }
+
+                    if(counter == (i+1)) {
+                        console.log(counter + ' ' + (i+1))
+                        alert("Finished Loading " + counter + " Records!");
+                    }
+                }
+
+            })
+
+
+
+
+            function infoWindow(marker, map, EmployeeName, Address, image, imagename,myid)
+            {
+                google.maps.event.addListener(marker, 'click', function() {
+                    // var html = "<div><h3>" + title + "</h3><p><a href='" + address + "' target='_blank'>Read More</a></p></div>";
+                    var property_img =  "/Pic/noimage.png";
+                    //var html = "<div class='img_wrapper'><img src="+property_img+"></div>" +
+                    //    "<div>"  + "NAME OF EMPLOYEE : " + EmployeeName +  "</div>" +
+                    //       "<div>"  + "ADDRESS : " + Address + "</div>";
+                    if(image == "1"){
+                        property_img =  "/Pic/" + imagename;
+                        console.log(property_img);
+                    }
+
+                    console.log(EmployeeName);
+                  
+                    var content = "<div class='img_wrapper'><img src="+property_img+"></div> <br />";
+                    //   var html = "<div class='img_wrapper'><img src="+property_img+"></div> <br />" +
+                    var html =     "<div>"  + "NAME OF EMPLOYEE : " + EmployeeName +  "</div> <br />" +
+                          "<div>"  + "ADDRESS : " + Address + "</div> <br />" +
+                     '<div><a class="btn btn-default" data-modal=""  href="/InventoryMapping/SMSMessage/'  + myid + '"  title="jervy"><span class="glyphicon glyphicon-envelope"></span></a></div>';
+                      
+
+                  //  var html =     "<div>"  + "NAME OF EMPLOYEE : " + EmployeeName +  "</div> <br />" +
+                  //     "<div>"  + "ADDRESS : " + Address + "</div>" +
+                  //     ' <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>' +
+                  //   '<a href="/InventoryMapping/SMSMessage/' + myid + '" data-toggle="modal" data-target="#myModal"><strong>Add Information</strong></a>' +
+                  //'<a id="link" onclick="mapsZoomMarker()" class="btn btn-default" data-modal=""  href="/InventoryMapping/SMSMessage/235"  title="jervy"><span class="glyphicon glyphicon-pencil"></span></a>' +
+                  //   '<a class="button" href = "#"  >Button</a>';
+                         
+
+                    //var iw = new google.maps.InfoWindow({
+                    //    maxWidth: 350
+                    //});
+
+                    iw.setContent(html);
+
+
+
+                    // open the infowindow on the marker.
+                    iw.open(map, marker);
+                });
+            }
+            //   infoWindowKML(kmlLayer,map,city.cityBoundariesname,city.CovidPositive,city.CovidDied,city.CovidRecovered,city.dateasof);
+
+            function infoWindowKML(kml, map, city,confirmed,deaths,recovered,datecases)
+            {
+
+                google.maps.event.addListener(kml, 'click', function(event) {
+                    //var content = event.featureData.infoWindowHtml;
+                    //var testimonial = document.getElementById('capture');
+                    //testimonial.innerHTML = content;
+
+                    //   var text = event.featureData;
+                    //    alert(text);
+                    //  infowindow.close();
+                    //console.log(confirmed);
+                    //var infowindow = new google.maps.InfoWindow({
+                    //    maxWidth: 500,
+                    //    maxHeight: 500
+                    //});
+
+                    var htmls = "<div>"  + "NAME OF CITY : " + city + "</div> <br />" +
+                         "<div>"  + "As of :" + datecases + "</div> <br />" +
+                                 "<div>"  + "No. of Confirmed Cases : " + confirmed + "</div> <br />" +
+                                  "<div>"  + "No. of Recovered Cases : " + recovered + "</div> <br />" +
+                                  "<div>"  + "No. of Deaths : " + deaths + "</div>";
+
+                    //iw.setContent(htmls);
+                    //// open the infowindow on the marker.
+                    //iw.open(map, kml);
+
+                    // latlongkml = event.latLng.toString();
+                    //// event.featureData.name = city;
+                    //// var text = event.featureData.name;
+                    ////var station = text;
+                    var htmlContent =  htmls;
+                    iw.setOptions({content: htmlContent,
+                        pixelOffset: event.pixelOffset,
+                        position: event.latLng})
+                    iw.open(map);
+
+
+                });
+
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function markerAnimate(marker) {
+            google.maps.event.addListener(marker, 'click', function() {
+
+                if (marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            });
+        }
+
+
+        //  window.google = {};
+
+
+
+    </script>
+
+
+
+
+
+
+</section>

@@ -1,0 +1,218 @@
+﻿@using AccompProject.Helpers
+@model IEnumerable<AccompProject.Models.Supplier.Other.ProcurementSupplierDocumentView>
+
+
+<div id="projectaccomp">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @Html.NoEncodeActionLink("Create Document", "", "UploadDocu", "Supplier", null, htmlAttributes: new { data_modal = "", @class = "btn btn-success btn-sm mb-1" })
+
+
+
+
+        </div>
+
+
+
+
+        <div class="panel-body">
+                @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Create", "IMTSS", null, htmlAttributes: new { data_modal = "", id = "btnCreate", @class = "btn btn-primary pull-right" })*@
+                @*@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Create", "PhysicalAccomp", routeValues: new { Id = ViewBag.IDAccomp }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary pull-right" })*@
+         
+        </div>
+
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Docuname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Filename)
+
+                </th>
+             
+             
+
+
+       
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Docuname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Filename)
+                    </td>
+
+                   
+                    
+
+                    <td>
+                        @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "DeleteDocu", "Supplier", routeValues: new { id = item.IDSupplierDocu }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+                        |@Html.NoEncodeActionLink("<span class='glyphicon glyphicon-download'></span>", "Download", "DownloadDocu", "Supplier", routeValues: new { userid = item.userid, docuid = item.DOcuID , id = item.IDSupplierDocu}, htmlAttributes: new { @class = "btn btn-danger" })
+
+
+                      
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        //$("a[data-modal]").on("click", function (e) {
+        //    // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+        //    //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+        //    $('#myModalContent').load(this.href, function () {
+        //        alert("1");
+        //        $('#myModal').modal({
+        //            /*backdrop: 'static',*/
+        //            keyboard: true
+        //        }, 'show');
+        //        bindForm(this);
+        //    });
+        //    return false;
+        //});
+
+
+
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+        //    alert(this.href);
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    /*backdrop: 'static',*/
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+
+
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                //url: this.action,
+                //type: this.method,
+                //contentType: this.enctype,
+                //data: $(this).serialize(),
+                url: this.action,
+                type: this.method,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+            return false;
+        });
+    }
+
+
+
+
+
+    //function bindForm(dialog) {
+    //    $('form', dialog).submit(function () {
+    //        $.ajax({
+    //            url: this.action,
+    //            type: this.method,
+    //            contentType: this.enctype,
+    //            data: $(this).serialize(),
+    //            success: function (result) {
+    //                if (result.success) {
+    //                    $('#myModal').modal('hide');
+    //                    console.log(result.url);
+
+    //                    $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+    //                } else {
+    //                    $('#myModalContent').html(result);
+    //                    bindForm(dialog);
+    //                }
+    //            }
+    //        });
+    //        return false;
+    //    });
+    //}
+
+
+
+    //function bindForm(dialog) {
+    //    $('form', dialog).submit(function () {
+    //     //   $("div#divProcessing").addClass('show');
+    //        $.ajax({
+    //            url: this.action,
+    //            type: this.method,
+    //            data: $(this).serialize(),
+    //            success: function (result) {
+    //                if (result.success) {
+    //                    $('#myModal').modal('hide');
+    //          //          $("#divProcessing").hide();
+    //                    $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
+    //                } else {
+    //                    $('#myModalContent').html(result);
+    //                    bindForm(dialog);
+    //                }
+    //            }
+    //        });
+    //        return false;
+    //    });
+    //}
+
+
+
+
+
+
+
+
+
+</script>
+

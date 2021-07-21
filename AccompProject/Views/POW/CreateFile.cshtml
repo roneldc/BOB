@@ -1,0 +1,89 @@
+﻿@model AccompProject.Models.FilePOWAccompView
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("CreateFile", "POW", null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        
+        
+        <div class="form-group">
+
+            <div class="row">
+
+
+                <div class="col-md-3 control-label">
+                  MainProject
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["mainp"].ToString()
+                </div>
+
+                <div class="col-md-3 control-label">
+                    Amount
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["amt"].ToString()
+                </div>
+              
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+                <div class="col-md-3 control-label">
+                    Subproject
+                </div>
+                <div class="col-md-3 control-label">
+                    @Session["subp"].ToString()
+                </div>
+
+            </div>
+        </div>
+
+          
+        <hr />
+        
+        @Html.HiddenFor(model => model.IDAccomp, new { @Value = Session["idaccomp"].ToString() })
+   
+
+
+
+
+        <div class="form-group">
+            @Html.Label("FILE", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Avatar" name="upload" />
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Edit", "POW", new { id = Session["idaccomp"].ToString() }, null)
+</div>
+

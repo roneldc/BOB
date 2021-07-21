@@ -1,0 +1,168 @@
+﻿@model AccompProject.Models.IMTSSViewModelFinancial
+
+
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Are you sure to delete this Pariculars?</h4>
+</div>
+<div class="modal-body">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDAccomp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDAccomp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mainproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mainproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subproject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subproject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticularsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticularsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Particulars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Particulars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialParticularsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialParticularsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialParticulars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialParticulars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_budget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Expenses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Expenses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quarter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quarter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.as_of)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.as_of)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.year_covered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year_covered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mnt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mnt)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="modal-footer">
+        <button class="btn" type="button" data-dismiss="modal">No</button>
+        <input class="btn btn-danger" type="submit" value="Yes" />
+    </div>
+    }
+</div>
+

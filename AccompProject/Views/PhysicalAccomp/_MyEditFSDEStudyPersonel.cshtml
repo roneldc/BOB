@@ -1,0 +1,115 @@
+﻿@model AccompProject.Models.FSDEConsultantListView
+
+<style type="text/css">
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+
+    <h4 class="modal-title" id="myModalLabel">Regional Office</h4>
+    <h4>
+        @Session["subproject"].ToString()
+    </h4>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IDStudy)
+            @Html.HiddenFor(model => model.IDStudyConsultant)
+
+
+
+            <div class="form-group">
+
+
+
+
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.PositionID, (IEnumerable<SelectListItem>)ViewBag.PositionLists, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <hr />
+
+     
+
+            <div class="form-group">
+
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.LNAME, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.LNAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LNAME, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.FNAME, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.FNAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FNAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.MIDNAME, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.MIDNAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MIDNAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.SUFIX, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.SUFIX, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SUFIX, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+    </div>
+}
+
+
